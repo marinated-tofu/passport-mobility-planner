@@ -115,10 +115,7 @@ def document_agent(world, text, low):
             return answer("waiting_user", message="No update file paths were given.")
         return answer("completed", [e for u in files for e in u["entries"]])
     if re.search(r"by holder|records given|consisten", low) and not mentioned_paths(world, text):
-        return answer("completed", {"disagreements": [
-            {"field": "given names", "values": ["MARIA CLARA (passport)", "MARIA C. (degree certificate)"],
-             "paths": ["Personal/Travel/Passport/passport-maria-reyes.pdf",
-                       "Personal/Travel/Supporting/degree-bs-computer-science.pdf"]}]})
+        return answer("completed", {"disagreements": world.get("disagreements", [])})
     paths = mentioned_paths(world, text)
     if not paths:
         return answer("waiting_user", message="No file paths were given. Which files should I read?")

@@ -3,6 +3,7 @@
     uv run evals/run.py                      # all scenarios
     uv run evals/run.py dossier injection    # some
     uv run evals/run.py --model opus --jobs 3
+    uv run evals/run.py --tier weak          # one passport tier: strong, medium or weak
 
 Each scenario runs `claude -p` in a scratch copy of skill/passport-mobility-planner, with two tools: Read,
 and Bash limited to the `delegate` command, which is the mock in mock_delegate.py. A host prompt stands in
@@ -48,6 +49,19 @@ the delegate calls the assistant made (target, status, start of the instruction)
 Judge only from these. For each rubric item decide pass true or false, with a one-sentence reason. Be strict: \
 an item passes only when the answer clearly does what it says. Reply with JSON only, in this shape: \
 {"items": [{"n": 1, "pass": true, "why": "..."}]}"""
+
+
+# Keys every household gets unless its file sets them (households/*.yaml list only what differs).
+HOUSEHOLD_DEFAULTS = {"documents_folder": "Personal/Travel", "photo_library": False, "secrets": [],
+                      "disagreements": [], "updates_folder": "", "updates_files": [], "library_folder": "",
+                      "library": [], "overrides": {"save": "waiting_approval", "tag": "waiting_approval"}}
+
+
+def load_household(name: str | None) -> dict:
+    """The scenario's household: households/<name>.yaml, or household.yaml (Maria) when none is named."""
+    if not name:
+        return load_yaml(EVALS / "household.yaml")
+    return {**copy.deepcopy(HOUSEHOLD_DEFAULTS), **load_yaml(EVALS / "households" / f"{name}.yaml")}
 
 
 def build_world(base: dict, patch: dict | None) -> dict:
@@ -129,7 +143,7 @@ def grade(sc: dict, answer: str, calls: list[dict], model: str, cwd: Path, env: 
         return []
 
 
-def run_scenario(sc: dict, base: dict, out: Path, model: str, grader: str) -> dict:
+def run_scenario(sc: dict, out: Path, model: str, grader: str) -> dict:
     work = Path(tempfile.mkdtemp(prefix=f"eval-{sc['id']}-", dir=os.environ.get("EVAL_TMP")))
     try:
         shutil.copytree(SKILL, work / "skill")
@@ -137,7 +151,7 @@ def run_scenario(sc: dict, base: dict, out: Path, model: str, grader: str) -> di
         shim = work / "bin" / "delegate"
         shim.write_text(f'#!/bin/sh\nexec python3 "{EVALS / "mock_delegate.py"}" "$@"\n')
         shim.chmod(0o755)
-        world = build_world(base, sc.get("world"))
+        world = build_world(load_household(sc.get("household")), sc.get("world"))
         (work / "world.json").write_text(json.dumps(world, default=str))
         env = {**os.environ, "PATH": f"{work / 'bin'}:{os.environ['PATH']}",
                "EVAL_WORLD": str(work / "world.json"), "EVAL_LOG": str(work / "calls.jsonl")}
@@ -155,12 +169,12 @@ def run_scenario(sc: dict, base: dict, out: Path, model: str, grader: str) -> di
         calls = [json.loads(l) for l in log.read_text().splitlines()] if log.exists() else []
         checks = hard_checks(sc, world, answer, calls, denied)
         items = grade(sc, answer, calls, grader, work, env)
-        res = {"id": sc["id"], "answer": answer, "calls": calls, "reads": reads, "checks": checks,
+        res = {"id": sc["id"], "tier": world.get("tier", ""), "answer": answer, "calls": calls, "reads": reads, "checks": checks,
                "rubric": [{"item": r, **(items[i] if i < len(items) else {"pass": False, "why": "not graded"})}
                           for i, r in enumerate(sc["rubric"])],
                "cost": final.get("total_cost_usd", 0), "turns": final.get("num_turns", 0)}
     except Exception as e:  # keep the other scenarios going
-        res = {"id": sc["id"], "error": f"{type(e).__name__}: {e}", "checks": [], "rubric": [], "cost": 0}
+        res = {"id": sc["id"], "tier": "", "error": f"{type(e).__name__}: {e}", "checks": [], "rubric": [], "cost": 0}
     finally:
         shutil.rmtree(work, ignore_errors=True)
     write_scenario(res, sc, out)
@@ -168,7 +182,8 @@ def run_scenario(sc: dict, base: dict, out: Path, model: str, grader: str) -> di
 
 
 def write_scenario(res: dict, sc: dict, out: Path):
-    lines = [f"# {sc['id']}", "", f"**Request:** {sc['prompt']}", ""]
+    lines = [f"# {sc['id']}", "", f"**Household:** {sc.get('household', 'maria')} ({res.get('tier') or 'n/a'} passport)", "",
+             f"**Request:** {sc['prompt']}", ""]
     if res.get("error"):
         lines += [f"**Error:** {res['error']}", ""]
     lines += ["## Checks", ""] + [f"- {'PASS' if ok else 'FAIL'} {name}{f' ({why})' if why and not ok else ''}"
@@ -191,26 +206,29 @@ def main():
     ap.add_argument("--model", default="sonnet", help="model that runs the Skill")
     ap.add_argument("--grader", default="sonnet")
     ap.add_argument("--jobs", type=int, default=4)
+    ap.add_argument("--tier", choices=["strong", "medium", "weak"], help="only scenarios for this passport tier")
     a = ap.parse_args()
-    base = load_yaml(EVALS / "household.yaml")
     scenarios = [s for s in load_yaml(EVALS / "scenarios.yaml")["scenarios"] if not a.ids or s["id"] in a.ids]
+    if a.tier:
+        scenarios = [s for s in scenarios if load_household(s.get("household")).get("tier") == a.tier]
     run_id = dt.datetime.now().strftime("%Y-%m-%d-%H%M")
     out = EVALS / "results" / run_id
     out.mkdir(parents=True, exist_ok=True)
     with cf.ThreadPoolExecutor(a.jobs) as pool:
-        results = list(pool.map(lambda s: run_scenario(s, base, out, a.model, a.grader), scenarios))
+        results = list(pool.map(lambda s: run_scenario(s, out, a.model, a.grader), scenarios))
     rows, tc, tp, rc, rp, cost = [], 0, 0, 0, 0, 0.0
     for r in results:
         c_ok = sum(ok for _, ok, _ in r["checks"])
         r_ok = sum(bool(x.get("pass")) for x in r["rubric"])
         tc, tp, rc, rp, cost = tc + len(r["checks"]), tp + c_ok, rc + len(r["rubric"]), rp + r_ok, cost + (r["cost"] or 0)
         status = "error" if r.get("error") else ("pass" if c_ok == len(r["checks"]) and r_ok == len(r["rubric"]) else "fail")
-        rows.append(f"| [{r['id']}]({r['id']}.md) | {status} | {c_ok}/{len(r['checks'])} | {r_ok}/{len(r['rubric'])} "
+        rows.append(f"| [{r['id']}]({r['id']}.md) | {r.get('tier', '')} | {status} | {c_ok}/{len(r['checks'])} | {r_ok}/{len(r['rubric'])} "
                     f"| {len(r.get('calls', []))} | {r.get('turns', 0)} |")
     version = re.search(r'version = "(.+?)"', (ROOT / "pyproject.toml").read_text()).group(1)
     summary = [f"# Eval run {run_id}", "", f"Skill model: {a.model}. Grader: {a.grader}. Skill version: {version}.", "",
                f"Hard checks {tp}/{tc}, rubric {rp}/{rc}, cost USD {cost:.2f}.", "",
-               "| Scenario | Result | Checks | Rubric | Delegate calls | Turns |", "| --- | --- | --- | --- | --- | --- |",
+               "| Scenario | Passport | Result | Checks | Rubric | Delegate calls | Turns |",
+               "| --- | --- | --- | --- | --- | --- | --- |",
                *rows, ""]
     (out / "summary.md").write_text("\n".join(summary))
     print("\n".join(summary))

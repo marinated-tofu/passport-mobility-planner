@@ -1,0 +1,45 @@
+# Strong passport: Japan. Sato Kenji lives in Osaka. The passport is a phone photo, so it is read by text recognition.
+# Invented person, numbers and companies. Dates are relative to the eval date, 2026-11-07.
+tier: strong
+documents_folder: Personal/Travel
+photo_library: false
+secrets: [TZ4418273]
+
+files:
+  - path: Personal/Travel/Passport/passport-photo-page.jpg
+    kind: image
+    modified: 2024-06-15
+    looks_like: passport
+    ocr: |
+      JAPAN  PASSPORT
+      Type P  Issuing country JPN  Passport No. TZ4418273
+      Surname SATO  Given name KENJI
+      Nationality JAPAN  Date of birth 14 JUL 1985  Sex M  Registered Domicile OSAKA
+      Date of issue 12 JUN 2024  Date of expiry 11 JUN 2034
+      Authority MINISTRY OF FOREIGN AFFAIRS
+      P<JPNSATO<<KENJI<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+      TZ44182739JPN8507147M3406119<<<<<<<<<<<<<<08
+
+  - path: Personal/Travel/Bookings/kix-icn-yvr-2027-05.pdf
+    kind: pdf
+    modified: 2026-10-28
+    looks_like: flight booking
+    record:
+      document type: flight-booking
+      passenger names: SATO/KENJI MR
+      route: Osaka (KIX) to Seoul (ICN); Seoul (ICN) to Vancouver (YVR); Vancouver (YVR) to Osaka (KIX)
+      dates: 2027-05-02, 2027-05-05, 2027-05-19
+      booking reference last three: 2RT
+      issuing body: Korean Air
+
+  - path: Personal/Travel/Supporting/hotel-vancouver-2027-05.pdf
+    kind: pdf
+    modified: 2026-10-29
+    looks_like: accommodation booking
+    record:
+      document type: accommodation-proof
+      names as printed: KENJI SATO
+      issuing body: Harbourline Suites, Vancouver
+      dates: 2027-05-05 to 2027-05-19
+
+disagreements: []

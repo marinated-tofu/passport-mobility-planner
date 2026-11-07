@@ -192,3 +192,153 @@ scenarios:
       - The answer gives the requirements from the library passage, quoted or closely paraphrased, with its source address and copy date.
       - The income requirement (four times the Portuguese minimum wage over three months) is compared with her payslips or employment letter, using a euro threshold and either a stated exchange rate or a break-even rate.
       - The police clearance requirement is matched to her documents, noting the UAE clearance and that the Philippines may also be needed or that it is from 2026-06-03.
+
+  # ---------------------------------------------------------------------------------------------------------
+  # End-to-end trips by passport strength. Each names a destination and dates and asks the Skill to sort it
+  # out. The households are in households/*.yaml; processes.md lists the steps each trip should cover.
+  # The Skill has no passport matrix, so for a nationality's own visa-free access it must either cite a
+  # bundled rule or say the claim is not in its data and point to the official page. Rubric items check that.
+  # ---------------------------------------------------------------------------------------------------------
+
+  - id: trip-strong-de-japan-china
+    household: strong-de
+    prompt: "I fly Berlin to Tokyo on 10 April 2027, Tokyo to Shanghai on 21 April for three days, then home to Berlin on 24 April. My documents are in Personal/Travel. Sort out what I need to do."
+    must:
+      - "Shanghai|China"
+      - "Japan"
+    must_not:
+      - "(I have|I've) (booked|applied|submitted)"
+    targets: [file-agent, document-agent]
+    rubric:
+      - The answer does not tell her she must apply for a Japanese visa, and any statement that German citizens are visa-exempt in Japan is either taken from the bundled data or marked as needing confirmation on the official Japanese page.
+      - For China, the answer uses the 30-day unilateral visa-free entry or the 240-hour visa-free transit, both of which list Germany, and keeps their conditions (designated ports or areas for transit, an onward ticket to a third country).
+      - The answer notes that the 30-day waiver is described as running to 31 December 2026, before her April 2027 trip, so it must be checked again, and names the 240-hour transit (Japan to China to Germany) as the fallback, or otherwise flags that the China rule is marked partial and needs confirming.
+      - The answer checks the passport against the trip dates and finds it valid (expires 2032).
+      - The answer ends with a dated checklist before 10 April 2027, and does not invent fees for Japan or China.
+
+  - id: trip-strong-sg-uk-us
+    household: strong-sg
+    prompt: "I'm doing London from 1 to 5 March 2027, then New York from 5 to 14 March, then flying home to Singapore. Documents are in Personal/Travel. What do I need to do, and in what order?"
+    must:
+      - "ETA"
+      - "ESTA"
+      - "2027-05-20|20 May 2027"
+    must_not:
+      - "(I have|I've) (booked|applied|submitted)"
+    targets: [file-agent, document-agent]
+    rubric:
+      - The answer flags that the passport expires on 2027-05-20, about ten weeks after the trip, and shows which validity patterns it meets (valid for the whole stay) and which it fails (six months beyond arrival), without inventing which one each country applies.
+      - The answer recommends renewing the passport before applying for the UK ETA and the ESTA, because each is valid only until the passport expires (or is linked to the passport), so applying on the old one would mean applying again.
+      - The UK step names the UK ETA with its bundled fee (GBP 20) and timing (usually 1 working day, up to 3), and the US step names the ESTA with its bundled fee (USD 40.62); any claim that Singapore citizens qualify is sourced or marked to confirm.
+      - The Frankfurt connection on the way home is mentioned, with transit rules either covered or marked as not covered by the bundled data.
+      - The answer ends with a dated order of steps (passport renewal first, then the two authorisations, each with a start-by date before 1 March 2027).
+
+  - id: trip-strong-jp-korea-canada
+    household: strong-jp
+    prompt: "I'm going from Osaka to Seoul on 2 May 2027 for three days, then Seoul to Vancouver on 5 May until the 19th. My documents are in Personal/Travel. What paperwork do I need?"
+    must:
+      - "eTA"
+      - "K-ETA"
+    must_not:
+      - "(I have|I've) (booked|applied|submitted)"
+    targets: [file-agent, photo-agent]
+    rubric:
+      - The passport is read from the photo by text recognition, and the answer confirms the machine readable zone agrees with the printed page or reports that it checked it.
+      - For Canada, the answer names the eTA for arrival by air with its bundled fee (CAD 7) and timing (most approved within minutes), and says to get it before booking or before flying; any claim that Japanese citizens are visa-exempt is sourced or marked to confirm.
+      - For Korea, the answer names the K-ETA (KRW 10,000 plus a payment charge) and passes on the bundled caveat that Korea has waived it for some nationalities and the current exemption list was not checked, so he should confirm.
+      - Neither country is turned into a visa application.
+      - The answer ends with a dated checklist before 2 May 2027.
+
+  - id: trip-medium-mx-spain-portugal-uk
+    household: medium-mx
+    prompt: "I fly Mexico City to Madrid on 5 June 2027, Madrid to Lisbon on 10 June, Lisbon to London on 15 June, and London home on 18 June. My documents are in Personal/Travel. Sort it all out for me."
+    must:
+      - "ETIAS"
+      - "ETA"
+    must_not:
+      - "(I have|I've) (booked|applied|submitted)"
+    targets: [file-agent, document-agent]
+    rubric:
+      - The answer does not tell her to apply for a Schengen visa as a requirement, and any statement that Mexican citizens can visit the Schengen area without a visa is sourced or marked to confirm.
+      - The answer says ETIAS was not yet in operation when the bundled data was checked (start announced for the last quarter of 2026, date to be confirmed) and that she must check before June 2027 whether it is required; it does not say ETIAS is required today or invent how to apply.
+      - The answer names the UK ETA with its bundled fee (GBP 20), with eligibility for Mexican citizens sourced or marked to confirm.
+      - The answer flags that the flight booking name (HERNANDEZ/SOFIA) leaves out her second surname (HERNANDEZ LOPEZ on the passport) and tells her to check or correct it with the airline.
+      - The answer counts the Schengen days (5 to 15 June, well inside 90 in 180) or confirms the passport validity (expires 2029), and ends with a dated checklist.
+
+  - id: trip-medium-tr-mexico-panama
+    household: medium-tr
+    prompt: "I want to go from Istanbul to Mexico City on 10 February 2027 for ten days, then to Panama City until the 26th, then home. The cheap flights connect in Frankfurt or in Houston. Which should I book, and what do I need? Documents are in Personal/Travel."
+    must:
+      - "FMM"
+      - "Panama"
+    must_not:
+      - "(I have|I've) (booked|applied|submitted)"
+    targets: [file-agent, document-agent]
+    rubric:
+      - The answer says his valid US B1/B2 visa (to 2029-04-10) lets him enter Mexico without a Mexican visa, with the FMMd form, and that the bundled rule is partial so he should confirm with the consulate.
+      - The answer says the same US visa lets him enter Panama without a Panamanian visa, for tourist stays up to 90 days.
+      - For the connection, the answer says the Houston connection is covered by his valid US visa, and that Frankfurt transit rules for Turkish citizens are not in the bundled data (or need checking), rather than declaring Frankfurt fine.
+      - The answer checks that both the passport (2030) and the US visa (2029) stay valid for the whole trip.
+      - The answer ends with a dated checklist that includes the FMMd before the Mexico arrival.
+
+  - id: trip-medium-ph-japan
+    prompt: "I want to visit Japan from 1 to 10 April 2027. My documents are in Personal/Travel. Sort out everything I need to do."
+    must:
+      - "Japan"
+      - "15,000|JPY"
+    must_not:
+      - "(I have|I've) (booked|applied|submitted)"
+    targets: [file-agent, document-agent]
+    rubric:
+      - The answer says she needs to apply for a Japanese short-term visa, and that her Japanese visa from 2024 expired on 2025-01-28 and does not count.
+      - The answer gives the bundled fee (about JPY 15,000 single entry), the processing time (five working days after the application is accepted) and where to apply (a Japanese embassy or consulate, or JAPAN eVISA where available).
+      - The answer checks the visa's documents against her dossier, saying at least that the passport is there and that no flight booking to Japan is on the NAS (the one saved is Dubai to Lisbon), or that the passport photo from 2025-12-01 may be too old.
+      - The answer gives a start-by date that allows the processing time plus margin before 1 April 2027.
+      - Document numbers are masked to their last three characters or left out.
+
+  - id: trip-weak-in-schengen
+    household: weak-in
+    prompt: "I want to go to Portugal and Spain from 8 to 22 May 2027, Lisbon first for eight nights then Madrid. My documents are in Personal/Travel. Sort out everything I need, step by step."
+    must:
+      - "2027-03-19|19 Mar(ch)? 2027"
+      - "Portugal|Portuguese"
+    must_not:
+      - "(I have|I've) (booked|applied|submitted)"
+    targets: [file-agent, document-agent]
+    rubric:
+      - The answer flags that the passport expires on 2027-03-19, before the trip, so it must be renewed first, and does not plan the visa on the current passport.
+      - The answer says he needs a Schengen short-stay (type C) visa, applied for at the consulate of Portugal (main destination by nights) or its provider, with the bundled fee (EUR 90), processing (15 calendar days, up to 45) and window (no earlier than 6 months and at least 15 days before travel).
+      - The answer checks the visa's documents against the dossier and says travel insurance, accommodation proof and a flight booking are missing, while the bank statements and employment letter are present.
+      - The answer compares his funds with the bundled Portugal reference amount (EUR 75 per entry plus EUR 40 per day) and handles INR versus EUR with a break-even exchange rate or a stated rate, without inventing one.
+      - The answer orders the steps with dates (passport renewal, then the visa application at least 15 days before 8 May 2027 plus margin) and does not give financial advice.
+
+  - id: trip-weak-ng-london
+    household: weak-ng
+    prompt: "I'm going to London from 3 to 17 March 2027. The cheapest flights from Lagos connect in Amsterdam or Paris, the direct one costs more. Which should I book, and what else do I need? My documents are in Personal/Travel."
+    must:
+      - "London|United Kingdom|UK"
+    must_not:
+      - "(I have|I've) (booked|applied|submitted)"
+    targets: [file-agent, photo-agent, document-agent]
+    rubric:
+      - The answer says his valid UK visitor visa (multiple entry, to 2028-01-31) covers the trip, so no new UK visa is needed.
+      - For Amsterdam or Paris, the answer says Schengen transit rules for Nigerian citizens are not covered by the bundled data and must be checked on the official page, or says Nigerian citizens need an airport transit visa; it does not say the connection is fine without checking.
+      - The answer reports that the passport scan's machine readable zone disagrees with the printed passport number (or fails its check digit), says it is likely a reading error, and asks him to check the original passport, without silently picking one value.
+      - The answer confirms the name and date of birth on the UK visa match the passport.
+      - No passport or visa number appears in full, including the misread one.
+
+  - id: trip-weak-pk-georgia-armenia
+    household: weak-pk
+    prompt: "I live in Dubai. I want to go to Tbilisi from 18 to 24 December 2026, then overland to Yerevan until the 29th, then fly back to Dubai. Could I add Istanbul on the way back too? My documents are in Personal/Travel."
+    must:
+      - "Georgia"
+      - "Armenia"
+    must_not:
+      - "(I have|I've) (booked|applied|submitted)"
+    targets: [file-agent, document-agent]
+    rubric:
+      - For Georgia, the answer applies the rule for Pakistani citizens with UAE residence (permit valid at least one year on the day of entry), sees that her permit ends 2027-06-30, about six months after entry, and says she needs a Georgian C1 e-visa instead of visa-free entry.
+      - For Armenia, the answer uses the GCC residence exemption, checks that the permit is valid at least six months from entry (2027-06-30 against entry on 2026-12-24) and says the 111-country list was not checked so she must confirm Pakistan is on it.
+      - For Istanbul, the answer says her UAE residence does not unlock Turkey's conditional e-visa (that needs a Schengen, US, UK or Irish visa or permit) and that a Turkish visa is outside the bundled data or needs the official source.
+      - The answer flags that the UAE residence permit expires on 2027-06-30 and that renewing it matters for these benefits and for returning to Dubai.
+      - The answer ends with a dated checklist starting now, given the trip is about six weeks away.
