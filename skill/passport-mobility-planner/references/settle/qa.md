@@ -4,7 +4,7 @@ Generated from the Skill's settle-in data. Each step is a dated snapshot of an o
 
 ## Contents
 
-Steps in order
+Steps in order, Local customs
 
 ## Steps in order
 
@@ -18,7 +18,16 @@ Steps in order
 - Source: https://portal.moi.gov.qa/wps/portal/MOIInternet/services/inquiries/residencypermits (Ministry of Interior, State of Qatar)
 - Checked: 07 Nov 2026, partial
 
-### 2. Get a health card at your nearest PHCC health centre - qa-health-card
+### 2. Rent through a licensed real estate broker and check the licence first - qa-check-broker-licence
+
+- Category: housing
+- Who: Anyone renting a home in Qatar through a broker
+- How: Check the broker's licence on the Ministry of Justice website before paying anything. Complaints go to the Real Estate Regulatory Authority (Aqarat) through its website, its customer service centre or info@aqarat.gov.qa.
+- Notes: Aqarat says it does not publish the list of licensed brokers; brokerage licensing sits with the Ministry of Justice. The Ministry of Municipality lease-registration pages could not be read (JavaScript-only portal), so lease registration, deposits and any rent index are not covered. Keep a utility bill: the PHCC health card needs one as proof of address.
+- Source: https://www.aqarat.gov.qa/الأسئلة-الشائعة/ (Real Estate Regulatory Authority (Aqarat), State of Qatar)
+- Checked: 07 Nov 2026, partial
+
+### 3. Get a health card at your nearest PHCC health centre - qa-health-card
 
 - Category: health-insurance
 - Who: Adult and child residents of Qatar, and domestic staff
@@ -29,7 +38,7 @@ Steps in order
 - Source: https://www.phcc.gov.qa/patients-clients/health-card (Primary Health Care Corporation (PHCC), State of Qatar)
 - Checked: 07 Nov 2026, verified
 
-### 3. Get a Qatari driving licence - qa-driving-licence
+### 4. Get a Qatari driving licence - qa-driving-licence
 
 - Category: driving-licence
 - Who: Non-Qatari residents who want to drive in Qatar
@@ -39,7 +48,7 @@ Steps in order
 - Source: https://portal.moi.gov.qa/wps/portal/MOIInternet/departmentcommittees/gatraffic (General Directorate of Traffic, Ministry of Interior, State of Qatar)
 - Checked: 07 Nov 2026, partial
 
-### 4. Register a company through the Invest in Qatar Center on the Single Window - qa-business-registration
+### 5. Register a company through the Invest in Qatar Center on the Single Window - qa-business-registration
 
 - Category: business-registration
 - Who: Foreign investors setting up a new project or company in Qatar
@@ -49,3 +58,14 @@ Steps in order
 - Needs: passport, business-registration, application-form, other
 - Source: https://www.moci.gov.qa/en/investment-steps (Ministry of Commerce and Industry, State of Qatar)
 - Checked: 07 Nov 2026, partial
+
+## Local customs
+
+- alcohol: Alcohol is sold only in licensed hotels, restaurants and bars, and expatriate residents can buy it under a permit system. The minimum age is 21 with original photo ID, and drinking or being drunk in public is an offence. Source: https://www.gov.uk/foreign-travel-advice/qatar/safety-and-security (Foreign, Commonwealth & Development Office, UK), checked 07 Nov 2026
+- dress: Men and women should cover shoulders and knees in public, including when driving. Government buildings, hospitals and banks enforce this and may refuse entry. Source: https://www.gov.uk/foreign-travel-advice/qatar/safety-and-security (Foreign, Commonwealth & Development Office, UK), checked 07 Nov 2026
+- drugs-and-medicines: Some controlled medicines need a prescription and a medical report in English or Arabic dated within six months, and a Ministry of Public Health permit can be requested online. Drug offences carry zero tolerance, even for residual amounts. Source: https://www.gov.uk/foreign-travel-advice/qatar/health (Foreign, Commonwealth & Development Office, UK), checked 07 Nov 2026
+- lgbt: Same-sex sexual activity is illegal. Source: https://www.gov.uk/foreign-travel-advice/qatar/safety-and-security (Foreign, Commonwealth & Development Office, UK), checked 07 Nov 2026
+- photography: Photographing or sharing images of people without consent can bring prison or a large fine. Avoid filming near religious, military, government or construction sites, and drones need a permit. Source: https://www.gov.uk/foreign-travel-advice/qatar/safety-and-security (Foreign, Commonwealth & Development Office, UK), checked 07 Nov 2026
+- public-behaviour: Public intimacy, swearing and rude gestures can lead to arrest or deportation, and unmarried couples living together is illegal. Bounced cheques and unpaid bills can bring prison or a travel ban. Source: https://www.gov.uk/foreign-travel-advice/qatar/safety-and-security (Foreign, Commonwealth & Development Office, UK), checked 07 Nov 2026
+- ramadan: During daylight hours in Ramadan, do not eat, drink, smoke or chew gum in public, including in your car, and avoid loud music and dancing. Expect shorter shop hours. Source: https://www.gov.uk/foreign-travel-advice/qatar/safety-and-security (Foreign, Commonwealth & Development Office, UK), checked 07 Nov 2026
+- religion: Insulting Islam, Christianity or Judaism can lead to prison. Public worship and proselytising by non-Islamic faiths is illegal. Source: https://www.gov.uk/foreign-travel-advice/qatar/safety-and-security (Foreign, Commonwealth & Development Office, UK), checked 07 Nov 2026

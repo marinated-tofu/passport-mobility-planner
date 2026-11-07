@@ -4,11 +4,21 @@ Generated from the Skill's settle-in data. Each step is a dated snapshot of an o
 
 ## Contents
 
-Steps in order
+Steps in order, Local customs
 
 ## Steps in order
 
-### 1. Register as a foreign resident and get your residence card - kr-alien-registration
+### 1. Rent a home and check the property before signing - kr-rent-housing
+
+- Category: housing
+- Who: Foreigners renting a home on a deposit (jeonse) or monthly rent (wolse) lease
+- How: Before signing, get the certified copy of the property register (deunggibu deungbon) and confirm the deposit, rent, agent fee, move-in date and contract period. Pay deposits only into the landlord's account named in the contract and keep a signed copy.
+- Notes: Incheon City says a 10 percent down payment is usual at signing, the deposit is returned at the end minus unpaid rent, and agent fees are capped by deposit size (for example 0.5 percent up to KRW 200,000 under KRW 50 million). Tenants can buy deposit-return insurance from HUG (www.khug.or.kr). Sale prices are published on MOLIT's actual transaction price system (https://rt.molit.go.kr/).
+- Needs: passport, residence-permit, tenancy-contract
+- Source: https://www.incheon.go.kr/en/EN050205 (Incheon Metropolitan City)
+- Checked: 07 Nov 2026, verified
+
+### 2. Register as a foreign resident and get your residence card - kr-alien-registration
 
 - Category: residence-registration
 - Who: Foreigners staying in Korea for more than 90 days (diplomatic and official visa holders A-1 to A-3 are exempt)
@@ -20,7 +30,18 @@ Steps in order
 - Source: https://www.incheon.go.kr/en/EN050102 (Incheon Metropolitan City)
 - Checked: 07 Nov 2026, verified
 
-### 2. Join National Health Insurance - kr-health-insurance
+### 3. Report your move-in and get a fixed date on your lease - kr-fixed-date
+
+- Category: housing
+- Who: Tenants paying a deposit
+- Deadline: Report the address within 14 days of moving
+- How: After reporting your address, take your residence card showing the new address and your lease to a registry office or the district community centre to have the contract stamped with a fixed date (hwakjeong ilja).
+- Notes: The fixed date proves the lease existed on that day and can give you priority for getting the deposit back if the home is auctioned or seized. The page does not state a fee for the stamp.
+- Needs: passport, residence-permit, tenancy-contract
+- Source: https://www.incheon.go.kr/en/EN050205 (Incheon Metropolitan City)
+- Checked: 07 Nov 2026, partial
+
+### 4. Join National Health Insurance - kr-health-insurance
 
 - Category: health-insurance
 - Who: Foreign employees (enrolled through the workplace) and foreigners who have stayed more than 6 months
@@ -31,7 +52,7 @@ Steps in order
 - Source: https://www.investkorea.org/ik-en/cntnts/i-434/web.do (Invest KOREA (KOTRA))
 - Checked: 07 Nov 2026, verified
 
-### 3. Open a bank account - kr-bank-account
+### 5. Open a bank account - kr-bank-account
 
 - Category: bank-account
 - Who: Foreign residents, before or after receiving the residence card
@@ -41,7 +62,7 @@ Steps in order
 - Source: https://www.investkorea.org/file/ik-en/How%20Foreigners%20Can%20Open%20a%20Bank%20Account%20in%20Korea.pdf (Invest KOREA (KOTRA))
 - Checked: 07 Nov 2026, verified
 
-### 4. Report any change of address - kr-address-change
+### 6. Report any change of address - kr-address-change
 
 - Category: address-registration
 - Who: Registered foreign residents who move
@@ -52,7 +73,7 @@ Steps in order
 - Source: https://www.incheon.go.kr/en/EN050102 (Incheon Metropolitan City)
 - Checked: 07 Nov 2026, verified
 
-### 5. Exchange your foreign driving licence - kr-driving-licence
+### 7. Exchange your foreign driving licence - kr-driving-licence
 
 - Category: driving-licence
 - Who: Holders of a foreign licence with a Korean residence card (exchange gives a Type 2 General licence)
@@ -63,7 +84,7 @@ Steps in order
 - Source: https://www.safedriving.or.kr/enGuide/selectEnGuide22.do (Korea Road Traffic Authority (KoROAD))
 - Checked: 07 Nov 2026, verified
 
-### 6. Set up a company as a foreign investor - kr-business-registration
+### 8. Set up a company as a foreign investor - kr-business-registration
 
 - Category: business-registration
 - Who: Foreigners investing in or incorporating a company in Korea
@@ -72,3 +93,11 @@ Steps in order
 - Needs: passport, business-registration, other
 - Source: https://www.investkorea.org/ik-en/cntnts/i-5048/web.do (Invest KOREA (KOTRA))
 - Checked: 07 Nov 2026, partial
+
+## Local customs
+
+- alcohol: The drink-driving limit is much lower than in England and offenders face prison or fines. Source: https://www.gov.uk/foreign-travel-advice/south-korea/safety-and-security (Foreign, Commonwealth & Development Office, UK), checked 07 Nov 2026
+- drugs-and-medicines: Drug offences, including personal use of small amounts of cannabis, bring long prison terms and heavy fines, and people have been detained on a positive drug test alone. Source: https://www.gov.uk/foreign-travel-advice/south-korea/safety-and-security (Foreign, Commonwealth & Development Office, UK), checked 07 Nov 2026
+- other: The law requires you to carry some form of identification, though police seldom check. Source: https://www.gov.uk/foreign-travel-advice/south-korea/safety-and-security (Foreign, Commonwealth & Development Office, UK), checked 07 Nov 2026
+- other: Men of Korean origin listed on the Korean family register can be liable for military service even when travelling on a foreign passport. Source: https://www.gov.uk/foreign-travel-advice/south-korea/safety-and-security (Foreign, Commonwealth & Development Office, UK), checked 07 Nov 2026
+- public-behaviour: Foreign nationals may not take part in political activities. Demonstrations are common and mostly peaceful, but large gatherings are best avoided. Source: https://www.gov.uk/foreign-travel-advice/south-korea/safety-and-security (Foreign, Commonwealth & Development Office, UK), checked 07 Nov 2026

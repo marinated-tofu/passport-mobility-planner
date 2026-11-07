@@ -4,29 +4,11 @@ Generated from the Skill's settle-in data. Each step is a dated snapshot of an o
 
 ## Contents
 
-Steps in order
+Steps in order, Local customs
 
 ## Steps in order
 
-### 1. Make sure your place of stay is notified to Immigration (TM30) - th-tm30-address-notification
-
-- Category: address-registration
-- Who: Foreigners staying at an address in Thailand
-- How: Ask your landlord or accommodation provider to confirm that the notification of residence has been filed with the Immigration Bureau.
-- Notes: The Immigration Bureau site refused automated access on 2026-11-07, so who files, the deadline and the documents could not be confirmed. Check with your local immigration office before relying on this step.
-- Source: https://www.immigration.go.th/en/ (Immigration Bureau, Royal Thai Police)
-- Checked: 07 Nov 2026, partial
-
-### 2. Report your address to Immigration every 90 days - th-90-day-report
-
-- Category: residence-registration
-- Who: Foreigners staying in Thailand longer than 90 days
-- How: File the notification of staying longer than 90 days with the Immigration Bureau, in person or through its online service.
-- Notes: The official pages (thailand.go.th and immigration.go.th) refused automated access on 2026-11-07, so the filing window, documents and late-filing fine could not be confirmed. A 90-day report does not extend your permission to stay.
-- Source: https://www.thailand.go.th/event-detail/001-01-018 (Government of Thailand (thailand.go.th) / Immigration Bureau)
-- Checked: 07 Nov 2026, partial
-
-### 3. Apply for a Taxpayer Identification Number (TIN) - th-tax-number
+### 1. Apply for a Taxpayer Identification Number (TIN) - th-tax-number
 
 - Category: tax-number
 - Who: Foreigners liable to personal income tax who do not have a personal identification number under civil registration
@@ -36,3 +18,14 @@ Steps in order
 - Needs: passport, application-form
 - Source: https://www.rd.go.th/english/21987.html (The Revenue Department, Ministry of Finance, Thailand)
 - Checked: 07 Nov 2026, verified
+
+## Local customs
+
+- alcohol: Shops may not sell alcohol between midnight and 11am, apart from licensed hotels, international airport terminals and authorised entertainment venues. Source: https://www.gov.uk/foreign-travel-advice/thailand/safety-and-security (Foreign, Commonwealth & Development Office, UK), checked 07 Nov 2026
+- drugs-and-medicines: Owning or using any vape, e-cigarette, pod, e-liquid or heat-not-burn device is illegal, with no tourist or personal-use exception. Smoking in public places is also banned and can be fined. Source: https://www.gov.uk/foreign-travel-advice/thailand/safety-and-security (Foreign, Commonwealth & Development Office, UK), checked 07 Nov 2026
+- drugs-and-medicines: Cannabis is legal only on a Thai medical prescription, which covers at most 30 days, and needs official permission to take out of the country. Other drug offences carry heavy penalties, up to death for Class A drugs. Source: https://www.gov.uk/foreign-travel-advice/thailand/safety-and-security (Foreign, Commonwealth & Development Office, UK), checked 07 Nov 2026
+- lgbt: Thailand is generally safe for LGBT+ people and has recognised same-sex marriage since January 2025. Source: https://www.gov.uk/foreign-travel-advice/thailand/safety-and-security (Foreign, Commonwealth & Development Office, UK), checked 07 Nov 2026
+- other: Criticising the monarchy or making claims about any member of the royal family, past or present, is a crime with long prison terms, and that includes sharing such posts online. Source: https://www.gov.uk/foreign-travel-advice/thailand/safety-and-security (Foreign, Commonwealth & Development Office, UK), checked 07 Nov 2026
+- other: Police can ask to see your passport. If you are not carrying it you may have 24 hours to show it at a police station, and a copy of the photo page is usually enough. Source: https://www.gov.uk/foreign-travel-advice/thailand/safety-and-security (Foreign, Commonwealth & Development Office, UK), checked 07 Nov 2026
+- other: Using Thai nominees to hold a business or property that a foreigner funds or controls is illegal and is now actively prosecuted. Since 28 August 2026 foreigners can also be deported without a conviction for conduct seen as against public order or morals. Source: https://www.gov.uk/foreign-travel-advice/thailand/safety-and-security (Foreign, Commonwealth & Development Office, UK), checked 07 Nov 2026
+- photography: Posting photos of people drinking or dressed inappropriately can be an offence for both the poster and the people shown. Every drone must be registered with the NBTC within 30 days of arrival or purchase, even one you never fly. Source: https://www.gov.uk/foreign-travel-advice/thailand/safety-and-security (Foreign, Commonwealth & Development Office, UK), checked 07 Nov 2026

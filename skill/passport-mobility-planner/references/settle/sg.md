@@ -4,7 +4,7 @@ Generated from the Skill's settle-in data. Each step is a dated snapshot of an o
 
 ## Contents
 
-Steps in order
+Steps in order, Local customs
 
 ## Steps in order
 
@@ -51,7 +51,37 @@ Steps in order
 - Source: https://portal.singpass.gov.sg/home/ui/assets/pdf/Singpass_Registration_Guide.pdf (Singpass, Government Technology Agency of Singapore)
 - Checked: 07 Nov 2026, verified
 
-### 5. Update MOM when your residential address changes - sg-update-address
+### 5. Check that you may rent the flat or room before you sign - sg-check-rental-rules
+
+- Category: housing
+- Who: Foreigners renting an HDB flat or bedroom, or a private home
+- How: To rent an HDB flat or bedroom you need an Employment Pass, S Pass, Work Permit, Student Pass, Dependant's Pass or Long-Term Visit Pass valid for at least 6 months. Ask the owner for HDB's approval to rent out the flat and proof of ownership.
+- Notes: HDB rentals must last at least 6 months, and non-Malaysian foreigners are subject to a neighbourhood and block quota (https://www.hdb.gov.sg/renting-a-flat/renting-from-open-market/regulations). Private homes must be rented for at least three consecutive months with at most six unrelated occupants (https://www.ura.gov.sg/guidelines/property-and-business-owners/property/renting-property/). Tourists cannot rent HDB flats. HDB rental data: https://www.hdb.gov.sg/renting-a-flat/renting-from-open-market/rental-statistics
+- Needs: residence-permit, tenancy-contract
+- Source: https://www.hdb.gov.sg/renting-a-flat/renting-from-open-market/eligibility (Housing & Development Board (HDB), Singapore)
+- Checked: 07 Nov 2026, verified
+
+### 6. Verify the agent and the listing to avoid rental scams - sg-avoid-rental-scams
+
+- Category: housing
+- Who: Anyone renting a home
+- How: Check the agent's phone number on the CEA Public Register and view the property in person before paying anything. Pay the owner directly by a traceable method such as bank transfer, not the agent.
+- Notes: Warning signs include a deposit asked before viewing, contact only by WhatsApp or an overseas number, pressure to pay quickly and third parties handling the viewing. ScamShield Helpline 1799.
+- Source: https://www.cea.gov.sg/consumers/rental-scams/ (Council for Estate Agencies (CEA), Singapore)
+- Checked: 07 Nov 2026, verified
+
+### 7. Pay stamp duty on your tenancy agreement - sg-stamp-tenancy-agreement
+
+- Category: housing
+- Who: Parties to a lease or tenancy agreement
+- Fee: 0.4% of total rent for leases of 4 years or less; exempt if average annual rent is SGD 1,000 or less
+- How: Stamp the lease through IRAS's Stamp Lease/Tenancy Documents digital service; the Stamp Certificate is the proof the agreement is duly stamped.
+- Notes: Duty is based on the contractual or market rent, whichever is higher. The page read does not state who pays or the payment deadline; see IRAS 'Who Should Pay Stamp Duty' and 'When to Pay Stamp Duty'.
+- Needs: tenancy-contract
+- Source: https://www.iras.gov.sg/taxes/stamp-duty/for-property/renting-a-property (Inland Revenue Authority of Singapore (IRAS))
+- Checked: 07 Nov 2026, partial
+
+### 8. Update MOM when your residential address changes - sg-update-address
 
 - Category: address-registration
 - Who: Employment Pass holders or their employers
@@ -61,7 +91,7 @@ Steps in order
 - Source: https://www.mom.gov.sg/passes-and-permits/employment-pass/notify-mom-of-changes (Ministry of Manpower, Singapore)
 - Checked: 07 Nov 2026, verified
 
-### 6. Check on myTax Portal whether you must file an income tax return - sg-income-tax-filing
+### 9. Check on myTax Portal whether you must file an income tax return - sg-income-tax-filing
 
 - Category: tax-number
 - Who: Individuals earning income in Singapore
@@ -71,7 +101,7 @@ Steps in order
 - Source: https://www.iras.gov.sg/taxes/individual-income-tax/employees/basic-guide-for-new-individual-taxpayers (Inland Revenue Authority of Singapore (IRAS))
 - Checked: 07 Nov 2026, partial
 
-### 7. Convert your foreign driving licence after passing the Basic Theory Test - sg-convert-driving-licence
+### 10. Convert your foreign driving licence after passing the Basic Theory Test - sg-convert-driving-licence
 
 - Category: driving-licence
 - Who: Foreigners residing in Singapore for more than 12 months
@@ -81,7 +111,7 @@ Steps in order
 - Source: https://www.police.gov.sg/Knowledge-Hub/Traffic/Traffic-Matters/Singapore-Driving-Licence (Singapore Police Force (Traffic Police))
 - Checked: 07 Nov 2026, partial
 
-### 8. Register a sole proprietorship or partnership with ACRA - sg-register-business
+### 11. Register a sole proprietorship or partnership with ACRA - sg-register-business
 
 - Category: business-registration
 - Who: Foreigners starting a sole business or partnership
@@ -91,3 +121,14 @@ Steps in order
 - Needs: residence-permit
 - Source: https://www.acra.gov.sg/register/business/registering-different-business-structures/sole-proprietorship-or-partnership/ (Accounting and Corporate Regulatory Authority (ACRA))
 - Checked: 07 Nov 2026, verified
+
+## Local customs
+
+- alcohol: Drinking in public places outside licensed venues is banned from 10.30pm to 7am, and Geylang and Little India have extra weekend and holiday drinking bans. Drunken or disorderly behaviour is prosecuted. Source: https://www.gov.uk/foreign-travel-advice/singapore/safety-and-security (Foreign, Commonwealth & Development Office, UK), checked 07 Nov 2026
+- drugs-and-medicines: Drug penalties are severe, from prison and caning up to the death penalty for trafficking, and traces of drugs in your body on arrival can lead to arrest. Source: https://www.gov.uk/foreign-travel-advice/singapore/safety-and-security (Foreign, Commonwealth & Development Office, UK), checked 07 Nov 2026
+- drugs-and-medicines: You may bring up to three months' supply of your own medicine with a prescription or doctor's letter, in the original labelled container. Medicines with controlled substances need HSA approval applied for at least two weeks before arrival. Source: https://www.hsa.gov.sg/travelling-with-medication-and-medical-devices/personal-medications/ (Health Sciences Authority (HSA), Singapore), checked 07 Nov 2026
+- lgbt: Same-sex activity is legal, but same-sex marriages and partnerships are not recognised, so a same-sex partner cannot easily get a Dependant's Pass. Source: https://www.gov.uk/foreign-travel-advice/singapore/safety-and-security (Foreign, Commonwealth & Development Office, UK), checked 07 Nov 2026
+- other: Vapes and e-cigarettes are banned, including bringing them in for personal use. You must be 21 or over to buy or use tobacco, and smoking is limited to designated areas. Source: https://www.gov.uk/foreign-travel-advice/singapore/safety-and-security (Foreign, Commonwealth & Development Office, UK), checked 07 Nov 2026
+- other: Chewing gum for sale, chewed or injected tobacco, replica guns and some radio equipment are prohibited imports; declare anything that may be taxable or restricted. Source: https://www.gov.uk/foreign-travel-advice/singapore/entry-requirements (Foreign, Commonwealth & Development Office, UK), checked 07 Nov 2026
+- public-behaviour: Littering brings on-the-spot fines and vandalism can mean caning. Foreigners who are not permanent residents may not join outdoor demonstrations or give public talks on political, racial or religious topics without a permit. Source: https://www.gov.uk/foreign-travel-advice/singapore/safety-and-security (Foreign, Commonwealth & Development Office, UK), checked 07 Nov 2026
+- religion: Jehovah's Witness meetings and publications are illegal, and similar measures apply to the Unification Church and Shincheonji. Source: https://www.gov.uk/foreign-travel-advice/singapore/safety-and-security (Foreign, Commonwealth & Development Office, UK), checked 07 Nov 2026

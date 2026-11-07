@@ -34,7 +34,7 @@ The supporting documents visa, residence and settle-in applications ask for. The
 | accommodation-proof | guest names, address, dates, host or hotel |
 | tenancy-contract | tenant and landlord names, address, start and end dates, monthly rent, deposit, registration number if any |
 | proof-of-income | source, holder name, amount, period |
-| national-id | as a residence permit in the document fields reference |
+| national-id | as a residence permit in the document fields reference. Gulf resident ID cards (Emirates ID, Qatar ID, Saudi iqama) count as national-id; the residence visa or permit record counts as residence-permit |
 | passport-photo | file date; photos older than six months fail most photo rules |
 
 Anything else goes under other, named as printed.

@@ -57,8 +57,22 @@ steps:
     source_owner: Absher, Ministry of Interior, Saudi Arabia
     checked: 2026-11-07
     confidence: partial
-  - id: sa-bank-account
+  - id: sa-ejar-lease
     order: 5
+    category: housing
+    step: Have your residential lease registered on Ejar
+    who: Tenants renting a home
+    deadline: ""
+    fee: ""
+    needs: [tenancy-contract]
+    how: "Residential leases are registered on Ejar, the Real Estate General Authority's rental platform, using the unified lease contract. If the landlord refuses to register, the tenant can ask for registration on Ejar; the landlord then has sixty days to object to the contract details."
+    notes: "Riyadh rents inside the urban boundary are frozen for five years from 25 September 2025; elsewhere increases follow the contract. Leases renew automatically, and a landlord must give at least 60 days' notice of non-renewal for permitted reasons only. The page does not state fees or whether registration is mandatory. Rental transaction data: https://rega.gov.sa/en/rega-services/platforms/real-estate-indicators/ . Ejar help centre 199011."
+    source: https://rega.gov.sa/en/rega-services/platforms/ejar/
+    source_owner: Real Estate General Authority (REGA), Saudi Arabia
+    checked: 2026-11-07
+    confidence: partial
+  - id: sa-bank-account
+    order: 6
     category: bank-account
     step: Open a bank account
     who: Natural persons, including residents (iqama holders)
@@ -72,7 +86,7 @@ steps:
     checked: 2026-11-07
     confidence: partial
   - id: sa-sim-authentication
-    order: 6
+    order: 7
     category: phone
     step: Make sure your mobile and data SIMs are authenticated under your ID
     who: Anyone with numbers registered under their ID
@@ -86,7 +100,7 @@ steps:
     checked: 2026-11-07
     confidence: partial
   - id: sa-misa-investment-registration
-    order: 7
+    order: 8
     category: business-registration
     step: Register your investment with the Ministry of Investment (MISA)
     who: Foreign investors setting up a company in an activity open to investment
@@ -99,3 +113,44 @@ steps:
     source_owner: Ministry of Investment, Saudi Arabia (MISA)
     checked: 2026-11-07
     confidence: verified
+customs:
+  - topic: dress
+    summary: "Both men and women are expected to wear loose clothing covering the elbows and knees, and to avoid tight clothes or slogans that could be seen as offensive or political. Women visitors do not have to wear an abaya or cover their hair."
+    source: https://www.gov.uk/foreign-travel-advice/saudi-arabia/safety-and-security
+    source_owner: Foreign, Commonwealth & Development Office, UK
+    checked: 2026-11-07
+  - topic: alcohol
+    summary: "Alcohol is banned: you cannot bring it in, drink it or be drunk in public, and making, holding or selling it can lead to prison."
+    source: https://www.gov.uk/foreign-travel-advice/saudi-arabia/safety-and-security
+    source_owner: Foreign, Commonwealth & Development Office, UK
+    checked: 2026-11-07
+  - topic: drugs-and-medicines
+    summary: "Drug offences carry zero tolerance; even small amounts can mean up to 5 years in prison and a SAR 30,000 fine, and trafficking can carry the death penalty."
+    source: https://www.gov.uk/foreign-travel-advice/saudi-arabia/safety-and-security
+    source_owner: Foreign, Commonwealth & Development Office, UK
+    checked: 2026-11-07
+  - topic: religion
+    summary: "Islam is the only religion that may be practised publicly, though private worship of other faiths is tolerated. Trying to convert others is illegal, and religious books are fine for personal use but not in large numbers."
+    source: https://www.gov.uk/foreign-travel-advice/saudi-arabia/safety-and-security
+    source_owner: Foreign, Commonwealth & Development Office, UK
+    checked: 2026-11-07
+  - topic: ramadan
+    summary: "During Ramadan daylight hours, do not eat, drink, smoke or chew gum in public (including in your car), and avoid loud music, dancing and swearing. Expect changed opening hours."
+    source: https://www.gov.uk/foreign-travel-advice/saudi-arabia/safety-and-security
+    source_owner: Foreign, Commonwealth & Development Office, UK
+    checked: 2026-11-07
+  - topic: photography
+    summary: "Do not photograph government, diplomatic, military or palace buildings, and photograph people only with their consent. Do not share images of attacks or security incidents online."
+    source: https://www.gov.uk/foreign-travel-advice/saudi-arabia/safety-and-security
+    source_owner: Foreign, Commonwealth & Development Office, UK
+    checked: 2026-11-07
+  - topic: public-behaviour
+    summary: "Public affection, swearing, rude gestures, loud music and public criticism of the royal family, government or religion can bring fines, prison or deportation. Always carry your iqama (the digital one on Tawakkalna or Absher is accepted)."
+    source: https://www.gov.uk/foreign-travel-advice/saudi-arabia/safety-and-security
+    source_owner: Foreign, Commonwealth & Development Office, UK
+    checked: 2026-11-07
+  - topic: lgbt
+    summary: "Same-sex relations and sex outside marriage are illegal, although prosecution is uncommon; transgender identity is not recognised."
+    source: https://www.gov.uk/foreign-travel-advice/saudi-arabia/safety-and-security
+    source_owner: Foreign, Commonwealth & Development Office, UK
+    checked: 2026-11-07

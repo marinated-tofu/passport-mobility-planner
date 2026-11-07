@@ -4,7 +4,7 @@ Generated from the Skill's settle-in data. Each step is a dated snapshot of an o
 
 ## Contents
 
-Steps in order
+Steps in order, Local customs
 
 ## Steps in order
 
@@ -49,7 +49,17 @@ Steps in order
 - Source: https://www.absher.sa/wps/portal/individuals/static/footer/registerinabsher/?uri=nm:oid:absher.footer.subscribe (Absher, Ministry of Interior, Saudi Arabia)
 - Checked: 07 Nov 2026, partial
 
-### 5. Open a bank account - sa-bank-account
+### 5. Have your residential lease registered on Ejar - sa-ejar-lease
+
+- Category: housing
+- Who: Tenants renting a home
+- How: Residential leases are registered on Ejar, the Real Estate General Authority's rental platform, using the unified lease contract. If the landlord refuses to register, the tenant can ask for registration on Ejar; the landlord then has sixty days to object to the contract details.
+- Notes: Riyadh rents inside the urban boundary are frozen for five years from 25 September 2025; elsewhere increases follow the contract. Leases renew automatically, and a landlord must give at least 60 days' notice of non-renewal for permitted reasons only. The page does not state fees or whether registration is mandatory. Rental transaction data: https://rega.gov.sa/en/rega-services/platforms/real-estate-indicators/ . Ejar help centre 199011.
+- Needs: tenancy-contract
+- Source: https://rega.gov.sa/en/rega-services/platforms/ejar/ (Real Estate General Authority (REGA), Saudi Arabia)
+- Checked: 07 Nov 2026, partial
+
+### 6. Open a bank account - sa-bank-account
 
 - Category: bank-account
 - Who: Natural persons, including residents (iqama holders)
@@ -59,7 +69,7 @@ Steps in order
 - Source: https://rulebook.sama.gov.sa/en/2-documents-required-open-bank-account-are-follows (Saudi Central Bank (SAMA))
 - Checked: 07 Nov 2026, partial
 
-### 6. Make sure your mobile and data SIMs are authenticated under your ID - sa-sim-authentication
+### 7. Make sure your mobile and data SIMs are authenticated under your ID - sa-sim-authentication
 
 - Category: phone
 - Who: Anyone with numbers registered under their ID
@@ -69,7 +79,7 @@ Steps in order
 - Source: https://www.cst.gov.sa/en/services/inquire-about-my-numbers (Communications, Space and Technology Commission (CST))
 - Checked: 07 Nov 2026, partial
 
-### 7. Register your investment with the Ministry of Investment (MISA) - sa-misa-investment-registration
+### 8. Register your investment with the Ministry of Investment (MISA) - sa-misa-investment-registration
 
 - Category: business-registration
 - Who: Foreign investors setting up a company in an activity open to investment
@@ -79,3 +89,14 @@ Steps in order
 - Needs: business-registration, other
 - Source: https://misa.gov.sa/app/uploads/2026/09/Investor-Guide_13-03-en.pdf (Ministry of Investment, Saudi Arabia (MISA))
 - Checked: 07 Nov 2026, verified
+
+## Local customs
+
+- alcohol: Alcohol is banned: you cannot bring it in, drink it or be drunk in public, and making, holding or selling it can lead to prison. Source: https://www.gov.uk/foreign-travel-advice/saudi-arabia/safety-and-security (Foreign, Commonwealth & Development Office, UK), checked 07 Nov 2026
+- dress: Both men and women are expected to wear loose clothing covering the elbows and knees, and to avoid tight clothes or slogans that could be seen as offensive or political. Women visitors do not have to wear an abaya or cover their hair. Source: https://www.gov.uk/foreign-travel-advice/saudi-arabia/safety-and-security (Foreign, Commonwealth & Development Office, UK), checked 07 Nov 2026
+- drugs-and-medicines: Drug offences carry zero tolerance; even small amounts can mean up to 5 years in prison and a SAR 30,000 fine, and trafficking can carry the death penalty. Source: https://www.gov.uk/foreign-travel-advice/saudi-arabia/safety-and-security (Foreign, Commonwealth & Development Office, UK), checked 07 Nov 2026
+- lgbt: Same-sex relations and sex outside marriage are illegal, although prosecution is uncommon; transgender identity is not recognised. Source: https://www.gov.uk/foreign-travel-advice/saudi-arabia/safety-and-security (Foreign, Commonwealth & Development Office, UK), checked 07 Nov 2026
+- photography: Do not photograph government, diplomatic, military or palace buildings, and photograph people only with their consent. Do not share images of attacks or security incidents online. Source: https://www.gov.uk/foreign-travel-advice/saudi-arabia/safety-and-security (Foreign, Commonwealth & Development Office, UK), checked 07 Nov 2026
+- public-behaviour: Public affection, swearing, rude gestures, loud music and public criticism of the royal family, government or religion can bring fines, prison or deportation. Always carry your iqama (the digital one on Tawakkalna or Absher is accepted). Source: https://www.gov.uk/foreign-travel-advice/saudi-arabia/safety-and-security (Foreign, Commonwealth & Development Office, UK), checked 07 Nov 2026
+- ramadan: During Ramadan daylight hours, do not eat, drink, smoke or chew gum in public (including in your car), and avoid loud music, dancing and swearing. Expect changed opening hours. Source: https://www.gov.uk/foreign-travel-advice/saudi-arabia/safety-and-security (Foreign, Commonwealth & Development Office, UK), checked 07 Nov 2026
+- religion: Islam is the only religion that may be practised publicly, though private worship of other faiths is tolerated. Trying to convert others is illegal, and religious books are fine for personal use but not in large numbers. Source: https://www.gov.uk/foreign-travel-advice/saudi-arabia/safety-and-security (Foreign, Commonwealth & Development Office, UK), checked 07 Nov 2026

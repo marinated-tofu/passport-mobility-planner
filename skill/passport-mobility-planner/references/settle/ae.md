@@ -4,7 +4,7 @@ Generated from the Skill's settle-in data. Each step is a dated snapshot of an o
 
 ## Contents
 
-Steps in order
+Steps in order, Local customs
 
 ## Steps in order
 
@@ -38,7 +38,29 @@ Steps in order
 - Source: https://u.ae/en/information-and-services/visa-and-emirates-id/emirates-id (The Official Portal of the UAE Government (TDRA))
 - Checked: 07 Nov 2026, partial
 
-### 4. Create a verified UAE PASS digital identity - ae-uae-pass
+### 4. Rent a home through the owner or a registered broker - ae-lease-a-home
+
+- Category: housing
+- Who: Expatriate residents renting a home
+- Fee: Broker commission of up to 5% of the annual rent
+- How: Find a property through a registered broker, the owner or a property website, then sign the lease with a copy of your passport, a valid residence visa and your Emirates ID. Rent is usually paid with post-dated cheques, in one or several instalments.
+- Notes: Each emirate's authority must register the lease, and registration is needed to connect water, electricity, gas and telecom services. Abu Dhabi uses Tawtheeq (landlord registers; a 5% municipality fee is added to the tenant's utility bills over 12 months). Dubai registers with the Dubai Land Department and adds a 5% housing fee to utility bills. Sharjah registers with Sharjah Municipality. Rent increases in Dubai are measured against the DLD rental index (https://dubailand.gov.ae/en/eservices/rental-index/rental-index). Disputes go to the Rental Dispute Centre in Dubai, the Rent Dispute Settlement Committee in Abu Dhabi, or Sharjah Municipality's Rental Regulation Department. No official deposit limit or rental-scam warning was found.
+- Needs: passport, residence-permit, national-id
+- Source: https://u.ae/en/information-and-services/moving-to-the-uae/leasing-a-property-in-the-uae (The Official Portal of the UAE Government (TDRA))
+- Checked: 07 Nov 2026, verified
+
+### 5. Register your tenancy contract (Ejari) in Dubai - ae-ejari-registration
+
+- Category: housing
+- Who: Tenants in Dubai, or their legal representative
+- Fee: AED 177.75 through the Dubai REST app or website; AED 220 at a Real Estate Trustee Centre (both include VAT)
+- How: Register online on the Ejari system or Dubai REST app, or at a Real Estate Trustee Centre with the original Unified Tenancy Contract and your Emirates ID. You receive the registration certificate by email or at the centre.
+- Notes: A representative needs an official power of attorney. Trustee centres take about 25 minutes, excluding waiting time. In Abu Dhabi the equivalent is Tawtheeq, in Sharjah the municipality.
+- Needs: tenancy-contract, national-id
+- Source: https://dubailand.gov.ae/en/eservices/request-to-register-and-renew-ejari-contract/ (Dubai Land Department)
+- Checked: 07 Nov 2026, verified
+
+### 6. Create a verified UAE PASS digital identity - ae-uae-pass
 
 - Category: identity
 - Who: Residents who want to use government and private online services
@@ -47,7 +69,7 @@ Steps in order
 - Source: https://u.ae/en/about-the-uae/digital-uae/digital-transformation/platforms-and-apps/the-uae-pass-app (The Official Portal of the UAE Government (TDRA))
 - Checked: 07 Nov 2026, partial
 
-### 5. Register your mobile SIM with your Emirates ID - ae-sim-registration
+### 7. Register your mobile SIM with your Emirates ID - ae-sim-registration
 
 - Category: phone
 - Who: Citizens and residents
@@ -57,7 +79,7 @@ Steps in order
 - Source: https://tdra.gov.ae/en/FAQs (Telecommunications and Digital Government Regulatory Authority (TDRA))
 - Checked: 07 Nov 2026, verified
 
-### 6. Open a bank account - ae-bank-account
+### 8. Open a bank account - ae-bank-account
 
 - Category: bank-account
 - Who: UAE residents
@@ -67,7 +89,7 @@ Steps in order
 - Source: https://u.ae/en/information-and-services/finance-and-investment/banking-in-uae (The Official Portal of the UAE Government (TDRA))
 - Checked: 07 Nov 2026, verified
 
-### 7. Exchange your foreign driving licence for a UAE licence - ae-driving-licence
+### 9. Exchange your foreign driving licence for a UAE licence - ae-driving-licence
 
 - Category: driving-licence
 - Who: Expatriate residents holding a valid licence from an eligible country, aged 18 or over
@@ -76,7 +98,7 @@ Steps in order
 - Source: https://u.ae/en/information-and-services/transportation/Driving-and-licensing/get-a-driving-licence (The Official Portal of the UAE Government (TDRA))
 - Checked: 07 Nov 2026, partial
 
-### 8. Set up a mainland business licence (or apply to a free zone authority) - ae-business-mainland
+### 10. Set up a mainland business licence (or apply to a free zone authority) - ae-business-mainland
 
 - Category: business-registration
 - Who: Foreign investors and residents starting a business
@@ -86,3 +108,14 @@ Steps in order
 - Needs: passport, tenancy-contract, other
 - Source: https://u.ae/en/information-and-services/business/Doing-business/doing-business-on-the-mainland/steps-to-start-a-business-on-the-mainland (The Official Portal of the UAE Government (TDRA))
 - Checked: 07 Nov 2026, partial
+
+## Local customs
+
+- alcohol: Alcohol is banned in Sharjah, and being drunk or drinking in public is an offence everywhere. Elsewhere the minimum age is 21, and Dubai residents need a liquor licence to buy alcohol for drinking at home. Source: https://www.gov.uk/foreign-travel-advice/united-arab-emirates/safety-and-security (Foreign, Commonwealth & Development Office, UK), checked 07 Nov 2026
+- dress: In public places such as malls, women are expected to cover shoulders and knees, and see-through clothes or clothing with offensive prints should be avoided. Swimwear belongs at the beach or pool only. Source: https://www.gov.uk/foreign-travel-advice/united-arab-emirates/safety-and-security (Foreign, Commonwealth & Development Office, UK), checked 07 Nov 2026
+- drugs-and-medicines: There is zero tolerance for drugs: even traces in the bloodstream count as possession, and some CBD and herbal products are illegal. Source: https://www.gov.uk/foreign-travel-advice/united-arab-emirates/safety-and-security (Foreign, Commonwealth & Development Office, UK), checked 07 Nov 2026
+- drugs-and-medicines: Controlled and narcotic medicines cannot be brought in freely; some medicines need a Ministry of Health and Prevention permit before import, while ordinary prescribed medicines are allowed in normal personal quantities. Source: https://u.ae/en/information-and-services/health-and-fitness/Health-and-wellbeing/drugs-and-controlled-medicines (The Official Portal of the UAE Government (TDRA)), checked 07 Nov 2026
+- lgbt: Same-sex sexual activity is illegal and same-sex marriage is not recognised; people have been punished, especially where behaviour was public. Source: https://www.gov.uk/foreign-travel-advice/united-arab-emirates/safety-and-security (Foreign, Commonwealth & Development Office, UK), checked 07 Nov 2026
+- photography: Do not photograph government buildings, military sites or airports, and never photograph people without their consent. Source: https://www.gov.uk/foreign-travel-advice/united-arab-emirates/safety-and-security (Foreign, Commonwealth & Development Office, UK), checked 07 Nov 2026
+- public-behaviour: Kissing in public can lead to arrest, and swearing or rude gestures, including online, can bring jail or deportation. Unpaid bills and other financial offences can lead to prison, fines or frozen assets. Source: https://www.gov.uk/foreign-travel-advice/united-arab-emirates/safety-and-security (Foreign, Commonwealth & Development Office, UK), checked 07 Nov 2026
+- work-week: Private-sector staff normally work 8 hours a day or 48 hours a week, and daily hours are 2 hours shorter during Ramadan. Work on a contractual day off earns a substitute rest day or 50% extra pay. Source: https://u.ae/en/information-and-services/jobs/Sector-of-employment/employment-in-the-private-sector/working-hours (The Official Portal of the UAE Government (TDRA)), checked 07 Nov 2026

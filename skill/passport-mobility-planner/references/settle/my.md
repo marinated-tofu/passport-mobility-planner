@@ -4,7 +4,7 @@ Generated from the Skill's settle-in data. Each step is a dated snapshot of an o
 
 ## Contents
 
-Steps in order
+Steps in order, Local customs
 
 ## Steps in order
 
@@ -38,7 +38,27 @@ Steps in order
 - Source: https://esd.imi.gov.my/portal/faq/myxpats/ (Expatriate Services Division, Immigration Department of Malaysia)
 - Checked: 07 Nov 2026, partial
 
-### 4. Apply for an income tax number (TIN) through e-Daftar - my-tax-number
+### 4. Check the landlord's or agent's bank account and phone number before paying a deposit - my-rental-scam-check
+
+- Category: housing
+- Who: Anyone about to pay a booking fee, deposit or rent to a landlord or agent
+- How: Enter the bank account number, phone number or company name you were given into the Semak Mule portal run by the police Commercial Crime Investigation Department. It shows whether they have been used in commercial crime cases.
+- Notes: A clean result does not prove the listing is genuine. No official Malaysian page on tenancy rules or deposit limits was found (the housing ministry site kpkt.gov.my did not load).
+- Source: https://semakmule.rmp.gov.my/ (Commercial Crime Investigation Department (CCID), Royal Malaysia Police)
+- Checked: 07 Nov 2026, partial
+
+### 5. Have your tenancy agreement stamped with LHDN - my-tenancy-stamp-duty
+
+- Category: housing
+- Who: Parties to a tenancy agreement signed in Malaysia
+- Deadline: Within 30 days of signing in Malaysia, or within 30 days of receipt in Malaysia if signed abroad
+- How: Stamp the signed agreement with LHDN, online through e-Duti Setem (STAMPS) or at an LHDN office, before the 30-day deadline.
+- Notes: Late stamping from 1 January 2025 costs RM50 or 10% of the unpaid duty, whichever is higher, if within 3 months of the deadline, and RM100 or 20% after that. The penalty page does not give the duty rate for tenancy agreements or say who pays it. NAPIC (JPPH) publishes official property price and rental indices at https://napic.jpph.gov.my/archives/indeks-harga-dan-sewaan-harta-tanah.
+- Needs: tenancy-contract
+- Source: https://www.hasil.gov.my/en/duti-setem/penalti-duti-setem/ (Inland Revenue Board of Malaysia (LHDN / HASiL))
+- Checked: 07 Nov 2026, partial
+
+### 6. Apply for an income tax number (TIN) through e-Daftar - my-tax-number
 
 - Category: tax-number
 - Who: Non-citizen individuals (file type IG); automatic registration covers only citizens and permanent residents aged 18 and over
@@ -48,7 +68,7 @@ Steps in order
 - Source: https://www.hasil.gov.my/en/individu/pendaftaran/ (Inland Revenue Board of Malaysia (LHDN / HASiL))
 - Checked: 07 Nov 2026, verified
 
-### 5. Check whether you may convert your foreign driving licence - my-driving-licence-conversion
+### 7. Check whether you may convert your foreign driving licence - my-driving-licence-conversion
 
 - Category: driving-licence
 - Who: Only Malaysian citizens, diplomatic identity card holders and MM2H participants; Employment Pass holders are not an eligible category
@@ -58,7 +78,7 @@ Steps in order
 - Source: https://www.jpj.gov.my/faq-pertukaran-lesen-memandu-luar-negara-08092026/ (Road Transport Department Malaysia (JPJ))
 - Checked: 07 Nov 2026, partial
 
-### 6. Incorporate a private company (Sdn. Bhd.) with SSM - my-company-incorporation
+### 8. Incorporate a private company (Sdn. Bhd.) with SSM - my-company-incorporation
 
 - Category: business-registration
 - Who: Anyone setting up a local company; a private company needs at least one director who ordinarily resides in Malaysia with a principal place of residence there
@@ -68,3 +88,13 @@ Steps in order
 - Notes: Fees are non-refundable. You must answer any query within 30 days or the application is rejected. A notice of registration does not replace licences or permits from other authorities. The guideline does not list identity documents.
 - Source: https://ssm.com.my/Pages/Legal_Framework/GUIDELINES/Guidelines-For-Incorporation-of-A-Local-Company.pdf (Companies Commission of Malaysia (SSM))
 - Checked: 07 Nov 2026, partial
+
+## Local customs
+
+- alcohol: Police run regular breath tests, and drink-driving can lead to a heavy fine, prison or deportation. Source: https://www.gov.uk/foreign-travel-advice/malaysia/safety-and-security (Foreign, Commonwealth & Development Office, UK), checked 07 Nov 2026
+- dress: Dress modestly, especially outside the big cities. Mosques, temples and government offices may turn you away unless your shoulders and knees are covered and you wear closed shoes. Source: https://www.gov.uk/foreign-travel-advice/malaysia/safety-and-security (Foreign, Commonwealth & Development Office, UK), checked 07 Nov 2026
+- drugs-and-medicines: Any illegal drug, cannabis included, is treated with zero tolerance. Even tiny amounts can mean a long jail term or whipping, and trafficking can carry the death penalty. Police may require a urine or blood test in venues popular with foreigners. Source: https://www.gov.uk/foreign-travel-advice/malaysia/safety-and-security (Foreign, Commonwealth & Development Office, UK), checked 07 Nov 2026
+- lgbt: Same-sex sexual acts are illegal under federal law, police sometimes raid LGBT+ venues and events, and public affection can draw hostile reactions. Source: https://www.gov.uk/foreign-travel-advice/malaysia/safety-and-security (Foreign, Commonwealth & Development Office, UK), checked 07 Nov 2026
+- other: The law requires you to carry identification, so keep your passport on you. Source: https://www.gov.uk/foreign-travel-advice/malaysia/safety-and-security (Foreign, Commonwealth & Development Office, UK), checked 07 Nov 2026
+- ramadan: During Ramadan, shop and restaurant hours change and modest dress matters even more; dates move each year. Source: https://www.gov.uk/foreign-travel-advice/malaysia/safety-and-security (Foreign, Commonwealth & Development Office, UK), checked 07 Nov 2026
+- religion: Malaysia is multicultural with a Muslim majority, and Muslims, including foreign Muslims, can fall under Sharia law as well as civil law. Source: https://www.gov.uk/foreign-travel-advice/malaysia/safety-and-security (Foreign, Commonwealth & Development Office, UK), checked 07 Nov 2026

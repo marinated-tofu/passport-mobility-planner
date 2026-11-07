@@ -57,8 +57,50 @@ steps:
     source_owner: Singpass, Government Technology Agency of Singapore
     checked: 2026-11-07
     confidence: verified
-  - id: sg-update-address
+  - id: sg-check-rental-rules
     order: 5
+    category: housing
+    step: Check that you may rent the flat or room before you sign
+    who: Foreigners renting an HDB flat or bedroom, or a private home
+    deadline: ""
+    fee: ""
+    needs: [residence-permit, tenancy-contract]
+    how: "To rent an HDB flat or bedroom you need an Employment Pass, S Pass, Work Permit, Student Pass, Dependant's Pass or Long-Term Visit Pass valid for at least 6 months. Ask the owner for HDB's approval to rent out the flat and proof of ownership."
+    notes: "HDB rentals must last at least 6 months, and non-Malaysian foreigners are subject to a neighbourhood and block quota (https://www.hdb.gov.sg/renting-a-flat/renting-from-open-market/regulations). Private homes must be rented for at least three consecutive months with at most six unrelated occupants (https://www.ura.gov.sg/guidelines/property-and-business-owners/property/renting-property/). Tourists cannot rent HDB flats. HDB rental data: https://www.hdb.gov.sg/renting-a-flat/renting-from-open-market/rental-statistics"
+    source: https://www.hdb.gov.sg/renting-a-flat/renting-from-open-market/eligibility
+    source_owner: Housing & Development Board (HDB), Singapore
+    checked: 2026-11-07
+    confidence: verified
+  - id: sg-avoid-rental-scams
+    order: 6
+    category: housing
+    step: Verify the agent and the listing to avoid rental scams
+    who: Anyone renting a home
+    deadline: ""
+    fee: ""
+    needs: []
+    how: "Check the agent's phone number on the CEA Public Register and view the property in person before paying anything. Pay the owner directly by a traceable method such as bank transfer, not the agent."
+    notes: "Warning signs include a deposit asked before viewing, contact only by WhatsApp or an overseas number, pressure to pay quickly and third parties handling the viewing. ScamShield Helpline 1799."
+    source: https://www.cea.gov.sg/consumers/rental-scams/
+    source_owner: Council for Estate Agencies (CEA), Singapore
+    checked: 2026-11-07
+    confidence: verified
+  - id: sg-stamp-tenancy-agreement
+    order: 7
+    category: housing
+    step: Pay stamp duty on your tenancy agreement
+    who: Parties to a lease or tenancy agreement
+    deadline: ""
+    fee: "0.4% of total rent for leases of 4 years or less; exempt if average annual rent is SGD 1,000 or less"
+    needs: [tenancy-contract]
+    how: "Stamp the lease through IRAS's Stamp Lease/Tenancy Documents digital service; the Stamp Certificate is the proof the agreement is duly stamped."
+    notes: "Duty is based on the contractual or market rent, whichever is higher. The page read does not state who pays or the payment deadline; see IRAS 'Who Should Pay Stamp Duty' and 'When to Pay Stamp Duty'."
+    source: https://www.iras.gov.sg/taxes/stamp-duty/for-property/renting-a-property
+    source_owner: Inland Revenue Authority of Singapore (IRAS)
+    checked: 2026-11-07
+    confidence: partial
+  - id: sg-update-address
+    order: 8
     category: address-registration
     step: Update MOM when your residential address changes
     who: Employment Pass holders or their employers
@@ -72,7 +114,7 @@ steps:
     checked: 2026-11-07
     confidence: verified
   - id: sg-income-tax-filing
-    order: 6
+    order: 9
     category: tax-number
     step: Check on myTax Portal whether you must file an income tax return
     who: Individuals earning income in Singapore
@@ -86,7 +128,7 @@ steps:
     checked: 2026-11-07
     confidence: partial
   - id: sg-convert-driving-licence
-    order: 7
+    order: 10
     category: driving-licence
     step: Convert your foreign driving licence after passing the Basic Theory Test
     who: Foreigners residing in Singapore for more than 12 months
@@ -100,7 +142,7 @@ steps:
     checked: 2026-11-07
     confidence: partial
   - id: sg-register-business
-    order: 8
+    order: 11
     category: business-registration
     step: Register a sole proprietorship or partnership with ACRA
     who: Foreigners starting a sole business or partnership
@@ -113,3 +155,44 @@ steps:
     source_owner: Accounting and Corporate Regulatory Authority (ACRA)
     checked: 2026-11-07
     confidence: verified
+customs:
+  - topic: drugs-and-medicines
+    summary: "Drug penalties are severe, from prison and caning up to the death penalty for trafficking, and traces of drugs in your body on arrival can lead to arrest."
+    source: https://www.gov.uk/foreign-travel-advice/singapore/safety-and-security
+    source_owner: Foreign, Commonwealth & Development Office, UK
+    checked: 2026-11-07
+  - topic: drugs-and-medicines
+    summary: "You may bring up to three months' supply of your own medicine with a prescription or doctor's letter, in the original labelled container. Medicines with controlled substances need HSA approval applied for at least two weeks before arrival."
+    source: https://www.hsa.gov.sg/travelling-with-medication-and-medical-devices/personal-medications/
+    source_owner: Health Sciences Authority (HSA), Singapore
+    checked: 2026-11-07
+  - topic: other
+    summary: "Vapes and e-cigarettes are banned, including bringing them in for personal use. You must be 21 or over to buy or use tobacco, and smoking is limited to designated areas."
+    source: https://www.gov.uk/foreign-travel-advice/singapore/safety-and-security
+    source_owner: Foreign, Commonwealth & Development Office, UK
+    checked: 2026-11-07
+  - topic: alcohol
+    summary: "Drinking in public places outside licensed venues is banned from 10.30pm to 7am, and Geylang and Little India have extra weekend and holiday drinking bans. Drunken or disorderly behaviour is prosecuted."
+    source: https://www.gov.uk/foreign-travel-advice/singapore/safety-and-security
+    source_owner: Foreign, Commonwealth & Development Office, UK
+    checked: 2026-11-07
+  - topic: public-behaviour
+    summary: "Littering brings on-the-spot fines and vandalism can mean caning. Foreigners who are not permanent residents may not join outdoor demonstrations or give public talks on political, racial or religious topics without a permit."
+    source: https://www.gov.uk/foreign-travel-advice/singapore/safety-and-security
+    source_owner: Foreign, Commonwealth & Development Office, UK
+    checked: 2026-11-07
+  - topic: other
+    summary: "Chewing gum for sale, chewed or injected tobacco, replica guns and some radio equipment are prohibited imports; declare anything that may be taxable or restricted."
+    source: https://www.gov.uk/foreign-travel-advice/singapore/entry-requirements
+    source_owner: Foreign, Commonwealth & Development Office, UK
+    checked: 2026-11-07
+  - topic: religion
+    summary: "Jehovah's Witness meetings and publications are illegal, and similar measures apply to the Unification Church and Shincheonji."
+    source: https://www.gov.uk/foreign-travel-advice/singapore/safety-and-security
+    source_owner: Foreign, Commonwealth & Development Office, UK
+    checked: 2026-11-07
+  - topic: lgbt
+    summary: "Same-sex activity is legal, but same-sex marriages and partnerships are not recognised, so a same-sex partner cannot easily get a Dependant's Pass."
+    source: https://www.gov.uk/foreign-travel-advice/singapore/safety-and-security
+    source_owner: Foreign, Commonwealth & Development Office, UK
+    checked: 2026-11-07

@@ -43,8 +43,36 @@ steps:
     source_owner: Expatriate Services Division, Immigration Department of Malaysia
     checked: 2026-11-07
     confidence: partial
-  - id: my-tax-number
+  - id: my-rental-scam-check
     order: 4
+    category: housing
+    step: Check the landlord's or agent's bank account and phone number before paying a deposit
+    who: Anyone about to pay a booking fee, deposit or rent to a landlord or agent
+    deadline: ""
+    fee: ""
+    needs: []
+    how: "Enter the bank account number, phone number or company name you were given into the Semak Mule portal run by the police Commercial Crime Investigation Department. It shows whether they have been used in commercial crime cases."
+    notes: "A clean result does not prove the listing is genuine. No official Malaysian page on tenancy rules or deposit limits was found (the housing ministry site kpkt.gov.my did not load)."
+    source: https://semakmule.rmp.gov.my/
+    source_owner: Commercial Crime Investigation Department (CCID), Royal Malaysia Police
+    checked: 2026-11-07
+    confidence: partial
+  - id: my-tenancy-stamp-duty
+    order: 5
+    category: housing
+    step: Have your tenancy agreement stamped with LHDN
+    who: Parties to a tenancy agreement signed in Malaysia
+    deadline: "Within 30 days of signing in Malaysia, or within 30 days of receipt in Malaysia if signed abroad"
+    fee: ""
+    needs: [tenancy-contract]
+    how: "Stamp the signed agreement with LHDN, online through e-Duti Setem (STAMPS) or at an LHDN office, before the 30-day deadline."
+    notes: "Late stamping from 1 January 2025 costs RM50 or 10% of the unpaid duty, whichever is higher, if within 3 months of the deadline, and RM100 or 20% after that. The penalty page does not give the duty rate for tenancy agreements or say who pays it. NAPIC (JPPH) publishes official property price and rental indices at https://napic.jpph.gov.my/archives/indeks-harga-dan-sewaan-harta-tanah."
+    source: https://www.hasil.gov.my/en/duti-setem/penalti-duti-setem/
+    source_owner: Inland Revenue Board of Malaysia (LHDN / HASiL)
+    checked: 2026-11-07
+    confidence: partial
+  - id: my-tax-number
+    order: 6
     category: tax-number
     step: Apply for an income tax number (TIN) through e-Daftar
     who: Non-citizen individuals (file type IG); automatic registration covers only citizens and permanent residents aged 18 and over
@@ -58,7 +86,7 @@ steps:
     checked: 2026-11-07
     confidence: verified
   - id: my-driving-licence-conversion
-    order: 5
+    order: 7
     category: driving-licence
     step: Check whether you may convert your foreign driving licence
     who: Only Malaysian citizens, diplomatic identity card holders and MM2H participants; Employment Pass holders are not an eligible category
@@ -72,7 +100,7 @@ steps:
     checked: 2026-11-07
     confidence: partial
   - id: my-company-incorporation
-    order: 6
+    order: 8
     category: business-registration
     step: Incorporate a private company (Sdn. Bhd.) with SSM
     who: Anyone setting up a local company; a private company needs at least one director who ordinarily resides in Malaysia with a principal place of residence there
@@ -85,3 +113,39 @@ steps:
     source_owner: Companies Commission of Malaysia (SSM)
     checked: 2026-11-07
     confidence: partial
+customs:
+  - topic: religion
+    summary: "Malaysia is multicultural with a Muslim majority, and Muslims, including foreign Muslims, can fall under Sharia law as well as civil law."
+    source: https://www.gov.uk/foreign-travel-advice/malaysia/safety-and-security
+    source_owner: Foreign, Commonwealth & Development Office, UK
+    checked: 2026-11-07
+  - topic: other
+    summary: "The law requires you to carry identification, so keep your passport on you."
+    source: https://www.gov.uk/foreign-travel-advice/malaysia/safety-and-security
+    source_owner: Foreign, Commonwealth & Development Office, UK
+    checked: 2026-11-07
+  - topic: dress
+    summary: "Dress modestly, especially outside the big cities. Mosques, temples and government offices may turn you away unless your shoulders and knees are covered and you wear closed shoes."
+    source: https://www.gov.uk/foreign-travel-advice/malaysia/safety-and-security
+    source_owner: Foreign, Commonwealth & Development Office, UK
+    checked: 2026-11-07
+  - topic: ramadan
+    summary: "During Ramadan, shop and restaurant hours change and modest dress matters even more; dates move each year."
+    source: https://www.gov.uk/foreign-travel-advice/malaysia/safety-and-security
+    source_owner: Foreign, Commonwealth & Development Office, UK
+    checked: 2026-11-07
+  - topic: drugs-and-medicines
+    summary: "Any illegal drug, cannabis included, is treated with zero tolerance. Even tiny amounts can mean a long jail term or whipping, and trafficking can carry the death penalty. Police may require a urine or blood test in venues popular with foreigners."
+    source: https://www.gov.uk/foreign-travel-advice/malaysia/safety-and-security
+    source_owner: Foreign, Commonwealth & Development Office, UK
+    checked: 2026-11-07
+  - topic: lgbt
+    summary: "Same-sex sexual acts are illegal under federal law, police sometimes raid LGBT+ venues and events, and public affection can draw hostile reactions."
+    source: https://www.gov.uk/foreign-travel-advice/malaysia/safety-and-security
+    source_owner: Foreign, Commonwealth & Development Office, UK
+    checked: 2026-11-07
+  - topic: alcohol
+    summary: "Police run regular breath tests, and drink-driving can lead to a heavy fine, prison or deportation."
+    source: https://www.gov.uk/foreign-travel-advice/malaysia/safety-and-security
+    source_owner: Foreign, Commonwealth & Development Office, UK
+    checked: 2026-11-07

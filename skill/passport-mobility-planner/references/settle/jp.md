@@ -4,7 +4,7 @@ Generated from the Skill's settle-in data. Each step is a dated snapshot of an o
 
 ## Contents
 
-Steps in order
+Steps in order, Local customs
 
 ## Steps in order
 
@@ -18,7 +18,17 @@ Steps in order
 - Source: https://www.jetro.go.jp/en/invest/setting_up/section2/page7/ (Japan External Trade Organization (JETRO))
 - Checked: 07 Nov 2026, verified
 
-### 2. Register your address at the municipal office - jp-resident-registration
+### 2. Rent a home - jp-rent-housing
+
+- Category: housing
+- Who: Foreign residents renting private housing
+- How: Apply through a real estate agent with your passport, residence card, proof of earnings and an employment or school certificate, and use a guarantor or a rental guarantee company. Before signing, the agent must explain the important points of the contract, including the deposit, key money and renewal fee.
+- Notes: MLIT says upfront payments (deposit, key money, agency fee, insurance, first month's rent) are roughly 4 to 7 months' rent, and a guarantee company often charges about half a month's rent for two years. On moving out the deposit is returned minus repairs for damage you caused; ageing and normal wear and tear are the landlord's cost (MLIT restoration leaflet, https://www.mlit.go.jp/jutakukentiku/house/content/001595135.pdf). Local governments and international exchange associations offer housing consultation for foreigners.
+- Needs: passport, residence-permit, proof-of-income, employment-letter, tenancy-contract
+- Source: https://www.mlit.go.jp/common/001317844.pdf (Ministry of Land, Infrastructure, Transport and Tourism (MLIT), Japan)
+- Checked: 07 Nov 2026, verified
+
+### 3. Register your address at the municipal office - jp-resident-registration
 
 - Category: address-registration
 - Who: Mid- to long-term residents with a residence card
@@ -29,7 +39,7 @@ Steps in order
 - Source: https://www.jetro.go.jp/en/invest/setting_up/section2/page7/ (Japan External Trade Organization (JETRO))
 - Checked: 07 Nov 2026, verified
 
-### 3. Receive your My Number and apply for the My Number Card - jp-my-number
+### 4. Receive your My Number and apply for the My Number Card - jp-my-number
 
 - Category: identity
 - Who: Residents registered in the Basic Resident Register
@@ -39,7 +49,7 @@ Steps in order
 - Source: https://www.kojinbango-card.go.jp/en/ (Japan Agency for Local Authority Information Systems (J-LIS))
 - Checked: 07 Nov 2026, partial
 
-### 4. Join public health insurance - jp-health-insurance
+### 5. Join public health insurance - jp-health-insurance
 
 - Category: health-insurance
 - Who: Residents staying more than 3 months; employees join through their employer, everyone else joins National Health Insurance
@@ -50,7 +60,7 @@ Steps in order
 - Source: https://www.city.yokohama.lg.jp/lang/residents/en/insurance/kokuhoenglish.html (City of Yokohama)
 - Checked: 07 Nov 2026, verified
 
-### 5. Open a bank account - jp-bank-account
+### 6. Open a bank account - jp-bank-account
 
 - Category: bank-account
 - Who: Foreign residents with a residence card
@@ -60,7 +70,7 @@ Steps in order
 - Source: https://www.fsa.go.jp/en/user/03.english_2024.pdf (Financial Services Agency, Japan)
 - Checked: 07 Nov 2026, verified
 
-### 6. Convert your foreign driving licence (gaimen kirikae) - jp-driving-licence
+### 7. Convert your foreign driving licence (gaimen kirikae) - jp-driving-licence
 
 - Category: driving-licence
 - Who: Holders of a valid foreign licence who are registered residents of Japan
@@ -70,7 +80,7 @@ Steps in order
 - Source: https://www.cas.go.jp/jp/seisaku/symbiotic_society/pdf/Initiatives_egarding_foreign_license_conversion.pdf (National Police Agency (published by the Cabinet Secretariat))
 - Checked: 07 Nov 2026, partial
 
-### 7. Register a company at the Legal Affairs Bureau - jp-business-registration
+### 8. Register a company at the Legal Affairs Bureau - jp-business-registration
 
 - Category: business-registration
 - Who: Foreign nationals or companies setting up a kabushiki kaisha or other company in Japan
@@ -79,3 +89,14 @@ Steps in order
 - Needs: passport, business-registration, other
 - Source: https://www.jetro.go.jp/en/invest/setting_up/section1/page3/ (Japan External Trade Organization (JETRO))
 - Checked: 07 Nov 2026, partial
+
+## Local customs
+
+- alcohol: Drinking in public is generally allowed, but some areas ban it on certain days such as New Year's Eve. Source: https://www.gov.uk/foreign-travel-advice/japan/safety-and-security (Foreign, Commonwealth & Development Office, UK), checked 07 Nov 2026
+- drugs-and-medicines: Japan has zero tolerance for illegal drugs, with long prison terms for trafficking, and even small amounts received by post have led to arrests. Source: https://www.gov.uk/foreign-travel-advice/japan/safety-and-security (Foreign, Commonwealth & Development Office, UK), checked 07 Nov 2026
+- drugs-and-medicines: Some common medicines are banned under the anti-stimulant law, including Vicks inhalers, cold and allergy remedies with pseudoephedrine and some codeine painkillers. Check with a Japanese embassy before bringing medication. Source: https://www.gov.uk/foreign-travel-advice/japan/health (Foreign, Commonwealth & Development Office, UK), checked 07 Nov 2026
+- lgbt: Same-sex relationships are legal but there is no national anti-discrimination protection and same-sex marriage is not recognised, though some local authorities issue partnership certificates. Source: https://www.gov.uk/foreign-travel-advice/japan/safety-and-security (Foreign, Commonwealth & Development Office, UK), checked 07 Nov 2026
+- other: You must carry your passport or residence card at all times, and police can arrest you if you cannot show proof of your status. Source: https://www.gov.uk/foreign-travel-advice/japan/safety-and-security (Foreign, Commonwealth & Development Office, UK), checked 07 Nov 2026
+- other: Smoking on the street is illegal in Tokyo and some other cities, so smoke only in marked smoking areas. Source: https://www.gov.uk/foreign-travel-advice/japan/safety-and-security (Foreign, Commonwealth & Development Office, UK), checked 07 Nov 2026
+- other: Because tattoos are linked with organised crime, some hot springs, pools, beaches and gyms refuse entry to tattooed people or ask them to cover up. Source: https://www.gov.uk/foreign-travel-advice/japan/safety-and-security (Foreign, Commonwealth & Development Office, UK), checked 07 Nov 2026
+- public-behaviour: Loud behaviour draws disapproval and public displays of affection are uncommon. Police can hold suspects for up to 23 days without charge, even for minor offences. Source: https://www.gov.uk/foreign-travel-advice/japan/safety-and-security (Foreign, Commonwealth & Development Office, UK), checked 07 Nov 2026

@@ -1,8 +1,22 @@
 country: KR
 title: Settling in South Korea
 steps:
-  - id: kr-alien-registration
+  - id: kr-rent-housing
     order: 1
+    category: housing
+    step: Rent a home and check the property before signing
+    who: Foreigners renting a home on a deposit (jeonse) or monthly rent (wolse) lease
+    deadline: ""
+    fee: ""
+    needs: [passport, residence-permit, tenancy-contract]
+    how: "Before signing, get the certified copy of the property register (deunggibu deungbon) and confirm the deposit, rent, agent fee, move-in date and contract period. Pay deposits only into the landlord's account named in the contract and keep a signed copy."
+    notes: "Incheon City says a 10 percent down payment is usual at signing, the deposit is returned at the end minus unpaid rent, and agent fees are capped by deposit size (for example 0.5 percent up to KRW 200,000 under KRW 50 million). Tenants can buy deposit-return insurance from HUG (www.khug.or.kr). Sale prices are published on MOLIT's actual transaction price system (https://rt.molit.go.kr/)."
+    source: https://www.incheon.go.kr/en/EN050205
+    source_owner: Incheon Metropolitan City
+    checked: 2026-11-07
+    confidence: verified
+  - id: kr-alien-registration
+    order: 2
     category: residence-registration
     step: Register as a foreign resident and get your residence card
     who: Foreigners staying in Korea for more than 90 days (diplomatic and official visa holders A-1 to A-3 are exempt)
@@ -15,8 +29,22 @@ steps:
     source_owner: Incheon Metropolitan City
     checked: 2026-11-07
     confidence: verified
+  - id: kr-fixed-date
+    order: 3
+    category: housing
+    step: Report your move-in and get a fixed date on your lease
+    who: Tenants paying a deposit
+    deadline: "Report the address within 14 days of moving"
+    fee: ""
+    needs: [passport, residence-permit, tenancy-contract]
+    how: "After reporting your address, take your residence card showing the new address and your lease to a registry office or the district community centre to have the contract stamped with a fixed date (hwakjeong ilja)."
+    notes: "The fixed date proves the lease existed on that day and can give you priority for getting the deposit back if the home is auctioned or seized. The page does not state a fee for the stamp."
+    source: https://www.incheon.go.kr/en/EN050205
+    source_owner: Incheon Metropolitan City
+    checked: 2026-11-07
+    confidence: partial
   - id: kr-health-insurance
-    order: 2
+    order: 4
     category: health-insurance
     step: Join National Health Insurance
     who: Foreign employees (enrolled through the workplace) and foreigners who have stayed more than 6 months
@@ -30,7 +58,7 @@ steps:
     checked: 2026-11-07
     confidence: verified
   - id: kr-bank-account
-    order: 3
+    order: 5
     category: bank-account
     step: Open a bank account
     who: Foreign residents, before or after receiving the residence card
@@ -44,7 +72,7 @@ steps:
     checked: 2026-11-07
     confidence: verified
   - id: kr-address-change
-    order: 4
+    order: 6
     category: address-registration
     step: Report any change of address
     who: Registered foreign residents who move
@@ -58,7 +86,7 @@ steps:
     checked: 2026-11-07
     confidence: verified
   - id: kr-driving-licence
-    order: 5
+    order: 7
     category: driving-licence
     step: Exchange your foreign driving licence
     who: Holders of a foreign licence with a Korean residence card (exchange gives a Type 2 General licence)
@@ -72,7 +100,7 @@ steps:
     checked: 2026-11-07
     confidence: verified
   - id: kr-business-registration
-    order: 6
+    order: 8
     category: business-registration
     step: Set up a company as a foreign investor
     who: Foreigners investing in or incorporating a company in Korea
@@ -85,3 +113,29 @@ steps:
     source_owner: Invest KOREA (KOTRA)
     checked: 2026-11-07
     confidence: partial
+customs:
+  - topic: other
+    summary: The law requires you to carry some form of identification, though police seldom check.
+    source: https://www.gov.uk/foreign-travel-advice/south-korea/safety-and-security
+    source_owner: Foreign, Commonwealth & Development Office, UK
+    checked: 2026-11-07
+  - topic: drugs-and-medicines
+    summary: Drug offences, including personal use of small amounts of cannabis, bring long prison terms and heavy fines, and people have been detained on a positive drug test alone.
+    source: https://www.gov.uk/foreign-travel-advice/south-korea/safety-and-security
+    source_owner: Foreign, Commonwealth & Development Office, UK
+    checked: 2026-11-07
+  - topic: alcohol
+    summary: The drink-driving limit is much lower than in England and offenders face prison or fines.
+    source: https://www.gov.uk/foreign-travel-advice/south-korea/safety-and-security
+    source_owner: Foreign, Commonwealth & Development Office, UK
+    checked: 2026-11-07
+  - topic: public-behaviour
+    summary: Foreign nationals may not take part in political activities. Demonstrations are common and mostly peaceful, but large gatherings are best avoided.
+    source: https://www.gov.uk/foreign-travel-advice/south-korea/safety-and-security
+    source_owner: Foreign, Commonwealth & Development Office, UK
+    checked: 2026-11-07
+  - topic: other
+    summary: Men of Korean origin listed on the Korean family register can be liable for military service even when travelling on a foreign passport.
+    source: https://www.gov.uk/foreign-travel-advice/south-korea/safety-and-security
+    source_owner: Foreign, Commonwealth & Development Office, UK
+    checked: 2026-11-07

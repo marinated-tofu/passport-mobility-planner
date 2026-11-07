@@ -15,8 +15,22 @@ steps:
     source_owner: Japan External Trade Organization (JETRO)
     checked: 2026-11-07
     confidence: verified
-  - id: jp-resident-registration
+  - id: jp-rent-housing
     order: 2
+    category: housing
+    step: Rent a home
+    who: Foreign residents renting private housing
+    deadline: ""
+    fee: ""
+    needs: [passport, residence-permit, proof-of-income, employment-letter, tenancy-contract]
+    how: "Apply through a real estate agent with your passport, residence card, proof of earnings and an employment or school certificate, and use a guarantor or a rental guarantee company. Before signing, the agent must explain the important points of the contract, including the deposit, key money and renewal fee."
+    notes: "MLIT says upfront payments (deposit, key money, agency fee, insurance, first month's rent) are roughly 4 to 7 months' rent, and a guarantee company often charges about half a month's rent for two years. On moving out the deposit is returned minus repairs for damage you caused; ageing and normal wear and tear are the landlord's cost (MLIT restoration leaflet, https://www.mlit.go.jp/jutakukentiku/house/content/001595135.pdf). Local governments and international exchange associations offer housing consultation for foreigners."
+    source: https://www.mlit.go.jp/common/001317844.pdf
+    source_owner: Ministry of Land, Infrastructure, Transport and Tourism (MLIT), Japan
+    checked: 2026-11-07
+    confidence: verified
+  - id: jp-resident-registration
+    order: 3
     category: address-registration
     step: Register your address at the municipal office
     who: Mid- to long-term residents with a residence card
@@ -30,7 +44,7 @@ steps:
     checked: 2026-11-07
     confidence: verified
   - id: jp-my-number
-    order: 3
+    order: 4
     category: identity
     step: Receive your My Number and apply for the My Number Card
     who: Residents registered in the Basic Resident Register
@@ -44,7 +58,7 @@ steps:
     checked: 2026-11-07
     confidence: partial
   - id: jp-health-insurance
-    order: 4
+    order: 5
     category: health-insurance
     step: Join public health insurance
     who: Residents staying more than 3 months; employees join through their employer, everyone else joins National Health Insurance
@@ -58,7 +72,7 @@ steps:
     checked: 2026-11-07
     confidence: verified
   - id: jp-bank-account
-    order: 5
+    order: 6
     category: bank-account
     step: Open a bank account
     who: Foreign residents with a residence card
@@ -72,7 +86,7 @@ steps:
     checked: 2026-11-07
     confidence: verified
   - id: jp-driving-licence
-    order: 6
+    order: 7
     category: driving-licence
     step: Convert your foreign driving licence (gaimen kirikae)
     who: Holders of a valid foreign licence who are registered residents of Japan
@@ -86,7 +100,7 @@ steps:
     checked: 2026-11-07
     confidence: partial
   - id: jp-business-registration
-    order: 7
+    order: 8
     category: business-registration
     step: Register a company at the Legal Affairs Bureau
     who: Foreign nationals or companies setting up a kabushiki kaisha or other company in Japan
@@ -99,3 +113,44 @@ steps:
     source_owner: Japan External Trade Organization (JETRO)
     checked: 2026-11-07
     confidence: partial
+customs:
+  - topic: other
+    summary: You must carry your passport or residence card at all times, and police can arrest you if you cannot show proof of your status.
+    source: https://www.gov.uk/foreign-travel-advice/japan/safety-and-security
+    source_owner: Foreign, Commonwealth & Development Office, UK
+    checked: 2026-11-07
+  - topic: drugs-and-medicines
+    summary: Japan has zero tolerance for illegal drugs, with long prison terms for trafficking, and even small amounts received by post have led to arrests.
+    source: https://www.gov.uk/foreign-travel-advice/japan/safety-and-security
+    source_owner: Foreign, Commonwealth & Development Office, UK
+    checked: 2026-11-07
+  - topic: drugs-and-medicines
+    summary: Some common medicines are banned under the anti-stimulant law, including Vicks inhalers, cold and allergy remedies with pseudoephedrine and some codeine painkillers. Check with a Japanese embassy before bringing medication.
+    source: https://www.gov.uk/foreign-travel-advice/japan/health
+    source_owner: Foreign, Commonwealth & Development Office, UK
+    checked: 2026-11-07
+  - topic: alcohol
+    summary: Drinking in public is generally allowed, but some areas ban it on certain days such as New Year's Eve.
+    source: https://www.gov.uk/foreign-travel-advice/japan/safety-and-security
+    source_owner: Foreign, Commonwealth & Development Office, UK
+    checked: 2026-11-07
+  - topic: other
+    summary: Smoking on the street is illegal in Tokyo and some other cities, so smoke only in marked smoking areas.
+    source: https://www.gov.uk/foreign-travel-advice/japan/safety-and-security
+    source_owner: Foreign, Commonwealth & Development Office, UK
+    checked: 2026-11-07
+  - topic: other
+    summary: Because tattoos are linked with organised crime, some hot springs, pools, beaches and gyms refuse entry to tattooed people or ask them to cover up.
+    source: https://www.gov.uk/foreign-travel-advice/japan/safety-and-security
+    source_owner: Foreign, Commonwealth & Development Office, UK
+    checked: 2026-11-07
+  - topic: lgbt
+    summary: Same-sex relationships are legal but there is no national anti-discrimination protection and same-sex marriage is not recognised, though some local authorities issue partnership certificates.
+    source: https://www.gov.uk/foreign-travel-advice/japan/safety-and-security
+    source_owner: Foreign, Commonwealth & Development Office, UK
+    checked: 2026-11-07
+  - topic: public-behaviour
+    summary: Loud behaviour draws disapproval and public displays of affection are uncommon. Police can hold suspects for up to 23 days without charge, even for minor offences.
+    source: https://www.gov.uk/foreign-travel-advice/japan/safety-and-security
+    source_owner: Foreign, Commonwealth & Development Office, UK
+    checked: 2026-11-07

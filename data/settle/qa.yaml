@@ -15,8 +15,22 @@ steps:
     source_owner: Ministry of Interior, State of Qatar
     checked: 2026-11-07
     confidence: partial
-  - id: qa-health-card
+  - id: qa-check-broker-licence
     order: 2
+    category: housing
+    step: "Rent through a licensed real estate broker and check the licence first"
+    who: "Anyone renting a home in Qatar through a broker"
+    deadline: ""
+    fee: ""
+    needs: []
+    how: "Check the broker's licence on the Ministry of Justice website before paying anything. Complaints go to the Real Estate Regulatory Authority (Aqarat) through its website, its customer service centre or info@aqarat.gov.qa."
+    notes: "Aqarat says it does not publish the list of licensed brokers; brokerage licensing sits with the Ministry of Justice. The Ministry of Municipality lease-registration pages could not be read (JavaScript-only portal), so lease registration, deposits and any rent index are not covered. Keep a utility bill: the PHCC health card needs one as proof of address."
+    source: https://www.aqarat.gov.qa/الأسئلة-الشائعة/
+    source_owner: Real Estate Regulatory Authority (Aqarat), State of Qatar
+    checked: 2026-11-07
+    confidence: partial
+  - id: qa-health-card
+    order: 3
     category: health-insurance
     step: "Get a health card at your nearest PHCC health centre"
     who: "Adult and child residents of Qatar, and domestic staff"
@@ -30,7 +44,7 @@ steps:
     checked: 2026-11-07
     confidence: verified
   - id: qa-driving-licence
-    order: 3
+    order: 4
     category: driving-licence
     step: "Get a Qatari driving licence"
     who: "Non-Qatari residents who want to drive in Qatar"
@@ -44,7 +58,7 @@ steps:
     checked: 2026-11-07
     confidence: partial
   - id: qa-business-registration
-    order: 4
+    order: 5
     category: business-registration
     step: "Register a company through the Invest in Qatar Center on the Single Window"
     who: "Foreign investors setting up a new project or company in Qatar"
@@ -57,3 +71,44 @@ steps:
     source_owner: Ministry of Commerce and Industry, State of Qatar
     checked: 2026-11-07
     confidence: partial
+customs:
+  - topic: dress
+    summary: "Men and women should cover shoulders and knees in public, including when driving. Government buildings, hospitals and banks enforce this and may refuse entry."
+    source: https://www.gov.uk/foreign-travel-advice/qatar/safety-and-security
+    source_owner: Foreign, Commonwealth & Development Office, UK
+    checked: 2026-11-07
+  - topic: alcohol
+    summary: "Alcohol is sold only in licensed hotels, restaurants and bars, and expatriate residents can buy it under a permit system. The minimum age is 21 with original photo ID, and drinking or being drunk in public is an offence."
+    source: https://www.gov.uk/foreign-travel-advice/qatar/safety-and-security
+    source_owner: Foreign, Commonwealth & Development Office, UK
+    checked: 2026-11-07
+  - topic: religion
+    summary: "Insulting Islam, Christianity or Judaism can lead to prison. Public worship and proselytising by non-Islamic faiths is illegal."
+    source: https://www.gov.uk/foreign-travel-advice/qatar/safety-and-security
+    source_owner: Foreign, Commonwealth & Development Office, UK
+    checked: 2026-11-07
+  - topic: photography
+    summary: "Photographing or sharing images of people without consent can bring prison or a large fine. Avoid filming near religious, military, government or construction sites, and drones need a permit."
+    source: https://www.gov.uk/foreign-travel-advice/qatar/safety-and-security
+    source_owner: Foreign, Commonwealth & Development Office, UK
+    checked: 2026-11-07
+  - topic: public-behaviour
+    summary: "Public intimacy, swearing and rude gestures can lead to arrest or deportation, and unmarried couples living together is illegal. Bounced cheques and unpaid bills can bring prison or a travel ban."
+    source: https://www.gov.uk/foreign-travel-advice/qatar/safety-and-security
+    source_owner: Foreign, Commonwealth & Development Office, UK
+    checked: 2026-11-07
+  - topic: drugs-and-medicines
+    summary: "Some controlled medicines need a prescription and a medical report in English or Arabic dated within six months, and a Ministry of Public Health permit can be requested online. Drug offences carry zero tolerance, even for residual amounts."
+    source: https://www.gov.uk/foreign-travel-advice/qatar/health
+    source_owner: Foreign, Commonwealth & Development Office, UK
+    checked: 2026-11-07
+  - topic: lgbt
+    summary: "Same-sex sexual activity is illegal."
+    source: https://www.gov.uk/foreign-travel-advice/qatar/safety-and-security
+    source_owner: Foreign, Commonwealth & Development Office, UK
+    checked: 2026-11-07
+  - topic: ramadan
+    summary: "During daylight hours in Ramadan, do not eat, drink, smoke or chew gum in public, including in your car, and avoid loud music and dancing. Expect shorter shop hours."
+    source: https://www.gov.uk/foreign-travel-advice/qatar/safety-and-security
+    source_owner: Foreign, Commonwealth & Development Office, UK
+    checked: 2026-11-07
