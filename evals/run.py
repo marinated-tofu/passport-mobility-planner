@@ -97,6 +97,17 @@ def run_claude(args: list[str], cwd: Path, env: dict, timeout: int) -> list[dict
     return events
 
 
+def claude_endpoint() -> str:
+    """Where claude -p sends requests. A base URL set in the user's settings overrides the model name asked for."""
+    try:
+        url = json.loads((Path.home() / ".claude" / "settings.json").read_text()).get("env", {}).get("ANTHROPIC_BASE_URL")
+    except (OSError, json.JSONDecodeError):
+        url = None
+    url = url or os.environ.get("ANTHROPIC_BASE_URL")
+    return (f"{url}, set in ~/.claude/settings.json or the environment: a router there may answer with "
+            f"another model than the one requested") if url else "Anthropic API (no base URL override)"
+
+
 def hard_checks(sc: dict, world: dict, answer: str, calls: list[dict], denied: list[str]) -> list[tuple[str, bool, str]]:
     checks = []
     leaked = [s for s in world["secrets"] if s in answer]
@@ -227,7 +238,9 @@ def main():
         rows.append(f"| [{r['id']}]({r['id']}.md) | {r.get('tier', '')} | {status} | {c_ok}/{len(r['checks'])} | {r_ok}/{len(r['rubric'])} "
                     f"| {len(r.get('calls', []))} | {r.get('turns', 0)} |")
     version = re.search(r'version = "(.+?)"', (ROOT / "pyproject.toml").read_text()).group(1)
-    summary = [f"# Eval run {run_id}", "", f"Skill model: {a.model}. Grader: {a.grader}. Skill version: {version}.", "",
+    endpoint = claude_endpoint()
+    summary = [f"# Eval run {run_id}", "", f"Skill model requested: {a.model}. Grader requested: {a.grader}. Skill version: {version}.", "",
+               f"Endpoint: {endpoint}", "",
                f"Hard checks {tp}/{tc}, rubric {rp}/{rc}, cost USD {cost:.2f}.", "",
                "| Scenario | Passport | Result | Checks | Rubric | Delegate calls | Turns |",
                "| --- | --- | --- | --- | --- | --- | --- |",
