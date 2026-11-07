@@ -42,3 +42,17 @@ UPDATES_DIR=/path/to/updates LIBRARY_DIR=/path/to/library docker compose -f comp
 
 It only fetches the public official pages the data cites (respecting robots.txt, 2 seconds between requests).
 Optional summaries use a local model through any OpenAI-compatible endpoint such as Ollama on the NAS.
+
+## Evals
+
+```bash
+uv run evals/run.py                       # all scenarios, Skill run by sonnet, graded by sonnet
+uv run evals/run.py dossier injection     # chosen scenarios
+uv run evals/run.py --model opus --jobs 3
+```
+
+Each scenario runs the built Skill with `claude -p` in a scratch folder. It has two tools: Read, and a `delegate` command that `evals/mock_delegate.py` answers on behalf of the NAS agents, using the invented household in `evals/household.yaml`. The mock agents see only the instruction text, as on the NAS, so an instruction that leaves out the folder or the file paths gets a `waiting_user` reply. Hard checks look for unmasked document numbers, unknown agents, malformed or risky instructions, and pending saves reported as done. A grader model scores each scenario's rubric. Reports go to `evals/results/<run>/`.
+
+Scenarios cover every route plus a prompt injection hidden in a scanned note, a failing agent, saves waiting for approval, an unsupported request and a missing folder.
+
+Latest full run, on version 0.3.1 (`evals/results/2026-11-07-1817`): rubric 53/53 and hard checks 100/101, for USD 1.49. The one failed check was a harness bug: the claim check read "No report was saved" as a claim, and the mock treated a search that said "do not save" as a save request. Both are fixed, and the two affected scenarios pass in `2026-11-07-1824`. The first run, `2026-11-07-1753` on 0.3.0, scored 41/53.
