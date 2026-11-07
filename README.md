@@ -57,4 +57,26 @@ Scenarios cover every route, nine end-to-end trips for strong, medium and weak p
 
 Which model actually answers depends on how `claude` is set up on the machine. On the development Mac, `~/.claude/settings.json` points `claude` at a local router (Magpie, `127.0.0.1:3425`) that sent every `sonnet` request from these runs to GPT-6.1-Sol through Codex. So every run listed below was answered and graded by GPT-6.1-Sol, not Sonnet, whatever its summary says; the reported costs are not real API costs. Each summary now records the endpoint it ran against.
 
+### On the small model the NAS runs
+
+`--skill-endpoint` sends only the Skill's turns to an Anthropic-compatible server; the grader keeps the default endpoint. The test PC runs llama-server (llama.cpp b12189, Vulkan) with Qwen3.5-4B-Q4_K_M, two slots of 32K context each, Qwen's recommended sampling (temperature 0.6, top-p 0.95, top-k 20, min-p 0) and a copy of Qwen's chat template that accepts a system message after the first one (Claude Code sends one). The server listens on the PC's localhost only; the Mac reaches it through an SSH tunnel:
+
+```bash
+ssh -L 18080:127.0.0.1:8080 leoca@192.168.1.13 'powershell -NoProfile -Command -' < evals/pcserve.ps1
+uv run evals/run.py --jobs 2 --skill-endpoint http://127.0.0.1:18080 trip-medium-ph-japan
+```
+
+A run that exceeds the model's context is recorded as a failed check, with the files read up to that point.
+
+Nine trips on the 4B model, by build (hard checks, rubric, runs that ran out of context):
+
+| Run | Build | Hard | Rubric | Overflows | Change |
+| --- | --- | --- | --- | --- | --- |
+| 2026-11-08-0012 | 0.3.1 | 34/51 | 4/45 | 4 | baseline: options files of 20K and 30K tokens; 4 runs searched the local disk instead of calling file-agent |
+| 2026-11-08-0023 | c53d3d6 | 55/58 | 7/45 | 3 | one file per country, benefit and option indexes |
+| 2026-11-08-0055 | 62473b4 | 55/76 | 10/45 | 1 | indexes linked only from the routes that use them, [SLOT] placeholders, stop rule for countries with no file |
+| 2026-11-08-0102 | 7693d7d | 64/74 | 6/45 | 1 | ready-to-run file-agent command at the top of SKILL.md: every trip now calls it |
+
+The same nine trips score 29/45 on GPT-6.1-Sol (`2026-11-07-2015`, build 0.3.1). The 4B's remaining failures are reasoning: it reads the right country file and still skips a condition (Georgia's one-year permit rule, Mexico's FMMd form), leaves transit unassessed and writes undated checklists.
+
 Latest full run, on version 0.3.1 (`evals/results/2026-11-07-1817`): rubric 53/53 and hard checks 100/101. The one failed check was a harness bug: the claim check read "No report was saved" as a claim, and the mock treated a search that said "do not save" as a save request. Both are fixed, and the two affected scenarios pass in `2026-11-07-1824`. The first run, `2026-11-07-1753` on 0.3.0, scored 41/53.
