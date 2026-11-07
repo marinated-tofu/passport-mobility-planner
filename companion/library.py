@@ -32,8 +32,13 @@ log = logging.getLogger("library")
 FOLLOW_WORDS = re.compile(
     r"visa|permit|residen|requirement|document|eligib|fee|apply|application|entry|transit|stay|registration|"
     r"tenan|rent|customs|local laws|bank account|tax number|insurance", re.I)
+SKIP_PATHS = re.compile(
+    r"/(?:blog|news|press|media|events?|stories|story|subscribe|newsletter|login|signin|sign-in|register-account|"
+    r"search|tag|tags|category|author|careers|jobs|contact|sitemap|privacy|cookies?|accessibility)(?:/|$|\?)|"
+    r"\.(?:pdf|docx?|xlsx?|zip|jpe?g|png)$", re.I)
 MAX_FOLLOW_PER_PAGE = 8
 MAX_PAGE_CHARS = 200_000
+MIN_PAGE_CHARS = 200  # less than this is a page built by scripts in the browser, not readable here
 
 
 class _Loader(yaml.SafeLoader):
@@ -97,9 +102,13 @@ def page_to_markdown(page_html: str) -> tuple[str, str, list[tuple[str, str]]]:
     """Return (title, markdown body, links) from the main content of an official page."""
     soup = BeautifulSoup(page_html, "html.parser")
     title = " ".join((soup.title.get_text() if soup.title else "").split())
-    for tag in soup(["nav", "header", "footer", "script", "style", "form", "aside", "noscript", "svg"]):
+    # Not <form>: ASP.NET sites wrap the whole page in one form. Drop only its controls.
+    for tag in soup(["nav", "header", "footer", "script", "style", "aside", "noscript", "svg",
+                     "input", "select", "button", "textarea", "template"]):
         tag.decompose()
-    scope = soup.find("main") or soup.find(attrs={"role": "main"}) or soup.find("article") or soup.body or soup
+    scope = next((el for el in (soup.find("main"), soup.find(attrs={"role": "main"}), soup.find("article"))
+                  if el is not None and len(el.get_text(" ", strip=True)) >= MIN_PAGE_CHARS),
+                 soup.body or soup)
     lines: list[str] = []
     for el in scope.find_all(["h1", "h2", "h3", "h4", "p", "li", "tr", "dt", "dd"]):
         if el.name in {"p", "li", "dt", "dd"} and el.find_parent(["li", "tr"]) is not None:
@@ -116,7 +125,13 @@ def page_to_markdown(page_html: str) -> tuple[str, str, list[tuple[str, str]]]:
             lines.append("| " + " | ".join(cells) + " |")
         else:
             lines += [text, ""]
-    body = re.sub(r"\n{3,}", "\n\n", "\n".join(lines)).strip()[:MAX_PAGE_CHARS]
+    body = re.sub(r"\n{3,}", "\n\n", "\n".join(lines)).strip()
+    if len(body) < MIN_PAGE_CHARS:  # text sits in plain divs: keep its lines as paragraphs
+        text_lines = [" ".join(l.split()) for l in scope.get_text("\n").splitlines()]
+        fallback = "\n\n".join(l for l in text_lines if len(l) >= 30)
+        if len(fallback) > len(body):
+            body = fallback
+    body = body[:MAX_PAGE_CHARS]
     links = [(" ".join(a.get_text(" ").split()), a["href"]) for a in scope.find_all("a", href=True)]
     return title, body, links
 
@@ -170,8 +185,10 @@ class Library:
                 if "html" not in r.headers.get("content-type", "html"):
                     continue
                 title, body, links = page_to_markdown(r.text)
+                if len(body) < MIN_PAGE_CHARS:
+                    raise RuntimeError("no readable text in the page; it is probably built by scripts in a browser")
             except Exception as e:
-                errors.append((t.url, str(e) or type(e).__name__))
+                errors.append((t.url, (str(e) or type(e).__name__).splitlines()[0]))
                 continue
             finally:
                 time.sleep(self.delay)
@@ -184,7 +201,8 @@ class Library:
                 for text, href in links:
                     link = urljoin(t.url, href).split("#")[0]
                     if (n < MAX_FOLLOW_PER_PAGE and urlparse(link).hostname == host and link not in done
-                            and len(text) >= 12 and FOLLOW_WORDS.search(text)):
+                            and len(text) >= 12 and FOLLOW_WORDS.search(text)
+                            and not SKIP_PATHS.search(urlparse(link).path)):
                         queue.append(Target(link, t.country, t.topic, t.owner, follow=False))
                         n += 1
         self.db.commit()

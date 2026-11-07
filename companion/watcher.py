@@ -202,7 +202,7 @@ class Watcher:
             try:
                 items = self.fetch_items(source)
             except Exception as e:
-                errors.append((source, str(e) or type(e).__name__))
+                errors.append((source, (str(e) or type(e).__name__).splitlines()[0]))
                 continue
             finally:
                 time.sleep(self.delay)

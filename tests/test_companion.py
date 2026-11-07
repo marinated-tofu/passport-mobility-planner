@@ -20,6 +20,11 @@ def make_data(tmp: Path) -> Path:
     return data
 
 
+FILLER = ("<p>Applicants must hold a valid passport and an approved entry permit before they register their address "
+          "with the residence office within ninety days of arrival. Bring the tenancy contract and the employer letter "
+          "to the appointment.</p>")
+
+
 class Site:
     def __init__(self):
         self.news = ["Visa on arrival rules updated for 2026 travellers"]
@@ -34,9 +39,9 @@ class Site:
             return httpx.Response(200, html=f"<main><a href='/x'>Home</a><ul>{links}</ul></main>")
         if path == "/residence":
             return httpx.Response(200, html=f"<title>Residence permit</title><main><h1>Residence permit</h1>"
-                                            f"<p>{self.residence}</p><a href='/residence/fees'>Residence permit fees and documents</a></main>")
+                                            f"<p>{self.residence}</p>{FILLER}<a href='/residence/fees'>Residence permit fees and documents</a></main>")
         if path == "/residence/fees":
-            return httpx.Response(200, html="<main><h2>Fees</h2><table><tr><td>Permit</td><td>QAR 500</td></tr></table></main>")
+            return httpx.Response(200, html="<main><h2>Fees</h2><table><tr><td>Permit</td><td>QAR 500</td></tr></table>" + FILLER + "</main>")
         return httpx.Response(404)
 
 
@@ -78,3 +83,12 @@ def test_library_copies_pages_and_searches(tmp_path):
 def test_seconds_until_next_day():
     now = dt.datetime(2026, 11, 7, 4, 0)
     assert watcher.seconds_until("03:00", now) == 23 * 3600
+
+
+def test_page_to_markdown_keeps_form_wrapped_pages_and_rejects_script_pages():
+    from library import MIN_PAGE_CHARS, page_to_markdown
+    aspnet = f"<body><form id='aspnetForm'><input name='x'><h2>Apply for a pass</h2>{FILLER}</form></body>"
+    _, body, _ = page_to_markdown(aspnet)
+    assert "## Apply for a pass" in body and "ninety days" in body
+    spa = "<body><div id='root'></div><script>render()</script><span>Loading</span></body>"
+    assert len(page_to_markdown(spa)[1]) < MIN_PAGE_CHARS
