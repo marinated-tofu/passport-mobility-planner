@@ -24,7 +24,7 @@ Mark an option Needs checking when its eligibility, age limit or proof-of-funds 
 
 Each option lists "Also unlocks", the benefit rules it counts towards in other countries. For each option:
 
-1. New destinations: the countries in "Also unlocks" that are not already unlocked for the person, plus the issuing country itself. Count only rules whose other conditions the person meets or might meet (Needs checking counts as a half).
+1. New destinations: the countries in "Also unlocks" that are not already unlocked for the person, plus the issuing country itself. A Schengen visa adds every Schengen country the person cannot already enter (list in the entry conditions reference). Always show this count for each option; without a passport matrix, say it counts only what the bundled rules confirm. Count only rules whose other conditions the person meets or might meet (Needs checking counts as a half).
 2. Cost: the fee in US dollars from the option. Unknown fee: mark the cost unknown and rank the option after the ones with known fees.
 3. Time: processing days from the option. Unknown: treat as 30 days and say so.
 4. Value: new destinations per 100 US dollars, and new destinations per week of waiting.

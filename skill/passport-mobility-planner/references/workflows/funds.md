@@ -22,7 +22,7 @@ Flag:
 
 ## Compare
 
-- Funds shown: the latest closing balance per currency. Do not add different currencies together. When the rule is in another currency, ask the user for the exchange rate they want to use, or mark the result Needs checking.
+- Funds shown: the latest closing balance per currency. Do not add different currencies together. When the rule is in another currency, give the break-even exchange rate (the rate at which the funds exactly meet the rule, for example meets it while 1 EUR costs less than 5.03 AED) so the user can compare it with the rate on the day. Use an exchange rate only when the user gives one, and never invent one.
 - For a daily amount: daily amount times the days of the stay.
 - For a monthly income rule (common for remote work visas): compare the average of the repeating monthly credits.
 - For a one-off minimum: compare the latest closing balance and the lowest balance.
@@ -31,4 +31,4 @@ Result per rule: Meets, Does not meet (with the shortfall), or Needs checking (w
 
 ## Affordability
 
-Fees to pay come from the options chosen. Money left after fees is the closing balance minus fees; when the proof-of-funds rule must still be met after paying fees, say whether it is. This is a comparison with a published rule, not advice.
+Fees to pay come from the options chosen. Money left after fees is the closing balance minus fees; when the proof-of-funds rule must still be met after paying fees, say whether it is. This is a comparison with a published rule, not advice. Say in the answer that the consulate or authority makes the decision and may ask for more.

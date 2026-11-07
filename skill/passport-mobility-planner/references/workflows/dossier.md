@@ -14,7 +14,7 @@ For each person, list every passport, visa and residence permit with all fields 
 - for passports, the six-month date (expiry minus six months) and the three-month date (expiry minus three months);
 - for visas, whether it is valid today and how many entries it allows.
 
-Add the consistency results from step 3: name, date of birth and nationality differences between documents, and machine readable zone disagreements.
+Add the consistency results from the comparison at the end of step 3: name, date of birth and nationality differences between documents, and machine readable zone disagreements.
 
 ## Supporting documents
 

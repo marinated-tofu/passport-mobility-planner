@@ -14,6 +14,10 @@ The Schengen area is a documented example of the three-month pattern: the Scheng
 
 For any other country, compute all three dates for the traveller and say which ones the passport meets, then point to the country's official source for the rule it applies.
 
+## Schengen area
+
+A Schengen visa or residence permit counts for all 29 Schengen countries: Austria, Belgium, Bulgaria, Croatia, Czechia, Denmark, Estonia, Finland, France, Germany, Greece, Hungary, Iceland, Italy, Latvia, Liechtenstein, Lithuania, Luxembourg, Malta, Netherlands, Norway, Poland, Portugal, Romania, Slovakia, Slovenia, Spain, Sweden and Switzerland. Ireland and Cyprus are in the EU but not in the Schengen area. A visa with limited territorial validity covers only the countries printed on it. Source: https://home-affairs.ec.europa.eu/policies/schengen/schengen-area_en (European Commission, checked 07 Nov 2026).
+
 ## Other conditions travellers are often asked for
 
 - free visa pages, often one or two;

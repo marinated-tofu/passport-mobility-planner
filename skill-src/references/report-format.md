@@ -72,8 +72,8 @@ Person: name - Ready / Needs action / Not possible
     Passport validity: meets arrival + 6 months / departure + 3 months
     Documents: have, missing, too old
   - Transit or stopover: rule and conditions
-Timeline
-  - start-by date: application, person
+Checklist before departure, dated even when no application is needed
+  - YYYY-MM-DD: action, person (start-by dates, forms to fill, documents to print or carry)
 Fees: per person and household total. Affordability: checked or not checked
 ```
 
@@ -87,6 +87,7 @@ Flags
   - each flag found
 Result: Meets / Does not meet (shortfall) / Needs checking (what is missing)
 After fees: balance left and whether the rule is still met
+Decision: the consulate or authority decides; this compares the statements with the published rule only
 ```
 
 ## Settle in
@@ -96,9 +97,10 @@ Moving to: country, purpose, arrival date
 Before you leave
   - Document to attest, apostille or translate
 Steps
-  1. Step - deadline - fee - documents: have, missing - how - source
+  1. Step - deadline - fee - documents: have, missing, too old, or not listed in the bundled data - how - source
 Housing
   - Rule or tool - source
+  - Listings: the Skill cannot search live listings; it checks only listings saved on the NAS
 Customs
   - Topic: summary - source
 ```

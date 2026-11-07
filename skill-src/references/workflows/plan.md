@@ -27,6 +27,7 @@ For each leg that changes planes in a third country, check the transit file: a t
 1. Work back from the departure date. Each application must start at least its processing time before departure, plus one week of margin.
 2. Put applications that keep the passport in sequence, never at the same time.
 3. Start with the paths that unlock others, as in the next document route.
+4. Always end with a dated checklist, even when no application is needed: each start-by date, then the dated items before departure (forms to fill such as an arrival form, passport validity confirmed, documents to carry such as the visa that gives entry).
 
 ## Money
 
