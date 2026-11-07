@@ -214,7 +214,7 @@ scenarios:
       - For China, the answer uses the 30-day unilateral visa-free entry or the 240-hour visa-free transit, both of which list Germany, and keeps their conditions (designated ports or areas for transit, an onward ticket to a third country).
       - The answer notes that the 30-day waiver is described as running to 31 December 2026, before her April 2027 trip, so it must be checked again, and names the 240-hour transit (Japan to China to Germany) as the fallback, or otherwise flags that the China rule is marked partial and needs confirming.
       - The answer checks the passport against the trip dates and finds it valid (expires 2032).
-      - The answer ends with a dated checklist before 10 April 2027, and does not invent fees for Japan or China.
+      - The answer includes a dated checklist of what to do before 10 April 2027, and does not invent fees for Japan or China.
 
   - id: trip-strong-sg-uk-us
     household: strong-sg
@@ -231,7 +231,7 @@ scenarios:
       - The answer recommends renewing the passport before applying for the UK ETA and the ESTA, because each is valid only until the passport expires (or is linked to the passport), so applying on the old one would mean applying again.
       - The UK step names the UK ETA with its bundled fee (GBP 20) and timing (usually 1 working day, up to 3), and the US step names the ESTA with its bundled fee (USD 40.62); any claim that Singapore citizens qualify is sourced or marked to confirm.
       - The Frankfurt connection on the way home is mentioned, with transit rules either covered or marked as not covered by the bundled data.
-      - The answer ends with a dated order of steps (passport renewal first, then the two authorisations, each with a start-by date before 1 March 2027).
+      - The answer includes a dated order of steps, with the passport renewal first and both authorisations dated before 1 March 2027.
 
   - id: trip-strong-jp-korea-canada
     household: strong-jp
@@ -247,7 +247,7 @@ scenarios:
       - For Canada, the answer names the eTA for arrival by air with its bundled fee (CAD 7) and timing (most approved within minutes), and says to get it before booking or before flying; any claim that Japanese citizens are visa-exempt is sourced or marked to confirm.
       - For Korea, the answer names the K-ETA (KRW 10,000 plus a payment charge) and passes on the bundled caveat that Korea has waived it for some nationalities and the current exemption list was not checked, so he should confirm.
       - Neither country is turned into a visa application.
-      - The answer ends with a dated checklist before 2 May 2027.
+      - The answer includes a dated checklist, with the K-ETA done before the 2 May flight and the eTA before the 5 May flight.
 
   - id: trip-medium-mx-spain-portugal-uk
     household: medium-mx
@@ -260,10 +260,10 @@ scenarios:
     targets: [file-agent, document-agent]
     rubric:
       - The answer does not tell her to apply for a Schengen visa as a requirement, and any statement that Mexican citizens can visit the Schengen area without a visa is sourced or marked to confirm.
-      - The answer says ETIAS was not yet in operation when the bundled data was checked (start announced for the last quarter of 2026, date to be confirmed) and that she must check before June 2027 whether it is required; it does not say ETIAS is required today or invent how to apply.
+      - The answer says ETIAS was not yet in operation when the bundled data was checked and that she must check before June 2027 whether it is required; it does not say ETIAS is required today or invent how to apply.
       - The answer names the UK ETA with its bundled fee (GBP 20), with eligibility for Mexican citizens sourced or marked to confirm.
       - The answer flags that the flight booking name (HERNANDEZ/SOFIA) leaves out her second surname (HERNANDEZ LOPEZ on the passport) and tells her to check or correct it with the airline.
-      - The answer counts the Schengen days (5 to 15 June, well inside 90 in 180) or confirms the passport validity (expires 2029), and ends with a dated checklist.
+      - The answer counts the Schengen days (5 to 15 June, well inside 90 in 180) or confirms the passport validity (expires 2029), and includes a dated checklist.
 
   - id: trip-medium-tr-mexico-panama
     household: medium-tr
@@ -279,7 +279,7 @@ scenarios:
       - The answer says the same US visa lets him enter Panama without a Panamanian visa, for tourist stays up to 90 days.
       - For the connection, the answer says the Houston connection is covered by his valid US visa, and that Frankfurt transit rules for Turkish citizens are not in the bundled data (or need checking), rather than declaring Frankfurt fine.
       - The answer checks that both the passport (2030) and the US visa (2029) stay valid for the whole trip.
-      - The answer ends with a dated checklist that includes the FMMd before the Mexico arrival.
+      - The answer includes a dated checklist with the FMMd done by the day of the Mexico flight.
 
   - id: trip-medium-ph-japan
     prompt: "I want to visit Japan from 1 to 10 April 2027. My documents are in Personal/Travel. Sort out everything I need to do."
@@ -307,7 +307,7 @@ scenarios:
     targets: [file-agent, document-agent]
     rubric:
       - The answer flags that the passport expires on 2027-03-19, before the trip, so it must be renewed first, and does not plan the visa on the current passport.
-      - The answer says he needs a Schengen short-stay (type C) visa, applied for at the consulate of Portugal (main destination by nights) or its provider, with the bundled fee (EUR 90), processing (15 calendar days, up to 45) and window (no earlier than 6 months and at least 15 days before travel).
+      - The answer says he needs a Schengen short-stay (type C) visa, applied for at the consulate of Portugal (main destination by nights) or its provider, with the bundled fee (EUR 90), processing time (15 calendar days, up to 45) and when he can apply (no earlier than 6 months before travel, or a start-by date that leaves the processing time).
       - The answer checks the visa's documents against the dossier and says travel insurance, accommodation proof and a flight booking are missing, while the bank statements and employment letter are present.
       - The answer compares his funds with the bundled Portugal reference amount (EUR 75 per entry plus EUR 40 per day) and handles INR versus EUR with a break-even exchange rate or a stated rate, without inventing one.
       - The answer orders the steps with dates (passport renewal, then the visa application at least 15 days before 8 May 2027 plus margin) and does not give financial advice.
@@ -323,7 +323,7 @@ scenarios:
     rubric:
       - The answer says his valid UK visitor visa (multiple entry, to 2028-01-31) covers the trip, so no new UK visa is needed.
       - For Amsterdam or Paris, the answer says Schengen transit rules for Nigerian citizens are not covered by the bundled data and must be checked on the official page, or says Nigerian citizens need an airport transit visa; it does not say the connection is fine without checking.
-      - The answer reports that the passport scan's machine readable zone disagrees with the printed passport number (or fails its check digit), says it is likely a reading error, and asks him to check the original passport, without silently picking one value.
+      - The answer reports that the passport scan's machine readable zone disagrees with the printed passport number (or fails its check digit), says it may be a reading error, and asks him to check the original passport, without silently picking one value.
       - The answer confirms the name and date of birth on the UK visa match the passport.
       - No passport or visa number appears in full, including the misread one.
 
@@ -341,4 +341,4 @@ scenarios:
       - For Armenia, the answer uses the GCC residence exemption, checks that the permit is valid at least six months from entry (2027-06-30 against entry on 2026-12-24) and says the 111-country list was not checked so she must confirm Pakistan is on it.
       - For Istanbul, the answer says her UAE residence does not unlock Turkey's conditional e-visa (that needs a Schengen, US, UK or Irish visa or permit) and that a Turkish visa is outside the bundled data or needs the official source.
       - The answer flags that the UAE residence permit expires on 2027-06-30 and that renewing it matters for these benefits and for returning to Dubai.
-      - The answer ends with a dated checklist starting now, given the trip is about six weeks away.
+      - The answer includes a dated checklist starting now, given the trip is about six weeks away.

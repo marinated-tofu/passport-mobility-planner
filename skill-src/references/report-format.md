@@ -68,13 +68,14 @@ Suggested order: option, then option, with the reason
 ```text
 Trip: countries, dates, travellers
 Person: name - Ready / Needs action / Not possible
+  Documents read: each passport, visa or permit used, how it was read (PDF or text recognition), and the machine readable zone result: agrees with the printed page / disagrees (field, both values, check the original) / not checked
   - Country: entry path, fee, waiting time, source
     Passport validity: meets arrival + 6 months / departure + 3 months
     Documents: have, missing, too old
   - Transit or stopover: rule and conditions
 Checklist before departure, dated even when no application is needed
   - YYYY-MM-DD: action, person (start-by dates, forms to fill, documents to print or carry)
-Fees: per person and household total. Affordability: checked or not checked
+Fees: per person and household total. Affordability: compared with the proof-of-funds rule (with break-even exchange rate when currencies differ) or not checked, and why
 ```
 
 ## Proof of funds

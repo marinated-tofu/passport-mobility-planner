@@ -161,6 +161,8 @@ def run_scenario(sc: dict, out: Path, model: str, grader: str) -> dict:
                              "--strict-mcp-config", "--max-turns", "60"], work / "skill", env, 1200)
         final = next((e for e in events if e.get("type") == "result"), {})
         answer = final.get("result", "")
+        if re.match(r"API Error|Request rejected", answer):  # rate limits are not Skill failures
+            raise RuntimeError(answer[:200])
         denied = [d.get("tool_name", "") + " " + json.dumps(d.get("tool_input", {}))[:120]
                   for d in final.get("permission_denials", [])]
         reads = [b["input"].get("file_path", "") for e in events if e.get("type") == "assistant"
