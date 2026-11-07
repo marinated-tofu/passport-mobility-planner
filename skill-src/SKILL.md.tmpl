@@ -16,6 +16,8 @@ Help each person in the household get the most out of their documents, privately
 
 Passport, identity and bank data never leave the NAS. The Skill does not book, apply, pay or contact any authority, and it gives no financial or legal advice.
 
+Not supported, because no NAS capability provides it: live web search, live flight, hotel or rental listing prices, bank connections, sending alerts and running on a schedule. The Skill uses only files on the NAS; the optional library companion, which runs outside the Skill, keeps copies of official pages and update files in NAS folders for it to read.
+
 # Required input
 
 Ask only for what the chosen route needs:
@@ -86,7 +88,7 @@ If steps 1 and 2 both return empty lists, tell the user no documents were found 
 Step 3. Read each travel document found. For PDF files:
 
 ```text
-delegate --target document-agent --instruction 'Extract the fields listed in the document fields reference from each file path given, one record per document: document type, issuing country, holder surname, given names, nationality, date of birth, sex, place of birth, document number, date of issue, date of expiry, issuing authority, and for visas the visa type, entries allowed, duration of stay and valid-from date. Also extract the machine readable zone lines exactly as printed. Return a field as empty when it is not visible; never guess. Report each file you could not read.'
+delegate --target document-agent --instruction 'From each passport, visa, residence permit or national ID file path given, extract one record per document with these fields: document type, issuing country, holder surname, given names, nationality, date of birth, sex, place of birth, document number, date of issue, date of expiry, issuing authority, and for visas the visa type, entries allowed, duration of stay and valid-from date. Also extract the machine readable zone lines exactly as printed. Return a field as empty when it is not visible; never guess. Report each file you could not read.'
 ```
 
 For image files:
@@ -110,7 +112,7 @@ delegate --target file-agent --instruction 'In the documents folder the user nam
 Step 5. Read the supporting documents found.
 
 ```text
-delegate --target document-agent --instruction 'For each file path given, identify the document type from the list in the dossier items reference and extract the fields that reference lists for that type, one record per document. Always include the holder name as printed, the issuing body, the issue date and any expiry or validity date, and whether an apostille, attestation or certified translation stamp is visible. For bank statements return only the last three characters of any account number. Return a field as empty when it is not printed; never guess. Report each file you could not read.'
+delegate --target document-agent --instruction 'For each file path given, return one record per document. Set the document type to one of: birth-certificate, marriage-certificate, degree-certificate, transcript, cv, employment-letter, employment-contract, payslips, bank-statements, tax-return, business-registration, sponsor-letter, invitation-letter, police-clearance, medical-certificate, health-insurance, travel-insurance, flight-booking, accommodation-proof, tenancy-contract, proof-of-income, or other with the title as printed. Always return the holder or person names as printed, the issuing body, the issue date, any expiry or validity dates, and whether an apostille, attestation or certified translation stamp is visible. Also return, when printed: dates and places of birth or marriage and registry numbers for certificates; institution, degree, field and award date for degrees and transcripts; employer, job title, start date, salary and currency for employment documents and payslips; bank, currency, period start and end, opening and closing balance for bank statements; cover period, territory and cover amount for insurance; names, addresses, dates, rent and deposit for tenancy contracts and bookings. For any account, booking or registry number return only its last three characters. Return a field as empty when it is not printed; never guess. Report each file you could not read.'
 ```
 
 Proof of funds route only. Read the bank statements in detail:

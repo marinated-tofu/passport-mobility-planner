@@ -518,7 +518,10 @@ def build(check_links: bool) -> None:
 
     result = run_kit_checker()
     DIST.mkdir(exist_ok=True)
-    zpath = DIST / f"{NAME}.zip"
+    version = re.search(r'^version = "([^"]+)"', (ROOT / "pyproject.toml").read_text(), re.M).group(1)
+    zpath = DIST / f"{NAME}-{version}.zip"
+    if zpath.exists() and not release_matches(zpath, files):
+        raise BuildError(f"{zpath.name} already exists with different content; bump the version in pyproject.toml")
     with zipfile.ZipFile(zpath, "w", zipfile.ZIP_DEFLATED) as z:
         for p in sorted(files):
             z.write(p, Path(NAME) / p.relative_to(OUT))
@@ -535,6 +538,14 @@ def build(check_links: bool) -> None:
         print(f"  warning: {w}")
     if result["status"] == "not-uploadable":
         sys.exit(1)
+
+
+def release_matches(zpath: Path, files: list[Path]) -> bool:
+    """A versioned release is never overwritten with different content."""
+    with zipfile.ZipFile(zpath) as z:
+        old = {i.filename: z.read(i) for i in z.infolist()}
+    new = {str(Path(NAME) / p.relative_to(OUT)): p.read_bytes() for p in files}
+    return old == new
 
 
 def run_kit_checker() -> dict:

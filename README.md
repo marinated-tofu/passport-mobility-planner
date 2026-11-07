@@ -28,7 +28,7 @@ No document, bank or identity data leaves the NAS. The Skill only delegates to t
 ## Build
 
 ```bash
-uv run build/build.py            # validate, render, kit checker, dist/passport-mobility-planner.zip
+uv run build/build.py            # validate, render, kit checker, dist/passport-mobility-planner-<version>.zip
 uv run build/build.py --links    # also confirm every source address loads
 uv run pytest
 ```

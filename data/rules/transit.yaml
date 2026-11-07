@@ -52,13 +52,15 @@ rules:
 
   - id: cn-unilateral-visa-free-entry-30-days
     country: CN
-    benefit: visa-free entry
+    benefit: visa-free transit
     stay: up to 30 days
     purpose: business, tourism, visiting relatives and friends, exchange visits, transit
     unlocked_by:
       - holds: passport
         issued_by: [AD, AT, BE, BG, HR, CY, DK, EE, FI, FR, DE, GR, HU, IS, IE, IT, LV, LI, LU, MT, MC, ME, NL, MK, NO, PL, PT, RO, RU, SK, SI, ES, SE, CH, GB, AU, NZ, BH, BN, JP, KW, OM, KR, SA, AR, BR, CA, CL, PE, UY]
         condition: ordinary passport
+      - holds: ticket
+        condition: no specific onward ticket rule on the NIA list page; leave China within 30 days
     nationality_excluded: []
     nationality_only: []
     age: ""
