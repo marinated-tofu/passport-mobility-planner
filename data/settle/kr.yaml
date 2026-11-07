@@ -1,0 +1,87 @@
+country: KR
+title: Settling in South Korea
+steps:
+  - id: kr-alien-registration
+    order: 1
+    category: residence-registration
+    step: Register as a foreign resident and get your residence card
+    who: Foreigners staying in Korea for more than 90 days (diplomatic and official visa holders A-1 to A-3 are exempt)
+    deadline: "Within 90 days from date of entry"
+    fee: "KRW 30,000"
+    needs: [passport, passport-photo, application-form, other]
+    how: "Book a visit on HiKorea (hikorea.go.kr) and go to the immigration office that covers your address with your passport, the registration form and one 3.5 x 4.5 cm colour photo. Other documents depend on your visa type."
+    notes: "Rule, fee and documents from Incheon Metropolitan City's foreign resident guide; the immigration office for your area may ask for proof of residence such as a lease. Hanam City states the fee is cash only."
+    source: https://www.incheon.go.kr/en/EN050102
+    source_owner: Incheon Metropolitan City
+    checked: 2026-11-07
+    confidence: verified
+  - id: kr-health-insurance
+    order: 2
+    category: health-insurance
+    step: Join National Health Insurance
+    who: Foreign employees (enrolled through the workplace) and foreigners who have stayed more than 6 months
+    deadline: "Mandatory after more than 6 months of stay"
+    fee: ""
+    needs: [residence-permit]
+    how: "Employees are enrolled as workplace subscribers through their employer. Others who have stayed more than 6 months are registered automatically as self-employed subscribers, and NHIS mails the card and bill to their address."
+    notes: "Spouses and children under 10 of a subscriber can be registered as dependents without the 6-month wait; a residence card is needed for dependent registration. Premiums were not stated."
+    source: https://www.investkorea.org/ik-en/cntnts/i-434/web.do
+    source_owner: Invest KOREA (KOTRA)
+    checked: 2026-11-07
+    confidence: verified
+  - id: kr-bank-account
+    order: 3
+    category: bank-account
+    step: Open a bank account
+    who: Foreign residents, before or after receiving the residence card
+    deadline: ""
+    fee: ""
+    needs: [residence-permit, passport, employment-contract, employment-letter]
+    how: "Bring identification (residence card or passport) and a document proving the purpose of the account, such as a certificate of employment or employment contract for salary. Before you have a residence card, also bring proof of a Korean address such as an employer letter stating your residence or a utility bill."
+    notes: "Without the purpose documents the bank opens a restricted account (KRW 3 million a day at branches, KRW 1 million at ATMs and online) until you prove the purpose. Requirements differ by bank and branch. Guide dated August 2024."
+    source: https://www.investkorea.org/file/ik-en/How%20Foreigners%20Can%20Open%20a%20Bank%20Account%20in%20Korea.pdf
+    source_owner: Invest KOREA (KOTRA)
+    checked: 2026-11-07
+    confidence: verified
+  - id: kr-address-change
+    order: 4
+    category: address-registration
+    step: Report any change of address
+    who: Registered foreign residents who move
+    deadline: "Within 14 days of the move"
+    fee: ""
+    needs: [passport, residence-permit, tenancy-contract, application-form]
+    how: "Report to the city, county or district office, the immigration office for your new address, or online on HiKorea. Bring your passport, residence card and proof of the new address such as a lease."
+    notes: "Foreign spouses must report separately even if the Korean spouse already reported the move. Late reports can be fined under Article 36 of the Immigration Act (Seongbuk-gu)."
+    source: https://www.incheon.go.kr/en/EN050102
+    source_owner: Incheon Metropolitan City
+    checked: 2026-11-07
+    confidence: verified
+  - id: kr-driving-licence
+    order: 5
+    category: driving-licence
+    step: Exchange your foreign driving licence
+    who: Holders of a foreign licence with a Korean residence card (exchange gives a Type 2 General licence)
+    deadline: ""
+    fee: "Licence issuance KRW 10,000 (standard) or KRW 15,000 (mobile IC); physical check-up KRW 6,000 (KRW 7,000 for Class 1 large or special)"
+    needs: [passport, residence-permit, passport-photo, other]
+    how: "Apply in person at a driver's licence examination office with your original licence, passport, residence card, three 3.5 x 4.5 cm photos, an embassy or apostille certificate for the licence and a certificate of entry and exit. You take an aptitude test and, unless your country is recognised for exchange, a 40-question written test."
+    notes: "The embassy or apostille certificate must be issued within one year of applying. If your nationality differs from the licence-issuing country, you need proof of at least 90 days' stay there. Proxy applications are not accepted."
+    source: https://www.safedriving.or.kr/enGuide/selectEnGuide22.do
+    source_owner: Korea Road Traffic Authority (KoROAD)
+    checked: 2026-11-07
+    confidence: verified
+  - id: kr-business-registration
+    order: 6
+    category: business-registration
+    step: Set up a company as a foreign investor
+    who: Foreigners investing in or incorporating a company in Korea
+    deadline: ""
+    fee: ""
+    needs: [passport, business-registration, other]
+    how: "Foreigners can incorporate a company or acquire shares under the Foreign Investment Promotion Act, or open a branch or liaison office under the Foreign Exchange Transaction Act. The result is a Korean company under the Commercial Act, usually a limited or stock company."
+    notes: "The overview does not list the foreign investment report, court registration and tax office business registration steps, deadlines or fees; Invest KOREA links a 2025 Guide to Establishing a Business in Korea for those."
+    source: https://www.investkorea.org/ik-en/cntnts/i-5048/web.do
+    source_owner: Invest KOREA (KOTRA)
+    checked: 2026-11-07
+    confidence: partial

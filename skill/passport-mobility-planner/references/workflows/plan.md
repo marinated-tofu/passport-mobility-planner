@@ -1,0 +1,37 @@
+# Plan route
+
+Plans how a person or a household reaches the countries they chose, with the least money and waiting time spent on documents, and checks they are ready to go.
+
+## Inputs
+
+Destinations and dates, or "anywhere" with a date range; the travellers; budget if given. If the user says "anywhere", start from the destinations the travellers can already enter: unlocked benefits first, then passport matrix entries marked visa-free, visa on arrival or e-visa.
+
+## For each traveller and each country on the route
+
+1. Entry path. Choose the cheapest available path in this order, stopping at the first that applies:
+   - a benefit rule that unlocks entry for this traveller (benefits route);
+   - a visa already held for that country, valid for the whole stay with enough entries;
+   - the passport matrix entry for visa-free or visa on arrival;
+   - an electronic travel authorisation or e-visa from the option files;
+   - a visa from the option files, or, when no option covers the country, "visa needed, not covered" with the official source.
+   For each, show the fee, waiting time, required documents (have, missing, too old) and source. A matrix-only result is marked "from the passport matrix, confirm on the official page".
+2. Passport validity. Compare the passport expiry with the arrival date plus six months and the departure date plus three months, as in the entry conditions reference. Report which it meets; state which one applies only when a rule or option says so.
+3. Name check. Flag name differences between the passport and any visa used.
+
+## Transit and stopovers
+
+For each leg that changes planes in a third country, check the transit file: a transit rule that applies, or "transit rules not covered" with the official source. When a stopover program covers a hub on the route, offer it as a free extra city with its conditions.
+
+## Order and timeline
+
+1. Work back from the departure date. Each application must start at least its processing time before departure, plus one week of margin.
+2. Put applications that keep the passport in sequence, never at the same time.
+3. Start with the paths that unlock others, as in the next document route.
+
+## Money
+
+Add up the document fees per traveller and for the household. If the person has run the proof of funds route, compare the total and any proof-of-funds minimums with the funds shown; otherwise say affordability was not checked. The Skill cannot see flight or hotel prices; use only bookings saved on the NAS.
+
+## Verdict per traveller
+
+Ready (every country has a path that needs nothing new), Needs action (with each application and its start-by date), or Not possible for these dates (with what fails and why).

@@ -1,0 +1,21 @@
+[project]
+name = "passport-benefits-tracker"
+version = "0.1.0"
+description = "UGREEN AI NAS Skill: passport profile, travel benefits and official rule updates, built from verified data"
+requires-python = ">=3.11"
+dependencies = [
+    "pyyaml>=6",
+    "pycountry>=24",
+    "httpx>=0.27",
+    "beautifulsoup4>=4.12",
+]
+
+[dependency-groups]
+dev = ["pytest>=8"]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]
+
+[tool.uv]
+package = false

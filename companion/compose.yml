@@ -1,0 +1,36 @@
+# Library companion for the passport-mobility-planner Skill.
+# On the NAS, set two shared folders you will give the Skill, then start it:
+#   UPDATES_DIR=/path/to/updates LIBRARY_DIR=/path/to/library docker compose -f companion/compose.yml up -d --build
+# Nightly it checks official announcement pages and refreshes copies of every official page the Skill cites.
+# The NAS indexes the library folder for the Skill; http://<nas>:8088 is a plain search page for the home network.
+# Optional summaries: uncomment the ollama service and LLM_* lines. Without them each update is the page title
+# plus the changed lines and its official link.
+services:
+  companion:
+    build:
+      context: ..
+      dockerfile: companion/Dockerfile
+    restart: unless-stopped
+    environment:
+      TZ: ${TZ:-Asia/Qatar}
+      RUN_AT: ${RUN_AT:-03:00}
+      # LLM_BASE_URL: http://ollama:11434/v1
+      # LLM_MODEL: qwen3:8b
+    ports:
+      - "8088:8088"
+    volumes:
+      - companion-state:/state
+      - ${UPDATES_DIR:?set UPDATES_DIR to the NAS folder the Skill reads for updates}:/output
+      - ${LIBRARY_DIR:?set LIBRARY_DIR to the NAS folder for the rules library}:/library
+    mem_limit: 512m
+    cpus: 1.0
+
+  # ollama:
+  #   image: ollama/ollama:0.6.8
+  #   restart: unless-stopped
+  #   volumes:
+  #     - ollama:/root/.ollama
+
+volumes:
+  companion-state:
+  # ollama:

@@ -1,0 +1,204 @@
+group: gcc-residence
+title: "Benefits from a Gulf (GCC) residence permit"
+rules:
+  - id: ae-evisa-gcc-residents
+    country: AE
+    benefit: e-visa
+    stay: 30 days from entry; extendable once for 30 days (entry permit valid 30 days from issue)
+    purpose: visit (listed under tourist visas)
+    unlocked_by:
+      - holds: residence-permit
+        issued_by: [QA, SA, KW, BH, OM]
+        condition: >-
+          GCC residence valid for at least 1 year from the arrival date; passport valid at least
+          6 months from arrival; profession must be on the approved list (assessed by the authority)
+    nationality_excluded: []
+    nationality_only: []
+    age: ""
+    notes: >-
+      Must be issued online before travel, through ICP or GDRFA Dubai. Companions of the GCC
+      resident can be included. The profession check is case by case, and the page does not
+      publish the list.
+    source: https://u.ae/en/information-and-services/visa-and-emirates-id/Types-of-visas/tourist-visa
+    source_owner: The Official Platform of the UAE Government (u.ae)
+    checked: 2026-11-07
+    confidence: verified
+
+  - id: sa-tourist-evisa-gcc-residents
+    country: SA
+    benefit: e-visa
+    stay: up to 90 days; multiple-entry visa valid for one year
+    purpose: tourism
+    unlocked_by:
+      - holds: residence-permit
+        issued_by: [QA, AE, KW, BH, OM]
+        condition: >-
+          GCC residence visa valid for at least 3 months, in a profession published on visitsaudi.com
+          (per the Ministry of Tourism regulation); passport valid at least 6 months
+    nationality_excluded: []
+    nationality_only: []
+    age: ""
+    notes: >-
+      Visit Saudi confirms GCC residents can get the tourist visa as an eVisa or via an embassy, and
+      that a resident can add spouse, parents and children to the account after applying. Medical
+      insurance is bought during the application. The Ministry of Tourism regulation adds the
+      3-month residence and approved-profession conditions and a SAR 300 fee; the Visit Saudi page
+      does not show the profession list, so whether all professions now qualify is unclear. No Hajj
+      on this visa and no work.
+    source: https://www.visitsaudi.com/en/plan-your-trip/visa-regulations
+    source_owner: Saudi Tourism Authority (Visit Saudi); regulation by Ministry of Tourism, Kingdom of Saudi Arabia
+    checked: 2026-11-07
+    confidence: partial
+
+  - id: om-visa-gcc-residents-on-arrival
+    country: OM
+    benefit: visa on arrival
+    stay: 28 days from entry; renewable once for one week
+    purpose: tourism
+    unlocked_by:
+      - holds: residence-permit
+        issued_by: [QA, AE, SA, KW, BH]
+        condition: >-
+          Valid GCC residence; profession approved by the Directorate General of Passports and
+          Residence; arriving from the country of residence directly or via another GCC state;
+          passport valid at least 6 months
+    nationality_excluded: []
+    nationality_only: []
+    age: ""
+    notes: >-
+      Single entry. Issued at any Omani entry point or at Omani missions in GCC states, with proof
+      of profession. Companions and relatives travelling with the resident can get it too. Fee OMR 5.
+      The page is in Arabic only.
+    source: https://www.rop.gov.om/arabic/Visas.aspx?VisaName=AgccVisa
+    source_owner: Royal Oman Police, Sultanate of Oman
+    checked: 2026-11-07
+    confidence: verified
+
+  - id: om-evisa-29a-gcc-resident
+    country: OM
+    benefit: e-visa
+    purpose: tourism
+    unlocked_by:
+      - holds: residence-permit
+        issued_by: [QA, AE, SA, KW, BH]
+        condition: main traveller must hold an approved profession
+    nationality_excluded: []
+    nationality_only: []
+    age: ""
+    notes: >-
+      The ROP eVisa system has a GCC Resident Tourist Visa (type 29A) for the main traveller and a
+      companion visa (type 29B). The FAQ does not state stay length, fee or the profession list;
+      the eligibility wizard shows these after you enter your details.
+    source: https://evisa.rop.gov.om/Evisa-home-theme/faq_pages/faq_en.html
+    source_owner: Royal Oman Police eVisa portal, Sultanate of Oman
+    checked: 2026-11-07
+    confidence: partial
+
+  - id: qa-hayya-a2-gcc-resident-visa
+    country: QA
+    benefit: e-visa
+    stay: up to 30 days from entry; single entry
+    purpose: visit
+    unlocked_by:
+      - holds: residence-permit
+        issued_by: [AE, SA, KW, BH, OM]
+        condition: >-
+          GCC residence valid for 3 months from the application date, and the GCC ID valid at least
+          3 months from arrival; passport valid at least 3 months from arrival
+    nationality_excluded: []
+    nationality_only: []
+    age: ""
+    notes: >-
+      Apply on the Hayya portal (A2 visa), fee QAR 100. You should travel from your country of
+      residence and bring a return ticket if flying. The job title you pick must match the one on
+      your residence permit; any profession can be entered. Each GCC resident needs their own
+      application; family members without GCC residence apply for an A1 or A3 visa.
+    source: https://hayya.qa/en/faq?tab=a2
+    source_owner: Hayya portal, State of Qatar
+    checked: 2026-11-07
+    confidence: verified
+
+  - id: qa-visa-on-arrival-gcc-residents
+    country: QA
+    benefit: visa on arrival
+    unlocked_by:
+      - holds: residence-permit
+        issued_by: [AE, SA, KW, BH, OM]
+        condition: valid GCC residence permit
+    nationality_excluded: []
+    nationality_only: []
+    age: ""
+    notes: >-
+      Hayya says visas on arrival are still available to GCC residents, as an alternative to the A2
+      e-visa. The page gives no stay length, profession or validity rules for the on-arrival route.
+    source: https://hayya.qa/en/faq?tab=a2
+    source_owner: Hayya portal, State of Qatar
+    checked: 2026-11-07
+    confidence: partial
+
+  - id: ge-visa-free-gcc-visa-or-residence
+    country: GE
+    benefit: visa-free entry
+    stay: 90 days in any 180-day period
+    unlocked_by:
+      - holds: residence-permit
+        issued_by: [QA, AE, SA, KW, BH, OM]
+        condition: valid on the day of entry, shown by a travel or other document
+    nationality_excluded: []
+    nationality_only: []
+    age: ""
+    notes: >-
+      All six GCC states are on Georgia's list of countries whose visa or residence permit lets a
+      foreigner enter without a visa (a visa from these states also counts). Since the April 2025
+      amendment, citizens of 17 countries (Afghanistan, Bangladesh, Pakistan, Nigeria and others)
+      face a stricter test; the Georgian embassy in the UAE confirms it for UAE permits (see the
+      next rule). Check that rule before relying on this one.
+    source: https://matsne.gov.ge/en/document/view/2867377?publication=1
+    source_owner: Legislative Herald of Georgia (Government Ordinance No. 256 of 5 June 2015, as amended)
+    checked: 2026-11-07
+    confidence: partial
+
+  - id: ge-visa-free-uae-residence-restricted-nationalities
+    country: GE
+    benefit: visa-free entry
+    stay: 90 days in any 180-day period
+    unlocked_by:
+      - holds: residence-permit
+        issued_by: [AE]
+        condition: >-
+          Multiple-entry UAE visa or UAE residence permit valid for at least 1 year on the day of
+          entry to Georgia
+    nationality_excluded: []
+    nationality_only: [AF, BD, CM, CG, CD, CI, ET, ER, GH, MA, NG, PK, SO, SD, SY, TZ, UG, YE]
+    age: ""
+    notes: >-
+      Applies to citizens of 17 listed countries. The page says only "Congo", so both Congo states
+      are listed here. If their UAE residence has less than a year left, they need a C1 tourist
+      visa through the Georgian e-visa system. For other nationalities, a UAE permit must be valid
+      on entry and departure and the passport valid at least 90 days.
+    source: https://uae.mfa.gov.ge/visa-information
+    source_owner: Embassy of Georgia in the UAE, Ministry of Foreign Affairs of Georgia
+    checked: 2026-11-07
+    confidence: verified
+
+  - id: am-temporary-visa-exemption-gcc-residence
+    country: AM
+    benefit: visa-free entry
+    stay: up to 180 days within one year
+    unlocked_by:
+      - holds: residence-permit
+        issued_by: [QA, AE, SA, KW, BH, OM]
+        condition: >-
+          Valid for at least 6 months from entry; shown as a physical card or passport sticker with
+          title, name, nationality, birth date and validity in Latin script and Gregorian dates
+    nationality_excluded: []
+    nationality_only: []
+    age: ""
+    notes: >-
+      Temporary exemption from 1 July 2026 to 1 July 2027. It covers nationals of 111 countries
+      listed in a PDF linked from the page, which was not opened, so check that list for your
+      nationality. US, EU and Schengen residence permits also qualify.
+    source: https://www.mfa.am/en/visa/
+    source_owner: Ministry of Foreign Affairs of the Republic of Armenia
+    checked: 2026-11-07
+    confidence: partial
