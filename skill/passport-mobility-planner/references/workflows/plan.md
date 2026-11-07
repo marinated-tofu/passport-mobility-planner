@@ -20,7 +20,7 @@ Destinations and dates, or "anywhere" with a date range; the travellers; budget 
 
 ## Transit and stopovers
 
-For each leg that changes planes in a third country, check the transit file: a transit rule that applies, or "transit rules not covered" with the official source. When a stopover program covers a hub on the route, offer it as a free extra city with its conditions.
+For each leg that changes planes in a third country, check in this order: a valid visa or residence permit the traveller already holds for that country and that lets them enter it, which covers the connection too (say which document); then the transit file, for a transit rule that applies; otherwise "transit rules not covered" with the official source. When a stopover program covers a hub on the route, offer it as a free extra city with its conditions.
 
 ## Order and timeline
 
@@ -31,7 +31,7 @@ For each leg that changes planes in a third country, check the transit file: a t
 
 ## Money
 
-Add up the document fees per traveller and for the household. If the person has run the proof of funds route, compare the total and any proof-of-funds minimums with the funds shown; otherwise say affordability was not checked. The Skill cannot see flight or hotel prices; use only bookings saved on the NAS.
+Add up the document fees per traveller and for the household. When an application on the route has a proof-of-funds rule or reference amount and bank statements were found in SKILL.md step 4, compare them as the proof of funds route does: the latest closing balance per currency, never adding currencies together, and when the rule is in another currency give the break-even exchange rate instead of inventing a rate. Otherwise say affordability was not checked and why. The Skill cannot see flight or hotel prices; use only bookings saved on the NAS.
 
 ## Verdict per traveller
 
