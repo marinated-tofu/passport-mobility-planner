@@ -1,0 +1,733 @@
+group: visa-held
+title: "Benefits from visas and residence permits you already hold"
+rules:
+
+  # ---------------------------------------------------------------- Mexico
+  - id: mx-entry-with-us-visa
+    country: MX
+    benefit: visa-free entry
+    purpose: tourism, business, transit
+    unlocked_by:
+      - holds: visa
+        issued_by: [US]
+        condition: US visa must be valid (unexpired) at entry; any nationality
+    nationality_excluded: []
+    nationality_only: []
+    age: ""
+    notes: >-
+      Travellers of any nationality who would normally need a Mexican visa can skip it if they carry a
+      current US visa. A completed digital multiple migration form (FMMd) is still required, the passport
+      must stay valid for the whole visit, and officers may ask for proof of the trip's purpose. The
+      consulate page gives no stay limit for this group. Other Mexican consulates describe the rule
+      differently (some also accept Canadian, Japanese, UK or Schengen visas, some require a multiple-entry
+      visa that was already used), so confirm with the consulate that covers you.
+    source: https://consulmex.sre.gob.mx/montreal/index.php/es/enterate/7-servicios-consulares/servicios-a-extranjeros/159-turistasnuevoesp
+    source_owner: Consulate General of Mexico in Montreal, Secretariat of Foreign Affairs (SRE), Government of Mexico
+    checked: 2026-11-07
+    confidence: partial
+
+  - id: mx-entry-with-residence
+    country: MX
+    benefit: visa-free entry
+    purpose: tourism, business, transit
+    unlocked_by:
+      - holds: residence-permit
+        issued_by: [CA, US, JP, GB, SCHENGEN]
+        condition: permanent residence card, valid at entry; any nationality
+    nationality_excluded: []
+    nationality_only: []
+    age: ""
+    notes: >-
+      Permanent residents of Canada, the US, Japan, the UK or a Schengen country do not need a Mexican visa,
+      whatever their nationality. Carry the residence card with the passport and fill in the FMMd. Visitors
+      cannot switch to temporary or permanent residence inside Mexico except on humanitarian or family-unity
+      grounds. No stay limit is given for this group on the consulate page.
+    source: https://consulmex.sre.gob.mx/montreal/index.php/es/enterate/7-servicios-consulares/servicios-a-extranjeros/159-turistasnuevoesp
+    source_owner: Consulate General of Mexico in Montreal, Secretariat of Foreign Affairs (SRE), Government of Mexico
+    checked: 2026-11-07
+    confidence: partial
+
+  # ---------------------------------------------------------------- Georgia
+  - id: ge-entry-with-visa
+    country: GE
+    benefit: visa-free entry
+    stay: 90 days in any 180-day period
+    unlocked_by:
+      - holds: visa
+        issued_by: [US, GB, CA, JP, AU, NZ, IE, SCHENGEN, CY, IL, KR, AE, BH, QA, OM, SA, KW]
+        condition: valid on the day of entry into Georgia
+    nationality_excluded: []
+    nationality_only: []
+    age: ""
+    notes: >-
+      Government Ordinance No. 256 (2015, last amended by No. 122 of 17 April 2025) lists 50 countries and
+      territories whose visa holders may enter Georgia without a Georgian visa. Besides the main Western
+      issuers and every Schengen state, the list includes Cyprus, Israel, South Korea and the six GCC states,
+      plus some UK, Danish, Dutch and French overseas territories and the Crown Dependencies. The visa only
+      has to be valid when you cross the border.
+    source: https://matsne.gov.ge/en/document/view/2867377?publication=1
+    source_owner: Legislative Herald of Georgia (Ministry of Justice), Government of Georgia Ordinance No. 256
+    checked: 2026-11-07
+    confidence: verified
+
+  - id: ge-entry-with-residence
+    country: GE
+    benefit: visa-free entry
+    stay: 90 days in any 180-day period
+    unlocked_by:
+      - holds: residence-permit
+        issued_by: [US, GB, CA, JP, AU, NZ, IE, SCHENGEN, CY, IL, KR, AE, BH, QA, OM, SA, KW]
+        condition: valid on the day of entry into Georgia
+    nationality_excluded: []
+    nationality_only: []
+    age: ""
+    notes: >-
+      Same ordinance as the visa rule: a residence permit from any listed country also lets the holder
+      enter and stay without a Georgian visa, as long as the permit is valid on the day of entry.
+    source: https://matsne.gov.ge/en/document/view/2867377?publication=1
+    source_owner: Legislative Herald of Georgia (Ministry of Justice), Government of Georgia Ordinance No. 256
+    checked: 2026-11-07
+    confidence: verified
+
+  # ---------------------------------------------------------------- Albania
+  - id: al-entry-with-visa
+    country: AL
+    benefit: visa-free entry
+    unlocked_by:
+      - holds: visa
+        issued_by: [SCHENGEN, US, GB, EU]
+        condition: >-
+          valid multiple-entry visa (electronic formats accepted for EU/US/UK) that has already been used
+          to enter the issuing country or the Schengen area
+    nationality_excluded: [IR]
+    nationality_only: []
+    age: ""
+    notes: >-
+      A used, valid multiple-entry visa from a Schengen state, an EU country, the US or the UK replaces the
+      Albanian visa. The holder must leave Albania within 3 days of the visa's expiry date (the embassy's
+      wording on the exact cut-off is ambiguous). Iranian citizens need an Albanian visa regardless. The
+      embassy FAQ gives no maximum stay for this route.
+    source: https://ambasadat.gov.al/united-kingdom/en/newsroom/pyetje-te-shpeshta/
+    source_owner: Embassy of the Republic of Albania in the United Kingdom, Ministry for Europe and Foreign Affairs
+    checked: 2026-11-07
+    confidence: partial
+
+  - id: al-entry-with-residence
+    country: AL
+    benefit: visa-free entry
+    unlocked_by:
+      - holds: residence-permit
+        issued_by: [SCHENGEN, US, GB, EU]
+        condition: valid residence permit, not under renewal
+    nationality_excluded: [IR]
+    nationality_only: []
+    age: ""
+    notes: >-
+      A valid residence permit from a Schengen state, an EU country, the US or the UK also waives the
+      Albanian visa. A permit that is in the middle of renewal does not count; those travellers need an
+      e-visa. Same 3-day departure deadline around the permit's expiry and the same exclusion of Iranian
+      citizens. No maximum stay is stated.
+    source: https://ambasadat.gov.al/united-kingdom/en/newsroom/pyetje-te-shpeshta/
+    source_owner: Embassy of the Republic of Albania in the United Kingdom, Ministry for Europe and Foreign Affairs
+    checked: 2026-11-07
+    confidence: partial
+
+  # ---------------------------------------------------------------- Serbia
+  - id: rs-entry-with-visa
+    country: RS
+    benefit: visa-free entry
+    stay: up to 90 days within six months, and within the visa's validity
+    purpose: entry, transit and stay
+    unlocked_by:
+      - holds: visa
+        issued_by: [SCHENGEN, GB, EU, US]
+        condition: valid visa in a national passport (not emergency or convention travel documents)
+    nationality_excluded: []
+    nationality_only: []
+    age: ""
+    notes: >-
+      Based on a Government decision of 30 October 2014. Any national passport works, but emergency travel
+      documents and convention travel documents do not. Travellers may show two passports if the visa sits
+      in an expired one.
+    source: https://mfa.gov.rs/en/citizens/travel-serbia/visa-requirements
+    source_owner: Ministry of Foreign Affairs of the Republic of Serbia
+    checked: 2026-11-07
+    confidence: verified
+
+  - id: rs-entry-with-residence
+    country: RS
+    benefit: visa-free entry
+    stay: up to 90 days within six months, and within the permit's validity
+    purpose: entry, transit and stay
+    unlocked_by:
+      - holds: residence-permit
+        issued_by: [SCHENGEN, EU, US]
+        condition: valid residence permit; card-format permits must be shown with a valid passport
+    nationality_excluded: []
+    nationality_only: []
+    age: ""
+    notes: >-
+      Residence permits from Schengen, EU or US authorities also waive the Serbian visa. The UK is not on
+      the residence-permit list, only on the visa list.
+    source: https://mfa.gov.rs/en/citizens/travel-serbia/visa-requirements
+    source_owner: Ministry of Foreign Affairs of the Republic of Serbia
+    checked: 2026-11-07
+    confidence: verified
+
+  # ---------------------------------------------------------------- Bosnia and Herzegovina
+  - id: ba-entry-with-visa
+    country: BA
+    benefit: visa-free entry
+    stay: 90 days in any 180 days; one continuous stay no longer than 30 days
+    unlocked_by:
+      - holds: visa
+        issued_by: [SCHENGEN, EU, US]
+        condition: valid multiple-entry visa; the stay must fall within its validity
+    nationality_excluded: []
+    nationality_only: []
+    age: ""
+    notes: >-
+      Under the Decision on Visas, nationals who normally need a Bosnian visa can enter with a passport and a
+      valid multiple-entry visa from a Schengen state, an EU state or the US. UK visas stopped qualifying at
+      the end of the Brexit transition period (31 December 2020).
+    source: https://granpol.gov.ba/en/faq
+    source_owner: Border Police of Bosnia and Herzegovina
+    checked: 2026-11-07
+    confidence: verified
+
+  - id: ba-entry-with-residence
+    country: BA
+    benefit: visa-free entry
+    stay: 90 days in any 180 days; one continuous stay no longer than 30 days
+    unlocked_by:
+      - holds: residence-permit
+        issued_by: [SCHENGEN, EU, US]
+        condition: valid residence permit; the stay must fall within its validity
+    nationality_excluded: []
+    nationality_only: []
+    age: ""
+    notes: >-
+      Same Decision on Visas rule for residence permits from Schengen states, EU states or the US. UK
+      residence permits no longer count.
+    source: https://granpol.gov.ba/en/faq
+    source_owner: Border Police of Bosnia and Herzegovina
+    checked: 2026-11-07
+    confidence: verified
+
+  # ---------------------------------------------------------------- North Macedonia
+  - id: mk-entry-with-schengen-visa
+    country: MK
+    benefit: visa-free entry
+    stay: up to 15 days per entry; at most 90 days in any 180 days
+    unlocked_by:
+      - holds: visa
+        issued_by: [SCHENGEN]
+        condition: multiple-entry type C visa, valid at least 5 days beyond the planned stay
+    nationality_excluded: []
+    nationality_only: []
+    age: ""
+    notes: >-
+      Third-country nationals with a multiple-entry Schengen short-stay visa can enter without a Macedonian
+      visa for short visits of up to 15 days each time.
+    source: https://mfa.gov.mk/en-GB/konzularni-uslugi/informacii-za-vlez-vo-rsm
+    source_owner: Ministry of Foreign Affairs and Foreign Trade of the Republic of North Macedonia
+    checked: 2026-11-07
+    confidence: verified
+
+  - id: mk-entry-with-us-gb-ca-visa
+    country: MK
+    benefit: visa-free entry
+    stay: up to 15 days per entry
+    unlocked_by:
+      - holds: visa
+        issued_by: [US, GB, CA]
+        condition: valid multiple-entry visa in a valid passport, valid at least 5 days beyond the planned stay
+    nationality_excluded: []
+    nationality_only: []
+    age: ""
+    notes: >-
+      Temporary government decision that applies from 1 January 2026 to 31 December 2026 only. Check
+      whether it has been renewed before relying on it in 2027.
+    source: https://mfa.gov.mk/en-GB/konzularni-uslugi/informacii-za-vlez-vo-rsm
+    source_owner: Ministry of Foreign Affairs and Foreign Trade of the Republic of North Macedonia
+    checked: 2026-11-07
+    confidence: verified
+
+  - id: mk-entry-with-residence
+    country: MK
+    benefit: visa-free entry
+    stay: up to 15 days per entry; at most 90 days in any 180 days
+    unlocked_by:
+      - holds: residence-permit
+        issued_by: [EU, SCHENGEN]
+        condition: valid temporary or permanent residence in an EU member state or Schengen country
+    nationality_excluded: []
+    nationality_only: []
+    age: ""
+    notes: >-
+      Third-country nationals living in the EU or the Schengen area, whether on temporary or permanent
+      residence, can make visa-free visits of up to 15 days each.
+    source: https://mfa.gov.mk/en-GB/konzularni-uslugi/informacii-za-vlez-vo-rsm
+    source_owner: Ministry of Foreign Affairs and Foreign Trade of the Republic of North Macedonia
+    checked: 2026-11-07
+    confidence: verified
+
+  # ---------------------------------------------------------------- Peru
+  - id: pe-entry-with-visa-cn-in
+    country: PE
+    benefit: visa-free entry
+    stay: up to 180 days in a one-year period, in one visit or several
+    purpose: tourism
+    unlocked_by:
+      - holds: visa
+        issued_by: [US, CA, GB, AU, SCHENGEN]
+        condition: visa valid for at least 6 months
+    nationality_excluded: []
+    nationality_only: [CN, IN]
+    age: ""
+    notes: >-
+      Chinese and Indian citizens do not need Peru's temporary tourist visa if they carry a visa from one of
+      these countries with six or more months of validity left. Basis: Supreme Decrees 069-2016-RE and
+      06-2017-RE.
+    source: https://www.gob.pe/en/36240-apply-for-a-tourist-visa-to-enter-peru?child=113898
+    source_owner: Ministry of Foreign Affairs of Peru (gob.pe)
+    checked: 2026-11-07
+    confidence: verified
+
+  - id: pe-entry-with-residence-cn-in
+    country: PE
+    benefit: visa-free entry
+    stay: up to 180 days in a one-year period, in one visit or several
+    purpose: tourism
+    unlocked_by:
+      - holds: residence-permit
+        issued_by: [US, CA, GB, AU, SCHENGEN]
+        condition: permanent residency
+    nationality_excluded: []
+    nationality_only: [CN, IN]
+    age: ""
+    notes: >-
+      Same exemption for Chinese and Indian citizens who hold permanent residence in one of these countries.
+      The page does not mention temporary residence.
+    source: https://www.gob.pe/en/36240-apply-for-a-tourist-visa-to-enter-peru?child=113898
+    source_owner: Ministry of Foreign Affairs of Peru (gob.pe)
+    checked: 2026-11-07
+    confidence: verified
+
+  # ---------------------------------------------------------------- Panama
+  - id: pa-entry-with-visa
+    country: PA
+    benefit: visa-free entry
+    stay: tourist stays up to 90 days
+    unlocked_by:
+      - holds: visa
+        issued_by: [CA, US, AU, KR, JP, GB, SG, EU]
+        condition: valid (vigente) visa
+    nationality_excluded: []
+    nationality_only: []
+    age: ""
+    notes: >-
+      Executive Decree 521 of 2018, as amended by Decree 196 of 2024, drops the Panamanian visa for any
+      visa-required nationality holding a current visa from Canada, the US, Australia, South Korea, Japan,
+      the UK, Singapore or any EU state. The migration page dates Decree 196 to both 28 August and 28 October
+      2024. The 90-day figure is the general tourist limit cited on the same page.
+    source: https://www.migracion.gob.pa/plantilla-tramite-migratorio-v-tet-variante-273-borrador-2/
+    source_owner: National Migration Service (SNM), Republic of Panama
+    checked: 2026-11-07
+    confidence: verified
+
+  - id: pa-entry-with-residence
+    country: PA
+    benefit: visa-free entry
+    stay: tourist stays up to 90 days
+    unlocked_by:
+      - holds: residence-permit
+        issued_by: [CA, US, AU, KR, JP, GB, SG, EU]
+        condition: valid (vigente) residence
+    nationality_excluded: []
+    nationality_only: []
+    age: ""
+    notes: >-
+      Same decree: a current residence permit from any of these countries also waives the Panamanian visa
+      for visa-required nationalities.
+    source: https://www.migracion.gob.pa/plantilla-tramite-migratorio-v-tet-variante-273-borrador-2/
+    source_owner: National Migration Service (SNM), Republic of Panama
+    checked: 2026-11-07
+    confidence: verified
+
+  # ---------------------------------------------------------------- Dominican Republic
+  - id: do-entry-with-visa
+    country: DO
+    benefit: visa-free entry
+    purpose: tourism only
+    unlocked_by:
+      - holds: visa
+        issued_by: [US, SCHENGEN, CA, GB]
+        condition: valid multiple-entry visa
+    nationality_excluded: []
+    nationality_only: []
+    age: ""
+    notes: >-
+      Decree 691-07 (18 December 2007) lets these visa holders enter with a valid passport and a Tourist
+      Card instead of a Dominican visa. Any purpose other than tourism needs the matching visa. The ministry
+      page does not state a stay limit.
+    source: https://servicios360.mirex.gob.do/visas/
+    source_owner: Ministry of Foreign Affairs of the Dominican Republic (MIREX)
+    checked: 2026-11-07
+    confidence: verified
+
+  - id: do-entry-with-residence
+    country: DO
+    benefit: visa-free entry
+    purpose: tourism only
+    unlocked_by:
+      - holds: residence-permit
+        issued_by: [US, SCHENGEN, CA, GB]
+        condition: permanent residence
+    nationality_excluded: []
+    nationality_only: []
+    age: ""
+    notes: >-
+      Same decree for permanent residents of the US, the Schengen area, Canada or the UK: passport plus
+      Tourist Card, tourism only.
+    source: https://servicios360.mirex.gob.do/visas/
+    source_owner: Ministry of Foreign Affairs of the Dominican Republic (MIREX)
+    checked: 2026-11-07
+    confidence: verified
+
+  # ---------------------------------------------------------------- Taiwan
+  - id: tw-tac-with-visa
+    country: TW
+    benefit: electronic travel authorisation
+    stay: 14 days per visit, starting the day after arrival; certificate valid 90 days, multiple entries
+    unlocked_by:
+      - holds: visa
+        issued_by: [US, CA, GB, EU, SCHENGEN, NZ, AU, JP, KR]
+        condition: >-
+          valid entry visa (electronic visas accepted), or one that expired less than 10 years before
+          arrival; work permits do not count
+    nationality_excluded: []
+    nationality_only: [IN, ID, LA, MM, VN]
+    age: ""
+    notes: >-
+      Citizens of the listed countries can apply online for a free Travel Authorization Certificate (TAC)
+      instead of a visa. Other basics: passport valid six months, onward ticket, no past work in Taiwan as a
+      migrant worker, no immigration violations. Vietnamese citizens cannot use Japanese or Korean documents;
+      others using a Japanese or Korean visa must show they actually entered that country. Australian or New
+      Zealand e-visas must still be valid when entering Taiwan. Maximum six TAC entries per calendar year.
+      An older Bureau of Consular Affairs page still lists the Philippines and Cambodia and a 30-day stay,
+      so the nationality list and stay length should be re-checked.
+    source: https://www.roc-taiwan.org/ca_en/post/8217.html
+    source_owner: Taipei Economic and Cultural Office in Canada, Ministry of Foreign Affairs, Republic of China (Taiwan)
+    checked: 2026-11-07
+    confidence: partial
+
+  - id: tw-tac-with-residence
+    country: TW
+    benefit: electronic travel authorisation
+    stay: 14 days per visit, starting the day after arrival; certificate valid 90 days, multiple entries
+    unlocked_by:
+      - holds: residence-permit
+        issued_by: [US, CA, GB, EU, SCHENGEN, NZ, AU, JP, KR]
+        condition: >-
+          valid resident or permanent resident certificate, or one that expired less than 10 years before
+          arrival
+    nationality_excluded: []
+    nationality_only: [IN, ID, LA, MM, VN]
+    age: ""
+    notes: >-
+      Same TAC route using a residence document instead of a visa. Vietnamese citizens cannot rely on
+      Japanese or Korean residence documents. Same caveat about older pages listing more nationalities and a
+      longer stay.
+    source: https://www.roc-taiwan.org/ca_en/post/8217.html
+    source_owner: Taipei Economic and Cultural Office in Canada, Ministry of Foreign Affairs, Republic of China (Taiwan)
+    checked: 2026-11-07
+    confidence: partial
+
+  # ---------------------------------------------------------------- South Korea
+  - id: kr-transit-with-us-ca-au-nz-visa
+    country: KR
+    benefit: visa-free transit
+    stay: 30 days (B-2 tourist/transit status)
+    purpose: transit, tourism
+    unlocked_by:
+      - holds: visa
+        issued_by: [US, CA, AU, NZ]
+        condition: >-
+          valid visa (US includes Guam and Saipan); travelling via Korea to one of these countries, or
+          coming from one of them via Korea to home or a third country
+      - holds: ticket
+        condition: confirmed onward flight leaving Korea within 30 days of entry
+    nationality_excluded: [SY, SD, IR, MK, CU, XK, PS, AF, IQ, NG, GH, YE, GM, SN, BD, KG, PK, SO, UZ, NP, CM, LK, MM, EG]
+    nationality_only: []
+    age: ""
+    notes: >-
+      Korea's third-country transit waiver. Extra conditions: no more than 3 days spent in the stopover
+      country before reaching Korea, no refused entry to Korea in the past 3 years, and no record of illegal
+      stay or large immigration fines. Citizens of 24 countries are excluded. Final decision rests with the
+      immigration officer.
+    source: https://overseas.mofa.go.kr/us-chicago-en/brd/m_26753/view.do?seq=11
+    source_owner: Consulate General of the Republic of Korea in Chicago, Ministry of Foreign Affairs
+    checked: 2026-11-07
+    confidence: verified
+
+  - id: kr-transit-with-us-ca-au-nz-residence
+    country: KR
+    benefit: visa-free transit
+    stay: 30 days (B-2 tourist/transit status)
+    purpose: transit, tourism
+    unlocked_by:
+      - holds: residence-permit
+        issued_by: [US, CA, AU, NZ]
+        condition: permanent resident card; travelling via Korea to or from that country
+      - holds: ticket
+        condition: confirmed onward flight leaving Korea within 30 days of entry
+    nationality_excluded: [SY, SD, IR, MK, CU, XK, PS, AF, IQ, NG, GH, YE, GM, SN, BD, KG, PK, SO, UZ, NP, CM, LK, MM, EG]
+    nationality_only: []
+    age: ""
+    notes: >-
+      Same transit waiver for permanent residents of the US, Canada, Australia or New Zealand, with the same
+      3-day stopover, refusal and immigration-record conditions.
+    source: https://overseas.mofa.go.kr/us-chicago-en/brd/m_26753/view.do?seq=11
+    source_owner: Consulate General of the Republic of Korea in Chicago, Ministry of Foreign Affairs
+    checked: 2026-11-07
+    confidence: verified
+
+  - id: kr-transit-with-european-visa
+    country: KR
+    benefit: visa-free transit
+    stay: 30 days (B-2 tourist/transit status)
+    purpose: transit, tourism
+    unlocked_by:
+      - holds: visa
+        issued_by: [SCHENGEN, GB, IE, CY]
+        condition: >-
+          valid visa for one of the 32 listed European countries; travelling via Korea to one of them, or
+          from one of them via Korea to home or a third country
+      - holds: ticket
+        condition: confirmed onward flight leaving Korea within 30 days of entry
+    nationality_excluded: [SY, SD, IR, MK, CU, XK, PS, AF, IQ, NG, GH, YE, GM, SN, BD, KG, PK, SO, UZ, NP, CM, LK, MM, EG]
+    nationality_only: []
+    age: ""
+    notes: >-
+      The 32 European countries on the consulate list are the Schengen states plus the UK, Ireland and
+      Cyprus. Same stopover, refusal and immigration-record conditions as the US/Canada/Australia/NZ route.
+    source: https://overseas.mofa.go.kr/us-chicago-en/brd/m_26753/view.do?seq=11
+    source_owner: Consulate General of the Republic of Korea in Chicago, Ministry of Foreign Affairs
+    checked: 2026-11-07
+    confidence: verified
+
+  - id: kr-transit-with-european-residence
+    country: KR
+    benefit: visa-free transit
+    stay: 30 days (B-2 tourist/transit status)
+    purpose: transit, tourism
+    unlocked_by:
+      - holds: residence-permit
+        issued_by: [SCHENGEN, GB, IE, CY]
+        condition: permanent resident card of one of the 32 listed European countries; travelling via Korea to or from it
+      - holds: ticket
+        condition: confirmed onward flight leaving Korea within 30 days of entry
+    nationality_excluded: [SY, SD, IR, MK, CU, XK, PS, AF, IQ, NG, GH, YE, GM, SN, BD, KG, PK, SO, UZ, NP, CM, LK, MM, EG]
+    nationality_only: []
+    age: ""
+    notes: >-
+      Same transit waiver for permanent residents of the listed European countries.
+    source: https://overseas.mofa.go.kr/us-chicago-en/brd/m_26753/view.do?seq=11
+    source_owner: Consulate General of the Republic of Korea in Chicago, Ministry of Foreign Affairs
+    checked: 2026-11-07
+    confidence: verified
+
+  # ---------------------------------------------------------------- Turkey
+  - id: tr-evisa-with-visa
+    country: TR
+    benefit: e-visa
+    stay: single entry; one month (30 days for CV, EG, GQ, PS, PH)
+    unlocked_by:
+      - holds: visa
+        issued_by: [SCHENGEN, US, GB, IE]
+        condition: valid visa; further conditions apply but are not spelled out on the ministry page
+    nationality_excluded: []
+    nationality_only: [AF, DZ, BD, IN, IQ, LY, NP, PK, SN, YE, CV, EG, GQ, PS, PH, LK]
+    age: ""
+    notes: >-
+      Citizens of these countries can get a Turkish e-visa only if they hold a valid Schengen, US, UK or Irish
+      visa. Age limits apply to some ordinary passports: Algeria 15-18 and 35-50, Egypt 15-45, Iraq 15-50,
+      Libya 16-45. Egyptians must fly with Turkish Airlines, AJet, Pegasus, EgyptAir or Air Cairo. No stay
+      length is given for Sri Lanka. Turkish consulates add other conditions (sticker visas only, arrival
+      by air, return ticket, hotel booking, funds), which this ministry page does not list.
+    source: https://www.mfa.gov.tr/visa-information-for-foreigners.en.mfa
+    source_owner: Ministry of Foreign Affairs of the Republic of Türkiye
+    checked: 2026-11-07
+    confidence: partial
+
+  - id: tr-evisa-with-residence
+    country: TR
+    benefit: e-visa
+    stay: single entry; one month (30 days for CV, EG, GQ, PS, PH)
+    unlocked_by:
+      - holds: residence-permit
+        issued_by: [SCHENGEN, US, GB, IE]
+        condition: valid residence permit; further conditions apply but are not spelled out on the ministry page
+    nationality_excluded: []
+    nationality_only: [AF, DZ, BD, IN, IQ, LY, NP, PK, SN, YE, CV, EG, GQ, PS, PH, LK]
+    age: ""
+    notes: >-
+      Same conditional e-visa for these nationalities when they hold a valid Schengen, US, UK or Irish
+      residence permit. Same age and airline limits as the visa rule.
+    source: https://www.mfa.gov.tr/visa-information-for-foreigners.en.mfa
+    source_owner: Ministry of Foreign Affairs of the Republic of Türkiye
+    checked: 2026-11-07
+    confidence: partial
+
+  # ---------------------------------------------------------------- Singapore
+  - id: sg-vftf-with-visa-in
+    country: SG
+    benefit: visa-free transit
+    stay: up to 96 hours, not extendable
+    purpose: transit to or from a third country
+    unlocked_by:
+      - holds: visa
+        issued_by: [AU, CA, DE, CH, JP, NZ, GB, US]
+        condition: >-
+          valid at least 1 month from entry into Singapore; issued by, or valid for entry into, one of these
+          countries
+      - holds: ticket
+        condition: onward air, ferry or cruise ticket leaving Singapore within 96 hours; departure by air or sea
+    nationality_excluded: []
+    nationality_only: [IN]
+    age: ""
+    notes: >-
+      Indian citizens transiting Singapore can skip the Singapore visa for up to 96 hours with a qualifying
+      visa. A used single-journey visa from one of these countries can still qualify on the direct return
+      trip home via Singapore. Entry is at the officer's discretion.
+    source: https://www.ica.gov.sg/information-and-e-services/entry-and-departure/entering-singapore/entry-requirements/visa-free-transit-facility
+    source_owner: Immigration & Checkpoints Authority (ICA), Government of Singapore
+    checked: 2026-11-07
+    confidence: verified
+
+  - id: sg-vftf-with-residence-in
+    country: SG
+    benefit: visa-free transit
+    stay: up to 96 hours, not extendable
+    purpose: transit to or from a third country
+    unlocked_by:
+      - holds: residence-permit
+        issued_by: [AU, CA, DE, CH, JP, NZ, GB, US]
+        condition: long-term pass valid at least 1 month from entry into Singapore
+      - holds: ticket
+        condition: onward air, ferry or cruise ticket leaving Singapore within 96 hours; departure by air or sea
+    nationality_excluded: []
+    nationality_only: [IN]
+    age: ""
+    notes: >-
+      Same 96-hour transit facility for Indian citizens holding a long-term pass from one of these countries.
+    source: https://www.ica.gov.sg/information-and-e-services/entry-and-departure/entering-singapore/entry-requirements/visa-free-transit-facility
+    source_owner: Immigration & Checkpoints Authority (ICA), Government of Singapore
+    checked: 2026-11-07
+    confidence: verified
+
+  # ---------------------------------------------------------------- Armenia
+  - id: am-entry-with-residence
+    country: AM
+    benefit: visa-free entry
+    stay: up to 180 days within one year
+    unlocked_by:
+      - holds: residence-permit
+        issued_by: [US, EU, SCHENGEN, AE, BH, QA, SA, KW, OM]
+        condition: >-
+          valid at least 6 months from the date of entry; physical card or passport sticker showing name,
+          nationality, birth date and validity in Latin script
+    nationality_excluded: []
+    nationality_only: []
+    age: ""
+    notes: >-
+      Temporary scheme running from 1 July 2026 to 1 July 2027. It covers only citizens of 111 countries on
+      a list the ministry links to (dated 30 June 2026), which was not reviewed here, so check the list
+      before relying on it. Visas alone do not qualify, only residence permits.
+    source: https://www.mfa.am/en/visa/
+    source_owner: Ministry of Foreign Affairs of the Republic of Armenia
+    checked: 2026-11-07
+    confidence: partial
+
+  # ---------------------------------------------------------------- Argentina
+  - id: ar-ave-with-us-visa
+    country: AR
+    benefit: electronic travel authorisation
+    stay: 3 months from first entry, multiple entries; extendable once by the same period
+    purpose: tourism
+    unlocked_by:
+      - holds: visa
+        issued_by: [US]
+        condition: >-
+          valid B1, B2, J, O, P (P1-P3), E or H-1B visa, valid through the AVE processing time and the
+          planned stay
+    nationality_excluded: []
+    nationality_only: [AL, AO, AG, SA, BS, BH, BZ, BJ, BW, BN, BF, BI, BT, CV, KH, CM, CI, CU, ER, SZ, ET, PH, GA, GM, GH, GN, GQ, GW, ID, MH, SB, KE, KI, KW, LA, LS, MG, MW, MV, MU, MD, MZ, MM, NA, NR, NP, NE, OM, PW, PG, CF, CG, CD, RW, WS, ST, SN, SC, SL, TW, TZ, TG, TO, TV, UG, VU, VN, DJ, ZM, ZW]
+    age: ""
+    notes: >-
+      The Electronic Travel Authorization (AVE) replaces a consular tourist visa for ordinary-passport
+      holders of the listed nationalities who hold a qualifying US visa. The AVE is valid for 3 months from
+      issue, and the migration office aims to decide within 20 working days. A fee applies.
+    source: https://www.migraciones.gob.ar/ave/index.htm
+    source_owner: National Directorate of Migration (DNM), Argentina
+    checked: 2026-11-07
+    confidence: verified
+
+  - id: ar-entry-with-us-visa-cn
+    country: AR
+    benefit: visa-free entry
+    purpose: tourism, business
+    unlocked_by:
+      - holds: visa
+        issued_by: [US]
+        condition: valid US visa on the same terms as the AVE rules
+    nationality_excluded: []
+    nationality_only: [CN]
+    age: ""
+    notes: >-
+      Chinese citizens no longer need an AVE for tourism or business trips if they hold a US visa. The
+      migration page refers to Resolutions 316/2025 and 353/2025 for details; stay length was not
+      re-checked in those resolutions.
+    source: https://www.migraciones.gob.ar/ave/index.htm
+    source_owner: National Directorate of Migration (DNM), Argentina
+    checked: 2026-11-07
+    confidence: partial
+
+  - id: ar-entry-with-us-residence-cn
+    country: AR
+    benefit: visa-free entry
+    purpose: tourism, business
+    unlocked_by:
+      - holds: residence-permit
+        issued_by: [US]
+        condition: US green card
+    nationality_excluded: []
+    nationality_only: [CN]
+    age: ""
+    notes: >-
+      Same exemption for Chinese citizens who hold a US green card. Details are in Resolutions 316/2025 and
+      353/2025.
+    source: https://www.migraciones.gob.ar/ave/index.htm
+    source_owner: National Directorate of Migration (DNM), Argentina
+    checked: 2026-11-07
+    confidence: partial
+
+  - id: ar-entry-with-us-visa-in-do
+    country: AR
+    benefit: visa-free entry
+    purpose: tourism
+    unlocked_by:
+      - holds: visa
+        issued_by: [US]
+        condition: a US visa of the kind accepted for the AVE
+    nationality_excluded: []
+    nationality_only: [IN, DO]
+    age: ""
+    notes: >-
+      Indian and Dominican citizens travelling as tourists can enter without an AVE if they hold a comparable
+      US visa. The page points to Resolutions 316/2025 and 353/2025 for the full terms.
+    source: https://www.migraciones.gob.ar/ave/index.htm
+    source_owner: National Directorate of Migration (DNM), Argentina
+    checked: 2026-11-07
+    confidence: partial

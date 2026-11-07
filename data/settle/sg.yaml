@@ -1,0 +1,115 @@
+country: SG
+title: Settling in Singapore
+steps:
+  - id: sg-s-pass-medical-insurance
+    order: 1
+    category: health-insurance
+    step: Check that your employer has bought your medical insurance (S Pass holders)
+    who: S Pass holders; the employer must buy and maintain the cover
+    deadline: "Before the S Pass can be issued or renewed"
+    fee: ""
+    needs: []
+    how: "Your employer buys a plan covering at least SGD 60,000 a year for inpatient care and day surgery and declares it before the pass is issued. The cost cannot be passed on to you."
+    notes: "Employment Pass holders are not covered by this MOM requirement; check your employer's benefits instead."
+    source: https://www.mom.gov.sg/passes-and-permits/s-pass/medical-insurance
+    source_owner: Ministry of Manpower, Singapore
+    checked: 2026-11-07
+    confidence: verified
+  - id: sg-get-pass-issued
+    order: 2
+    category: residence-registration
+    step: Get your Employment Pass issued after you arrive
+    who: Employment Pass holders with an in-principle approval (IPA) letter
+    deadline: "Within 6 months of the in-principle approval"
+    fee: "SGD 225 per pass, plus SGD 30 per Multiple Journey Visa if applicable"
+    needs: [passport, medical-certificate]
+    how: "Once you are in Singapore, your employer logs in to EP eService with your passport details and Singapore address and pays the fee. You both get a notification letter by email that lets you work while you wait for the card."
+    notes: "The IPA letter says whether a medical examination is needed after arrival; if so, a completed medical examination form may be required. The notification letter is valid for 1 month."
+    source: https://www.mom.gov.sg/passes-and-permits/employment-pass/apply-for-a-pass
+    source_owner: Ministry of Manpower, Singapore
+    checked: 2026-11-07
+    confidence: verified
+  - id: sg-register-fingerprints-collect-card
+    order: 3
+    category: residence-registration
+    step: Register fingerprints and photo at EPSC and receive your pass card
+    who: Employment Pass holders whose notification letter says registration is required
+    deadline: "Within 2 weeks after the pass is issued"
+    fee: ""
+    needs: [passport, other]
+    how: "Your employer books an appointment at the Employment Pass Services Centre. Bring your original passport, the appointment letter, the notification letter and a phone with a Singapore number and the Singpass and SGWorkPass apps installed."
+    notes: "MOM sets up your Singpass account at this visit. The card is delivered within 5 working days after registration; the holder shows a passport or digital work pass on delivery."
+    source: https://www.mom.gov.sg/passes-and-permits/employment-pass/apply-for-a-pass
+    source_owner: Ministry of Manpower, Singapore
+    checked: 2026-11-07
+    confidence: verified
+  - id: sg-singpass
+    order: 4
+    category: identity
+    step: Register for Singpass, the national digital identity
+    who: FIN holders aged 15 and above
+    deadline: ""
+    fee: ""
+    needs: [residence-permit]
+    how: "Go to singpass.gov.sg, choose Register, enter your details and complete face verification, then set a password and contact details."
+    notes: "Check that the address on your FIN card is correct first. A mobile number is mandatory if your registered address is in Singapore, and only Singapore-registered numbers can be used. Employment Pass holders may already be registered at the EPSC visit."
+    source: https://portal.singpass.gov.sg/home/ui/assets/pdf/Singpass_Registration_Guide.pdf
+    source_owner: Singpass, Government Technology Agency of Singapore
+    checked: 2026-11-07
+    confidence: verified
+  - id: sg-update-address
+    order: 5
+    category: address-registration
+    step: Update MOM when your residential address changes
+    who: Employment Pass holders or their employers
+    deadline: "Within 5 days of the change"
+    fee: ""
+    needs: []
+    how: "Log in to EP eService and update the address; it takes effect immediately. Print the acknowledgement page and keep it with your pass card."
+    notes: "The new address must meet MOM's housing requirements. Late updates can lead to a penalty."
+    source: https://www.mom.gov.sg/passes-and-permits/employment-pass/notify-mom-of-changes
+    source_owner: Ministry of Manpower, Singapore
+    checked: 2026-11-07
+    confidence: verified
+  - id: sg-income-tax-filing
+    order: 6
+    category: tax-number
+    step: Check on myTax Portal whether you must file an income tax return
+    who: Individuals earning income in Singapore
+    deadline: "File between 1 March and 18 April each year if required"
+    fee: ""
+    needs: []
+    how: "Log in to myTax Portal with Singpass (or a Singpass Foreign user Account) to see if you are required to file. Non-residents who derived income from Singapore in the preceding year must file."
+    notes: "There is no separate tax registration step on this page; the page does not say which number IRAS uses as your tax reference. Residents must also file if income exceeded SGD 22,000 in the preceding year."
+    source: https://www.iras.gov.sg/taxes/individual-income-tax/employees/basic-guide-for-new-individual-taxpayers
+    source_owner: Inland Revenue Authority of Singapore (IRAS)
+    checked: 2026-11-07
+    confidence: partial
+  - id: sg-convert-driving-licence
+    order: 7
+    category: driving-licence
+    step: Convert your foreign driving licence after passing the Basic Theory Test
+    who: Foreigners residing in Singapore for more than 12 months
+    deadline: ""
+    fee: ""
+    needs: [passport-photo, passport, residence-permit, other]
+    how: "Pass the Basic Theory Test in Singapore, then apply to convert your valid foreign licence. Foreigners staying under 12 months can drive on their foreign licence with an International Driving Permit or official English translation."
+    notes: "Bring a recent colour passport photo, your work pass and passport, the valid foreign licence (with an extract of records if the first issue date is not shown, and an official translation if not in English), and proof of at least one year's residency in the issuing country. Work Permit and S Pass holders get a Class 3C licence. Fees are not listed on this page."
+    source: https://www.police.gov.sg/Knowledge-Hub/Traffic/Traffic-Matters/Singapore-Driving-Licence
+    source_owner: Singapore Police Force (Traffic Police)
+    checked: 2026-11-07
+    confidence: partial
+  - id: sg-register-business
+    order: 8
+    category: business-registration
+    step: Register a sole proprietorship or partnership with ACRA
+    who: Foreigners starting a sole business or partnership
+    deadline: ""
+    fee: "SGD 100 for one year (SGD 160 for three years if CPF Board conditions are met)"
+    needs: [residence-permit]
+    how: "Foreigners with Singpass can register on Bizfile themselves if they reserved the business name; those without Singpass must engage a corporate service provider to register for them."
+    notes: "Each owner needs an NRIC or FIN. If all owners live overseas, an authorised representative ordinarily resident in Singapore is required. Business and contact addresses cannot be P.O. Boxes."
+    source: https://www.acra.gov.sg/register/business/registering-different-business-structures/sole-proprietorship-or-partnership/
+    source_owner: Accounting and Corporate Regulatory Authority (ACRA)
+    checked: 2026-11-07
+    confidence: verified

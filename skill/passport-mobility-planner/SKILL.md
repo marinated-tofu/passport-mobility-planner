@@ -54,6 +54,7 @@ Benefit files. What documents already held unlock. Read a file only when the per
 - [benefits/gcc-residence.md](references/benefits/gcc-residence.md): Benefits from a Gulf (GCC) residence permit (9 rules, checked up to 07 Nov 2026)
 - [benefits/stopover.md](references/benefits/stopover.md): Airline and airport stopover programs (16 rules, checked up to 07 Nov 2026)
 - [benefits/transit.md](references/benefits/transit.md): Visa-free transit (19 rules, checked up to 07 Nov 2026)
+- [benefits/visa-held.md](references/benefits/visa-held.md): Benefits from visas and residence permits you already hold (34 rules, checked up to 07 Nov 2026)
 
 Option files. Visas and authorisations a person can apply for, with official fees, waiting times, required documents, proof-of-funds rules and the benefits each one unlocks elsewhere:
 
@@ -61,9 +62,16 @@ Option files. Visas and authorisations a person can apply for, with official fee
 
 Settle-in files. One per country: steps in order, housing rules and local customs:
 
+- [settle/ae.md](references/settle/ae.md): Settling in the United Arab Emirates (8 steps, 0 customs notes)
+- [settle/ee.md](references/settle/ee.md): Settling in Estonia (10 steps, 5 customs notes)
+- [settle/gb.md](references/settle/gb.md): Settling in the United Kingdom (9 steps, 7 customs notes)
 - [settle/jp.md](references/settle/jp.md): Settling in Japan (7 steps, 0 customs notes)
 - [settle/kr.md](references/settle/kr.md): Settling in South Korea (6 steps, 0 customs notes)
+- [settle/my.md](references/settle/my.md): Settling in Malaysia (6 steps, 0 customs notes)
 - [settle/qa.md](references/settle/qa.md): Settling in Qatar (4 steps, 0 customs notes)
+- [settle/sa.md](references/settle/sa.md): Settling in Saudi Arabia (7 steps, 0 customs notes)
+- [settle/sg.md](references/settle/sg.md): Settling in Singapore (8 steps, 0 customs notes)
+- [settle/th.md](references/settle/th.md): Settling in Thailand (3 steps, 0 customs notes)
 
 Passport matrix files. Where each passport gets in without applying in advance, from a community dataset, used only for screening and scores:
 

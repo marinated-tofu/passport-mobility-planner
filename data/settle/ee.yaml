@@ -1,0 +1,169 @@
+country: EE
+title: Settling in Estonia
+steps:
+  - id: ee-temporary-residence-permit
+    order: 1
+    category: residence-registration
+    step: "Apply for a temporary residence permit (for example for employment)"
+    who: "Non-EU/EEA/Swiss nationals who want to live and work in Estonia"
+    deadline: ""
+    fee: "250 EUR in Estonia, 280 EUR at a foreign mission (employment); 350 EUR / 380 EUR (business)"
+    needs: [application-form, passport, passport-photo, police-clearance, proof-of-income, invitation-letter, other]
+    how: "Apply in person at an Estonian foreign mission or, by booked appointment, at a Police and Border Guard Board (PBGB) service office in Estonia, where your fingerprints are taken. A decision is given within 90 days."
+    notes: "Documents: the application, family members and close relatives data form, biographical data form with additional form, identity document, proof of legal income for the past six months, a foreign criminal record certificate (age 14+) from every country where you lived for 3+ consecutive months in the past 3 years, a digital photo and proof of state fee payment. For employment the employer submits an invitation and needs permission from the Estonian Unemployment Insurance Fund; salary generally at least the Estonian average gross salary (https://www.politsei.ee/en/instructions/residence-permit-for-employment). Fees from the PBGB state fee table: https://www.politsei.ee/en/instructions/state-fee-amounts/residence-permit-and-rights-of-residence ; delivery to a foreign mission costs 20 EUR extra. The page does not say whether foreign documents need apostille or translation."
+    source: https://www.politsei.ee/en/instructions/applying-for-a-residence-permit/applying-for-a-residence-permit
+    source_owner: Police and Border Guard Board (Estonia)
+    checked: 2026-11-07
+    confidence: verified
+  - id: ee-personal-identification-code
+    order: 2
+    category: tax-number
+    step: "Get your Estonian personal identification code (isikukood)"
+    who: "Foreigners granted a residence permit or right of residence; non-residents who need a code for tax, health or social insurance records"
+    deadline: ""
+    fee: ""
+    needs: [residence-permit]
+    how: "Non-EU residence permit holders receive the 11-digit code together with the permit; it counts as granted once it is entered in the population register. Others who need one apply in person at the local government of a county centre, or at an Estonian foreign mission."
+    notes: "The code is used for tax, health insurance, banking and e-services. Having a code does not by itself give the right to stay, live or work in Estonia."
+    source: https://www.siseministeerium.ee/en/population-register
+    source_owner: Ministry of the Interior (Estonia)
+    checked: 2026-11-07
+    confidence: partial
+  - id: ee-residence-permit-card
+    order: 3
+    category: identity
+    step: "Collect your residence permit card (your Estonian ID and digital ID)"
+    who: "Non-EU nationals staying in Estonia on a residence permit or right of residence"
+    deadline: "Card is ready up to 30 days after the application is accepted (ordinary procedure)"
+    fee: ""
+    needs: [passport]
+    how: "Book a time at a PBGB service office to collect the card (or pick it up at a partner store if you hold a valid PBGB-issued document). The card's chip lets you log in to e-services and online banking and sign documents digitally."
+    notes: "The card is compulsory ID for domestic use and valid up to 5 years, but it is not a travel document: carry it with your passport. Store pickup costs 8 EUR (adults); changing the pickup location costs 10 EUR in Estonia. Mobile-ID, a phone-based alternative to the card for login and signing, is ordered from your mobile operator (https://www.politsei.ee/en/instructions/mobile-id). Card overview: https://www.politsei.ee/en/instructions/residence-permit-card-for-an-adult"
+    source: https://www.politsei.ee/en/instructions/residence-permit-card-for-an-adult/claiming-your-document
+    source_owner: Police and Border Guard Board (Estonia)
+    checked: 2026-11-07
+    confidence: partial
+  - id: ee-renting-a-home
+    order: 4
+    category: housing
+    step: "Rent a home with a written lease"
+    who: "Anyone renting a flat or house in Estonia"
+    deadline: ""
+    fee: ""
+    needs: [tenancy-contract]
+    how: "Always sign a written rental contract so the agreed terms can be proved later. If a dispute arises, take it to the local government's lease committee or to court."
+    notes: "In an open-ended lease the landlord can change the rent at most once every 12 months, with at least 30 days' written notice. In a fixed-term lease rent can only rise if the contract sets the method and margin, the term is at least 3 years, and increases are at most yearly. The page does not state a deposit limit or scam warnings. You need the lease (or the owner's written permission) to register your address in the next step."
+    source: https://www.eesti.ee/en/artikkel/housing/acquiring-a-place-of-residence/renting
+    source_owner: Eesti.ee (Information System Authority, Estonia)
+    checked: 2026-11-07
+    confidence: partial
+  - id: ee-register-place-of-residence
+    order: 5
+    category: address-registration
+    step: "Register your place of residence in the population register"
+    who: "Everyone living in Estonia, including residence permit holders"
+    deadline: "Within one month of receiving the residence permit, or of first arriving in Estonia on it"
+    fee: ""
+    needs: [passport, tenancy-contract, other]
+    how: "Submit a notice of residence online through the e-population register (log in with ID card, Mobile-ID or Smart-ID), in person at your rural municipality or city government (district government in Tallinn), by post with a copy of your ID page, or by digitally signed email. The local government reviews it within 10 working days."
+    notes: "If you do not own the home, attach the tenancy contract or the owner's signed authorisation; co-owned homes need all co-owners' consent. Registration must stay valid for the whole permit period, and health insurance can end if the register shows you no longer live in Estonia. Deadline from the PBGB: https://www.politsei.ee/en/instructions/applying-for-a-residence-permit/after-receiving-a-residence-permit"
+    source: https://www.eesti.ee/en/artikkel/housing/changing-place-of-residence/registering-residence
+    source_owner: Eesti.ee (Information System Authority, Estonia)
+    checked: 2026-11-07
+    confidence: verified
+  - id: ee-health-insurance
+    order: 6
+    category: health-insurance
+    step: "Get covered by the Estonian Health Insurance Fund (Tervisekassa)"
+    who: "Employees on an employment contract longer than one month or open-ended, for whom social tax is paid; residence permit holders who work"
+    deadline: "Cover starts after a 14-day waiting period from the start-of-work date in the employment register"
+    fee: ""
+    needs: [employment-contract]
+    how: "Your employer registers your employment in the Tax and Customs Board employment register and pays social tax; cover then starts automatically after 14 days and ends two months after the job ends. Check your status in the Health Portal or on eesti.ee."
+    notes: "Self-employed people are insured when they pay social tax themselves; others can sign a voluntary contract with Tervisekassa. Who is insured: https://tervisekassa.ee/en/people/health-insurance . Client service +372 669 6630. The page does not explain how to register with a family doctor (perearst)."
+    source: https://tervisekassa.ee/en/employers/health-insurance-employee
+    source_owner: Estonian Health Insurance Fund (Tervisekassa)
+    checked: 2026-11-07
+    confidence: verified
+  - id: ee-basic-payment-account
+    order: 7
+    category: bank-account
+    step: "Open a bank account (EU right to a basic payment account)"
+    who: "Anyone legally resident in an EU country"
+    deadline: ""
+    fee: ""
+    needs: []
+    how: "Ask a bank for a basic payment account if you are refused a regular one; it covers deposits, withdrawals, payments and a payment card. The bank must give you a fee information document before you open it."
+    notes: "Banks can refuse under anti-money-laundering rules, and in some countries if you already hold a similar account there. Some countries allow a reasonable annual fee. Your Estonian ID card or Mobile-ID is used to log in to online banking. The page does not list the documents banks ask for."
+    source: https://europa.eu/youreurope/citizens/consumers/financial-products-and-services/bank-accounts-eu/index_en.htm
+    source_owner: European Union (Your Europe)
+    checked: 2026-11-07
+    confidence: partial
+  - id: ee-driving-licence-exchange
+    order: 8
+    category: driving-licence
+    step: "Exchange your foreign driving licence at the Transport Administration"
+    who: "Permanent residents (living in Estonia at least 185 days a year) with a non-EU licence"
+    deadline: "Licences that meet the Vienna or Geneva convention requirements are valid for 12 months from the start of residence"
+    fee: "33 EUR at a service bureau, 23 EUR in the e-service (general licence issue or exchange fee)"
+    needs: [passport, medical-certificate, passport-photo, other]
+    how: "Bring your ID, a valid health certificate from a GP or occupational health doctor, your foreign licence (with international permit or translation where needed) and the fee to any Transport Administration service bureau; a photo and signature are taken there."
+    notes: "Vienna convention licences are generally exchanged without exams; Geneva convention licences without exams for categories A and B only. Licences from other recognised countries need exams, and licences from countries not on the list are not valid at all. Exams are also needed if the licence expired more than 5 years ago. Fee from the Transport Administration state fee table (Estonian): https://transpordiamet.ee/uudised-ametist-ja-kontakt/riigiloivud-ja-nende-tasumine"
+    source: https://transpordiamet.ee/en/foreign-driving-licence
+    source_owner: Estonian Transport Administration (Transpordiamet)
+    checked: 2026-11-07
+    confidence: verified
+  - id: ee-register-company
+    order: 9
+    category: business-registration
+    step: "Register a private limited company (OU) in the e-Business Register"
+    who: "Residents or e-residents starting a company in Estonia"
+    deadline: ""
+    fee: "200 EUR (regular electronic registration); 265 EUR (expedited)"
+    needs: []
+    how: "Log in to the e-Business Register with your Estonian ID card, Mobile-ID, Smart-ID or e-resident digi-ID and file the application; all related persons must be able to sign digitally. Budget about one business day; the notary route takes 2 to 3 days and adds notary fees."
+    notes: "A notary is required for non-monetary share capital or if a founder cannot sign digitally. A company whose address is abroad must name a contact person. Business activity on a residence permit must match its purpose (the business permit is a separate type)."
+    source: https://www.eesti.ee/en/artikkel/doing-business/establishing-a-company/registering-a-company
+    source_owner: Eesti.ee (Information System Authority, Estonia)
+    checked: 2026-11-07
+    confidence: verified
+  - id: ee-e-residency
+    order: 10
+    category: identity
+    step: "Apply for e-Residency (only if you are not living in Estonia)"
+    who: "Foreign nationals without an Estonian residence permit or right of residence who want to use Estonian e-services or run an Estonian company remotely"
+    deadline: ""
+    fee: "150 EUR state fee"
+    needs: []
+    how: "Apply online on the e-Residency website, then pick up the digi-ID at a PBGB service point in Estonia, an Estonian embassy or a mobile pickup point; approval takes about 3 to 8 weeks."
+    notes: "e-Residency is not a residence permit, visa or entry permission, and e-residents are tax non-residents in Estonia. People who hold an Estonian residence permit card cannot apply, because the card already works as a digital ID (https://www.politsei.ee/en/instructions/e-resident-s-digital-id). Fee also stated by the PBGB: https://www.politsei.ee/en/instructions/e-resident-s-digital-id/how-much-and-how-to-pay"
+    source: https://www.eesti.ee/en/artikkel/doing-business/eresidency
+    source_owner: Eesti.ee (Information System Authority, Estonia)
+    checked: 2026-11-07
+    confidence: verified
+customs:
+  - topic: drugs-and-medicines
+    summary: "All illegal drugs, cannabis included, are banned even in tiny amounts, and possession, use or buying can lead to prison terms of up to 10 years and heavy fines. Airports scan bags closely, including those of transit passengers."
+    source: https://www.gov.uk/foreign-travel-advice/estonia/safety-and-security
+    source_owner: Foreign, Commonwealth & Development Office (UK)
+    checked: 2026-11-07
+  - topic: lgbt
+    summary: "Same-sex relationships are legal and Estonia has recognised same-sex marriage since 1 January 2024."
+    source: https://www.gov.uk/foreign-travel-advice/estonia/safety-and-security
+    source_owner: Foreign, Commonwealth & Development Office (UK)
+    checked: 2026-11-07
+  - topic: alcohol
+    summary: "Estonia's drink-drive limit is far stricter than England's: going over roughly a quarter of the English limit can bring a fine and possibly prison."
+    source: https://www.gov.uk/foreign-travel-advice/estonia/safety-and-security
+    source_owner: Foreign, Commonwealth & Development Office (UK)
+    checked: 2026-11-07
+  - topic: public-behaviour
+    summary: "Pedestrians on roads in the dark or poor visibility must wear a reflector, ideally at car-headlight height and visible from all sides. On roads without pavements, walk on the left shoulder."
+    source: https://www.eesti.ee/en/artikkel/traffic/bicycle-light-personal-vehicle-pedestrian-and-public-transport/pedestrian
+    source_owner: Eesti.ee (Information System Authority, Estonia)
+    checked: 2026-11-07
+  - topic: other
+    summary: "Hailing unmarked taxis is illegal; licensed taxis show a price list on the rear window, the driver's licence and a working meter."
+    source: https://www.gov.uk/foreign-travel-advice/estonia/safety-and-security
+    source_owner: Foreign, Commonwealth & Development Office (UK)
+    checked: 2026-11-07
