@@ -1,0 +1,170 @@
+country: ES
+title: "Settling in Spain"
+steps:
+  - id: es-nie
+    order: 1
+    category: tax-number
+    step: "Get your foreigner identity number (NIE)"
+    who: "Every foreign national with economic, professional or social dealings in Spain who has not yet been given one"
+    deadline: ""
+    fee: "€9.84 (form 790 code 012)"
+    needs: [passport, application-form, other]
+    how: "If you are abroad, apply at the Spanish consulate for your area; if you are legally in Spain, book an appointment online with the National Police or the immigration office in your province. Bring form EX-15 in duplicate, your passport, a document showing why you need the NIE, and proof that you paid the fee."
+    notes: "The NIE is a number for life, not a residence or work permit, and it does not expire. Many residence-visa holders already have one; it then appears on the TIE card. Processing is about 5 days. Foreign documents must be translated by a sworn translator and apostilled or legalised. Sources in Barcelona City Council's guide; the procedure is national (Policía Nacional)."
+    source: https://www.barcelona.cat/internationalwelcome/en/procedure/identity-number-foreign-nationals-white-nie
+    source_owner: "Ajuntament de Barcelona (Barcelona International Welcome)"
+    checked: 2026-11-07
+    confidence: verified
+  - id: es-rent-a-home
+    order: 2
+    category: housing
+    step: "Rent a home and know your tenant rights"
+    who: "Anyone renting a home as their main residence"
+    deadline: ""
+    fee: ""
+    needs: [tenancy-contract]
+    how: "Sign a written tenancy contract. The legal deposit is one month's rent, and the landlord can ask for at most two more months as extra guarantee; agency and contract costs are paid by the landlord."
+    notes: "Minimum term is 5 years with a private landlord or 7 with a company, then up to 3 years of tacit extension. You can leave with 30 days' notice before the end of the agreed term or a yearly extension. Yearly rent rises are capped by the IRAV index (calculator: https://www.mivau.gob.es/vivienda/calculadora-precio-alquiler). Check typical rents with the official SERPAVI rent reference index: https://serpavi.mivau.gob.es/ (overview: https://www.mivau.gob.es/vivienda/alquila-bien-es-tu-derecho/serpavi). Regional deposit bodies: https://www.mivau.gob.es/vivienda/alquila-bien-es-tu-derecho/alquiler/deposito-de-fianzas"
+    source: https://www.mivau.gob.es/vivienda/alquila-bien-es-tu-derecho/alquiler/10-preguntas
+    source_owner: "Ministerio de Vivienda y Agenda Urbana"
+    checked: 2026-11-07
+    confidence: verified
+  - id: es-empadronamiento
+    order: 3
+    category: address-registration
+    step: "Register at your town hall (empadronamiento / padrón)"
+    who: "Everyone who lives in a Spanish municipality"
+    deadline: ""
+    fee: "Free"
+    needs: [passport, tenancy-contract]
+    how: "Register with your town hall in person by appointment, online with a digital certificate, or (in Barcelona) by phone on 010. Bring your passport or TIE and proof of address such as your tenancy contract, a recent utility bill, or the owner's written authorisation."
+    notes: "The padrón gives access to public healthcare and schooling and is required for the TIE. Non-EU nationals without long-term residence must renew it every 2 years. Documents not in Spanish or Catalan need a sworn translation. Source is Barcelona's guide; other town halls run the same register but may ask for different papers."
+    source: https://www.barcelona.cat/internationalwelcome/en/procedure/registration-municipal-register-residents-city-barcelona
+    source_owner: "Ajuntament de Barcelona (Barcelona International Welcome)"
+    checked: 2026-11-07
+    confidence: verified
+  - id: es-social-security-number
+    order: 4
+    category: other
+    step: "Get a Social Security number and affiliation"
+    who: "Anyone starting work in Spain, employed or self-employed"
+    deadline: "Before you start work"
+    fee: ""
+    needs: [application-form]
+    how: "Request it with form TA.1 at a Provincial Directorate of the Tesorería General de la Seguridad Social, or online at the Sede Electrónica with a digital certificate. Employers request affiliation for their staff; self-employed people apply themselves."
+    notes: "Foreign nationals who live or are legally in Spain and work there are covered by the system. The page does not list supporting documents."
+    source: https://www.seg-social.es/wps/portal/wss/internet/Trabajadores/Afiliacion/7332
+    source_owner: "Tesorería General de la Seguridad Social"
+    checked: 2026-11-07
+    confidence: partial
+  - id: es-tie
+    order: 5
+    category: residence-registration
+    step: "Get your foreigner identity card (TIE)"
+    who: "Non-EU nationals with a visa or residence permit for more than 6 months, and all long-term residents"
+    deadline: "Within one month of arriving in Spain or of the residence permit decision being published"
+    fee: "€16.08 for a first temporary residence card; €21.87 for a long-term residence card (form 790 code 012)"
+    needs: [passport, passport-photo, application-form, residence-permit, accommodation-proof]
+    how: "Book a fingerprinting appointment at the police station in your province through the government appointment website, pay the fee first, then attend in person with form EX-17 (or MI-TIE for Entrepreneurs Act profiles), your passport with entry stamp, a recent colour photo on white background, your padrón certificate and the residence permit decision. Collect the card about 40 to 45 days later."
+    notes: "The TIE is the physical card showing your photo, NIE and permit type; without it you can be fined even with a visa. Entrepreneurs Act profiles such as digital nomads do not need the padrón certificate. Bring originals and copies. Fees from the Policía form 790 code 012 (https://sede.policia.gob.es/Tasa790_012/ImpresoRellenar)."
+    source: https://www.barcelona.cat/internationalwelcome/en/procedure/identity-card-foreign-nationals-tie
+    source_owner: "Ajuntament de Barcelona (Barcelona International Welcome)"
+    checked: 2026-11-07
+    confidence: verified
+  - id: es-basic-payment-account
+    order: 6
+    category: bank-account
+    step: "Open a basic payment account"
+    who: "People legally resident in the EU, even without a fixed address, who do not already hold a current account in Spain"
+    deadline: ""
+    fee: "Up to €3 a month"
+    needs: []
+    how: "Ask any bank that offers payment accounts for a basic payment account (cuenta de pago básica). It can only refuse if you already have a current account in Spain, on national security or public order grounds, or if you do not give the information needed under anti-money-laundering rules."
+    notes: "The monthly fee covers opening, use and closing, cash deposits and withdrawals, debit card payments and 120 EU payment transactions a year. Fee page: https://clientebancario.bde.es/pcb/es/menu-horizontal/productosservici/cuentasdepositos/cuentascorriente/guia-textual/CuentadepagoBasica/comisiones.html. The page does not list documents."
+    source: https://clientebancario.bde.es/pcb/es/menu-horizontal/productosservici/cuentasdepositos/cuentascorriente/guia-textual/CuentadepagoBasica/quienes-pueden-solicitarla-.html
+    source_owner: "Banco de España"
+    checked: 2026-11-07
+    confidence: partial
+  - id: es-clave
+    order: 7
+    category: identity
+    step: "Register for Cl@ve (government digital login)"
+    who: "Holders of a DNI or NIE who want to use Spanish online public services"
+    deadline: ""
+    fee: ""
+    needs: [residence-permit]
+    how: "Register online with your NIE and its support number, then confirm by video call or with the invitation letter posted to your tax address, or register in person at a registration office such as the tax agency or Social Security."
+    notes: "You need a mobile number (one DNI or NIE per number; foreign numbers are allowed) and an email address. In-person registration cannot be done through a representative and many offices need an appointment. Fee not stated on the page."
+    source: https://clave.gob.es/registro/como-puedo-registrarme/registro-basico-internet-carta-de-invitacion
+    source_owner: "Gobierno de España (Cl@ve)"
+    checked: 2026-11-07
+    confidence: partial
+  - id: es-driving-licence-exchange
+    order: 8
+    category: driving-licence
+    step: "Exchange your foreign driving licence"
+    who: "Residents with a licence from a non-EU/EEA country that has an exchange agreement with Spain"
+    deadline: "Within 6 months of becoming normally resident in Spain"
+    fee: ""
+    needs: [application-form, other]
+    how: "Apply to the DGT with form Mod.03 and hand in your original foreign licence. If your country has no agreement with Spain, you must take a Spanish licence instead."
+    notes: "Agreement countries include Argentina, Brazil, Chile, Colombia, Japan, South Korea, Morocco, New Zealand, Peru, the Philippines, Switzerland, Ukraine, the UK and others listed on the page. A licence obtained while already legally resident in Spain after the agreement was signed cannot be exchanged. Information line 060. Fee not stated on the page."
+    source: https://sede.dgt.gob.es/es/permisos-de-conducir/canjes-de-permisos/canjes-de-permisos-extranjeros/
+    source_owner: "Dirección General de Tráfico (DGT)"
+    checked: 2026-11-07
+    confidence: partial
+  - id: es-autonomo
+    order: 9
+    category: business-registration
+    step: "Register as self-employed (autónomo) with the tax agency"
+    who: "Foreign residents allowed to work who start a business or freelance activity"
+    deadline: ""
+    fee: ""
+    needs: [application-form]
+    how: "File the census declaration Modelo 036 with the Agencia Tributaria; first-time entrepreneurs can use the Censos WEB online helper. Then request your own Social Security affiliation in the self-employed scheme (RETA)."
+    notes: "Foreign self-employed workers who live and work legally in Spain are covered by RETA. The page does not list documents or fees."
+    source: https://sede.agenciatributaria.gob.es/Sede/procedimientoini/G322.shtml
+    source_owner: "Agencia Estatal de Administración Tributaria (AEAT)"
+    checked: 2026-11-07
+    confidence: partial
+customs:
+  - topic: public-behaviour
+    summary: "Carry photo ID and show it when any police force asks; refusing a direct police request can be a criminal offence. Hotels and car hire firms record your passport."
+    source: https://www.gov.uk/foreign-travel-advice/spain/safety-and-security
+    source_owner: "Foreign, Commonwealth & Development Office (UK)"
+    checked: 2026-11-07
+  - topic: alcohol
+    summary: "Drinking in the street is banned in some areas with on-the-spot fines. Parts of the Balearics (Magaluf, Playa de Palma, San Antonio) restrict happy hours, pub crawls and shop alcohol sales between 9:30pm and 8am."
+    source: https://www.gov.uk/foreign-travel-advice/spain/safety-and-security
+    source_owner: "Foreign, Commonwealth & Development Office (UK)"
+    checked: 2026-11-07
+  - topic: drugs-and-medicines
+    summary: "Drug offences, cannabis included, bring heavy penalties, even for travellers in transit. Some areas also fine people for using nitrous oxide."
+    source: https://www.gov.uk/foreign-travel-advice/spain/safety-and-security
+    source_owner: "Foreign, Commonwealth & Development Office (UK)"
+    checked: 2026-11-07
+  - topic: public-behaviour
+    summary: "Rowdy balcony behaviour can lead to fines or eviction in some regions, and going to unlicensed villa parties in Ibiza and Mallorca can be fined."
+    source: https://www.gov.uk/foreign-travel-advice/spain/safety-and-security
+    source_owner: "Foreign, Commonwealth & Development Office (UK)"
+    checked: 2026-11-07
+  - topic: dress
+    summary: "Some towns ban walking the streets in swimwear or bare-chested, with fines."
+    source: https://www.gov.uk/foreign-travel-advice/spain/safety-and-security
+    source_owner: "Foreign, Commonwealth & Development Office (UK)"
+    checked: 2026-11-07
+  - topic: religion
+    summary: "You may be asked to remove a burka or niqab when entering some public buildings."
+    source: https://www.gov.uk/foreign-travel-advice/spain/safety-and-security
+    source_owner: "Foreign, Commonwealth & Development Office (UK)"
+    checked: 2026-11-07
+  - topic: other
+    summary: "Change money only at official outlets; passing counterfeit notes is a crime even if you did not know they were fake."
+    source: https://www.gov.uk/foreign-travel-advice/spain/safety-and-security
+    source_owner: "Foreign, Commonwealth & Development Office (UK)"
+    checked: 2026-11-07
+  - topic: lgbt
+    summary: "Spain is generally tolerant; same-sex marriage is legal and legal gender change does not require surgery."
+    source: https://www.gov.uk/foreign-travel-advice/spain/safety-and-security
+    source_owner: "Foreign, Commonwealth & Development Office (UK)"
+    checked: 2026-11-07

@@ -1,0 +1,762 @@
+# Official news sources for the nightly watcher.
+# Every URL below was loaded on 2026-11-07. Sources that refuse plain HTTP clients carry
+# `notes: blocks automated fetch ...` so the watcher can skip them or use a real browser.
+
+# ---------------------------------------------------------------- Gulf
+
+- id: qa-moi-news
+  country: QA
+  owner: Ministry of Interior, State of Qatar
+  topic: immigration
+  url: https://portal.moi.gov.qa/wps/portal/MOIInternet/mediacenter/news
+  kind: page
+  checked: 2026-11-07
+  notes: General MOI news (security, civil defence, borders); filter for visa and residency items.
+
+- id: ae-uae-portal-news
+  country: AE
+  owner: UAE Government Portal (u.ae), Telecommunications and Digital Government Regulatory Authority
+  topic: immigration
+  url: https://u.ae/en/media/news
+  kind: page
+  checked: 2026-11-07
+  notes: Federal government news, broad; filter for visa and residency items.
+
+- id: ae-gdrfa-dubai-news
+  country: AE
+  owner: General Directorate of Residency and Foreigners Affairs (GDRFA), Dubai
+  topic: residence
+  url: https://gdrfad.gov.ae/en/news
+  kind: page
+  checked: 2026-11-07
+
+- id: ae-mofa-news
+  country: AE
+  owner: Ministry of Foreign Affairs, United Arab Emirates
+  topic: visas
+  url: https://www.mofa.gov.ae/en/mediahub/news
+  kind: page
+  checked: 2026-11-07
+
+- id: ae-icp-news
+  country: AE
+  owner: Federal Authority for Identity, Citizenship, Customs and Port Security (ICP)
+  topic: visas
+  url: https://icp.gov.ae/en/media-center/news/
+  kind: page
+  checked: 2026-11-07
+  notes: blocks automated fetch; connection timed out from both curl and a browser on 2026-11-07, listing not verified.
+
+- id: sa-mofa-news
+  country: SA
+  owner: Ministry of Foreign Affairs, Kingdom of Saudi Arabia
+  topic: visas
+  url: https://www.mofa.gov.sa/en/ministry/news/Pages/default.aspx
+  kind: page
+  checked: 2026-11-07
+
+- id: sa-spa-news
+  country: SA
+  owner: Saudi Press Agency (SPA), Kingdom of Saudi Arabia
+  topic: immigration
+  url: https://www.spa.gov.sa/en
+  kind: page
+  checked: 2026-11-07
+  notes: Official state news agency. Listing is rendered by JavaScript; a plain HTTP fetch returns an empty shell.
+
+- id: kw-moi-news
+  country: KW
+  owner: Ministry of Interior, State of Kuwait
+  topic: residence
+  url: https://www.moi.gov.kw/main/
+  kind: page
+  checked: 2026-11-07
+  notes: Arabic only. Latest-news block on the home page; newest item shown on 2026-11-07 was dated June 2026. The archive (/main/news/archive) needs a year/month selection.
+
+- id: bh-moi-news
+  country: BH
+  owner: Ministry of Interior, Kingdom of Bahrain
+  topic: immigration
+  url: https://www.interior.gov.bh/en/media-center/news
+  kind: page
+  checked: 2026-11-07
+  notes: General MOI news; filter for NPRA (passports, residence) items.
+
+- id: bh-npra-news
+  country: BH
+  owner: Nationality, Passports and Residence Affairs (NPRA), Kingdom of Bahrain
+  topic: residence
+  url: https://www.npra.gov.bh/en/news
+  kind: page
+  checked: 2026-11-07
+  notes: blocks automated fetch; redirects to services.interior.gov.bh, which timed out on 2026-11-07. Listing not verified.
+
+- id: om-rop-announcements
+  country: OM
+  owner: Royal Oman Police (ROP), Sultanate of Oman
+  topic: immigration
+  url: https://www.rop.gov.om/english/OtherAnnouncement.aspx
+  kind: page
+  checked: 2026-11-07
+  notes: ROP handles visas and residence. The ROP News page (news.aspx) rendered empty and its RSS link (mobilesite/rss_news.asp) returned HTTP 500, so the announcements page is used instead.
+
+- id: om-ona-rss
+  country: OM
+  owner: Oman News Agency (ONA), Ministry of Information, Sultanate of Oman
+  topic: immigration
+  url: https://omannews.gov.om/rss.ona
+  kind: rss
+  checked: 2026-11-07
+  notes: Official state news agency, all topics, Arabic. Filter for ROP visa and residence items.
+
+# ---------------------------------------------------------------- UK and Ireland
+
+- id: gb-ukvi-news-atom
+  country: GB
+  owner: UK Visas and Immigration (UKVI), Home Office
+  topic: visas
+  url: https://www.gov.uk/search/news-and-communications.atom?organisations%5B%5D=uk-visas-and-immigration
+  kind: atom
+  checked: 2026-11-07
+
+- id: gb-ukvi-activity-atom
+  country: GB
+  owner: UK Visas and Immigration (UKVI), Home Office
+  topic: immigration
+  url: https://www.gov.uk/government/organisations/uk-visas-and-immigration.atom
+  kind: atom
+  checked: 2026-11-07
+  notes: All UKVI activity on GOV.UK, including guidance updates such as sponsor guidance and rule changes.
+
+- id: gb-companies-house-atom
+  country: GB
+  owner: Companies House
+  topic: business-registration
+  url: https://www.gov.uk/government/organisations/companies-house.atom
+  kind: atom
+  checked: 2026-11-07
+
+- id: gb-fcdo-travel-advice-atom
+  country: GB
+  owner: Foreign, Commonwealth and Development Office (FCDO)
+  topic: travel-advisory
+  url: https://www.gov.uk/foreign-travel-advice.atom
+  kind: atom
+  checked: 2026-11-07
+  notes: One entry per country when its travel advice is updated. Per-country feeds follow the pattern https://www.gov.uk/foreign-travel-advice/<country>.atom.
+
+- id: ie-isd-rss
+  country: IE
+  owner: Immigration Service Delivery (ISD), Department of Justice, Ireland
+  topic: immigration
+  url: https://www.irishimmigration.ie/feed/
+  kind: rss
+  checked: 2026-11-07
+
+- id: ie-isd-news
+  country: IE
+  owner: Immigration Service Delivery (ISD), Department of Justice, Ireland
+  topic: immigration
+  url: https://www.irishimmigration.ie/news-and-updates/
+  kind: page
+  checked: 2026-11-07
+
+# ---------------------------------------------------------------- North America
+
+- id: us-state-visa-news
+  country: US
+  owner: Bureau of Consular Affairs, U.S. Department of State
+  topic: visas
+  url: https://travel.state.gov/content/travel/en/News/visas-news.html
+  kind: page
+  checked: 2026-11-07
+  notes: blocks automated fetch; Cloudflare challenge for both curl and a browser on 2026-11-07, listing not verified. The travel advisory RSS on the same host does load.
+
+- id: us-state-travel-advisories-rss
+  country: US
+  owner: Bureau of Consular Affairs, U.S. Department of State
+  topic: travel-advisory
+  url: https://travel.state.gov/_res/rss/TAsTWs.xml
+  kind: rss
+  checked: 2026-11-07
+
+- id: us-uscis-news-releases-rss
+  country: US
+  owner: U.S. Citizenship and Immigration Services (USCIS)
+  topic: immigration
+  url: https://www.uscis.gov/news/rss-feed/23269
+  kind: rss
+  checked: 2026-11-07
+
+- id: us-uscis-alerts-rss
+  country: US
+  owner: U.S. Citizenship and Immigration Services (USCIS)
+  topic: immigration
+  url: https://www.uscis.gov/news/rss-feed/22984
+  kind: rss
+  checked: 2026-11-07
+  notes: USCIS alerts (fees, filing changes, policy updates).
+
+- id: us-uscis-all-news
+  country: US
+  owner: U.S. Citizenship and Immigration Services (USCIS)
+  topic: immigration
+  url: https://www.uscis.gov/newsroom/all-news
+  kind: page
+  checked: 2026-11-07
+
+- id: ca-ircc-news-atom
+  country: CA
+  owner: Immigration, Refugees and Citizenship Canada (IRCC)
+  topic: immigration
+  url: https://api.io.canada.ca/io-server/gc/news/en/v2?dept=departmentofcitizenshipandimmigration&sort=publishedDate&orderBy=desc&publishedDate%3E=2021-07-23&pick=50&format=atom&atomtitle=Immigration,%20Refugees%20and%20Citizenship%20Canada
+  kind: atom
+  checked: 2026-11-07
+  notes: Government of Canada news API, all IRCC item types (releases, advisories, statements, backgrounders). Linked from the IRCC newsroom.
+
+- id: ca-ircc-newsroom
+  country: CA
+  owner: Immigration, Refugees and Citizenship Canada (IRCC)
+  topic: immigration
+  url: https://www.canada.ca/en/immigration-refugees-citizenship/news.html
+  kind: page
+  checked: 2026-11-07
+  notes: blocks automated fetch; curl gets an HTTP/2 reset or timeout, the page loads in a browser. Use the Atom feed instead.
+
+- id: ca-travel-advice
+  country: CA
+  owner: Global Affairs Canada
+  topic: travel-advisory
+  url: https://travel.gc.ca/travelling/advisories
+  kind: page
+  checked: 2026-11-07
+  notes: Table with a last-updated time per destination. Machine-readable JSON of the same data at https://data.international.gc.ca/travel-voyage/index-alpha-eng.json (also loaded 2026-11-07).
+
+# ---------------------------------------------------------------- Oceania
+
+- id: au-immi-news
+  country: AU
+  owner: Department of Home Affairs, Australian Government
+  topic: visas
+  url: https://immi.homeaffairs.gov.au/news-media/archive
+  kind: page
+  checked: 2026-11-07
+  notes: Listing is loaded by JavaScript (SharePoint API); a plain HTTP fetch returns the page shell without items.
+
+- id: au-smartraveller-rss
+  country: AU
+  owner: Smartraveller, Department of Foreign Affairs and Trade (DFAT), Australian Government
+  topic: travel-advisory
+  url: https://www.smartraveller.gov.au/rss
+  kind: rss
+  checked: 2026-11-07
+  notes: blocks automated fetch; curl gets an HTTP/2 reset or timeout, the feed loads in a browser. Destination table at https://www.smartraveller.gov.au/destinations.
+
+- id: nz-inz-news-centre
+  country: NZ
+  owner: Immigration New Zealand (INZ), Ministry of Business, Innovation and Employment
+  topic: visas
+  url: https://www.immigration.govt.nz/about-us/news-centre/
+  kind: page
+  checked: 2026-11-07
+  notes: blocks automated fetch; Incapsula bot check returns an empty page to curl, the listing loads in a browser.
+
+- id: nz-beehive-rss
+  country: NZ
+  owner: New Zealand Government (beehive.govt.nz)
+  topic: immigration
+  url: https://www.beehive.govt.nz/rss.xml
+  kind: rss
+  checked: 2026-11-07
+  notes: All ministerial releases; filter for the Immigration portfolio.
+
+- id: nz-safetravel-news
+  country: NZ
+  owner: SafeTravel, Ministry of Foreign Affairs and Trade, New Zealand
+  topic: travel-advisory
+  url: https://www.safetravel.govt.nz/news
+  kind: page
+  checked: 2026-11-07
+  notes: blocks automated fetch; Cloudflare challenge for curl, the listing loads in a browser.
+
+# ---------------------------------------------------------------- EU and Schengen
+
+- id: eu-home-affairs-rss
+  country: EU
+  owner: Directorate-General for Migration and Home Affairs, European Commission
+  topic: immigration
+  url: https://home-affairs.ec.europa.eu/node/2/rss_en
+  kind: rss
+  checked: 2026-11-07
+
+- id: eu-home-affairs-news
+  country: EU
+  owner: Directorate-General for Migration and Home Affairs, European Commission
+  topic: immigration
+  url: https://home-affairs.ec.europa.eu/news_en
+  kind: page
+  checked: 2026-11-07
+
+- id: eu-etias-news-corner
+  country: EU
+  owner: European Union, Travel to Europe (ETIAS official site)
+  topic: transit
+  url: https://travel-europe.europa.eu/etias/about-etias/news-corner
+  kind: page
+  checked: 2026-11-07
+  notes: Single-page app; content is rendered by JavaScript.
+
+- id: eu-ees-home
+  country: EU
+  owner: European Union, Travel to Europe (EES official site)
+  topic: transit
+  url: https://travel-europe.europa.eu/en/ees
+  kind: page
+  checked: 2026-11-07
+  notes: No news listing on the EES site; watch the page itself for changes. Single-page app rendered by JavaScript.
+
+# ---------------------------------------------------------------- Europe, national
+
+- id: de-bmi-press
+  country: DE
+  owner: Federal Ministry of the Interior (BMI), Germany
+  topic: immigration
+  url: https://www.bmi.bund.de/EN/press/press-node.html
+  kind: page
+  checked: 2026-11-07
+  notes: blocks automated fetch; curl is sent to a cookie-check page (HTTP 400), the page loads in a browser.
+
+- id: de-make-it-in-germany-news
+  country: DE
+  owner: Make it in Germany, Federal Government of Germany
+  topic: visas
+  url: https://www.make-it-in-germany.com/en/news
+  kind: page
+  checked: 2026-11-07
+  notes: blocks automated fetch; Radware CAPTCHA for both curl and a browser on 2026-11-07, listing not verified.
+
+- id: fr-france-visas-news
+  country: FR
+  owner: France-Visas, Ministry for Europe and Foreign Affairs and Ministry of the Interior, France
+  topic: visas
+  url: https://france-visas.gouv.fr/en/actualites
+  kind: page
+  checked: 2026-11-07
+  notes: blocks automated fetch; curl gets a 403 bot check, the listing loads in a browser.
+
+- id: fr-interieur-immigration-news
+  country: FR
+  owner: Directorate-General for Foreign Nationals in France (DGEF), Ministry of the Interior, France
+  topic: residence
+  url: https://www.immigration.interieur.gouv.fr/Info-ressources/Actualites
+  kind: page
+  checked: 2026-11-07
+  notes: blocks automated fetch; Cloudflare challenge for both curl and a browser on 2026-11-07, listing not verified.
+
+- id: nl-ind-news
+  country: NL
+  owner: Immigration and Naturalisation Service (IND), Netherlands
+  topic: immigration
+  url: https://ind.nl/en/news
+  kind: page
+  checked: 2026-11-07
+
+- id: es-moncloa-inclusion-migration-press
+  country: ES
+  owner: La Moncloa, Government of Spain (Ministry of Inclusion, Social Security and Migration press releases)
+  topic: immigration
+  url: https://www.lamoncloa.gob.es/serviciosdeprensa/notasprensa/inclusion/Paginas/index.aspx
+  kind: page
+  checked: 2026-11-07
+  notes: Spanish. Covers social security as well as migration; filter for migration items.
+
+- id: es-migraciones-news
+  country: ES
+  owner: Ministry of Inclusion, Social Security and Migration, Spain (Migraciones)
+  topic: residence
+  url: https://www.inclusion.gob.es/web/migraciones/vivir-en-espana/noticias
+  kind: page
+  checked: 2026-11-07
+  notes: blocks automated fetch; curl gets 403, the page loads in a browser. Spanish. Newest item on 2026-11-07 was dated 17/09/2025.
+
+- id: es-exteriores-press
+  country: ES
+  owner: Ministry of Foreign Affairs, European Union and Cooperation, Spain
+  topic: visas
+  url: https://www.exteriores.gob.es/es/Comunicacion/Comunicados/Paginas/index.aspx
+  kind: page
+  checked: 2026-11-07
+  notes: Spanish. General foreign-ministry statements; filter for visa and consular items.
+
+- id: it-esteri-press
+  country: IT
+  owner: Ministry of Foreign Affairs and International Cooperation (MAECI), Italy
+  topic: visas
+  url: https://www.esteri.it/en/sala_stampa/archivionotizie/comunicati/
+  kind: page
+  checked: 2026-11-07
+  notes: Loaded once by curl on 2026-11-07, but the site uses Radware bot protection and served a CAPTCHA on later requests (its RSS feed at /en/feed/ was blocked the same way). Treat as blocks automated fetch.
+
+- id: it-interno-news
+  country: IT
+  owner: Ministry of the Interior, Italy
+  topic: residence
+  url: https://www.interno.gov.it/it/notizie
+  kind: page
+  checked: 2026-11-07
+  notes: blocks automated fetch; Akamai "Access Denied" for both curl and a browser on 2026-11-07, listing not verified.
+
+- id: pt-aima-news
+  country: PT
+  owner: Agency for Integration, Migration and Asylum (AIMA), Portugal
+  topic: residence
+  url: https://aima.gov.pt/pt/noticias
+  kind: page
+  checked: 2026-11-07
+  notes: Portuguese. The /en/noticias version showed no items.
+
+- id: pt-mne-vistos
+  country: PT
+  owner: Ministry of Foreign Affairs, Portugal (Portal Consular, Vistos)
+  topic: visas
+  url: https://vistos.mne.gov.pt/en/
+  kind: page
+  checked: 2026-11-07
+  notes: Home page "Highlights" section lists visa notices.
+
+# ---------------------------------------------------------------- East Asia
+
+- id: jp-mofa-visa
+  country: JP
+  owner: Ministry of Foreign Affairs of Japan (MOFA)
+  topic: visas
+  url: https://www.mofa.go.jp/j_info/visit/visa/index.html
+  kind: page
+  checked: 2026-11-07
+  notes: blocks automated fetch; curl gets Akamai 403, the page loads in a browser. Watch section 5 "Announcements".
+
+- id: jp-isa-updates
+  country: JP
+  owner: Immigration Services Agency of Japan (ISA), Ministry of Justice
+  topic: residence
+  url: https://www.moj.go.jp/isa/publications/newslist/index.html
+  kind: page
+  checked: 2026-11-07
+  notes: Japanese ("更新情報", update list). A procedures-only list is at /isa/publications/newslist/list-procedures.html.
+
+- id: kr-immigration-whats-new
+  country: KR
+  owner: Korea Immigration Service, Ministry of Justice, Republic of Korea
+  topic: immigration
+  url: https://www.immigration.go.kr/immigration_eng/1832/subview.do
+  kind: page
+  checked: 2026-11-07
+  notes: English "What's new" board; newest item on 2026-11-07 was dated 2026-07-13.
+
+- id: kr-hikorea-notices
+  country: KR
+  owner: HiKorea, Korea Immigration Service, Ministry of Justice, Republic of Korea
+  topic: residence
+  url: https://www.hikorea.go.kr/board/BoardNtcListR.pt?BBS_SEQ=1&BBS_GB_CD=BS10&NTCCTT_SEQ=&page=1
+  kind: page
+  checked: 2026-11-07
+  notes: Korean notice board, updated more often than the English site.
+
+- id: cn-nia-notices
+  country: CN
+  owner: National Immigration Administration (NIA), People's Republic of China
+  topic: visas
+  url: https://en.nia.gov.cn/n147418/n147468/index.html
+  kind: page
+  checked: 2026-11-07
+  notes: English "Notice" list (visa-free lists, registration rules). Server sends gzip even when not asked; fetch with compression enabled.
+
+- id: cn-nia-news
+  country: CN
+  owner: National Immigration Administration (NIA), People's Republic of China
+  topic: immigration
+  url: https://en.nia.gov.cn/n147413/index.html
+  kind: page
+  checked: 2026-11-07
+  notes: English news list. Policy explainers are at /n147418/n147463/index.html.
+
+# ---------------------------------------------------------------- Southeast Asia
+
+- id: sg-ica-newsroom
+  country: SG
+  owner: Immigration & Checkpoints Authority (ICA), Singapore
+  topic: immigration
+  url: https://www.ica.gov.sg/about-ica/news-and-publications
+  kind: page
+  checked: 2026-11-07
+  notes: Listing (media releases, advisories) is rendered by JavaScript; a plain HTTP fetch returns no items.
+
+- id: sg-acra-news
+  country: SG
+  owner: Accounting and Corporate Regulatory Authority (ACRA), Singapore
+  topic: business-registration
+  url: https://www.acra.gov.sg/news-events/news-announcements
+  kind: page
+  checked: 2026-11-07
+
+- id: my-imi-announcements
+  country: MY
+  owner: Immigration Department of Malaysia (Jabatan Imigresen Malaysia)
+  topic: immigration
+  url: https://www.imi.gov.my/index.php/en/news-announcement/
+  kind: page
+  checked: 2026-11-07
+  notes: Page loads (HTTP 200) but no announcement items could be read by curl or a browser on 2026-11-07. The site RSS (/index.php/en/feed/) works but its newest item is from 2021, so it is not listed.
+
+- id: th-mfa-press
+  country: TH
+  owner: Ministry of Foreign Affairs, Kingdom of Thailand
+  topic: visas
+  url: https://www.mfa.go.th/en/page/press-releases?menu=5d5bd3cb15e39c306002a9b0
+  kind: page
+  checked: 2026-11-07
+  notes: General MFA press releases; filter for visa items.
+
+- id: th-mfa-visa-exemption
+  country: TH
+  owner: Ministry of Foreign Affairs, Kingdom of Thailand
+  topic: visas
+  url: https://www.mfa.go.th/en/page/visa-exemption-and-visa-on-arrival-to-thailand
+  kind: page
+  checked: 2026-11-07
+  notes: Single rule page (visa exemption and visa on arrival lists); watch for content changes.
+
+- id: th-immigration-bureau
+  country: TH
+  owner: Immigration Bureau, Royal Thai Police
+  topic: immigration
+  url: https://www.immigration.go.th/en/
+  kind: page
+  checked: 2026-11-07
+  notes: blocks automated fetch; Cloudflare challenge for both curl and a browser on 2026-11-07, listing not verified.
+
+- id: id-imigrasi-press
+  country: ID
+  owner: Directorate General of Immigration, Republic of Indonesia
+  topic: immigration
+  url: https://www.imigrasi.go.id/siaran_pers
+  kind: page
+  checked: 2026-11-07
+  notes: Indonesian press releases. General news at https://www.imigrasi.go.id/berita.
+
+- id: ph-bi-advisories
+  country: PH
+  owner: Bureau of Immigration (BI), Republic of the Philippines
+  topic: immigration
+  url: https://immigration.gov.ph/category/advisory/
+  kind: page
+  checked: 2026-11-07
+  notes: The site's /feed/ URLs redirect to HTML, so no RSS.
+
+- id: ph-bi-press-releases
+  country: PH
+  owner: Bureau of Immigration (BI), Republic of the Philippines
+  topic: immigration
+  url: https://immigration.gov.ph/category/press-release/
+  kind: page
+  checked: 2026-11-07
+
+- id: ph-dfa-releases
+  country: PH
+  owner: Department of Foreign Affairs (DFA), Republic of the Philippines
+  topic: visas
+  url: https://dfa.gov.ph/dfa-news/dfa-releasesupdate
+  kind: page
+  checked: 2026-11-07
+  notes: blocks automated fetch; Cloudflare challenge for both curl and a browser on 2026-11-07, listing not verified.
+
+# ---------------------------------------------------------------- South Asia
+
+- id: in-boi-whats-new
+  country: IN
+  owner: Bureau of Immigration (BOI), Ministry of Home Affairs, India
+  topic: immigration
+  url: https://boi.gov.in/boi/whatsnew
+  kind: page
+  checked: 2026-11-07
+  notes: Covers e-Visa, FRRO registration and arrival-card changes. Latest-updates list also at /boi/contents/help-support/news-centre.
+
+- id: in-mha-whats-new
+  country: IN
+  owner: Ministry of Home Affairs (MHA), India
+  topic: immigration
+  url: https://www.mha.gov.in/en/media/whats-new
+  kind: page
+  checked: 2026-11-07
+  notes: Redirects to the MHA home page, whose "What's New" list is all-ministry; filter for Foreigners Division items.
+
+- id: pk-mofa-press
+  country: PK
+  owner: Ministry of Foreign Affairs, Pakistan
+  topic: visas
+  url: https://www.mofa.gov.pk/press-releases
+  kind: page
+  checked: 2026-11-07
+  notes: General MOFA press releases; filter for visa items.
+
+- id: pk-dgip-home
+  country: PK
+  owner: Directorate General of Immigration and Passports (DGI&P), Pakistan
+  topic: immigration
+  url: https://dgip.gov.pk/
+  kind: page
+  checked: 2026-11-07
+  notes: Home page notices only; few and mostly old. The visa portal (visa.nadra.gov.pk) returned Access Denied to curl.
+
+- id: lk-immigration-news
+  country: LK
+  owner: Department of Immigration and Emigration, Sri Lanka
+  topic: visas
+  url: https://www.immigration.gov.lk/index_e.php
+  kind: page
+  checked: 2026-11-07
+  notes: The "Latest News" block on the English home page (ETA and visa notices).
+
+- id: np-immigration-notices
+  country: NP
+  owner: Department of Immigration, Nepal
+  topic: immigration
+  url: https://immigration.gov.np/news-notices
+  kind: page
+  checked: 2026-11-07
+  notes: Mostly Nepali, some English notices; mixed with procurement notices.
+
+- id: bd-dip-notices
+  country: BD
+  owner: Department of Immigration and Passports (DIP), Bangladesh
+  topic: visas
+  url: https://www.dip.gov.bd/pages/notices
+  kind: page
+  checked: 2026-11-07
+  notes: Bengali. TLS certificate chain is incomplete, so strict clients fail verification; the page loads when that is relaxed.
+
+# ---------------------------------------------------------------- Middle East, Africa, Caucasus
+
+- id: eg-mfa-news
+  country: EG
+  owner: Ministry of Foreign Affairs, Arab Republic of Egypt
+  topic: visas
+  url: https://www.mfa.gov.eg/ar/MediaMinistries/MinistryNews
+  kind: page
+  checked: 2026-11-07
+  notes: Arabic; the /en paths redirected to Arabic on 2026-11-07. No news listing found on the e-Visa portal (visa2egypt.gov.eg).
+
+- id: tr-mfa-press-rss
+  country: TR
+  owner: Ministry of Foreign Affairs, Republic of Türkiye
+  topic: visas
+  url: https://www.mfa.gov.tr/en.rss.mfa?ad9093da-8e71-4678-a1b6-05f297baadc4
+  kind: rss
+  checked: 2026-11-07
+  notes: All MFA press releases; filter for visa items.
+
+- id: tr-mfa-visa-info
+  country: TR
+  owner: Ministry of Foreign Affairs, Republic of Türkiye
+  topic: visas
+  url: https://www.mfa.gov.tr/visa-information-for-foreigners.en.mfa
+  kind: page
+  checked: 2026-11-07
+  notes: Single rule page (visa requirements by nationality); watch for content changes. The e-Visa site (evisa.gov.tr) timed out on 2026-11-07.
+
+- id: tr-goc-news
+  country: TR
+  owner: Presidency of Migration Management, Ministry of Interior, Republic of Türkiye
+  topic: residence
+  url: https://en.goc.gov.tr/news
+  kind: page
+  checked: 2026-11-07
+
+- id: tr-goc-announcements
+  country: TR
+  owner: Presidency of Migration Management, Ministry of Interior, Republic of Türkiye
+  topic: residence
+  url: https://en.goc.gov.tr/announcement
+  kind: page
+  checked: 2026-11-07
+  notes: Residence-permit and appointment-system announcements.
+
+- id: ge-mfa-news
+  country: GE
+  owner: Ministry of Foreign Affairs of Georgia
+  topic: visas
+  url: https://www.mfa.gov.ge/en/news
+  kind: page
+  checked: 2026-11-07
+  notes: General MFA news. The consular site (geoconsul.gov.ge) timed out on 2026-11-07.
+
+- id: za-dha-statements
+  country: ZA
+  owner: Department of Home Affairs (DHA), Republic of South Africa
+  topic: immigration
+  url: https://www.dha.gov.za/index.php/statements-speeches
+  kind: page
+  checked: 2026-11-07
+
+- id: za-dha-notices
+  country: ZA
+  owner: Department of Home Affairs (DHA), Republic of South Africa
+  topic: visas
+  url: https://www.dha.gov.za/index.php/notices
+  kind: page
+  checked: 2026-11-07
+  notes: Gazette notices and immigration directives.
+
+- id: ke-mfa-rss
+  country: KE
+  owner: Ministry of Foreign Affairs, Republic of Kenya
+  topic: visas
+  url: https://www.mfa.go.ke/rss.xml
+  kind: rss
+  checked: 2026-11-07
+  notes: General MFA news; filter for eTA and visa items.
+
+- id: mx-inm-press
+  country: MX
+  owner: National Migration Institute (INM), Government of Mexico
+  topic: immigration
+  url: https://www.gob.mx/inm/es/archivo/prensa
+  kind: page
+  checked: 2026-11-07
+  notes: Spanish. Without an Accept text/html header gob.mx returns the list as a JavaScript fragment; items and dates are still present.
+
+- id: mx-sre-press
+  country: MX
+  owner: Ministry of Foreign Affairs (SRE), Government of Mexico
+  topic: visas
+  url: https://www.gob.mx/sre/es/archivo/prensa
+  kind: page
+  checked: 2026-11-07
+  notes: Spanish. General SRE press; filter for visa and consular items.
+
+- id: br-mre-press
+  country: BR
+  owner: Ministry of Foreign Affairs (Itamaraty), Federative Republic of Brazil
+  topic: visas
+  url: https://www.gov.br/mre/en/contact-us/press-area/press-releases
+  kind: page
+  checked: 2026-11-07
+  notes: English press releases; the Portuguese list (more items) is at https://www.gov.br/mre/pt-br/canais_atendimento/imprensa/notas-a-imprensa.
+
+- id: br-pf-news
+  country: BR
+  owner: Federal Police (Polícia Federal), Federative Republic of Brazil
+  topic: immigration
+  url: https://www.gov.br/pf/pt-br/assuntos/noticias
+  kind: page
+  checked: 2026-11-07
+  notes: Portuguese. The Federal Police handles migration registration; filter for migration items.
+
+- id: ar-migraciones-news
+  country: AR
+  owner: National Directorate of Migration (Migraciones), Argentina
+  topic: immigration
+  url: https://www.argentina.gob.ar/migraciones/noticias
+  kind: page
+  checked: 2026-11-07
+  notes: Spanish.

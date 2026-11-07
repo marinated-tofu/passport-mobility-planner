@@ -65,6 +65,7 @@ Settle-in files. One per country: steps in order, housing rules and local custom
 - [settle/ae.md](references/settle/ae.md): Settling in the United Arab Emirates (10 steps, 8 customs notes)
 - [settle/ca.md](references/settle/ca.md): Settling in Canada (9 steps, 5 customs notes)
 - [settle/ee.md](references/settle/ee.md): Settling in Estonia (10 steps, 5 customs notes)
+- [settle/es.md](references/settle/es.md): Settling in Spain (9 steps, 8 customs notes)
 - [settle/gb.md](references/settle/gb.md): Settling in the United Kingdom (9 steps, 7 customs notes)
 - [settle/jp.md](references/settle/jp.md): Settling in Japan (8 steps, 8 customs notes)
 - [settle/kr.md](references/settle/kr.md): Settling in South Korea (8 steps, 5 customs notes)
