@@ -1,0 +1,136 @@
+country: MX
+title: "Settling in Mexico"
+steps:
+  - id: mx-resident-card-exchange
+    order: 1
+    category: residence-registration
+    step: "Exchange your visa and FMM for a resident card at INM"
+    who: "Foreigners who entered Mexico on a Mexican temporary or permanent resident visa with an FMM marked for exchange"
+    deadline: ""
+    fee: "MXN 11,141 for a 1-year temporary resident card; MXN 13,579 for a permanent resident card (INM 2026 fee table)"
+    needs: [passport, visa, application-form, other]
+    how: "Fill in the INM application form online, print and sign it, and pay the fees. Then go in person to the INM office for your home or work address with the originals and copies, where your photo, signature and fingerprints are taken."
+    notes: "'other' is your valid FMM (entry form) and the fee payment receipt. Some residents pay 50% of the fee (family unity, a job offer from a registered employer, or an unpaid invitation). If the visa came from a job-offer authorisation, write your occupation in the form's comments. INM offices are open Monday to Friday, 09:00 to 15:00. The 30-day window after entry that is often quoted is not stated on this INM page; check your visa and FMM or call INM on 800 004 6264."
+    source: https://www.inm.gob.mx/mpublic/publico/inm-tramites.html?a=thgeGuQHx2k%3D&tr=hyBh72VpD1w%3D&h_sdp00=giUnJ9XgtISVcdYJXduIGw%3D%3D
+    source_owner: "Instituto Nacional de Migración (INM)"
+    checked: 2026-11-07
+    confidence: partial
+  - id: mx-inm-change-notice
+    order: 2
+    category: address-registration
+    step: "Notify INM when you change address, employer, marital status or name"
+    who: "Temporary, temporary student and permanent residents"
+    deadline: ""
+    fee: ""
+    needs: [application-form, other]
+    how: "Submit the INM application form with a signed letter stating the old and new details. The microsite can generate the letter for a change of address or workplace."
+    notes: "Late or missing notice can lead to a fine under article 158 of the Migration Law. A change of workplace means a new employer, not a new job title. Foreign public documents (other than passports) must be apostilled or legalised and translated into Spanish by an officially recognised translator. The page does not state a deadline or fee."
+    source: https://www.inm.gob.mx/mpublic/publico/inm-tramites.html?a=thgeGuQHx2k%3D&tr=FaMSt2NSUa0%3D&h_sdp00=giUnJ9XgtISVcdYJXduIGw%3D%3D
+    source_owner: "Instituto Nacional de Migración (INM)"
+    checked: 2026-11-07
+    confidence: partial
+  - id: mx-curp
+    order: 3
+    category: identity
+    step: "Look up and print your CURP (population registry code)"
+    who: "Residents who have been assigned a CURP"
+    deadline: ""
+    fee: ""
+    needs: []
+    how: "Search on gob.mx/curp with your CURP or your name and birth details, then download it."
+    notes: "Run by RENAPO (Ministry of the Interior). Phone help: 800 9 11 11 11, extensions 15100 and 15101, Monday to Friday 08:00 to 16:00. This page does not explain how foreign residents are assigned a CURP or whether there is a fee."
+    source: https://www.gob.mx/curp/
+    source_owner: "Registro Nacional de Población (RENAPO), Secretaría de Gobernación"
+    checked: 2026-11-07
+    confidence: partial
+  - id: mx-rfc
+    order: 4
+    category: tax-number
+    step: "Register for an RFC (tax ID) with SAT"
+    who: "Individuals who need a Mexican tax ID, for example to work, invoice or open some accounts"
+    deadline: ""
+    fee: "Free"
+    needs: []
+    how: "Book an appointment at citas.sat.gob.mx, choosing 'Inscripción al RFC para personas físicas' in Oficina Virtual mode, or at an SAT office. Send the documents listed in your confirmation email and join the video call from a phone or computer."
+    notes: "SAT says all its procedures and services are free. The Oficina Virtual can also correct or add your CURP and issue your Constancia de Situación Fiscal. The document list is sent by email and is not on this page. The main sat.gob.mx site timed out during this check."
+    source: https://www.gob.mx/sat/articulos/oficina-virtual-del-sat-tramites-faciles-rapidos-y-seguros?idiom=es
+    source_owner: "Servicio de Administración Tributaria (SAT)"
+    checked: 2026-11-07
+    confidence: partial
+  - id: mx-basic-bank-account
+    order: 5
+    category: bank-account
+    step: "Open a basic bank account (cuenta básica)"
+    who: "Individuals who meet the bank's general requirements, and employees whose employer pays salaries through a bank"
+    deadline: ""
+    fee: "No fees for opening, keeping, the debit card or the bank's own ATM and branch services"
+    needs: []
+    how: "Ask any bank on Banco de México's list for its basic account for the general public, or its basic payroll account if your employer pays through that bank."
+    notes: "No minimum opening deposit is required. Every basic account comes with a CLABE for transfers. Using another bank's ATM can cost a fee. The bank may set a minimum average balance for the general-public account and may close it after three months below it. Banco de México lists banks offering basic accounts (for example BBVA, Banorte, Santander, HSBC, Banamex, Scotiabank). ID requirements are set by each bank and are not on this page."
+    source: https://www.banxico.org.mx/CuentasBasicas/
+    source_owner: "Banco de México"
+    checked: 2026-11-07
+    confidence: partial
+  - id: mx-imss
+    order: 6
+    category: health-insurance
+    step: "Get IMSS social security coverage (through your employer or voluntarily)"
+    who: "Salaried employees, and independent workers who join voluntarily"
+    deadline: ""
+    fee: ""
+    needs: []
+    how: "If you have an employment contract, IMSS coverage comes through your employer. If you are self-employed, you can join IMSS voluntarily under the 2023 reform for independent workers."
+    notes: "Voluntary independent workers get all five IMSS insurances (illness and maternity, work risks, disability and life, retirement and old age, childcare and social benefits) and can add their families. This IMSS article does not give contribution amounts or a document list, and imss.gob.mx pages were blocked during this check."
+    source: https://www.gob.mx/imss/articulos/trabajadores-independientes
+    source_owner: "Instituto Mexicano del Seguro Social (IMSS)"
+    checked: 2026-11-07
+    confidence: partial
+  - id: mx-business-resico
+    order: 7
+    category: business-registration
+    step: "Choose your SAT tax regime when you start self-employment or a business"
+    who: "Freelancers, self-employed people and small company owners"
+    deadline: ""
+    fee: ""
+    needs: []
+    how: "Register with SAT in the regime that matches your activity. The simplified regime (Régimen Simplificado de Confianza) covers individuals billing under MXN 3.5 million a year and companies with individual partners and under MXN 35 million."
+    notes: "Under this regime individuals pay income tax of 1% to 2.5% of income and cannot deduct expenses. The regime covers business and professional activity, renting out property, and farming, fishing or forestry. A 2016 SAT article says a business run by two or more people registers as a company (persona moral). This SAT article dates from February 2022, so check current rules with SAT."
+    source: https://www.gob.mx/sat/articulos/sabes-a-quien-beneficiara-el-nuevo-regimen-simplificado-de-confianza
+    source_owner: "Servicio de Administración Tributaria (SAT)"
+    checked: 2026-11-07
+    confidence: partial
+  - id: mx-rental-scams
+    order: 8
+    category: housing
+    step: "Rent safely: see the property and sign a lease before paying"
+    who: "Anyone looking for a flat or house to rent"
+    deadline: ""
+    fee: ""
+    needs: [tenancy-contract, passport]
+    how: "View the property in person first; only after both sides sign the lease (contrato de arrendamiento) and you get the keys should you pay rent or deposits."
+    notes: "CONDUSEF warns of a scam where a cheap listing in a popular area is posted on social media, the 'owner' cannot meet you, and asks for an advance of up to 50% plus a photo of your ID, then disappears. Never pay in advance before meeting in person, distrust very low rents, and do not send photos of your ID or cards before starting the process in person. No official rent index or deposit limit was found on a federal page."
+    source: https://www.gob.mx/condusef/articulos/buscas-rentar-cuidate-de-un-fraude
+    source_owner: "CONDUSEF"
+    checked: 2026-11-07
+    confidence: partial
+customs:
+  - topic: drugs-and-medicines
+    summary: "Stay away from illegal drugs; convictions can bring sentences of up to 25 years. Ayahuasca, bufo and similar ceremonies sold to tourists are unregulated and have led to serious harm, assaults and deaths."
+    source: https://www.gov.uk/foreign-travel-advice/mexico/safety-and-security
+    source_owner: "Foreign, Commonwealth & Development Office (UK)"
+    checked: 2026-11-07
+  - topic: other
+    summary: "Bringing in, buying or selling e-cigarettes and vapes is illegal; customs confiscate them and can fine or detain you, and smoking or vaping in public can be fined."
+    source: https://www.gov.uk/foreign-travel-advice/mexico/safety-and-security
+    source_owner: "Foreign, Commonwealth & Development Office (UK)"
+    checked: 2026-11-07
+  - topic: other
+    summary: "Carry your original passport with your entry record, or your Mexican resident card if you live there; copies are not accepted and people without the right documents have been detained."
+    source: https://www.gov.uk/foreign-travel-advice/mexico/safety-and-security
+    source_owner: "Foreign, Commonwealth & Development Office (UK)"
+    checked: 2026-11-07
+  - topic: lgbt
+    summary: "Same-sex civil unions are legal, but same-sex relationships are more tolerated than accepted, and public affection between same-sex couples can draw disapproval."
+    source: https://www.gov.uk/foreign-travel-advice/mexico/safety-and-security
+    source_owner: "Foreign, Commonwealth & Development Office (UK)"
+    checked: 2026-11-07

@@ -319,7 +319,12 @@ def option_unlocks(o: dict, rule_groups: list[dict]) -> list[str]:
                 issuers = [str(c).upper() for c in item.get("issued_by") or []]
                 if item.get("holds") == o["document"] and str(o["country"]).upper() in issuers:
                     cond = f" ({item['condition']})" if item.get("condition") else ""
-                    hits.append(f"{country_name(r['country'])}: {r['benefit']}{cond} - rule {r['id']} in benefits/{g['group']}.md")
+                    who = ""
+                    if r.get("nationality_only"):
+                        who += f" Only for nationals of {', '.join(map(str, r['nationality_only']))}."
+                    if r.get("nationality_excluded"):
+                        who += f" Not for nationals of {', '.join(map(str, r['nationality_excluded']))}."
+                    hits.append(f"{country_name(r['country'])}: {r['benefit']}{cond}.{who} Rule {r['id']} in benefits/{g['group']}.md")
                     break
     return sorted(set(hits))
 

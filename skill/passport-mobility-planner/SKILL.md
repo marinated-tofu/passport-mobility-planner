@@ -58,16 +58,19 @@ Benefit files. What documents already held unlock. Read a file only when the per
 
 Option files. Visas and authorisations a person can apply for, with official fees, waiting times, required documents, proof-of-funds rules and the benefits each one unlocks elsewhere:
 
-- No option files yet.
+- [options/visitor-and-nomad.md](references/options/visitor-and-nomad.md): Visas and travel authorisations you can apply for (34 options)
 
 Settle-in files. One per country: steps in order, housing rules and local customs:
 
 - [settle/ae.md](references/settle/ae.md): Settling in the United Arab Emirates (10 steps, 8 customs notes)
+- [settle/ca.md](references/settle/ca.md): Settling in Canada (9 steps, 5 customs notes)
 - [settle/ee.md](references/settle/ee.md): Settling in Estonia (10 steps, 5 customs notes)
 - [settle/gb.md](references/settle/gb.md): Settling in the United Kingdom (9 steps, 7 customs notes)
 - [settle/jp.md](references/settle/jp.md): Settling in Japan (8 steps, 8 customs notes)
 - [settle/kr.md](references/settle/kr.md): Settling in South Korea (8 steps, 5 customs notes)
+- [settle/mx.md](references/settle/mx.md): Settling in Mexico (8 steps, 4 customs notes)
 - [settle/my.md](references/settle/my.md): Settling in Malaysia (8 steps, 7 customs notes)
+- [settle/pt.md](references/settle/pt.md): Settling in Portugal (8 steps, 6 customs notes)
 - [settle/qa.md](references/settle/qa.md): Settling in Qatar (5 steps, 8 customs notes)
 - [settle/sa.md](references/settle/sa.md): Settling in Saudi Arabia (8 steps, 8 customs notes)
 - [settle/sg.md](references/settle/sg.md): Settling in Singapore (11 steps, 8 customs notes)

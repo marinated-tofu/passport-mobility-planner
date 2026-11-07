@@ -38,7 +38,7 @@ def test_option_unlocks_finds_rules_keyed_by_that_visa():
         {"id": "sa-res", "country": "SA", "benefit": "e-visa", "unlocked_by": [{"holds": "residence-permit", "issued_by": ["US"]}]},
     ]}]
     hits = build.option_unlocks({"country": "US", "document": "visa"}, rules)
-    assert len(hits) == 1 and hits[0].startswith("Mexico: visa-free entry (valid)")
+    assert len(hits) == 1 and hits[0].startswith("Mexico: visa-free entry (valid).")
 
 
 def test_matrix_chunk_groups_destinations():

@@ -1,0 +1,155 @@
+country: CA
+title: "Settling in Canada"
+steps:
+  - id: ca-work-permit-arrival
+    order: 1
+    category: residence-registration
+    step: "Get your work permit at the border and check it before you leave"
+    who: "Foreign workers whose work permit application was approved before travel"
+    deadline: ""
+    fee: ""
+    needs: [passport, visa, medical-certificate, employment-letter, other]
+    how: "Show the border officer your passport, your port of entry letter of introduction and your supporting documents, and tell them you have come to work. The officer prints your work permit; check every detail and ask for corrections before leaving the border."
+    notes: "Bring valid immigration medical exam results if a medical exam was required, a copy of the employer's positive LMIA if one was needed, the offer of employment number if LMIA-exempt, and the Quebec CAQ if working in Quebec. 'other' covers the port of entry letter of introduction and LMIA copy. The page does not list a fee for issuing the permit at the border."
+    source: https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/permit-outside/arrival.html
+    source_owner: "Immigration, Refugees and Citizenship Canada (IRCC)"
+    checked: 2026-11-07
+    confidence: partial
+  - id: ca-pr-card-address
+    order: 2
+    category: residence-registration
+    step: "Give IRCC your Canadian mailing address so your first PR card is mailed"
+    who: "New permanent residents who did not give a Canadian mailing address when they became permanent residents"
+    deadline: "Within 180 days of becoming a permanent resident"
+    fee: ""
+    needs: [residence-permit]
+    how: "Send your Canadian mailing address through IRCC's online address notification tool. You do not need to apply separately for your first PR card; it is mailed to you."
+    notes: "If the address is not sent within 180 days, IRCC cancels the card and you must apply for a new one and pay processing fees. The page gives no fee for the first card. 'residence-permit' here means your Confirmation of Permanent Residence (COPR)."
+    source: https://ircc.canada.ca/english/helpcentre/answer.asp?qnum=054&top=10
+    source_owner: "Immigration, Refugees and Citizenship Canada (IRCC)"
+    checked: 2026-11-07
+    confidence: partial
+  - id: ca-sin
+    order: 3
+    category: tax-number
+    step: "Apply for a Social Insurance Number (SIN)"
+    who: "Everyone who will work in Canada or use government programs and benefits"
+    deadline: ""
+    fee: "Free"
+    needs: [passport, residence-permit, application-form]
+    how: "Apply online (fastest), in person at Service Canada by appointment, or by mail. In person, a complete application gets your SIN during the visit."
+    notes: "Temporary residents need a primary identity document (foreign passport), a work permit or study permit that allows work, and a secondary ID; permanent residents need a PR card or COPR. Form NAS2120 must be signed. A SIN starting with 9 is temporary and must be updated when your permit is renewed. IRCC's job-search page advises applying as soon as you arrive."
+    source: https://www.canada.ca/en/employment-social-development/services/sin/apply.html
+    source_owner: "Employment and Social Development Canada (Service Canada)"
+    checked: 2026-11-07
+    confidence: verified
+  - id: ca-on-health-card
+    order: 4
+    category: health-insurance
+    step: "Apply for provincial health insurance (Ontario: OHIP card)"
+    who: "Ontario residents who are citizens, permanent residents or eligible work permit holders"
+    deadline: ""
+    fee: ""
+    needs: [application-form, residence-permit, accommodation-proof, passport]
+    how: "Go in person to a ServiceOntario centre with the completed Registration for Ontario Health Insurance Coverage form and three original documents: one for citizenship or immigration status, one for Ontario residency and one for identity."
+    notes: "Ontario has no waiting period any more; coverage starts right away if you are eligible. You must be physically in Ontario for 153 days in any 12-month period, and work permit holders must work full-time for an Ontario employer for at least six months. Photocopies are not accepted. Other provinces run their own plans; IRCC's newcomer health-card page says coverage can take up to 3 months to start and suggests private insurance while you wait."
+    source: https://www.ontario.ca/page/apply-ohip-and-get-health-card
+    source_owner: "Government of Ontario"
+    checked: 2026-11-07
+    confidence: partial
+  - id: ca-bank-account
+    order: 5
+    category: bank-account
+    step: "Open a bank account"
+    who: "Anyone with acceptable identification, including newcomers who are not Canadian citizens"
+    deadline: ""
+    fee: ""
+    needs: [passport, other]
+    how: "Visit a branch with original ID: either two documents (one showing your name and address, one showing your name and date of birth), or one document with name and date of birth plus someone of good standing who confirms your identity."
+    notes: "A foreign passport is an accepted ID; 'other' is the second document such as a Canadian utility bill or government letter showing your address. If a bank refuses, it must tell you in writing. FCAC's low-cost account page says low-cost accounts cost $4 a month or less with at least 18 debit transactions, and newcomers can get a no-cost account in their first year in Canada at participating institutions."
+    source: https://www.canada.ca/en/financial-consumer-agency/services/banking/opening-bank-account.html
+    source_owner: "Financial Consumer Agency of Canada (FCAC)"
+    checked: 2026-11-07
+    confidence: partial
+  - id: ca-on-licence-exchange
+    order: 6
+    category: driving-licence
+    step: "Exchange your foreign driver's licence (Ontario)"
+    who: "New Ontario residents who hold a valid driver's licence from another province, US state or country"
+    deadline: "Within 60 days of moving to Ontario"
+    fee: ""
+    needs: [other, passport]
+    how: "Go in person to a DriveTest centre (or the ServiceOntario Bay and College location in Toronto) with your original licence, ID and proof of driving experience, pass a vision test and pay the fees."
+    notes: "Direct exchange is available for Canadian provinces, US states and listed countries (including Australia, Austria, Belgium, France, Germany, Great Britain, Ireland, Japan, South Korea, New Zealand, Switzerland, Taiwan and Ukraine). Licences not in English or French need a certified translation dated within six months, not from a translator in the issuing country. From other countries you take the knowledge and G2 road tests, then the G test after 12 months; since July 1, 2026 an authentication letter from the issuing authority can earn up to one year of experience credit. Since May 11, 2026 applicants declare that Ontario is their primary residence and their presence in Canada is legal. The page says only 'applicable fees'. 'other' is your foreign licence and proof of experience."
+    source: https://www.ontario.ca/page/exchange-out-province-drivers-licence
+    source_owner: "Government of Ontario"
+    checked: 2026-11-07
+    confidence: partial
+  - id: ca-business-registration
+    order: 7
+    category: business-registration
+    step: "Register a sole proprietorship or partnership with your province"
+    who: "Self-employed people and partners starting a business"
+    deadline: ""
+    fee: ""
+    needs: [passport]
+    how: "Register with the business registry of each province or territory where you will operate; in British Columbia, Manitoba, Nova Scotia, Ontario and Saskatchewan this also gives you a federal business number."
+    notes: "Some sole proprietors trading under their own name do not need to register, and Newfoundland and Labrador has no provincial registration for these structures. Elsewhere, get a business number directly from the CRA if you need one. Corporations can incorporate federally (Corporations Canada) or provincially; see canada.ca 'Registering your business with the government'. Fees are set by each province."
+    source: https://www.canada.ca/en/services/business/start/register-with-gov/register-sole-prop-partner.html
+    source_owner: "Government of Canada"
+    checked: 2026-11-07
+    confidence: partial
+  - id: ca-renting
+    order: 8
+    category: housing
+    step: "Rent a home: read the lease and watch for rental scams"
+    who: "Newcomers renting a flat or house"
+    deadline: ""
+    fee: ""
+    needs: [tenancy-contract, proof-of-income, employment-letter]
+    how: "Visit the unit before you commit, read and understand the lease before signing, and always get a receipt for rent. Landlords may ask for references, a credit check, your employer and proof of income."
+    notes: "Each province has its own residential tenancy law; in most of Canada landlords must give 90 days' written notice before a rent increase and usually 24 hours' notice before entering. Some provinces allow first and last month's rent or a security deposit. Scam warnings (Competition Bureau and FCAC): rent far below market, a deposit asked for before any lease, money sent to a landlord abroad, a landlord who cannot meet in person, and photos that do not match the address. Report scams to the Canadian Anti-Fraud Centre (1-888-495-8501). CMHC lists each province's rental authority."
+    source: https://www.canada.ca/en/immigration-refugees-citizenship/services/settle-canada/housing/renting.html
+    source_owner: "Immigration, Refugees and Citizenship Canada (IRCC)"
+    checked: 2026-11-07
+    confidence: partial
+  - id: ca-on-tenant-rights
+    order: 9
+    category: housing
+    step: "Know your Ontario tenant rights (standard lease and deposit limits)"
+    who: "Tenants renting in Ontario"
+    deadline: ""
+    fee: ""
+    needs: [tenancy-contract]
+    how: "Make sure your landlord uses Ontario's standard form of lease and gives you a signed copy within 21 days. A landlord may take a rent deposit of no more than one month's rent, and it can only be used for your last month."
+    notes: "The deposit cannot be used for damage, and the landlord must pay interest on it every year. Landlords cannot insist on post-dated cheques or automatic debit. Rent can usually rise once a year by the provincial guideline with 90 days' written notice; ontario.ca gives the 2027 guideline as 1.9%. Disputes go to the Landlord and Tenant Board (1-888-332-3234). This LTB brochure was last updated May 2023."
+    source: https://tribunalsontario.ca/documents/ltb/Brochures/Information%20for%20New%20Tenants.html
+    source_owner: "Landlord and Tenant Board (Tribunals Ontario)"
+    checked: 2026-11-07
+    confidence: partial
+customs:
+  - topic: drugs-and-medicines
+    summary: "Recreational cannabis is legal but each province sets its own rules, and taking cannabis across the border without a Health Canada permit is a crime. Other illegal drugs carry long prison terms and heavy fines."
+    source: https://www.gov.uk/foreign-travel-advice/canada/safety-and-security
+    source_owner: "Foreign, Commonwealth & Development Office (UK)"
+    checked: 2026-11-07
+  - topic: lgbt
+    summary: "Same-sex couples have been able to marry across Canada since 2005, and federal human rights law bans discrimination based on sexual orientation."
+    source: https://www.canada.ca/en/canadian-heritage/services/rights-lgbti-persons.html
+    source_owner: "Canadian Heritage, Government of Canada"
+    checked: 2026-11-07
+  - topic: work-culture
+    summary: "Federal and provincial laws set hours, minimum wage, safety, leave and paid vacation, and human rights laws protect workers from unfair treatment. Many jobs are filled through networking, and your provincial labour ministry or Service Canada can help if you are treated unfairly."
+    source: https://www.canada.ca/en/immigration-refugees-citizenship/services/settle-canada/job-search.html
+    source_owner: "Immigration, Refugees and Citizenship Canada (IRCC)"
+    checked: 2026-11-07
+  - topic: other
+    summary: "In parks and the backcountry, pack out all rubbish and food, keep well away from wildlife, take care in bear areas and follow park rules."
+    source: https://www.gov.uk/foreign-travel-advice/canada/safety-and-security
+    source_owner: "Foreign, Commonwealth & Development Office (UK)"
+    checked: 2026-11-07
+  - topic: other
+    summary: "Driving rules differ by province, and winter storms from November to April can close highways, so check conditions and prepare your car for winter."
+    source: https://www.gov.uk/foreign-travel-advice/canada/safety-and-security
+    source_owner: "Foreign, Commonwealth & Development Office (UK)"
+    checked: 2026-11-07
