@@ -1,0 +1,174 @@
+country: NL
+title: "Settling in the Netherlands"
+steps:
+  - id: nl-collect-residence-document
+    order: 1
+    category: residence-registration
+    step: "Give biometrics and collect your IND residence document"
+    who: "Non-EU nationals who have a positive decision on a regular residence permit"
+    deadline: ""
+    fee: ""
+    needs: [passport]
+    how: "If you came on a provisional residence permit (MVV), wait for the IND letter or My IND message, then book an appointment at the IND desk it names. If you have not given fingerprints and a photo yet, book an IND desk appointment for biometrics first."
+    notes: "The IND aims to have the residence document ready within 2 weeks of your biometrics. Bring your passport, and any expired residence document. The application fee is paid earlier, at the application stage, and is not shown on this page. After collection, register with your municipality and take out Dutch health insurance."
+    source: https://ind.nl/en/positive-decision-on-residence-permit-what-should-i-still-do
+    source_owner: "Immigration and Naturalisation Service (IND), Netherlands"
+    checked: 2026-11-07
+    confidence: partial
+  - id: nl-rent-a-home
+    order: 2
+    category: housing
+    step: "Rent a home and check the maximum rent"
+    who: "Anyone renting a home in the Netherlands"
+    deadline: ""
+    fee: ""
+    needs: [tenancy-contract]
+    how: "Get a written tenancy agreement that states the yearly rent increase date, maintenance agreements and house rules. For social and mid-price housing the maximum rent follows the points system; check it with the Rent Tribunal (Huurcommissie) Rent Check before or after signing."
+    notes: "For 2026 the social rent limit is €932.93 and the liberalisation threshold €1,228.07 (agreements starting in 2026). Rises in liberalised housing are capped at inflation plus 1% until 1 May 2029 (4.4% for 2026). Fixed-term agreements of up to 2 years signed from 1 July 2024 end on their end date; the landlord must confirm in writing 1 to 3 months before. Disputes go to the Huurcommissie; free advice from the Juridisch Loket. Rent Check tool: huurcommissie.nl. No official rental-scam warning was found."
+    source: https://www.government.nl/themes/building-and-housing/housing/rented-housing
+    source_owner: "Government of the Netherlands"
+    checked: 2026-11-07
+    confidence: verified
+  - id: nl-rental-deposit
+    order: 3
+    category: housing
+    step: "Know the deposit limit"
+    who: "Tenants asked to pay a deposit"
+    deadline: ""
+    fee: ""
+    needs: [tenancy-contract]
+    how: "A deposit may be at most three months' basic rent, excluding service charges, and it must be returned when the tenancy ends, minus unpaid rent or damage you caused. If the deposit is too high you can pay and ask a court to reduce it."
+    notes: "Normal wear and tear cannot be deducted, and no interest is due. If the landlord refuses to repay, send a written request (the Juridisch Loket has a model letter) and then go to court. The page gives no number of days for repayment."
+    source: https://www.government.nl/themes/building-and-housing/housing/question-and-answer/housing/can-my-landlord-ask-me-to-pay-a-deposit
+    source_owner: "Government of the Netherlands"
+    checked: 2026-11-07
+    confidence: verified
+  - id: nl-brp-registration
+    order: 4
+    category: address-registration
+    step: "Register with your municipality (BRP)"
+    who: "Everyone who will live in the Netherlands for longer than 4 months"
+    deadline: "Within 5 days of arriving in the Netherlands"
+    fee: ""
+    needs: []
+    how: "Register in person with the municipality where you live (or at a correspondence address if you have no permanent address). Partners and children who moved with you must come along."
+    notes: "Registration may be delayed if you first need a residence permit or your identity must be confirmed. The page does not list documents (needs left empty); ask your municipality what ID and proof of address it wants, and whether it wants a birth or marriage certificate and whether it must be legalised or apostilled and translated. Stays under 4 months go in the non-residents register (RNI)."
+    source: https://www.government.nl/themes/government-and-democracy/personal-data/question-and-answer/when-should-i-register-with-the-personal-records-database-as-a-resident
+    source_owner: "Government of the Netherlands"
+    checked: 2026-11-07
+    confidence: partial
+  - id: nl-bsn
+    order: 5
+    category: tax-number
+    step: "Receive your citizen service number (BSN)"
+    who: "Everyone registered in the BRP"
+    deadline: ""
+    fee: ""
+    needs: []
+    how: "The BSN is given automatically when you register with the municipality. You use it with government bodies, your GP and your health insurer."
+    notes: "Without BRP registration, short-stay workers get a BSN through the non-residents register (RNI)."
+    source: https://www.government.nl/themes/government-and-democracy/personal-data/citizen-service-number-bsn
+    source_owner: "Government of the Netherlands"
+    checked: 2026-11-07
+    confidence: verified
+  - id: nl-health-insurance
+    order: 6
+    category: health-insurance
+    step: "Take out Dutch basic health insurance"
+    who: "Everyone who lives or works in the Netherlands"
+    deadline: "Within 4 months of your residence permit coming into force; cover is backdated to that date"
+    fee: ""
+    needs: []
+    how: "Choose a Dutch health insurer and take out a standard (basic) policy once the IND has decided on your residence permit. You pay premiums for any backdated period."
+    notes: "You cannot take out Dutch health insurance before the decision on your residence permit; some insurers offer international policies for the gap. You may be able to get a healthcare allowance (zorgtoeslag)."
+    source: https://www.government.nl/themes/family-health-and-care/health-insurance/health-insurance-and-residence-permit
+    source_owner: "Government of the Netherlands"
+    checked: 2026-11-07
+    confidence: verified
+  - id: nl-digid
+    order: 7
+    category: identity
+    step: "Apply for DigiD (digital ID for government services)"
+    who: "Anyone with a BSN and an address registered with a Dutch municipality"
+    deadline: ""
+    fee: ""
+    needs: []
+    how: "Apply online on digid.nl with your BSN, registered address and mobile phone, choosing a username and password. An activation code arrives by post at your BRP address within a few working days."
+    notes: "DigiD is needed, for example, to book a KVK registration appointment. The page states no fee."
+    source: https://www.digid.nl/en/apply-and-activate/apply-digid
+    source_owner: "Logius (DigiD), Ministry of the Interior, Netherlands"
+    checked: 2026-11-07
+    confidence: verified
+  - id: nl-basic-payment-account
+    order: 8
+    category: bank-account
+    step: "Open a bank account (EU basic payment account right)"
+    who: "Anyone legally resident in an EU country"
+    deadline: ""
+    fee: "Fees must be reasonable; the bank must give a fee information document before you sign"
+    needs: []
+    how: "Ask a bank for a basic payment account; it may refuse only on grounds such as anti-money-laundering rules or because you already have a similar account in the country."
+    notes: "Right under Directive 2014/92/EU. The EU page does not list documents (needs left empty) or say explicitly that non-EU nationals qualify; banks will check your identity and address. No Dutch government page on the basic payment account (basisbetaalrekening) could be read."
+    source: https://europa.eu/youreurope/citizens/consumers/financial-products-and-services/bank-accounts-eu/index_en.htm
+    source_owner: "European Union (Your Europe)"
+    checked: 2026-11-07
+    confidence: partial
+  - id: nl-driving-licence-exchange
+    order: 9
+    category: driving-licence
+    step: "Exchange your foreign driving licence"
+    who: "BRP-registered residents with a licence from an EU/EFTA country or a country on the RDW list, or highly skilled migrants with the 30% ruling (any country)"
+    deadline: "A non-EU/EFTA licence is valid for driving for 185 days after you move to the Netherlands"
+    fee: "Set by each municipality"
+    needs: [passport-photo, residence-permit, medical-certificate, other]
+    how: "Apply at your municipality, which sends the application to the RDW. You get a letter within 15 working days and can collect the Dutch licence from the municipality 5 working days after approval."
+    notes: "'medical-certificate' = CBR Health Declaration. 'other' = the foreign licence (you do not get it back) and, for the expat scheme, the tax authority's decision on the 30% ruling. You must have lived 185 days in the issuing country in the year it was issued. Licences in non-Latin script need a certified translation. You cannot exchange while a residence permit application is pending. If you cannot exchange, take the CBR theory and practical tests."
+    source: https://www.rdw.nl/en/driving-licence/foreign-driving-licence/exchanging-a-foreign-driving-licence
+    source_owner: "Netherlands Vehicle Authority (RDW)"
+    checked: 2026-11-07
+    confidence: partial
+  - id: nl-kvk-registration
+    order: 10
+    category: business-registration
+    step: "Register your business with KVK (e.g. as an eenmanszaak)"
+    who: "Anyone starting a business or working as a freelancer (sole proprietorship)"
+    deadline: "Around 1 week before or after you start business activities"
+    fee: ""
+    needs: [passport, application-form]
+    how: "Fill in the registration form online, then book an appointment at a KVK office with DigiD (up to 8 weeks ahead). Your KVK number arrives by post in the week your business starts."
+    notes: "You need a BSN and DigiD to book. A registration fee is invoiced by email; the amount is on a separate KVK page. Check that your residence permit allows self-employment."
+    source: https://www.kvk.nl/en/registration/registering-a-dutch-eenmanszaak-and-making-an-appointment/
+    source_owner: "Netherlands Chamber of Commerce (KVK)"
+    checked: 2026-11-07
+    confidence: partial
+customs:
+  - topic: public-behaviour
+    summary: "Everyone aged 14 or over must be able to show ID when asked; refusing costs a €100 fine (€50 for 14 to 15 year olds). Residents can use their residence document."
+    source: https://www.gov.uk/foreign-travel-advice/netherlands/safety-and-security
+    source_owner: "Foreign, Commonwealth & Development Office (UK)"
+    checked: 2026-11-07
+  - topic: drugs-and-medicines
+    summary: "Drugs are illegal, but small amounts of soft drugs are tolerated and coffee shops may sell cannabis under strict conditions. Smoking cannabis in public and dealing or carrying drugs outside these settings can bring prison."
+    source: https://www.government.nl/themes/family-health-and-care/drugs
+    source_owner: "Government of the Netherlands"
+    checked: 2026-11-07
+  - topic: public-behaviour
+    summary: "Swimming in Amsterdam's canals can bring a €160 fine and urinating in them is also fined. Crossing the road away from marked crossings can be fined."
+    source: https://www.gov.uk/foreign-travel-advice/netherlands/safety-and-security
+    source_owner: "Foreign, Commonwealth & Development Office (UK)"
+    checked: 2026-11-07
+  - topic: other
+    summary: "Cyclists have right of way over cars on many routes and ride fast on busy cycle paths, and trams have priority over other traffic. Watch for them when crossing and stop behind a tram or bus that halts mid-road."
+    source: https://www.gov.uk/foreign-travel-advice/netherlands/safety-and-security
+    source_owner: "Foreign, Commonwealth & Development Office (UK)"
+    checked: 2026-11-07
+  - topic: other
+    summary: "Smoking is banned in all enclosed public spaces, bars, restaurants and workplaces."
+    source: https://www.government.nl/themes/family-health-and-care/smoking
+    source_owner: "Government of the Netherlands"
+    checked: 2026-11-07
+  - topic: lgbt
+    summary: "Same-sex couples have been able to marry and adopt since 2001, and marriage officials may not refuse them. Transgender people can change the gender on their birth certificate with a professional's statement."
+    source: https://www.government.nl/themes/justice-security-and-defence/gender-equality/equal-rights-for-lgbtiq-people
+    source_owner: "Government of the Netherlands"
+    checked: 2026-11-07

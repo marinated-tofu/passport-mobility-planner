@@ -1,0 +1,136 @@
+country: DE
+title: "Settling in Germany"
+steps:
+  - id: de-health-insurance
+    order: 1
+    category: health-insurance
+    step: "Have German health insurance from the start"
+    who: "Everyone who lives in Germany"
+    deadline: ""
+    fee: ""
+    needs: []
+    how: "If you have never been insured in Germany, contact any statutory health insurance fund (Krankenkasse) and it will tell you whether you belong in statutory or private insurance. Members of statutory insurance are also covered by long-term care insurance."
+    notes: "The Federal Ministry of Health says everyone residing in Germany must have health insurance. Proof of German health insurance is required for the residence permit application (see de-residence-permit). Ministry citizens' hotline: +49 30 3406066-01. The page gives no income threshold or contribution rate."
+    source: https://www.bundesgesundheitsministerium.de/en/themen/krankenversicherung/online-ratgeber-krankenversicherung/krankenversicherung/statutory-health-insurance-shi
+    source_owner: "Federal Ministry of Health (BMG), Germany"
+    checked: 2026-11-07
+    confidence: partial
+  - id: de-rent-a-home
+    order: 2
+    category: housing
+    step: "Rent a flat and know the deposit rules"
+    who: "Anyone renting a home in Germany"
+    deadline: ""
+    fee: ""
+    needs: [tenancy-contract]
+    how: "The rent deposit (Kaution) may not be more than three months' rent excluding service charges, and a cash deposit can be paid in three monthly instalments, the first at the start of the tenancy. The landlord must keep the deposit in a savings account separate from their own money, and the interest belongs to the tenant."
+    notes: "Legal basis: section 551 of the Civil Code (BGB). Ask the landlord for the move-in confirmation (Wohnungsgeberbestätigung) when you sign; you need it for the Anmeldung. Local rent index (Mietspiegel): many cities publish one; Berlin's is at https://www.berlin.de/sen/wohnen/service/mietspiegel/ with a query service on mietspiegel.berlin.de. Housing discrimination on grounds such as ethnic origin or religion is covered by the General Equal Treatment Act (https://www.antidiskriminierungsstelle.gov.de/EN/homepage/homepage-node.html). No official rental-scam warning was found."
+    source: https://www.gesetze-im-internet.de/bgb/__551.html
+    source_owner: "Federal Ministry of Justice (gesetze-im-internet.de), Germany"
+    checked: 2026-11-07
+    confidence: verified
+  - id: de-anmeldung
+    order: 3
+    category: address-registration
+    step: "Register your address (Anmeldung)"
+    who: "Everyone who moves into a home in Germany (example: Berlin)"
+    deadline: "Within 14 days of moving in"
+    fee: "Free"
+    needs: [passport, application-form, other]
+    how: "Book an appointment at a citizens office (Bürgeramt) online or by phone on 115, and bring the registration form, your passport and the landlord's move-in confirmation (Wohnungsgeberbestätigung). You get the registration certificate (Meldebestätigung) on the spot."
+    notes: "'other' = landlord's move-in confirmation (Wohnungsgeberbestätigung); a tenancy contract does not replace it. Berlin recommends bringing birth and marriage certificates for a first registration. Online registration needs a German or EU eID, so non-EU residence permit holders register in person. Procedure shown is Berlin's; other cities follow the same federal rules but have their own booking pages."
+    source: https://service.berlin.de/dienstleistung/120686/standort/122280/en/
+    source_owner: "State of Berlin (Service Berlin)"
+    checked: 2026-11-07
+    confidence: verified
+  - id: de-residence-permit
+    order: 4
+    category: residence-registration
+    step: "Apply for your residence permit at the immigration office (Ausländerbehörde)"
+    who: "Non-EU nationals who entered on a national visa to work (example: skilled worker with vocational training, Berlin)"
+    deadline: ""
+    fee: "€100 for an electronic residence permit card (eAT) or €56 for a sticker, first issue; paid online before applying"
+    needs: [passport, application-form, employment-contract, employment-letter, degree-certificate, tenancy-contract, health-insurance, visa, other]
+    how: "In Berlin, apply online to the Landesamt für Einwanderung (LEA), uploading your documents; if approved, you are given an appointment to bring the originals. An eAT card is ready for collection 4 to 6 weeks later."
+    notes: "'employment-letter' = the employer's signed 'Erklärung zum Beschäftigungsverhältnis'. 'other' = Meldebestätigung from the Anmeldung, proof of living space size and cost, and an occupation practice permit if your job needs one. The foreign qualification usually needs a recognition decision. Applicants over 45 generally need adequate retirement provision (for 2026 Berlin cites a gross monthly salary of €4,647.50). Documents and fees differ by permit type (EU Blue Card, Opportunity Card, etc.) and by city; check your local Ausländerbehörde. No legal deadline is stated on the page; apply before your entry visa expires."
+    source: https://service.berlin.de/dienstleistung/305304/en/
+    source_owner: "State of Berlin (Landesamt für Einwanderung)"
+    checked: 2026-11-07
+    confidence: partial
+  - id: de-steuer-id
+    order: 5
+    category: tax-number
+    step: "Receive your tax identification number (Steuer-ID)"
+    who: "Everyone registered at an address in Germany"
+    deadline: ""
+    fee: ""
+    needs: []
+    how: "After your Anmeldung, the registration office passes your data to the Federal Central Tax Office (BZSt), which posts the 11-digit number to your registered address. If nothing arrives within three months, send the BZSt your name, address, date and place of birth through its online form or by letter."
+    notes: "The number is for life and does not change when you move or marry. Your employer needs it for payroll. Make sure your name is on your letterbox. The BZSt does not give the number by phone or email."
+    source: https://www.bzst.de/EN/Private_individuals/Tax_identification_number/FAQ/faq_tin_node.html
+    source_owner: "Federal Central Tax Office (BZSt), Germany"
+    checked: 2026-11-07
+    confidence: verified
+  - id: de-basic-bank-account
+    order: 6
+    category: bank-account
+    step: "Open a bank account (right to a basic payment account)"
+    who: "Consumers legally resident in the EU who do not yet have a payment account in Germany"
+    deadline: "The bank must offer the account within 10 business days of receiving a complete application"
+    fee: "Banks may charge only reasonable fees"
+    needs: [passport, application-form]
+    how: "Apply to any bank using the basic account application form; the bank must confirm receipt. If it refuses, you can ask BaFin to start an administrative procedure, and BaFin can order the bank to open the account."
+    notes: "Identity can be proved with a valid passport recognised in Germany. A provisional residence document (Fiktionsbescheinigung) is not accepted as ID. People without a fixed address only need a postal address. Legal basis: Payment Accounts Act (ZKG), implementing Directive 2014/92/EU. No right to an overdraft."
+    source: https://www.bafin.de/EN/verbraucherinnen-verbraucher/themen-finanzprodukte/konten-zahlungen/konten/basiskonto/basiskonto_node_en.html
+    source_owner: "Federal Financial Supervisory Authority (BaFin), Germany"
+    checked: 2026-11-07
+    confidence: verified
+  - id: de-driving-licence-exchange
+    order: 7
+    category: driving-licence
+    step: "Convert your non-EU driving licence"
+    who: "Residents of Berlin with a valid licence from a country outside the EU/EEA"
+    deadline: ""
+    fee: "€37.50 without a test, €45.10 with a test"
+    needs: [passport, residence-permit, passport-photo, other]
+    how: "Apply in person at the driving licence authority (Fahrerlaubnisbehörde) with your original, still-valid foreign licence. Countries listed in Annex 11 of the Driving Licence Regulation (FeV) get a simplified conversion; others need first aid training, an eye test and a driving test."
+    notes: "'other' = original foreign licence, plus for non-Annex-11 countries a first aid certificate, eye test and driving school details. A translation is needed if the licence is not in German or English. International driving permits are not converted. Truck and bus classes need medical checks and, for buses, a police certificate of conduct. The page states no deadline; the licence must still be valid when you apply."
+    source: https://service.berlin.de/dienstleistung/327537/
+    source_owner: "State of Berlin (LABO, Fahrerlaubnisbehörde)"
+    checked: 2026-11-07
+    confidence: partial
+  - id: de-gewerbeanmeldung
+    order: 8
+    category: business-registration
+    step: "Register a trade (Gewerbeanmeldung) if you go self-employed"
+    who: "Anyone starting a commercial business (sole traders, partners, company representatives); liberal professions are exempt"
+    deadline: "When the business starts operating"
+    fee: "€26 per sole trader, €31 for a legal entity with one representative, €15 online (Berlin)"
+    needs: [passport, residence-permit, application-form]
+    how: "Register online (with or without a BundID account, card payment) or in person at the public order office (Ordnungsamt) of the district where the business is based."
+    notes: "Non-EU nationals must show a residence permit that allows self-employment. Registered companies also need a current trade register extract; companies being formed need notarised articles. Some trades need an extra permit."
+    source: https://service.berlin.de/dienstleistung/121921/en/
+    source_owner: "State of Berlin (Service Berlin)"
+    checked: 2026-11-07
+    confidence: verified
+customs:
+  - topic: other
+    summary: "You do not have to carry ID by law, but if police ask and you have none they can take you to fetch it. Residents are expected to show their passport and residence card."
+    source: https://www.gov.uk/foreign-travel-advice/germany/safety-and-security
+    source_owner: "Foreign, Commonwealth & Development Office (UK)"
+    checked: 2026-11-07
+  - topic: drugs-and-medicines
+    summary: "Adults 18+ may hold up to 25 g of cannabis in public and 50 g at home; using it near minors, near schools or playgrounds, or in pedestrian zones from 7am to 8pm is banned, with fines up to €30,000. Other illegal drugs carry long prison terms."
+    source: https://www.bundesgesundheitsministerium.de/themen/cannabis/faq-cannabisgesetz
+    source_owner: "Federal Ministry of Health (BMG), Germany"
+    checked: 2026-11-07
+  - topic: lgbt
+    summary: "The General Equal Treatment Act protects against discrimination over sexual orientation, ethnic origin, religion, gender, disability and age, mainly at work and in everyday dealings such as renting a flat. The Federal Anti-Discrimination Agency offers free, confidential advice."
+    source: https://www.antidiskriminierungsstelle.gov.de/EN/homepage/homepage-node.html
+    source_owner: "Federal Anti-Discrimination Agency, Germany"
+    checked: 2026-11-07
+  - topic: other
+    summary: "Many city centres are low emission zones (Umweltzone) that only cars meeting set exhaust standards may enter. Change money only at banks, cash machines or official bureaux, as counterfeit notes circulate."
+    source: https://www.gov.uk/foreign-travel-advice/germany/safety-and-security
+    source_owner: "Foreign, Commonwealth & Development Office (UK)"
+    checked: 2026-11-07

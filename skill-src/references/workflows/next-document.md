@@ -14,7 +14,8 @@ Drop an option when:
 
 - the person already holds a valid document of that type from that country;
 - their nationality is excluded or not on its "only for" list;
-- its fee is above the budget given;
+- its name or how-to-apply line says it is closed, paused or discontinued (it stays in the files for people with pending applications);
+- its fee, or its minimum investment, is above the budget given, or above the available funds when the person asked to include them;
 - it is a visa for a country the person can already enter visa-free (a benefit rule or the passport matrix says so), unless the user wants it for its effects elsewhere.
 
 Mark an option Needs checking when its eligibility, age limit or proof-of-funds rule cannot be confirmed from the dossier.

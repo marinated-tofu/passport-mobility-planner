@@ -662,29 +662,6 @@ options:
     checked: 2026-11-07
     confidence: partial
 
-  - id: ae-virtual-work-residence
-    country: AE
-    document: residence-permit
-    name: Residence visa for working remotely from the UAE (virtual work)
-    purpose: "living in the UAE while working for an employer outside the UAE"
-    fee: ""
-    fee_usd: null
-    processing: ""
-    processing_days: null
-    validity: "One year"
-    stay: "One year"
-    apply: "Self-sponsored, through ICP or GDRFA Dubai"
-    eligibility: "Employees of companies outside the UAE"
-    proof_of_funds: "Salary certificate showing at least USD 3,500 a month or the equivalent in foreign currency"
-    required_documents: [passport, health-insurance, medical-certificate, employment-letter, proof-of-income]
-    nationality_only: []
-    nationality_excluded: []
-    notes: "Needs proof of work outside the UAE, health insurance valid in the UAE and a medical fitness test. No fee is given on the page."
-    source: https://u.ae/en/information-and-services/visa-and-emirates-id/Types-of-visas/Residence-visa/residence-visa-for-working-outside-the-uae
-    source_owner: The UAE Government portal (u.ae), Telecommunications and Digital Government Regulatory Authority
-    checked: 2026-11-07
-    confidence: partial
-
   - id: th-destination-thailand-visa
     country: TH
     document: visa

@@ -455,32 +455,6 @@ Australia, Canada, Estonia, Indonesia, Ireland, Japan, Malaysia, New Zealand, Om
 - Source: https://u.ae/en/information-and-services/visa-and-emirates-id/Types-of-visas/tourist-visa (The UAE Government portal (u.ae), Telecommunications and Digital Government Regulatory Authority)
 - Checked: 07 Nov 2026, partial
 
-### Residence visa for working remotely from the UAE (virtual work) - ae-virtual-work-residence
-
-- Document: residence-permit
-- Purpose: living in the UAE while working for an employer outside the UAE
-- Validity: One year
-- Stay: One year
-- How to apply: Self-sponsored, through ICP or GDRFA Dubai
-- Eligibility: Employees of companies outside the UAE
-- Proof of funds: Salary certificate showing at least USD 3,500 a month or the equivalent in foreign currency
-- For ranking: fee unknown, waiting days unknown
-- Required documents: passport, health-insurance, medical-certificate, employment-letter, proof-of-income
-- Also unlocks:
-  - Armenia: visa-free entry (Valid for at least 6 months from entry; shown as a physical card or passport sticker with title, name, nationality, birth date and validity in Latin script and Gregorian dates). Rule am-temporary-visa-exemption-gcc-residence in benefits/gcc-residence.md
-  - Armenia: visa-free entry (valid at least 6 months from the date of entry; physical card or passport sticker showing name, nationality, birth date and validity in Latin script). Rule am-entry-with-residence in benefits/visa-held.md
-  - Georgia: visa-free entry (Multiple-entry UAE visa or UAE residence permit valid for at least 1 year on the day of entry to Georgia). Only for nationals of AF, BD, CM, CG, CD, CI, ET, ER, GH, MA, NG, PK, SO, SD, SY, TZ, UG, YE. Rule ge-visa-free-uae-residence-restricted-nationalities in benefits/gcc-residence.md
-  - Georgia: visa-free entry (valid on the day of entry into Georgia). Rule ge-entry-with-residence in benefits/visa-held.md
-  - Georgia: visa-free entry (valid on the day of entry, shown by a travel or other document). Rule ge-visa-free-gcc-visa-or-residence in benefits/gcc-residence.md
-  - Oman: e-visa (main traveller must hold an approved profession). Rule om-evisa-29a-gcc-resident in benefits/gcc-residence.md
-  - Oman: visa on arrival (Valid GCC residence; profession approved by the Directorate General of Passports and Residence; arriving from the country of residence directly or via another GCC state; passport valid at least 6 months). Rule om-visa-gcc-residents-on-arrival in benefits/gcc-residence.md
-  - Qatar: e-visa (GCC residence valid for 3 months from the application date, and the GCC ID valid at least 3 months from arrival; passport valid at least 3 months from arrival). Rule qa-hayya-a2-gcc-resident-visa in benefits/gcc-residence.md
-  - Qatar: visa on arrival (valid GCC residence permit). Rule qa-visa-on-arrival-gcc-residents in benefits/gcc-residence.md
-  - Saudi Arabia: e-visa (GCC residence visa valid for at least 3 months, in a profession published on visitsaudi.com (per the Ministry of Tourism regulation); passport valid at least 6 months). Rule sa-tourist-evisa-gcc-residents in benefits/gcc-residence.md
-- Notes: Needs proof of work outside the UAE, health insurance valid in the UAE and a medical fitness test. No fee is given on the page.
-- Source: https://u.ae/en/information-and-services/visa-and-emirates-id/Types-of-visas/Residence-visa/residence-visa-for-working-outside-the-uae (The UAE Government portal (u.ae), Telecommunications and Digital Government Regulatory Authority)
-- Checked: 07 Nov 2026, partial
-
 ## United Kingdom
 
 ### Electronic Travel Authorisation (ETA) - gb-eta
