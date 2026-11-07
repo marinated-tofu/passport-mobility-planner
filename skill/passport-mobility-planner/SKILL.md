@@ -3,6 +3,10 @@ name: passport-mobility-planner
 description: Builds a private travel and relocation dossier from the passports, visas, residence permits and supporting documents (birth and marriage certificates, degrees, employment letters, bank statements) stored on a UGREEN NAS, then shows what those documents unlock, which visa to get next for the most countries at the lowest cost, the cheapest and fastest way to reach chosen countries, whether bank statements meet proof-of-funds rules, the steps to settle in a new country, what expires soon, and official rule changes. Use when someone asks what is on their passport, where they can travel, which visa or permit to get next, whether they are ready for or can afford a trip or move, what an application needs, how to settle in a country, what is expiring, or what changed in visa, entry or residence rules.
 ---
 
+# First move
+
+The documents are on the NAS, never in this Skill's folder. Do not look for them with shell commands such as find or ls, and do not say a folder is missing until file-agent says so. Every route starts with step 1 of the Workflow section: run its delegate command for the folder the user named. This Skill's own folder holds only SKILL.md and references; read those with the Read tool.
+
 # Goal
 
 Help each person in the household get the most out of their documents, privately, using only files stored on this NAS and the official rules bundled with this Skill:
@@ -40,26 +44,24 @@ Pick one route from what the user asked, then read only the files listed for it.
 | --- | --- | --- |
 | What is on my passport, read my documents, what do I have for applications | Dossier | [workflows/dossier.md](references/workflows/dossier.md), [topics/document-fields.md](references/topics/document-fields.md), [topics/dossier-items.md](references/topics/dossier-items.md) |
 | How strong is my passport, which passport should I use | Passport power | [workflows/passport-power.md](references/workflows/passport-power.md), [workflows/benefits.md](references/workflows/benefits.md), plus the passport matrix file for the nationality |
-| Where can I go, what does my passport or visa get me | Benefits | [workflows/benefits.md](references/workflows/benefits.md), plus the benefit files that match the documents held |
-| Which visa should I get next, how do I open up more countries | Next document | [workflows/next-document.md](references/workflows/next-document.md), [workflows/benefits.md](references/workflows/benefits.md), [topics/entry-conditions.md](references/topics/entry-conditions.md), plus the option files and benefit files |
-| Plan a trip, cheapest way to visit these countries, are we ready to travel | Plan | [workflows/plan.md](references/workflows/plan.md), [topics/entry-conditions.md](references/topics/entry-conditions.md), plus matching benefit and option files |
-| Do my bank statements work for a visa, can I afford it | Proof of funds | [workflows/funds.md](references/workflows/funds.md), [topics/dossier-items.md](references/topics/dossier-items.md), plus the option file for the visa |
+| Where can I go, what does my passport or visa get me | Benefits | [workflows/benefits.md](references/workflows/benefits.md), plus [benefits/index.md](references/benefits/index.md) |
+| Which visa should I get next, how do I open up more countries | Next document | [workflows/next-document.md](references/workflows/next-document.md), [workflows/benefits.md](references/workflows/benefits.md), [topics/entry-conditions.md](references/topics/entry-conditions.md), plus [benefits/index.md](references/benefits/index.md) and [options/index.md](references/options/index.md) |
+| Plan a trip, cheapest way to visit these countries, are we ready to travel | Plan | [workflows/plan.md](references/workflows/plan.md), [topics/entry-conditions.md](references/topics/entry-conditions.md), plus the country file for each country on the route, connections included |
+| Do my bank statements work for a visa, can I afford it | Proof of funds | [workflows/funds.md](references/workflows/funds.md), [topics/dossier-items.md](references/topics/dossier-items.md), plus the country file for the visa's country |
 | How do I settle in, what do I do after I move, open a bank account, register a business | Settle in | [workflows/settle-in.md](references/workflows/settle-in.md), [topics/dossier-items.md](references/topics/dossier-items.md), plus the country file |
 | What is expiring, when do I renew | Expiry | [workflows/expiry.md](references/workflows/expiry.md) |
 | What changed, any news for my passport or destination | Updates | [workflows/updates.md](references/workflows/updates.md), [official-sources.md](references/official-sources.md) |
 | Exact official requirement, full document list, a country the bundled files do not cover | Library search | [workflows/library.md](references/workflows/library.md) |
 
-Benefit files. What documents already held unlock. Read a file only when the person holds the document type it covers:
+Country files. One per country: what documents already held unlock there, transit and stopover rules at its airports, and the visas and authorisations to apply for, with official fees, waiting times, required documents and proof-of-funds rules. Read only the files for the countries in question; a country with no file is not covered:
 
-- [benefits/gcc-residence.md](references/benefits/gcc-residence.md): Benefits from a Gulf (GCC) residence permit (9 rules, checked up to 07 Nov 2026)
-- [benefits/stopover.md](references/benefits/stopover.md): Airline and airport stopover programs (16 rules, checked up to 07 Nov 2026)
-- [benefits/transit.md](references/benefits/transit.md): Visa-free transit (19 rules, checked up to 07 Nov 2026)
-- [benefits/visa-held.md](references/benefits/visa-held.md): Benefits from visas and residence permits you already hold (34 rules, checked up to 07 Nov 2026)
+- [Albania](references/countries/al.md), [Antigua and Barbuda](references/countries/ag.md), [Argentina](references/countries/ar.md), [Armenia](references/countries/am.md), [Australia](references/countries/au.md), [Bosnia and Herzegovina](references/countries/ba.md), [Canada](references/countries/ca.md), [China](references/countries/cn.md), [Dominica](references/countries/dm.md), [Dominican Republic](references/countries/do.md), [Estonia](references/countries/ee.md), [Ethiopia](references/countries/et.md), [Georgia](references/countries/ge.md), [Greece](references/countries/gr.md), [Hong Kong](references/countries/hk.md), [Iceland](references/countries/is.md), [Indonesia](references/countries/id.md), [Ireland](references/countries/ie.md), [Japan](references/countries/jp.md), [Kazakhstan](references/countries/kz.md), [Malaysia](references/countries/my.md), [Malta](references/countries/mt.md), [Mexico](references/countries/mx.md), [New Zealand](references/countries/nz.md), [North Macedonia](references/countries/mk.md), [Oman](references/countries/om.md), [Panama](references/countries/pa.md), [Peru](references/countries/pe.md), [Portugal](references/countries/pt.md), [Qatar](references/countries/qa.md), [Saint Kitts and Nevis](references/countries/kn.md), [Saint Lucia](references/countries/lc.md), [Saudi Arabia](references/countries/sa.md), [Serbia](references/countries/rs.md), [Singapore](references/countries/sg.md), [South Korea](references/countries/kr.md), [Spain](references/countries/es.md), [Taiwan](references/countries/tw.md), [Thailand](references/countries/th.md), [Türkiye](references/countries/tr.md), [United Arab Emirates](references/countries/ae.md), [United Kingdom](references/countries/gb.md), [United States](references/countries/us.md), [Vanuatu](references/countries/vu.md), [any Schengen state](references/countries/schengen.md)
 
-Option files. Visas and authorisations a person can apply for, with official fees, waiting times, required documents, proof-of-funds rules and the benefits each one unlocks elsewhere:
+Indexes. One line per rule or option, for questions about every country at once. Use them instead of opening every country file:
 
-- [options/residence-and-investment.md](references/options/residence-and-investment.md): Long-term residence and citizenship routes (63 options)
-- [options/visitor-and-nomad.md](references/options/visitor-and-nomad.md): Visas and travel authorisations you can apply for (33 options)
+- [benefits/index.md](references/benefits/index.md): all 78 rules, one line each (benefits from a gulf (gcc) residence permit, airline and airport stopover programs, visa-free transit, benefits from visas and residence permits you already hold; checked up to 07 Nov 2026)
+- [options/index.md](references/options/index.md): all 96 options, one line each (fee, waiting days, nationality limits, countries each one also unlocks)
+- [options/schengen-funds.md](references/options/schengen-funds.md): Schengen proof-of-funds reference amounts
 
 Settle-in files. One per country: steps in order, housing rules and local customs:
 

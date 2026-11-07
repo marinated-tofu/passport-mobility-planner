@@ -9,18 +9,18 @@ Destinations and dates, or "anywhere" with a date range; the travellers; budget 
 ## For each traveller and each country on the route
 
 1. Entry path. Choose the cheapest available path in this order, stopping at the first that applies:
-   - a benefit rule that unlocks entry for this traveller (benefits route);
+   - a benefit rule in that country's file that unlocks entry for this traveller (matched as in the benefits route);
    - a visa already held for that country, valid for the whole stay with enough entries;
    - the passport matrix entry for visa-free or visa on arrival;
-   - an electronic travel authorisation or e-visa from the option files;
-   - a visa from the option files, or, when no option covers the country, "visa needed, not covered" with the official source.
+   - an electronic travel authorisation or e-visa from that country's file (countries/<country code>.md, linked from SKILL.md);
+   - a visa from that country's file, or, when the country has no file or no option in it, "visa needed, not covered" with the official source.
    For each, show the fee, waiting time, required documents (have, missing, too old) and source. A matrix-only result is marked "from the passport matrix, confirm on the official page".
 2. Passport validity. Compare the passport expiry with the arrival date plus six months and the departure date plus three months, as in the entry conditions reference. Report which it meets; state which one applies only when a rule or option says so.
 3. Name check. Flag name differences between the passport and any visa used.
 
 ## Transit and stopovers
 
-For each leg that changes planes in a third country, check in this order: a valid visa or residence permit the traveller already holds for that country and that lets them enter it, which covers the connection too (say which document); then the transit file, for a transit rule that applies; otherwise "transit rules not covered" with the official source. When a stopover program covers a hub on the route, offer it as a free extra city with its conditions.
+For each leg that changes planes in a third country, check in this order: a valid visa or residence permit the traveller already holds for that country and that lets them enter it, which covers the connection too (say which document); then the transit rules in that country's file; otherwise "transit rules not covered" with the official source. When a stopover program covers a hub on the route, offer it as a free extra city with its conditions.
 
 ## Order and timeline
 

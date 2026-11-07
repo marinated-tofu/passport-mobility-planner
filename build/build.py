@@ -290,24 +290,6 @@ def render_rule(r: dict) -> str:
     return "\n".join(lines)
 
 
-def render_group(g: dict) -> str:
-    by_country = defaultdict(list)
-    for r in g["rules"]:
-        by_country[country_name(r["country"])].append(r)
-    names = sorted(by_country)
-    parts = [f"# {g['title']}", "",
-             "Generated from the Skill's rule data. Each rule is a dated snapshot of an official page.", ""]
-    if len(g["rules"]) > 8:
-        parts += ["## Contents", "", ", ".join(names), ""]
-    for name in names:
-        parts += [f"## {name}", ""]
-        for r in sorted(by_country[name], key=lambda r: r["id"]):
-            parts += [render_rule(r), ""]
-    if not g["rules"]:
-        parts += ["No rules in this group yet.", ""]
-    return "\n".join(parts)
-
-
 def option_unlocks(o: dict, rule_groups: list[dict]) -> list[str]:
     """Benefit rules elsewhere that list this option's document type and issuing country as a key."""
     hits = []
@@ -324,7 +306,7 @@ def option_unlocks(o: dict, rule_groups: list[dict]) -> list[str]:
                         who += f" Only for nationals of {', '.join(map(str, r['nationality_only']))}."
                     if r.get("nationality_excluded"):
                         who += f" Not for nationals of {', '.join(map(str, r['nationality_excluded']))}."
-                    hits.append(f"{country_name(r['country'])}: {r['benefit']}{cond}.{who} Rule {r['id']} in benefits/{g['group']}.md")
+                    hits.append(f"{country_name(r['country'])}: {r['benefit']}{cond}.{who} Rule {r['id']} in countries/{r['country'].lower()}.md")
                     break
     return sorted(set(hits))
 
@@ -358,27 +340,74 @@ def render_option(o: dict, rule_groups: list[dict]) -> str:
     return "\n".join(lines)
 
 
-def render_option_group(g: dict, rule_groups: list[dict]) -> str:
-    by_country = defaultdict(list)
-    for o in g["options"]:
-        by_country[country_name(o["country"])].append(o)
-    names = sorted(by_country)
-    parts = [f"# {g['title']}", "",
-             "Generated from the Skill's option data. Fees and waiting times are a dated snapshot of official pages.", ""]
-    if len(g["options"]) > 8:
-        parts += ["## Contents", "", ", ".join(names) + (", Schengen reference amounts" if g["funds"] else ""), ""]
-    for name in names:
-        parts += [f"## {name}", ""]
-        for o in sorted(by_country[name], key=lambda o: o["id"]):
-            parts += [render_option(o, rule_groups), ""]
-    if g["funds"]:
-        parts += ["## Schengen reference amounts", "",
-                  "Minimum means of subsistence each Schengen state publishes for short stays.", ""]
-        for f in sorted(g["funds"], key=lambda f: country_name(f["country"])):
-            parts.append(f"- {country_name(f['country'])}: {' '.join(str(f['amount']).split())}. "
-                         f"Source: {f['source']} ({f['source_owner']}), checked {f['checked']:%d %b %Y}")
-        parts.append("")
+def render_country(code: str, rule_groups: list[dict], option_groups: list[dict]) -> str:
+    """Everything about entering one country, so a trip reads only the countries on its route."""
+    parts = [f"# {country_name(code)}", "",
+             "Generated from the Skill's rule and option data: what documents already held unlock here, transit and stopover "
+             "rules at its airports, then visas and authorisations to apply for. Each entry is a dated snapshot of an official page.", ""]
+    for g in rule_groups:
+        rules = sorted((r for r in g["rules"] if r["country"] == code), key=lambda r: r["id"])
+        if rules:
+            parts += [f"## {g['title']}", ""] + [x for r in rules for x in (render_rule(r), "")]
+    for g in option_groups:
+        opts = sorted((o for o in g["options"] if o["country"] == code), key=lambda o: o["id"])
+        if opts:
+            parts += [f"## {g['title']}", ""] + [x for o in opts for x in (render_option(o, rule_groups), "")]
     return "\n".join(parts)
+
+
+def render_benefit_index(rule_groups: list[dict]) -> str:
+    """One line per rule: enough to match holdings against every rule without opening every country file."""
+    parts = ["# Benefits index", "",
+             "One row per rule. Every item in Unlocked by must hold. Open the country file for the rule's notes before "
+             "presenting a row marked notes, and for its official source.", "",
+             "| Rule id | Country | Benefit | Stay | Unlocked by, all of | Nationality limits | Checked | Notes |",
+             "| --- | --- | --- | --- | --- | --- | --- | --- |"]
+    for g in rule_groups:
+        for r in sorted(g["rules"], key=lambda r: (country_name(r["country"]), r["id"])):
+            items = []
+            for item in r["unlocked_by"]:
+                t = item["holds"].replace("-", " ")
+                if item.get("issued_by"):
+                    t += f" issued by {codes(item['issued_by'])}"
+                if item.get("condition"):
+                    t += f" ({' '.join(str(item['condition']).split())})"
+                items.append(t)
+            limits = "; ".join(x for x in (f"only {codes(r['nationality_only'])}" if r.get("nationality_only") else "",
+                                           f"not {codes(r['nationality_excluded'])}" if r.get("nationality_excluded") else "",
+                                           f"age {r['age']}" if r.get("age") else "") if x) or "-"
+            parts.append(f"| {r['id']} | {country_name(r['country'])} | {r['benefit']} | {' '.join(str(r.get('stay') or '-').split())} "
+                         f"| {'; '.join(items)} | {limits} | {r['checked']:%Y-%m-%d} {r['confidence']} | {'notes' if r.get('notes') else '-'} |")
+    return "\n".join(parts + [""])
+
+
+def render_option_index(option_groups: list[dict], rule_groups: list[dict]) -> str:
+    """One line per option: enough to screen and rank without opening every country file."""
+    parts = ["# Options index", "",
+             "One row per option. Open the country file for fees in local currency, required documents, proof of funds and "
+             "conditions before recommending one.", "",
+             "| Option id | Country | Document | Name | Fee USD | Days | Nationality limits | Also unlocks (countries) |",
+             "| --- | --- | --- | --- | --- | --- | --- | --- |"]
+    for g in option_groups:
+        for o in sorted(g["options"], key=lambda o: (country_name(o["country"]), o["id"])):
+            fee = f"{o['fee_usd']:,.0f}" if o.get("fee_usd") is not None else "unknown"
+            days = str(o["processing_days"]) if o.get("processing_days") is not None else "unknown"
+            limits = "; ".join(x for x in (f"only {codes(o['nationality_only'])}" if o.get("nationality_only") else "",
+                                           f"not {codes(o['nationality_excluded'])}" if o.get("nationality_excluded") else "") if x) or "-"
+            unlocked = sorted({u.split(":", 1)[0] for u in option_unlocks(o, rule_groups)})
+            parts.append(f"| {o['id']} | {country_name(o['country'])} | {o['document']} | {o['name']} | {fee} | {days} | {limits} "
+                         f"| {', '.join(unlocked) or '-'} |")
+    return "\n".join(parts + [""])
+
+
+def render_funds(option_groups: list[dict]) -> str:
+    funds = [f for g in option_groups for f in g["funds"]]
+    parts = ["# Schengen reference amounts", "",
+             "Minimum means of subsistence each Schengen state publishes for short stays.", ""]
+    for f in sorted(funds, key=lambda f: country_name(f["country"])):
+        parts.append(f"- {country_name(f['country'])}: {' '.join(str(f['amount']).split())}. "
+                     f"Source: {f['source']} ({f['source_owner']}), checked {f['checked']:%d %b %Y}")
+    return "\n".join(parts + [""])
 
 
 def render_settle(c: dict) -> str:
@@ -466,21 +495,29 @@ def build(check_links: bool, release: bool = False) -> None:
     shutil.copytree(SRC / "references", OUT / "references")
     (OUT / "references/benefits").mkdir(parents=True, exist_ok=True)
 
-    index = []
-    for g in groups:
-        rel = f"references/benefits/{g['group']}.md"
-        (OUT / rel).write_text(render_group(g))
-        newest = max((r["checked"] for r in g["rules"]), default=None)
-        when = f", checked up to {newest:%d %b %Y}" if newest else ""
-        index.append(f"- [benefits/{g['group']}.md]({rel}): {g['title']} ({len(g['rules'])} rules{when})")
+    (OUT / "references/benefits/index.md").write_text(render_benefit_index(groups))
+    n_rules_all = sum(len(g["rules"]) for g in groups)
+    newest = max((r["checked"] for g in groups for r in g["rules"]), default=None)
+    index = [f"- [benefits/index.md](references/benefits/index.md): all {n_rules_all} rules, one line each "
+             f"({', '.join(g['title'].lower() for g in groups)}{f'; checked up to {newest:%d %b %Y}' if newest else ''})"]
     (OUT / "references/official-sources.md").write_text(render_sources(sources))
 
-    opt_index = []
-    for g in option_groups:
-        rel = f"references/options/{g['group']}.md"
-        (OUT / rel).parent.mkdir(parents=True, exist_ok=True)
-        (OUT / rel).write_text(render_option_group(g, groups))
-        opt_index.append(f"- [options/{g['group']}.md]({rel}): {g['title']} ({len(g['options'])} options)")
+    (OUT / "references/options").mkdir(parents=True, exist_ok=True)
+    (OUT / "references/options/index.md").write_text(render_option_index(option_groups, groups))
+    n_all = sum(len(g["options"]) for g in option_groups)
+    opt_index = [f"- [options/index.md](references/options/index.md): all {n_all} options, one line each "
+                 "(fee, waiting days, nationality limits, countries each one also unlocks)"]
+    if any(g["funds"] for g in option_groups):
+        (OUT / "references/options/schengen-funds.md").write_text(render_funds(option_groups))
+        opt_index.append("- [options/schengen-funds.md](references/options/schengen-funds.md): Schengen proof-of-funds reference amounts")
+    country_links = []
+    (OUT / "references/countries").mkdir(parents=True, exist_ok=True)
+    all_codes = {r["country"] for g in groups for r in g["rules"]} | {o["country"] for g in option_groups for o in g["options"]}
+    for code in sorted(all_codes, key=country_name):
+        rel = f"references/countries/{code.lower()}.md"
+        (OUT / rel).write_text(render_country(code, groups, option_groups))
+        country_links.append(f"[{country_name(code)}]({rel})")
+    country_index = "- " + ", ".join(country_links)
 
     settle_index = []
     for c in settle:
@@ -501,6 +538,7 @@ def build(check_links: bool, release: bool = False) -> None:
 
     template = (SRC / "SKILL.md.tmpl").read_text()
     skill = (template.replace("{{BENEFIT_INDEX}}", "\n".join(index) or "- No benefit files yet.")
+             .replace("{{COUNTRY_INDEX}}", country_index)
              .replace("{{OPTION_INDEX}}", "\n".join(opt_index) or "- No option files yet.")
              .replace("{{SETTLE_INDEX}}", "\n".join(settle_index) or "- No settle-in files yet.")
              .replace("{{MATRIX_INDEX}}", "\n".join(matrix_index) or "- No passport matrix bundled; the passport power route uses benefit rules only."))

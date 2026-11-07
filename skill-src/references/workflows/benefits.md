@@ -12,9 +12,9 @@ For each traveller, from the verified dossier:
 
 Only documents valid today count. Note any that expire within 12 months.
 
-## Choose the benefit files
+## Find the rules
 
-Read only the files that match the holdings: the visa file when the traveller holds any visa, the residence file when they hold a residence permit from a country it covers, and the transit and stopover files when the user is planning a route or asks about layovers. A file is relevant to a passport too: rules unlocked by a passport alone apply to its nationality.
+When the question is about one or a few countries, read their country files. Otherwise read benefits/index.md, which has every rule on one line, and match the rows against the holdings. Rules unlocked by a passport alone apply to its nationality. Open a country file only for a matched rule whose row says notes, to read them and the official source.
 
 ## Match each rule
 

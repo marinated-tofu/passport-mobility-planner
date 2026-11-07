@@ -5,7 +5,7 @@ Answers "which visa, authorisation or residence permit should I get next to open
 ## Inputs
 
 - The person's holdings and today's unlocked benefits from the benefits route.
-- Every option in the option files.
+- Every option in options/index.md. Screen and score from the index rows; open the country file only for the options that make the top five, to check required documents, proof of funds and conditions.
 - Budget, if given. Available funds, if the person asked to include them (run the proof of funds route first).
 
 ## Screen each option
@@ -22,7 +22,7 @@ Mark an option Needs checking when its eligibility, age limit or proof-of-funds 
 
 ## Score each remaining option
 
-Each option lists "Also unlocks", the benefit rules it counts towards in other countries. For each option:
+Each index row lists the countries the option also unlocks; benefits/index.md and the country files name the benefit rule for each. For each option:
 
 1. New destinations: the countries in "Also unlocks" that are not already unlocked for the person, plus the issuing country itself. A Schengen visa adds every Schengen country the person cannot already enter (list in the entry conditions reference). Always show this count for each option; without a passport matrix, say it counts only what the bundled rules confirm. Count only rules whose other conditions the person meets or might meet (Needs checking counts as a half).
 2. Cost: the fee in US dollars from the option. Unknown fee: mark the cost unknown and rank the option after the ones with known fees.

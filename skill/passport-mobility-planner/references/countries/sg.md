@@ -1,0 +1,111 @@
+# Singapore
+
+Generated from the Skill's rule and option data: what documents already held unlock here, transit and stopover rules at its airports, then visas and authorisations to apply for. Each entry is a dated snapshot of an official page.
+
+## Airline and airport stopover programs
+
+### Stopover program - sg-changi-free-singapore-tour
+
+- Stay: layover of 5.5 to 24 hours; tour about 2.5 hours
+- Purpose: free guided city tour during a transit at Changi
+- Unlocked by, all of:
+  - ticket; transit or transfer at Changi Airport with a layover of 5.5 to 24 hours, bags checked through to the final destination
+  - passport; able to enter Singapore; nationalities that need a visa (for example India or Pakistan) must already hold one
+- Notes: Free guided tours of about 2.5 hours with four itineraries and set registration times. Passengers clear immigration once in and once out. Changi also sells paid transit tours for layovers of 6 hours or more.
+- Source: https://www.changiairport.com/en/experience/tours/free-singapore-tour.html (Changi Airport Group)
+- Checked: 07 Nov 2026, verified
+
+### Stopover program - sg-singapore-airlines-stopover
+
+- Purpose: discounted stopover in Singapore
+- Unlocked by, all of:
+  - ticket; Singapore Airlines multi-city or stopover booking transiting Changi, departing from Australia, Belgium, Denmark, France, Germany, India, Indonesia, Italy, mainland China, Netherlands, Spain, Switzerland, Turkey, United Kingdom or Vietnam
+- Notes: Discounted, not free. Booking a stop in Singapore through the multi-city or stopover option gives up to S$20 in Changi transit e-vouchers for trips starting in the listed countries, plus partner deals on hotels and attractions. Singapore entry rules apply.
+- Source: https://www.singaporeair.com/en_UK/sg/plan-travel/privileges/singapore-stopover/ (Singapore Airlines)
+- Checked: 07 Nov 2026, verified
+
+## Visa-free transit
+
+### Visa-free transit - sg-vftf-cis-georgia-turkmenistan-ukraine
+
+- Stay: up to 96 hours
+- Purpose: transit to or from a third country
+- Unlocked by, all of:
+  - passport issued by Armenia, Azerbaijan, Belarus, Kazakhstan, Kyrgyzstan, Moldova, Russian Federation, Tajikistan, Uzbekistan, Georgia, Turkmenistan, Ukraine
+  - ticket; onward air ticket leaving Singapore within 96 hours; arrival by any mode, departure by air only
+- Only for nationals of: Armenia, Azerbaijan, Belarus, Kazakhstan, Kyrgyzstan, Moldova, Russian Federation, Tajikistan, Uzbekistan, Georgia, Turkmenistan, Ukraine
+- Notes: Free 96-hour Visa Free Transit Facility for CIS nationals plus Georgia, Turkmenistan and Ukraine. No third-country visa is needed for this group. Not extendable; entry is still at the officer's discretion.
+- Source: https://www.ica.gov.sg/enter-transit-depart/entering-singapore/visa-free-transit-facility (Immigration & Checkpoints Authority (ICA), Singapore)
+- Checked: 07 Nov 2026, verified
+
+### Visa-free transit - sg-vftf-india
+
+- Stay: up to 96 hours
+- Purpose: transit to or from a third country
+- Unlocked by, all of:
+  - passport issued by India
+  - visa issued by Australia, Canada, Germany, Japan, New Zealand, Switzerland, United Kingdom, United States; valid visa or long-term pass for one of these countries, valid at least 1 month from the date of entry into Singapore; a used Single Journey Visa counts on the direct return trip home
+  - ticket; onward air, ferry or cruise ticket leaving Singapore within 96 hours; arrival by any mode, departure by air or sea only
+- Only for nationals of: India
+- Notes: Free 96-hour Visa Free Transit Facility for Indian nationals who are travelling to or from a third country and hold a qualifying visa or long-term pass. The stay cannot be extended, and ICA officers still decide entry at the checkpoint.
+- Source: https://www.ica.gov.sg/enter-transit-depart/entering-singapore/visa-free-transit-facility (Immigration & Checkpoints Authority (ICA), Singapore)
+- Checked: 07 Nov 2026, verified
+
+### Visa-free transit - sg-vftf-prc-hk-macau-documents
+
+- Stay: up to 96 hours
+- Purpose: transit to or from a third country
+- Unlocked by, all of:
+  - passport issued by China, Hong Kong, Macao; only a PRC Travel Document, a Hong Kong SAR Document of Identity, or a Macau SAR Travel Permit; ordinary, diplomatic, public affairs and service PRC passports do not qualify
+  - ticket; onward air, ferry or cruise ticket leaving Singapore within 96 hours; arrival by any mode, departure by air or sea only
+- Notes: Free 96-hour transit facility for holders of these three travel documents, not for PRC passport holders. Not extendable; entry decided at the checkpoint.
+- Source: https://www.ica.gov.sg/enter-transit-depart/entering-singapore/visa-free-transit-facility (Immigration & Checkpoints Authority (ICA), Singapore)
+- Checked: 07 Nov 2026, verified
+
+## Benefits from visas and residence permits you already hold
+
+### Visa-free transit - sg-vftf-with-residence-in
+
+- Stay: up to 96 hours, not extendable
+- Purpose: transit to or from a third country
+- Unlocked by, all of:
+  - residence permit issued by Australia, Canada, Germany, Switzerland, Japan, New Zealand, United Kingdom, United States; long-term pass valid at least 1 month from entry into Singapore
+  - ticket; onward air, ferry or cruise ticket leaving Singapore within 96 hours; departure by air or sea
+- Only for nationals of: India
+- Notes: Same 96-hour transit facility for Indian citizens holding a long-term pass from one of these countries.
+- Source: https://www.ica.gov.sg/information-and-e-services/entry-and-departure/entering-singapore/entry-requirements/visa-free-transit-facility (Immigration & Checkpoints Authority (ICA), Government of Singapore)
+- Checked: 07 Nov 2026, verified
+
+### Visa-free transit - sg-vftf-with-visa-in
+
+- Stay: up to 96 hours, not extendable
+- Purpose: transit to or from a third country
+- Unlocked by, all of:
+  - visa issued by Australia, Canada, Germany, Switzerland, Japan, New Zealand, United Kingdom, United States; valid at least 1 month from entry into Singapore; issued by, or valid for entry into, one of these countries
+  - ticket; onward air, ferry or cruise ticket leaving Singapore within 96 hours; departure by air or sea
+- Only for nationals of: India
+- Notes: Indian citizens transiting Singapore can skip the Singapore visa for up to 96 hours with a qualifying visa. A used single-journey visa from one of these countries can still qualify on the direct return trip home via Singapore. Entry is at the officer's discretion.
+- Source: https://www.ica.gov.sg/information-and-e-services/entry-and-departure/entering-singapore/entry-requirements/visa-free-transit-facility (Immigration & Checkpoints Authority (ICA), Government of Singapore)
+- Checked: 07 Nov 2026, verified
+
+## Long-term residence and citizenship routes
+
+### Global Investor Programme (GIP) - sg-global-investor-programme
+
+- Document: residence-permit
+- Purpose: permanent residence for business owners, founders and family office principals
+- Fee: SGD 20,000 non-refundable EDB application fee; SGD 100 ICA processing fee per applicant
+- Minimum investment: Option A: at least SGD 10 million in a new or expanded Singapore business. Option B: SGD 25 million in a GIP-select fund. Option C: Singapore single family office with at least SGD 200 million AUM, at least SGD 50 million deployed in Singapore-listed equities
+- Waiting time: About 12 months
+- Validity: Re-Entry Permit of 5 years; renewed for 5 or 3 years depending on criteria met
+- Stay: For a 5-year renewal the investor or all dependants must have lived in Singapore more than half the time; a 3-year renewal accepts either this or the business condition
+- How to apply: Submit the GIP e-application and Form 4 to EDB (Contact Singapore), followed by an interview; ICA then issues Approval-in-Principle
+- Eligibility: Established business owner (3+ years, turnover SGD 200m+), next-generation owner (family business turnover SGD 500m+), founder of a company valued at SGD 500m+ with VC/PE backing, or family office principal (SGD 200m+ net investible assets), in a listed industry
+- Proof of funds: Audited financials of the qualifying company; for Option C, bank statements showing at least SGD 200 million net investible assets
+- For ranking: fee about USD 15,500, 365 days, investment about USD 7,700,000
+- Required documents: passport, passport-photo, application-form, business-registration, bank-statements, cv, birth-certificate, marriage-certificate, other
+- Also unlocks:
+  - Panama: visa-free entry (valid (vigente) residence). Rule pa-entry-with-residence in countries/pa.md
+- Notes: Approval-in-Principle lasts 6 months and the investment must be made within it. Since 21 February 2025 Option C money must go into Singapore-listed equities. Factsheet dated 5 May 2025.
+- Source: https://www.edb.gov.sg/content/dam/edb-en/how-we-help/global-investor-programme/GIP%20Factsheet.pdf (Singapore Economic Development Board (Contact Singapore))
+- Checked: 07 Nov 2026, verified
