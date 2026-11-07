@@ -2,6 +2,7 @@
 
     uv run build/build.py            # validate, render, run the kit checker, zip
     uv run build/build.py --links    # also confirm every source address still loads
+    uv run build/build.py --release  # versioned zip for upload; refuses to overwrite a different release
 
 Output: skill/passport-mobility-planner/ (committed, so reviewers see the real package)
         dist/passport-mobility-planner.zip (the file to upload)
@@ -445,7 +446,7 @@ def render_sources(sources: list[dict]) -> str:
     return "\n".join(parts)
 
 
-def build(check_links: bool) -> None:
+def build(check_links: bool, release: bool = False) -> None:
     today = dt.date.today()
     groups, warnings = load_rules(today)
     seen = {r["id"] for g in groups for r in g["rules"]}
@@ -519,8 +520,8 @@ def build(check_links: bool) -> None:
     result = run_kit_checker()
     DIST.mkdir(exist_ok=True)
     version = re.search(r'^version = "([^"]+)"', (ROOT / "pyproject.toml").read_text(), re.M).group(1)
-    zpath = DIST / f"{NAME}-{version}.zip"
-    if zpath.exists() and not release_matches(zpath, files):
+    zpath = DIST / (f"{NAME}-{version}.zip" if release else f"{NAME}-dev.zip")
+    if release and zpath.exists() and not release_matches(zpath, files):
         raise BuildError(f"{zpath.name} already exists with different content; bump the version in pyproject.toml")
     with zipfile.ZipFile(zpath, "w", zipfile.ZIP_DEFLATED) as z:
         for p in sorted(files):
@@ -576,7 +577,9 @@ def link_problems(urls: list[str]) -> list[str]:
 if __name__ == "__main__":
     ap = argparse.ArgumentParser()
     ap.add_argument("--links", action="store_true", help="confirm every source address loads")
+    ap.add_argument("--release", action="store_true", help="write the versioned zip; never overwrites a release")
     try:
-        build(ap.parse_args().links)
+        args = ap.parse_args()
+        build(args.links, args.release)
     except BuildError as e:
         sys.exit(f"build failed: {e}")

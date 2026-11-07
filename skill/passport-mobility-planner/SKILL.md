@@ -52,6 +52,7 @@ Pick one route from what the user asked, then read only the files listed for it.
 Benefit files. What documents already held unlock. Read a file only when the person holds the document type it covers:
 
 - [benefits/gcc-residence.md](references/benefits/gcc-residence.md): Benefits from a Gulf (GCC) residence permit (9 rules, checked up to 07 Nov 2026)
+- [benefits/stopover.md](references/benefits/stopover.md): Airline and airport stopover programs (16 rules, checked up to 07 Nov 2026)
 - [benefits/transit.md](references/benefits/transit.md): Visa-free transit (19 rules, checked up to 07 Nov 2026)
 
 Option files. Visas and authorisations a person can apply for, with official fees, waiting times, required documents, proof-of-funds rules and the benefits each one unlocks elsewhere:
@@ -62,6 +63,7 @@ Settle-in files. One per country: steps in order, housing rules and local custom
 
 - [settle/jp.md](references/settle/jp.md): Settling in Japan (7 steps, 0 customs notes)
 - [settle/kr.md](references/settle/kr.md): Settling in South Korea (6 steps, 0 customs notes)
+- [settle/qa.md](references/settle/qa.md): Settling in Qatar (4 steps, 0 customs notes)
 
 Passport matrix files. Where each passport gets in without applying in advance, from a community dataset, used only for screening and scores:
 

@@ -30,12 +30,13 @@ China, Hong Kong, Japan, Singapore, South Korea, United Kingdom
 - Source: https://en.nia.gov.cn/n147418/n147463/c183412/content.html (National Immigration Administration (NIA), People's Republic of China)
 - Checked: 07 Nov 2026, partial
 
-### Visa-free entry - cn-unilateral-visa-free-entry-30-days
+### Visa-free transit - cn-unilateral-visa-free-entry-30-days
 
 - Stay: up to 30 days
 - Purpose: business, tourism, visiting relatives and friends, exchange visits, transit
 - Unlocked by, all of:
   - passport issued by Andorra, Austria, Belgium, Bulgaria, Croatia, Cyprus, Denmark, Estonia, Finland, France, Germany, Greece, Hungary, Iceland, Ireland, Italy, Latvia, Liechtenstein, Luxembourg, Malta, Monaco, Montenegro, Netherlands, North Macedonia, Norway, Poland, Portugal, Romania, Russian Federation, Slovakia, Slovenia, Spain, Sweden, Switzerland, United Kingdom, Australia, New Zealand, Bahrain, Brunei Darussalam, Japan, Kuwait, Oman, South Korea, Saudi Arabia, Argentina, Brazil, Canada, Chile, Peru, Uruguay; ordinary passport
+  - ticket; no specific onward ticket rule on the NIA list page; leave China within 30 days
 - Notes: China's one-sided visa waiver for 50 countries (list as of 17 Feb 2026). It is a general visa-free entry, but transit is one of the listed purposes, so it also covers longer layovers. No onward ticket is required by the list page. Stay is counted from 00:00 on the day after entry. The NIA list gives no end dates; MFA notices say most countries are covered until 31 Dec 2026, but Russia and Brunei run on separate terms, so check before travel.
 - Source: https://en.nia.gov.cn/n147418/n147463/c183390/content.html (National Immigration Administration (NIA), People's Republic of China)
 - Checked: 07 Nov 2026, partial

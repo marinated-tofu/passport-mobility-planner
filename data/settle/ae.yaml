@@ -1,0 +1,115 @@
+country: AE
+title: Settling in the United Arab Emirates
+steps:
+  - id: ae-health-insurance
+    order: 1
+    category: health-insurance
+    step: "Make sure you have health insurance cover"
+    who: "Residents of Abu Dhabi and Dubai"
+    deadline: ""
+    fee: ""
+    needs: [health-insurance]
+    how: "Hold a health insurance policy before your residence visa is processed; it is mandatory in Abu Dhabi and Dubai. Ask your employer how your cover is arranged."
+    notes: "The official FAQ says cover is mandatory in Abu Dhabi and Dubai and that policies for the other emirates are still being rolled out. The Dubai government portal lists health insurance as part of the work residence visa steps (https://www.dubai.ae/living/residency/residence-visa-for-work)."
+    source: https://u.ae/en/Help/FAQs/health-and-fitness
+    source_owner: The Official Portal of the UAE Government (TDRA)
+    checked: 2026-11-07
+    confidence: partial
+  - id: ae-residence-visa
+    order: 2
+    category: residence-registration
+    step: "Pass the medical fitness test and get your residence visa"
+    who: "Expatriates employed in the private sector (Dubai figures)"
+    deadline: ""
+    fee: "AED 200 residence permit fee, AED 10 Knowledge Dirham, AED 10 Innovation Dirham, AED 20 delivery; AED 500 listed as fee inside the country"
+    needs: [passport, passport-photo, medical-certificate]
+    how: "Take the medical fitness test at an approved centre (required from age 18). Your employer then applies for the residence permit through the GDRFA smart services, usually completed within 48 hours."
+    notes: "Fees and steps are from GDRFA Dubai; the other emirates apply through ICP. The permit is valid for two years. Degree certificates issued abroad must be authenticated by the Ministry of Foreign Affairs in the issuing country and then by the UAE embassy or consulate there; some professions also need degree attestation by the UAE Ministry of Education (https://u.ae/en/information-and-services/jobs/Sector-of-employment/employment-in-the-private-sector/preparing-to-work). Birth certificates of sponsored children must be attested (https://u.ae/en/information-and-services/visa-and-emirates-id/visa-information/general-provisions-for-the-residence-visa)."
+    source: https://gdrfad.gov.ae/en/node/13924
+    source_owner: General Directorate of Residency and Foreigners Affairs (GDRFA) Dubai
+    checked: 2026-11-07
+    confidence: partial
+  - id: ae-emirates-id
+    order: 3
+    category: identity
+    step: "Apply for your Emirates ID and give biometrics"
+    who: "All UAE residents"
+    deadline: ""
+    fee: ""
+    needs: []
+    how: "Apply online through the ICP website or at an accredited typing centre, and visit an ICP service centre if asked to give fingerprints and a photo. Track the application on the ICP website."
+    notes: "national-id elsewhere in this file means the Emirates ID card. The portal does not list the documents or the first-issue fee; it points to ICP for both. Report a lost card within 7 days and changed details within one month. Late renewal costs AED 20 per day, up to AED 1,000."
+    source: https://u.ae/en/information-and-services/visa-and-emirates-id/emirates-id
+    source_owner: The Official Portal of the UAE Government (TDRA)
+    checked: 2026-11-07
+    confidence: partial
+  - id: ae-uae-pass
+    order: 4
+    category: identity
+    step: "Create a verified UAE PASS digital identity"
+    who: "Residents who want to use government and private online services"
+    deadline: ""
+    fee: ""
+    needs: []
+    how: "Download the UAE PASS app and register; it uses face recognition to create a verified account in under five minutes without visiting a service centre."
+    notes: "The portal page does not list documents or a fee. Help desk 600 561 111."
+    source: https://u.ae/en/about-the-uae/digital-uae/digital-transformation/platforms-and-apps/the-uae-pass-app
+    source_owner: The Official Portal of the UAE Government (TDRA)
+    checked: 2026-11-07
+    confidence: partial
+  - id: ae-sim-registration
+    order: 5
+    category: phone
+    step: "Register your mobile SIM with your Emirates ID"
+    who: "Citizens and residents"
+    deadline: ""
+    fee: ""
+    needs: [national-id]
+    how: "Register or renew your SIM with your original Emirates ID through your provider; copies or scans are not accepted."
+    notes: "Residents can hold up to five SIM cards per provider, visitors up to two. Visitors register with a passport (or GCC national ID)."
+    source: https://tdra.gov.ae/en/FAQs
+    source_owner: Telecommunications and Digital Government Regulatory Authority (TDRA)
+    checked: 2026-11-07
+    confidence: verified
+  - id: ae-bank-account
+    order: 6
+    category: bank-account
+    step: "Open a bank account"
+    who: "UAE residents"
+    deadline: ""
+    fee: ""
+    needs: [national-id, residence-permit, passport, employment-letter, accommodation-proof]
+    how: "Apply at a bank or through its app with your Emirates ID, residence visa, passport and a salary certificate or employment letter."
+    notes: "Proof of address is asked for only in some cases. Self-employed applicants may also need a trade licence and company documents. Lists vary by bank."
+    source: https://u.ae/en/information-and-services/finance-and-investment/banking-in-uae
+    source_owner: The Official Portal of the UAE Government (TDRA)
+    checked: 2026-11-07
+    confidence: verified
+  - id: ae-driving-licence
+    order: 7
+    category: driving-licence
+    step: "Exchange your foreign driving licence for a UAE licence"
+    who: "Expatriate residents holding a valid licence from an eligible country, aged 18 or over"
+    deadline: ""
+    fee: ""
+    needs: []
+    how: "Check whether your licence is on the exchange list and apply through the Ministry of Interior, or the RTA in Dubai."
+    notes: "Only some home-country licences can be exchanged; others need lessons and tests. The portal gives no country list, documents or fees. RTA Dubai service: https://www.rta.ae/wps/portal/rta/ae/home/rta-services/service-details?serviceId=120"
+    source: https://u.ae/en/information-and-services/transportation/Driving-and-licensing/get-a-driving-licence
+    source_owner: The Official Portal of the UAE Government (TDRA)
+    checked: 2026-11-07
+    confidence: partial
+  - id: ae-business-mainland
+    order: 8
+    category: business-registration
+    step: "Set up a mainland business licence (or apply to a free zone authority)"
+    who: "Foreign investors and residents starting a business"
+    deadline: "Pay for the trade licence within 30 days of receiving the payment voucher"
+    fee: ""
+    needs: [passport, tenancy-contract, other]
+    how: "Choose the activity and legal form, register a trade name with the emirate's economic department, get initial approval and then submit the documents and pay for the licence; the Basher platform does this online. Free zone companies apply to the free zone authority instead."
+    notes: "Foreign investors need approval from the General Directorate of Residency and Foreigners' Affairs before initial approval. Businesses fully owned by non-GCC nationals need a UAE local service agent under an attested agreement. Documents include an attested Memorandum of Association and a lease contract (RERA-attested in Dubai). Fees are not stated."
+    source: https://u.ae/en/information-and-services/business/Doing-business/doing-business-on-the-mainland/steps-to-start-a-business-on-the-mainland
+    source_owner: The Official Portal of the UAE Government (TDRA)
+    checked: 2026-11-07
+    confidence: partial

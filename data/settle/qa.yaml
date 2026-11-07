@@ -1,0 +1,59 @@
+country: QA
+title: Settling in Qatar
+steps:
+  - id: qa-residence-permit
+    order: 1
+    category: residence-registration
+    step: "Get your residence permit (RP) and Qatar ID through your sponsor"
+    who: "Expatriates arriving on an employer-sponsored work visa"
+    deadline: ""
+    fee: ""
+    needs: [visa]
+    how: "Your sponsor (employer) applies for the residence permit. You can follow the application on the Ministry of Interior portal using the visa number or the sponsor's ID number, and print it once issued."
+    notes: "The Hukoomi and MOI service pages for issuing a new residence permit were in maintenance or unavailable on 2026-11-07, so the post-arrival steps, deadline and fee are not confirmed from an official page. Degree, birth and marriage certificates issued abroad are attested through MOFA Qatar; its legalization page lists QAR 100 each for academic certificates, birth certificates and marriage contracts (https://www.mofa.gov.qa/en/consular-services/legalization)."
+    source: https://portal.moi.gov.qa/wps/portal/MOIInternet/services/inquiries/residencypermits
+    source_owner: Ministry of Interior, State of Qatar
+    checked: 2026-11-07
+    confidence: partial
+  - id: qa-health-card
+    order: 2
+    category: health-insurance
+    step: "Get a health card at your nearest PHCC health centre"
+    who: "Adult and child residents of Qatar, and domestic staff"
+    deadline: ""
+    fee: "QR 100 for adult or child residents; QR 50 for domestic staff (card payment only)"
+    needs: [national-id, passport-photo, accommodation-proof]
+    how: "Go to the PHCC health centre nearest your home with your valid Qatar ID, a 4 x 3 cm photo and a copy of a utility bill, fill in the form and pay by card. You receive a health file number and the card is issued the same day or within a few days."
+    notes: "national-id here means the Qatar ID card (QID). The proof of address is a phone, water or electricity bill. Children also need their inoculation card on first issue. Domestic staff need their sponsor's QID too. Cards are issued in morning hours only; renewal is also possible online."
+    source: https://www.phcc.gov.qa/patients-clients/health-card
+    source_owner: Primary Health Care Corporation (PHCC), State of Qatar
+    checked: 2026-11-07
+    confidence: verified
+  - id: qa-driving-licence
+    order: 3
+    category: driving-licence
+    step: "Get a Qatari driving licence"
+    who: "Non-Qatari residents who want to drive in Qatar"
+    deadline: ""
+    fee: "QR 250 for a five-year private light vehicle licence for non-Qataris; QR 50 per driving test; temporary licence for tourists, visitors and foreigners QR 150 for three months"
+    needs: []
+    how: "Apply to the General Directorate of Traffic of the Ministry of Interior."
+    notes: "The MOI traffic fee table was the only official page reachable. It does not say which foreign licences can be exchanged without a test or which documents are needed; check with the General Directorate of Traffic (traffic@moi.gov.qa)."
+    source: https://portal.moi.gov.qa/wps/portal/MOIInternet/departmentcommittees/gatraffic
+    source_owner: General Directorate of Traffic, Ministry of Interior, State of Qatar
+    checked: 2026-11-07
+    confidence: partial
+  - id: qa-business-registration
+    order: 4
+    category: business-registration
+    step: "Register a company through the Invest in Qatar Center on the Single Window"
+    who: "Foreign investors setting up a new project or company in Qatar"
+    deadline: ""
+    fee: "No fee charged by the Invest in Qatar Center itself; standard MOCI fees apply after approval"
+    needs: [passport, business-registration, application-form, other]
+    how: "Submit the application to the Invest in Qatar Center at the Ministry of Commerce and Industry through the Single Window (investor.sw.gov.qa). If approved, the commercial register is issued and you then apply for the commercial licence."
+    notes: "Foreign investors may own up to 100% of capital in permitted sectors under Law No. 1 of 2019; banks, insurance and commercial agencies are restricted, so check the Positive List first. Documents include passport copies of foreign partners, a notarised commercial register with Arabic translation for corporate partners, a Real Beneficiary Declaration, any sector approval, and an incorporation document notarised by the Ministry of Justice. A non-Qatari investor must open an account with a bank operating in Qatar. A rejection can be appealed to the Minister within 15 days."
+    source: https://www.moci.gov.qa/en/investment-steps
+    source_owner: Ministry of Commerce and Industry, State of Qatar
+    checked: 2026-11-07
+    confidence: partial
