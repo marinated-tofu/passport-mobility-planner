@@ -5,7 +5,17 @@ description: Builds a private travel and relocation dossier from the passports, 
 
 # First move
 
-The documents are on the NAS, never in this Skill's folder. Do not look for them with shell commands such as find or ls, and do not say a folder is missing until file-agent says so. Every route starts with step 1 of the Workflow section: run its delegate command for the folder the user named. Before answering, read the workflow file for the route (workflows/plan.md for a trip) and follow its checks in order; the country files hold the rules, the workflow file says how to apply them, including every condition a rule states. This Skill's own folder holds only SKILL.md and references; read those yourself with the Read tool, never through an agent, and read each file once. Use only the file names linked below; there is no file for a region such as Schengen. When a country is not in the country list, or a Read says a file does not exist, that country is not covered: say so, point to official-sources.md, and move on. Never search for a Skill file.
+The documents are on the NAS, not in this Skill's folder, and neither shell commands nor the Read tool can reach them. Only the delegate command can. So, for every route, run this first, with [DOCUMENTS FOLDER] replaced by the folder the user named, for example Personal/Travel:
+
+```text
+delegate --target file-agent --instruction 'In the folder [DOCUMENTS FOLDER], find PDF, JPG, JPEG, PNG and HEIC files whose names, tags or contents suggest a passport, visa, residence permit, residence card or national ID, including files tagged with a name starting with dossier. Search subfolders. Return each match with its real path, file type, tags and modified date. Do not open, move or change any file. If there are no matches, return an empty list and say so.'
+```
+
+Do not say a folder is missing unless this command says so. Then:
+
+- Read the workflow file for the route (workflows/plan.md for a trip) and follow its checks in order. The country files hold the rules; the workflow file says how to apply them, including every condition a rule states.
+- Read the Skill's own files yourself with the Read tool, never through an agent, each once, and only by the names linked below. There is no file for a region such as Schengen.
+- A country missing from the country list, or a Read that says a file does not exist, means that country is not covered: say so, point to official-sources.md, and move on. Never search for a Skill file.
 
 # Goal
 
@@ -74,11 +84,7 @@ Every route starts with steps 1 to 3. The dossier, plan, proof of funds and sett
 
 The expert agents see only the instruction, not this conversation. Each command below has slots in square brackets and capitals, such as [DOCUMENTS FOLDER]. Replace every slot with the real folder or the real file paths returned earlier, comma-separated, before running the command; never send a command with a slot left in. Pass file paths, never document numbers, machine readable zone lines or account numbers, and keep every instruction on one line without angle brackets.
 
-Step 1. Find travel documents in the documents folder.
-
-```text
-delegate --target file-agent --instruction 'In the folder [DOCUMENTS FOLDER], find PDF, JPG, JPEG, PNG and HEIC files whose names, tags or contents suggest a passport, visa, residence permit, residence card or national ID, including files tagged with a name starting with dossier. Search subfolders. Return each match with its real path, file type, tags and modified date. Do not open, move or change any file. If there are no matches, return an empty list and say so.'
-```
+Step 1. Find travel documents in the documents folder: the file-agent command in First move.
 
 Step 2. If photo search is yes, find photos of documents in the photo library.
 
