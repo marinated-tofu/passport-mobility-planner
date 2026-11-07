@@ -9,7 +9,7 @@ Destinations and dates, or "anywhere" with a date range; the travellers; budget 
 ## For each traveller and each country on the route
 
 1. Entry path. Choose the cheapest available path in this order, stopping at the first that applies:
-   - a benefit rule in that country's file that unlocks entry for this traveller (matched as in the benefits route);
+   - a benefit rule in that country's file whose Unlocked by items are all met by the traveller's documents valid on the travel dates, and whose nationality limits allow the traveller;
    - a visa already held for that country, valid for the whole stay with enough entries;
    - the passport matrix entry for visa-free or visa on arrival;
    - an electronic travel authorisation or e-visa from that country's file (countries/<country code>.md, linked from SKILL.md);

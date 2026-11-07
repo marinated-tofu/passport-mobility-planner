@@ -5,7 +5,7 @@ description: Builds a private travel and relocation dossier from the passports, 
 
 # First move
 
-The documents are on the NAS, never in this Skill's folder. Do not look for them with shell commands such as find or ls, and do not say a folder is missing until file-agent says so. Every route starts with step 1 of the Workflow section: run its delegate command for the folder the user named. This Skill's own folder holds only SKILL.md and references; read those with the Read tool.
+The documents are on the NAS, never in this Skill's folder. Do not look for them with shell commands such as find or ls, and do not say a folder is missing until file-agent says so. Every route starts with step 1 of the Workflow section: run its delegate command for the folder the user named. Before answering, read the workflow file for the route (workflows/plan.md for a trip) and follow its checks in order; the country files hold the rules, the workflow file says how to apply them, including every condition a rule states. This Skill's own folder holds only SKILL.md and references; read those yourself with the Read tool, never through an agent, and read each file once. Use only the file names linked below; there is no file for a region such as Schengen.
 
 # Goal
 
@@ -53,11 +53,11 @@ Pick one route from what the user asked, then read only the files listed for it.
 | What changed, any news for my passport or destination | Updates | [workflows/updates.md](references/workflows/updates.md), [official-sources.md](references/official-sources.md) |
 | Exact official requirement, full document list, a country the bundled files do not cover | Library search | [workflows/library.md](references/workflows/library.md) |
 
-Country files. One per country: what documents already held unlock there, transit and stopover rules at its airports, and the visas and authorisations to apply for, with official fees, waiting times, required documents and proof-of-funds rules. Read only the files for the countries in question; a country with no file is not covered:
+Country files. One per country: what documents already held unlock there, transit and stopover rules at its airports, and the visas and authorisations to apply for, with official fees, waiting times, required documents and proof-of-funds rules. Read only the files for the countries in question; a country with no file is not covered. Rules shared by every Schengen state are in topics/entry-conditions.md:
 
 {{COUNTRY_INDEX}}
 
-Indexes. One line per rule or option, for questions about every country at once. Use them instead of opening every country file:
+Indexes. One line per rule or option, for questions about every country at once. Only the benefits, passport power and next document routes read them; a trip plan reads the country files instead:
 
 {{BENEFIT_INDEX}}
 {{OPTION_INDEX}}
@@ -76,12 +76,12 @@ Use [official-sources.md](references/official-sources.md) whenever an answer tel
 
 Every route starts with steps 1 to 3. The dossier, plan, proof of funds and settle-in routes add steps 4 and 5. Each step passes only the real result returned by the previous step; never pass a guessed path or value.
 
-The expert agents see only the instruction, not this conversation. When an instruction says the folder the user named or each file path given, write the actual folder or the real file paths returned earlier into the instruction. Pass file paths, never document numbers, machine readable zone lines or account numbers, and keep every instruction on one line without angle brackets.
+The expert agents see only the instruction, not this conversation. Each command below has slots in square brackets and capitals, such as [DOCUMENTS FOLDER]. Replace every slot with the real folder or the real file paths returned earlier, comma-separated, before running the command; never send a command with a slot left in. Pass file paths, never document numbers, machine readable zone lines or account numbers, and keep every instruction on one line without angle brackets.
 
 Step 1. Find travel documents in the documents folder.
 
 ```text
-delegate --target file-agent --instruction 'In the documents folder the user named, find PDF, JPG, JPEG, PNG and HEIC files whose names, tags or contents suggest a passport, visa, residence permit, residence card or national ID, including files tagged with a name starting with dossier. Search subfolders. Return each match with its real path, file type, tags and modified date. Do not open, move or change any file. If there are no matches, return an empty list and say so.'
+delegate --target file-agent --instruction 'In the folder [DOCUMENTS FOLDER], find PDF, JPG, JPEG, PNG and HEIC files whose names, tags or contents suggest a passport, visa, residence permit, residence card or national ID, including files tagged with a name starting with dossier. Search subfolders. Return each match with its real path, file type, tags and modified date. Do not open, move or change any file. If there are no matches, return an empty list and say so.'
 ```
 
 Step 2. If photo search is yes, find photos of documents in the photo library.
@@ -95,13 +95,13 @@ If steps 1 and 2 both return empty lists, tell the user no documents were found 
 Step 3. Read each travel document found. For PDF files:
 
 ```text
-delegate --target document-agent --instruction 'From each passport, visa, residence permit or national ID file path given, extract one record per document with these fields: document type, issuing country, holder surname, given names, nationality, date of birth, sex, place of birth, document number, date of issue, date of expiry, issuing authority, and for visas the visa type, entries allowed, duration of stay and valid-from date. Also extract the machine readable zone lines exactly as printed, and say for each document whether the name, document number, date of birth, nationality and expiry in the machine readable zone agree with the printed fields. Return a field as empty when it is not visible; never guess. Report each file you could not read.'
+delegate --target document-agent --instruction 'From each of these passport, visa, residence permit or national ID files: [PDF PATHS FROM STEP 1], extract one record per document with these fields: document type, issuing country, holder surname, given names, nationality, date of birth, sex, place of birth, document number, date of issue, date of expiry, issuing authority, and for visas the visa type, entries allowed, duration of stay and valid-from date. Also extract the machine readable zone lines exactly as printed, and say for each document whether the name, document number, date of birth, nationality and expiry in the machine readable zone agree with the printed fields. Return a field as empty when it is not visible; never guess. Report each file you could not read.'
 ```
 
 For image files:
 
 ```text
-delegate --target photo-agent --instruction 'Run text recognition on each image path given and return the full recognised text for each image, keeping the two or three machine readable zone lines at the bottom intact and in order. Report each image where no text was recognised.'
+delegate --target photo-agent --instruction 'Run text recognition on each of these images: [IMAGE PATHS FROM STEPS 1 AND 2], and return the full recognised text for each image, keeping the two or three machine readable zone lines at the bottom intact and in order. Report each image where no text was recognised.'
 ```
 
 Then compare the records for each person yourself, without another delegation: group them by holder, check that surname, given names, date of birth and nationality agree across every document of the same holder, and for images check the machine readable zone against the printed fields using [topics/document-fields.md](references/topics/document-fields.md). List every disagreement with both values and the file paths involved.
@@ -109,37 +109,37 @@ Then compare the records for each person yourself, without another delegation: g
 Step 4. Dossier, plan, proof of funds and settle-in routes only. Find supporting documents.
 
 ```text
-delegate --target file-agent --instruction 'In the documents folder the user named, find PDF and image files whose names, tags or contents suggest a birth certificate, marriage certificate, degree certificate, transcript, CV, employment letter, employment contract, payslip, bank statement, tax return, business registration, police clearance, medical certificate, health or travel insurance, tenancy contract, flight booking, accommodation booking or invitation letter. Search subfolders. Return each match with its real path, file type, tags and modified date. Do not open, move or change any file. If there are no matches, return an empty list and say so.'
+delegate --target file-agent --instruction 'In the folder [DOCUMENTS FOLDER], find PDF and image files whose names, tags or contents suggest a birth certificate, marriage certificate, degree certificate, transcript, CV, employment letter, employment contract, payslip, bank statement, tax return, business registration, police clearance, medical certificate, health or travel insurance, tenancy contract, flight booking, accommodation booking or invitation letter. Search subfolders. Return each match with its real path, file type, tags and modified date. Do not open, move or change any file. If there are no matches, return an empty list and say so.'
 ```
 
 Step 5. Read the supporting documents found.
 
 ```text
-delegate --target document-agent --instruction 'For each file path given, return one record per document. Set the document type to one of: birth-certificate, marriage-certificate, degree-certificate, transcript, cv, employment-letter, employment-contract, payslips, bank-statements, tax-return, business-registration, sponsor-letter, invitation-letter, police-clearance, medical-certificate, health-insurance, travel-insurance, flight-booking, accommodation-proof, tenancy-contract, proof-of-income, or other with the title as printed. Always return the holder or person names as printed, the issuing body, the issue date, any expiry or validity dates, and whether an apostille, attestation or certified translation stamp is visible. Also return, when printed: dates and places of birth or marriage and registry numbers for certificates; institution, degree, field and award date for degrees and transcripts; employer, job title, start date, salary and currency for employment documents and payslips; bank, currency, period start and end, opening and closing balance for bank statements; cover period, territory and cover amount for insurance; names, addresses, dates, rent and deposit for tenancy contracts and bookings. For any account, booking or registry number return only its last three characters. Return a field as empty when it is not printed; never guess. Report each file you could not read.'
+delegate --target document-agent --instruction 'For each of these files: [PATHS FROM STEP 4 EXCEPT BANK STATEMENTS], return one record per document. Set the document type to one of: birth-certificate, marriage-certificate, degree-certificate, transcript, cv, employment-letter, employment-contract, payslips, bank-statements, tax-return, business-registration, sponsor-letter, invitation-letter, police-clearance, medical-certificate, health-insurance, travel-insurance, flight-booking, accommodation-proof, tenancy-contract, proof-of-income, or other with the title as printed. Always return the holder or person names as printed, the issuing body, the issue date, any expiry or validity dates, and whether an apostille, attestation or certified translation stamp is visible. Also return, when printed: dates and places of birth or marriage and registry numbers for certificates; institution, degree, field and award date for degrees and transcripts; employer, job title, start date, salary and currency for employment documents and payslips; bank, currency, period start and end, opening and closing balance for bank statements; cover period, territory and cover amount for insurance; names, addresses, dates, rent and deposit for tenancy contracts and bookings. For any account, booking or registry number return only its last three characters. Return a field as empty when it is not printed; never guess. Report each file you could not read.'
 ```
 
 Proof of funds route only. Read the bank statements in detail:
 
 ```text
-delegate --target document-agent --instruction 'For each bank statement file given, return the account holder name, bank name, last three characters of the account number, currency, statement period start and end dates, statement issue date, opening balance, closing balance, the lowest balance shown in the period, total credits and total debits. Also list every credit at or above the threshold amount given, with its date, amount and description, and every credit that repeats each month from the same payer. Return empty for any field not printed. Never return full account numbers.'
+delegate --target document-agent --instruction 'For each of these bank statement files: [BANK STATEMENT PATHS FROM STEP 4], return the account holder name, bank name, last three characters of the account number, currency, statement period start and end dates, statement issue date, opening balance, closing balance, the lowest balance shown in the period, total credits and total debits. Also list every credit at or above the threshold amount given, with its date, amount and description, and every credit that repeats each month from the same payer. Return empty for any field not printed. Never return full account numbers.'
 ```
 
 Updates route only. Find the watcher update files:
 
 ```text
-delegate --target file-agent --instruction 'In the updates folder the user named, find Markdown files whose names start with passport-updates and were modified in the last 30 days. Return their real paths, newest first. If there are none, return an empty list and say so.'
+delegate --target file-agent --instruction 'In the folder [UPDATES FOLDER], find Markdown files whose names start with passport-updates and were modified in the last 30 days. Return their real paths, newest first. If there are none, return an empty list and say so.'
 ```
 
 Then ask about them:
 
 ```text
-delegate --target document-agent --instruction 'Read the update files given and list every entry about the countries given, for the topics visas, entry rules, transit, residence permits, registration, banking and travel advisories. For each entry return the country, date detected, official source address and the summary as written in the file. Return an empty list when no entry matches.'
+delegate --target document-agent --instruction 'Read these update files: [PATHS FROM THE PREVIOUS STEP], and list every entry about these countries: [COUNTRIES], for the topics visas, entry rules, transit, residence permits, registration, banking and travel advisories. For each entry return the country, date detected, official source address and the summary as written in the file. Return an empty list when no entry matches.'
 ```
 
 Library search, when the route or the library workflow calls for it:
 
 ```text
-delegate --target knowledge-agent --instruction 'Search only the library folder the user named for the question given and return the passages that answer it, each with the file path, plus the source address and copy date written at the top of that file. Return an empty result when nothing in the folder answers it; do not use any other folder or general knowledge.'
+delegate --target knowledge-agent --instruction 'Search only the folder [LIBRARY FOLDER] for this question: [QUESTION], and return the passages that answer it, each with the file path, plus the source address and copy date written at the top of that file. Return an empty result when nothing in the folder answers it; do not use any other folder or general knowledge.'
 ```
 
 Then follow the workflow file for the chosen route. The benefits, next document, plan, proof of funds, settle-in and expiry routes need no further delegation; they compare the verified records with the bundled rules.
