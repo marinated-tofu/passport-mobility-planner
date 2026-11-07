@@ -20,7 +20,7 @@ Destinations and dates, or "anywhere" with a date range; the travellers; budget 
 
 ## Transit and stopovers
 
-For each leg that changes planes in a third country, check in this order: a valid visa or residence permit the traveller already holds for that country and that lets them enter it, which covers the connection too (say which document); then the transit rules in that country's file; otherwise "transit rules not covered" with the official source. When a stopover program covers a hub on the route, offer it as a free extra city with its conditions.
+For each leg that changes planes in a third country, check in this order: a valid visa or residence permit the traveller already holds for that country and that lets them enter it, which covers the connection too (say which document); then the transit rules in that country's file, when SKILL.md lists one (no file means no bundled transit rule; do not search for one); otherwise "transit rules not covered" with the official source. When a stopover program covers a hub on the route, offer it as a free extra city with its conditions.
 
 ## Order and timeline
 
