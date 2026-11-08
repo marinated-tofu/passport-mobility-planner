@@ -88,7 +88,7 @@ If steps 1 and 2 both return empty lists, tell the user no documents were found 
 Step 3. Read each travel document found. For PDF files:
 
 ```text
-delegate --target document-agent --instruction 'From each of these passport, visa, residence permit or national ID files: [PDF PATHS FROM STEP 1], extract one record per document with these fields: document type, issuing country, holder surname, given names, nationality, date of birth, sex, place of birth, document number, date of issue, date of expiry, issuing authority, and for visas the visa type, entries allowed, duration of stay and valid-from date. Also extract the machine readable zone lines exactly as printed, and say for each document whether the name, document number, date of birth, nationality and expiry in the machine readable zone agree with the printed fields. Return a field as empty when it is not visible; never guess. Report each file you could not read.'
+delegate --target document-agent --instruction 'From each of these passport, visa, residence permit or national ID files: [PDF PATHS FROM STEP 1], extract one record per document with these fields: document type, issuing country, holder surname, given names, nationality, date of birth, sex, place of birth, the last three characters of the document number, date of issue, date of expiry, issuing authority, and for visas the visa type, entries allowed, duration of stay and valid-from date. Compare the machine readable zone with the printed fields yourself and do not return the machine readable zone lines: say for each document whether the name, document number, date of birth, nationality and expiry in the zone agree with the printed page, and for each field that differs, which character positions differ and the two characters at each. Return a field as empty when it is not visible; never guess. Report each file you could not read.'
 ```
 
 For image files:
@@ -97,7 +97,7 @@ For image files:
 delegate --target photo-agent --instruction 'Run text recognition on each of these images: [IMAGE PATHS FROM STEPS 1 AND 2], and return the full recognised text for each image, keeping the two or three machine readable zone lines at the bottom intact and in order. Report each image where no text was recognised.'
 ```
 
-Then compare the records for each person yourself, without another delegation: group them by holder, check that surname, given names, date of birth and nationality agree across every document of the same holder, and for images check the machine readable zone against the printed fields using [topics/document-fields.md](references/topics/document-fields.md). List every disagreement with both values and the file paths involved.
+Then compare the records for each person yourself, without another delegation: group them by holder, check that surname, given names, date of birth and nationality agree across every document of the same holder, and for images check the machine readable zone against the printed fields using [topics/document-fields.md](references/topics/document-fields.md). Text recognition returns full numbers: use them only for that check, and in the answer write each number as "ending" plus its last three characters. List every disagreement with both values and the file paths involved.
 
 Then follow the workflow file for the chosen route. To save a report or tag files, after the user agrees, read [save.md](references/save.md).
 

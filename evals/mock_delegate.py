@@ -46,6 +46,48 @@ def listing(files):
             for f in files]
 
 
+def last_three(value):
+    v = str(value).strip()
+    return f"ending {v[-3:]}" if len(v) > 3 else v
+
+
+def mrz_check(rec):
+    """What an agent asked to compare the zone with the printed page, without returning the zone, would say."""
+    lines = rec.get("machine readable zone") or []
+    if len(lines) < 2:
+        return "no machine readable zone found"
+    l1, l2 = lines[0], lines[1]
+    out = []
+    num = l2[0:9].replace("<", "")
+    printed = str(rec.get("document number", ""))
+    if printed and num != printed:
+        diff = [f"character {i + 1}: zone {a}, printed {b}" for i, (a, b) in enumerate(zip(num, printed)) if a != b]
+        out.append("document number differs (" + "; ".join(diff or ["different length"]) + ")")
+    def yymmdd(d):
+        return str(d).replace("-", "")[2:8]
+    if rec.get("date of birth") and l2[13:19] != yymmdd(rec["date of birth"]):
+        out.append("date of birth differs")
+    if rec.get("date of expiry") and l2[21:27] != yymmdd(rec["date of expiry"]):
+        out.append("date of expiry differs")
+    surname = str(rec.get("holder surname", "")).replace(" ", "<").upper()
+    if surname and surname not in l1:
+        out.append("surname differs")
+    return "agrees with the printed page" if not out else "; ".join(out)
+
+
+def masked(rec, low):
+    """Honour 'last three characters' and 'zone agreement only' requests, as a real agent would."""
+    rec = dict(rec)
+    if "machine readable zone" in rec and re.search(r"do not return the machine readable zone|without the zone lines", low):
+        rec["machine readable zone check"] = mrz_check(rec)
+        rec.pop("machine readable zone")
+    if "last three characters" in low:
+        for key in list(rec):
+            if "number" in key and "last three" not in key:
+                rec[key] = last_three(rec[key])
+    return rec
+
+
 TRAVEL = {"passport", "visa", "residence permit", "national id"}
 
 
@@ -128,7 +170,7 @@ def document_agent(world, text, low):
             if "bank statement" not in low and "threshold" not in low:
                 rec.pop("large credits", None)
                 rec.pop("repeating credits", None)
-            out.append({"path": f["path"], **rec})
+            out.append({"path": f["path"], **masked(rec, low)})
     return answer("completed", {"records": out, "could not read": unread})
 
 
