@@ -4,13 +4,15 @@ Plans how a person or a household reaches the countries they chose, with the lea
 
 Comparing dates: write both as YYYY-MM-DD and compare the year, then the month, then the day. 2026-03-15 is before 2026-09-01, so a document expiring 2026-03-15 is not valid on 2026-09-01.
 
+{{include:supporting}}
+
 ## Inputs
 
 Destinations and dates, or "anywhere" with a date range; the travellers; budget if given; connections from saved bookings. If the user says "anywhere", start from the destinations the travellers can already enter: unlocked benefits first, then passport matrix entries marked visa-free, visa on arrival or e-visa.
 
 ## Work, for each traveller
 
-1. Documents: from SKILL.md steps 1 to 3, the passport and every visa or residence permit, with expiry dates and the machine readable zone result.
+1. Documents: from SKILL.md steps 1 to 3 and steps 4 and 5 above, the passport and every visa or residence permit, with expiry dates and the machine readable zone result.
 2. Each country on the route, in this order, stopping at the first path that applies:
    - a benefit rule in the country's file: write its numbered checks with yes or no and the dates; it applies only if every answer is yes;
    - a visa already held for that country, valid for the whole stay with enough entries;

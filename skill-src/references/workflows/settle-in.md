@@ -2,6 +2,8 @@
 
 Gives a person moving to a country the steps to settle in, in order, with each step's documents checked against their dossier, plus housing rules and local customs.
 
+{{include:supporting}}
+
 ## Inputs
 
 Goal country and purpose (work, remote work, study, family, business), the arrival date if known, and the dossier from steps 1 to 5.

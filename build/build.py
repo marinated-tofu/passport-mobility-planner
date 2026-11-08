@@ -514,6 +514,18 @@ def render_sources(sources: list[dict]) -> str:
     return "\n".join(parts)
 
 
+def expand_includes(root: Path) -> None:
+    """Fill {{include:name}} in reference files from skill-src/snippets, so each route's file carries its own commands."""
+    for path in root.rglob("*.md"):
+        text = path.read_text()
+        for name in re.findall(r"\{\{include:([a-z-]+)\}\}", text):
+            snippet = SRC / "snippets" / f"{name}.md"
+            if not snippet.exists():
+                raise BuildError(f"{path.name}: no snippet {name}")
+            text = text.replace(f"{{{{include:{name}}}}}", snippet.read_text().rstrip())
+        path.write_text(text)
+
+
 def build(check_links: bool, release: bool = False) -> None:
     today = dt.date.today()
     groups, warnings = load_rules(today)
@@ -527,6 +539,7 @@ def build(check_links: bool, release: bool = False) -> None:
     if OUT.exists():
         shutil.rmtree(OUT)
     shutil.copytree(SRC / "references", OUT / "references")
+    expand_includes(OUT / "references")
     (OUT / "references/benefits").mkdir(parents=True, exist_ok=True)
 
     (OUT / "references/benefits/index.md").write_text(render_benefit_index(groups))
@@ -550,7 +563,8 @@ def build(check_links: bool, release: bool = False) -> None:
     for code in sorted(all_codes, key=country_name):
         rel = f"references/countries/{code.lower()}.md"
         (OUT / rel).write_text(render_country(code, groups, option_groups))
-        country_links.append(f"[{country_name(code)}]({rel})")
+        label = "Schengen states without their own file" if code.upper() == "SCHENGEN" else country_name(code)
+        country_links.append(f"[{label}]({rel})")
     country_index = "- " + ", ".join(country_links)
 
     settle_index = []

@@ -1,6 +1,6 @@
 ---
 name: passport-mobility-planner
-description: Builds a private travel and relocation dossier from the passports, visas, residence permits and supporting documents (birth and marriage certificates, degrees, employment letters, bank statements) stored on a UGREEN NAS, then shows what those documents unlock, which visa to get next for the most countries at the lowest cost, the cheapest and fastest way to reach chosen countries, whether bank statements meet proof-of-funds rules, the steps to settle in a new country, what expires soon, and official rule changes. Use when someone asks what is on their passport, where they can travel, which visa or permit to get next, whether they are ready for or can afford a trip or move, what an application needs, how to settle in a country, what is expiring, or what changed in visa, entry or residence rules.
+description: Reads the passports, visas, residence permits and supporting documents stored on a UGREEN NAS and shows what they unlock, which visa to get next, how to reach chosen countries cheaply, whether bank statements meet proof-of-funds rules, how to settle in a country, what expires soon and which official rules changed. Use when someone asks what is on their passport, where they can travel, which visa to get next, whether they are ready for or can afford a trip or move, how to settle in a country, what is expiring, or what changed in visa or entry rules.
 ---
 
 # First move
@@ -14,23 +14,14 @@ delegate --target file-agent --instruction 'In the folder [DOCUMENTS FOLDER], fi
 Do not say a folder is missing unless this command says so. Then:
 
 - Read the workflow file for the route (workflows/plan.md for a trip) and follow its checks in order. The country files hold the rules; the workflow file says how to apply them, including every condition a rule states.
-- Read the Skill's own files yourself with the Read tool, never through an agent, each once, and only by the names linked below. There is no file for a region such as Schengen.
+- Read the Skill's own files yourself with the Read tool, never through an agent, each once, and only by the names linked below. A Schengen state with no file of its own (France or the Netherlands, for example) uses countries/schengen.md.
 - A country missing from the country list, or a Read that says a file does not exist, means that country is not covered: say so, point to official-sources.md, and move on. Never search for a Skill file.
 
 # Goal
 
-Help each person in the household get the most out of their documents, privately, using only files stored on this NAS and the official rules bundled with this Skill:
+Help each person in the household get the most out of the passports, visas, permits and supporting documents on this NAS, with the official rules bundled here: what they hold, what it unlocks, which document to get next, the cheapest way to reach chosen countries, whether bank statements meet proof-of-funds rules, how to settle in, what expires, and what changed.
 
-1. Know what they hold. Every field of every passport, visa and residence permit, plus the supporting documents applications ask for, checked for consistency and gaps.
-2. Use it. The visa-free entries, e-visas, transit and stopover schemes their documents unlock together, and what is lost when one expires.
-3. Grow it. Which visa, permit or travel authorisation to get next for the most new destinations per unit of cost and waiting time, and the cheapest, fastest order to reach the countries they choose.
-4. Afford it. Whether the bank statements on the NAS meet proof-of-funds rules, and which fees fit the money available.
-5. Move. The steps to settle in a new country, in order, with the documents each step needs checked against the dossier.
-6. Stay current. What expires soon, what official sources have announced, and the exact official wording from a local library of official pages that a companion keeps up to date on the NAS.
-
-Passport, identity and bank data never leave the NAS. The Skill does not book, apply, pay or contact any authority, and it gives no financial or legal advice.
-
-Not supported, because no NAS capability provides it: live web search, live flight, hotel or rental listing prices, bank connections, sending alerts and running on a schedule. The Skill uses only files on the NAS; the optional library companion, which runs outside the Skill, keeps copies of official pages and update files in NAS folders for it to read.
+Document and bank data never leave the NAS. The Skill does not book, apply, pay or contact any authority, and gives no financial or legal advice. Not supported, because no NAS capability provides it: live web search, live prices, bank connections, alerts and schedules.
 
 # Required input
 
@@ -63,9 +54,9 @@ Pick one route from what the user asked, then read only the files listed for it.
 | What changed, any news for my passport or destination | Updates | [workflows/updates.md](references/workflows/updates.md), [official-sources.md](references/official-sources.md) |
 | Exact official requirement, full document list, a country the bundled files do not cover | Library search | [workflows/library.md](references/workflows/library.md) |
 
-Country files. One per country: what documents already held unlock there, transit and stopover rules at its airports, and the visas and authorisations to apply for, with official fees, waiting times, required documents and proof-of-funds rules. Read only the files for the countries in question; a country with no file is not covered. Rules shared by every Schengen state are in topics/entry-conditions.md:
+Country files. One per country: what documents already held unlock there, transit and stopover rules at its airports, and the visas and authorisations to apply for, with official fees, waiting times, required documents and proof-of-funds rules. Read only the files for the countries in question; a country with no file is not covered, except a Schengen state, which uses the Schengen file. Entry conditions shared by every Schengen state are in topics/entry-conditions.md:
 
-- [Albania](references/countries/al.md), [Antigua and Barbuda](references/countries/ag.md), [Argentina](references/countries/ar.md), [Armenia](references/countries/am.md), [Australia](references/countries/au.md), [Bosnia and Herzegovina](references/countries/ba.md), [Canada](references/countries/ca.md), [China](references/countries/cn.md), [Dominica](references/countries/dm.md), [Dominican Republic](references/countries/do.md), [Estonia](references/countries/ee.md), [Ethiopia](references/countries/et.md), [Georgia](references/countries/ge.md), [Greece](references/countries/gr.md), [Hong Kong](references/countries/hk.md), [Iceland](references/countries/is.md), [Indonesia](references/countries/id.md), [Ireland](references/countries/ie.md), [Japan](references/countries/jp.md), [Kazakhstan](references/countries/kz.md), [Malaysia](references/countries/my.md), [Malta](references/countries/mt.md), [Mexico](references/countries/mx.md), [New Zealand](references/countries/nz.md), [North Macedonia](references/countries/mk.md), [Oman](references/countries/om.md), [Panama](references/countries/pa.md), [Peru](references/countries/pe.md), [Portugal](references/countries/pt.md), [Qatar](references/countries/qa.md), [Saint Kitts and Nevis](references/countries/kn.md), [Saint Lucia](references/countries/lc.md), [Saudi Arabia](references/countries/sa.md), [Serbia](references/countries/rs.md), [Singapore](references/countries/sg.md), [South Korea](references/countries/kr.md), [Spain](references/countries/es.md), [Taiwan](references/countries/tw.md), [Thailand](references/countries/th.md), [Türkiye](references/countries/tr.md), [United Arab Emirates](references/countries/ae.md), [United Kingdom](references/countries/gb.md), [United States](references/countries/us.md), [Vanuatu](references/countries/vu.md), [any Schengen state](references/countries/schengen.md)
+- [Albania](references/countries/al.md), [Antigua and Barbuda](references/countries/ag.md), [Argentina](references/countries/ar.md), [Armenia](references/countries/am.md), [Australia](references/countries/au.md), [Bosnia and Herzegovina](references/countries/ba.md), [Canada](references/countries/ca.md), [China](references/countries/cn.md), [Dominica](references/countries/dm.md), [Dominican Republic](references/countries/do.md), [Estonia](references/countries/ee.md), [Ethiopia](references/countries/et.md), [Georgia](references/countries/ge.md), [Greece](references/countries/gr.md), [Hong Kong](references/countries/hk.md), [Iceland](references/countries/is.md), [Indonesia](references/countries/id.md), [Ireland](references/countries/ie.md), [Japan](references/countries/jp.md), [Kazakhstan](references/countries/kz.md), [Malaysia](references/countries/my.md), [Malta](references/countries/mt.md), [Mexico](references/countries/mx.md), [New Zealand](references/countries/nz.md), [North Macedonia](references/countries/mk.md), [Oman](references/countries/om.md), [Panama](references/countries/pa.md), [Peru](references/countries/pe.md), [Portugal](references/countries/pt.md), [Qatar](references/countries/qa.md), [Saint Kitts and Nevis](references/countries/kn.md), [Saint Lucia](references/countries/lc.md), [Saudi Arabia](references/countries/sa.md), [Serbia](references/countries/rs.md), [Singapore](references/countries/sg.md), [South Korea](references/countries/kr.md), [Spain](references/countries/es.md), [Taiwan](references/countries/tw.md), [Thailand](references/countries/th.md), [Türkiye](references/countries/tr.md), [United Arab Emirates](references/countries/ae.md), [United Kingdom](references/countries/gb.md), [United States](references/countries/us.md), [Vanuatu](references/countries/vu.md), [Schengen states without their own file](references/countries/schengen.md)
 
 
 Settle-in files. One per country: steps in order, housing rules and local customs:
@@ -95,7 +86,7 @@ Use [official-sources.md](references/official-sources.md) whenever an answer tel
 
 # Workflow
 
-Every route starts with steps 1 to 3. The dossier, plan, proof of funds and settle-in routes add steps 4 and 5. Each step passes only the real result returned by the previous step; never pass a guessed path or value.
+Every route starts with steps 1 to 3. The dossier, plan, proof of funds and settle-in workflow files give steps 4 and 5; the updates, library and proof of funds files give their own commands. Each step passes only the real result returned by the previous step; never pass a guessed path or value.
 
 The expert agents see only the instruction, not this conversation. Each command below has slots in square brackets and capitals, such as [DOCUMENTS FOLDER]. Replace every slot with the real folder or the real file paths returned earlier, comma-separated, before running the command; never send a command with a slot left in. Pass file paths, never document numbers, machine readable zone lines or account numbers, and keep every instruction on one line without angle brackets.
 
@@ -123,55 +114,7 @@ delegate --target photo-agent --instruction 'Run text recognition on each of the
 
 Then compare the records for each person yourself, without another delegation: group them by holder, check that surname, given names, date of birth and nationality agree across every document of the same holder, and for images check the machine readable zone against the printed fields using [topics/document-fields.md](references/topics/document-fields.md). List every disagreement with both values and the file paths involved.
 
-Step 4. Dossier, plan, proof of funds and settle-in routes only. Find supporting documents.
-
-```text
-delegate --target file-agent --instruction 'In the folder [DOCUMENTS FOLDER], find PDF and image files whose names, tags or contents suggest a birth certificate, marriage certificate, degree certificate, transcript, CV, employment letter, employment contract, payslip, bank statement, tax return, business registration, police clearance, medical certificate, health or travel insurance, tenancy contract, flight booking, accommodation booking or invitation letter. Search subfolders. Return each match with its real path, file type, tags and modified date. Do not open, move or change any file. If there are no matches, return an empty list and say so.'
-```
-
-Step 5. Read the supporting documents found.
-
-```text
-delegate --target document-agent --instruction 'For each of these files: [PATHS FROM STEP 4 EXCEPT BANK STATEMENTS], return one record per document. Set the document type to one of: birth-certificate, marriage-certificate, degree-certificate, transcript, cv, employment-letter, employment-contract, payslips, bank-statements, tax-return, business-registration, sponsor-letter, invitation-letter, police-clearance, medical-certificate, health-insurance, travel-insurance, flight-booking, accommodation-proof, tenancy-contract, proof-of-income, or other with the title as printed. Always return the holder or person names as printed, the issuing body, the issue date, any expiry or validity dates, and whether an apostille, attestation or certified translation stamp is visible. Also return, when printed: dates and places of birth or marriage and registry numbers for certificates; institution, degree, field and award date for degrees and transcripts; employer, job title, start date, salary and currency for employment documents and payslips; bank, currency, period start and end, opening and closing balance for bank statements; cover period, territory and cover amount for insurance; names, addresses, dates, rent and deposit for tenancy contracts and bookings. For any account, booking or registry number return only its last three characters. Return a field as empty when it is not printed; never guess. Report each file you could not read.'
-```
-
-Proof of funds route only. Read the bank statements in detail:
-
-```text
-delegate --target document-agent --instruction 'For each of these bank statement files: [BANK STATEMENT PATHS FROM STEP 4], return the account holder name, bank name, last three characters of the account number, currency, statement period start and end dates, statement issue date, opening balance, closing balance, the lowest balance shown in the period, total credits and total debits. Also list every credit at or above the threshold amount given, with its date, amount and description, and every credit that repeats each month from the same payer. Return empty for any field not printed. Never return full account numbers.'
-```
-
-Updates route only. Find the watcher update files:
-
-```text
-delegate --target file-agent --instruction 'In the folder [UPDATES FOLDER], find Markdown files whose names start with passport-updates and were modified in the last 30 days. Return their real paths, newest first. If there are none, return an empty list and say so.'
-```
-
-Then ask about them:
-
-```text
-delegate --target document-agent --instruction 'Read these update files: [PATHS FROM THE PREVIOUS STEP], and list every entry about these countries: [COUNTRIES], for the topics visas, entry rules, transit, residence permits, registration, banking and travel advisories. For each entry return the country, date detected, official source address and the summary as written in the file. Return an empty list when no entry matches.'
-```
-
-Library search, when the route or the library workflow calls for it:
-
-```text
-delegate --target knowledge-agent --instruction 'Search only the folder [LIBRARY FOLDER] for this question: [QUESTION], and return the passages that answer it, each with the file path, plus the source address and copy date written at the top of that file. Return an empty result when nothing in the folder answers it; do not use any other folder or general knowledge.'
-```
-
-Then follow the workflow file for the chosen route. The benefits, next document, plan, proof of funds, settle-in and expiry routes need no further delegation; they compare the verified records with the bundled rules.
-
-Saving, only after the user agrees. Write the report into the instruction as one line of plain text: start each section with its heading and a colon, leave out every document and account number, and use no angle brackets, pipes, backticks or apostrophes.
-
-```text
-delegate --target knowledge-agent --instruction 'Save the report text given as a new Markdown file, putting each section that starts with a heading and a colon under its own heading, named mobility-report followed by the route name and the date, in the documents folder the user named. Do not overwrite an existing file. Return the saved file path.'
-```
-
-```text
-delegate --target file-agent --instruction 'For each file path listed, add the tag given next to it, for example dossier-passport, dossier-bank-statement or dossier-degree-certificate, and a second tag naming the holder, for example holder followed by the holder given names. Create a tag first if it does not exist. Do not change, move or rename any file. Return the tagged paths.'
-```
-
-Tags let later runs find the dossier in step 1 and step 4 without reading every file again.
+Then follow the workflow file for the chosen route. To save a report or tag files, after the user agrees, read [save.md](references/save.md).
 
 # Generation-time capability evidence
 

@@ -2,6 +2,8 @@
 
 Turns the documents found in steps 1 to 5 into one dossier per person: the travel documents in full, and the supporting documents that visa, residence and settle-in applications ask for.
 
+{{include:supporting}}
+
 ## Group by person
 
 Group the extracted records by holder: same date of birth and a matching name after allowing for transliteration. Supporting documents rarely show a date of birth; attach them by name, and when a name matches two people or none, list the document under Unassigned and ask.

@@ -2,6 +2,16 @@
 
 The optional rules library is a folder on the NAS that the library companion fills every night with clean copies of official pages: entry requirements, visa pages, residence rules, document lists, fees, tenancy rules and local customs, one Markdown file per page. Each file starts with its source address, owner, country, topic and the date it was copied, and the companion records what changed since the last copy. The NAS indexes the folder like any other documents, so the Skill can search it without going online.
 
+## Library search step
+
+Replace every slot in square brackets and capitals with the real folder or the real file paths returned earlier, comma-separated, before running a command; never send one with a slot left in. Keep each instruction on one line.
+
+Library search step:
+
+```text
+delegate --target knowledge-agent --instruction 'Search only the folder [LIBRARY FOLDER] for this question: [QUESTION], and return the passages that answer it, each with the file path, plus the source address and copy date written at the top of that file. Return an empty result when nothing in the folder answers it; do not use any other folder or general knowledge.'
+```
+
 ## When to search it
 
 - A country, visa or step the bundled files do not cover.
@@ -11,7 +21,7 @@ The optional rules library is a folder on the NAS that the library companion fil
 
 ## How
 
-Run the library search step in the main workflow with one focused question at a time, for example "documents required for a Portugal D8 visa application" or "tenancy registration rules in Qatar". Name the country and the document or step in each question.
+Run the library search step above with one focused question at a time, for example "documents required for a Portugal D8 visa application" or "tenancy registration rules in Qatar". Name the country and the document or step in each question.
 
 ## Using the result
 

@@ -2,6 +2,10 @@
 
 Checks the bank statements stored on the NAS against a visa or residence route's published proof-of-funds rule, and shows which fees fit. Everything is read locally; no bank connection is used.
 
+{{include:supporting}}
+
+{{include:bank}}
+
 ## Pick the rule
 
 The user names a visa or route, or one comes from the plan or next document route. Read its proof of funds and eligibility lines in the issuing country's file. For Schengen short-stay visas, also read the reference amount for the destination state in options/schengen-funds.md. If no rule is stated, say so and show the statement summary only.
