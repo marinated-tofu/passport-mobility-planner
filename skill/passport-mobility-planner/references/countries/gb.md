@@ -2,16 +2,18 @@
 
 Generated from the Skill's rule and option data: what documents already held unlock here, transit and stopover rules at its airports, then visas and authorisations to apply for. Each entry is a dated snapshot of an official page.
 
+Go through the rules in order. Rules for named nationalities come first: when one names the traveller's nationality, it decides, and a general rule after it cannot override its no.
+
 ## Visa-free transit
 
 ### Visa-free transit - gb-airside-stateless-or-diplomatic
 
 - Stay: airside, same day
 - Purpose: airside transit without a DATV
-- Unlocked by, all of:
-  - passport; travel document of a person recognised as stateless under the 1954 UN Convention
-  - ticket; arrive and depart by air, with a confirmed onward flight leaving the same day from the same airport
-- Notes: Recognised stateless persons do not need a DATV to transit airside. Separately, the carrier list footnotes let diplomatic or service passport holders of several countries transit airside without a visa.
+- Applies only if every check is yes. Write each check and its answer in your reply; one no means this rule does not apply.
+  1. Does the traveller hold a passport? It must meet: travel document of a person recognised as stateless under the 1954 UN Convention. Its expiry must be after the last day of the stay; write the expiry date.
+  2. Does the traveller hold a ticket? It must meet: arrive and depart by air, with a confirmed onward flight leaving the same day from the same airport.
+- Notes (if the rule applies, copy every form to fill and every caveat into the reply): Recognised stateless persons do not need a DATV to transit airside. Separately, the carrier list footnotes let diplomatic or service passport holders of several countries transit airside without a visa.
 - Source: https://www.gov.uk/government/publications/uk-visa-requirements-list-for-carriers/uk-visa-requirements-for-international-carriers (UK Visas and Immigration, Home Office)
 - Checked: 07 Nov 2026, verified
 
@@ -19,11 +21,11 @@ Generated from the Skill's rule and option data: what documents already held unl
 
 - Stay: airside, same day
 - Purpose: airside transit without a DATV
-- Unlocked by, all of:
-  - passport; a UK visa nationality that would otherwise need a visa or DATV to transit airside
-  - residence permit issued by Austria, Belgium, Bulgaria, Croatia, Cyprus, Czechia, Denmark, Estonia, Finland, France, Germany, Greece, Hungary, Ireland, Italy, Latvia, Lithuania, Luxembourg, Malta, Netherlands, Poland, Portugal, Romania, Slovakia, Slovenia, Spain, Sweden, Iceland, Liechtenstein, Norway, Switzerland; valid common-format residence permit, or a valid common-format category D visa, from an EEA state or Switzerland
-  - ticket; arrive and depart by air, with a confirmed onward flight leaving the same day from the same airport
-- Notes: Free DATV exemption for holders of an EEA or Swiss residence permit or long-stay D visa. The list also accepts an Irish BC/BC BIVS visa (not for travel to Ireland) and some Schengen ADS group tourism visas. No transit to Ireland or the Common Travel Area.
+- Applies only if every check is yes. Write each check and its answer in your reply; one no means this rule does not apply.
+  1. Does the traveller hold a passport? It must meet: a UK visa nationality that would otherwise need a visa or DATV to transit airside. Its expiry must be after the last day of the stay; write the expiry date.
+  2. Does the traveller hold a residence permit issued by Austria, Belgium, Bulgaria, Croatia, Cyprus, Czechia, Denmark, Estonia, Finland, France, Germany, Greece, Hungary, Ireland, Italy, Latvia, Lithuania, Luxembourg, Malta, Netherlands, Poland, Portugal, Romania, Slovakia, Slovenia, Spain, Sweden, Iceland, Liechtenstein, Norway, Switzerland? It must meet: valid common-format residence permit, or a valid common-format category D visa, from an EEA state or Switzerland. Its expiry must be after the last day of the stay; write the expiry date.
+  3. Does the traveller hold a ticket? It must meet: arrive and depart by air, with a confirmed onward flight leaving the same day from the same airport.
+- Notes (if the rule applies, copy every form to fill and every caveat into the reply): Free DATV exemption for holders of an EEA or Swiss residence permit or long-stay D visa. The list also accepts an Irish BC/BC BIVS visa (not for travel to Ireland) and some Schengen ADS group tourism visas. No transit to Ireland or the Common Travel Area.
 - Source: https://www.gov.uk/government/publications/uk-visa-requirements-list-for-carriers/uk-visa-requirements-for-international-carriers (UK Visas and Immigration, Home Office)
 - Checked: 07 Nov 2026, verified
 
@@ -31,11 +33,11 @@ Generated from the Skill's rule and option data: what documents already held unl
 
 - Stay: airside, same day
 - Purpose: airside transit without a DATV
-- Unlocked by, all of:
-  - passport; a UK visa nationality that would otherwise need a visa or DATV to transit airside
-  - residence permit issued by Australia, Canada, New Zealand, United States; valid permanent residence; Canadian PR issued after 28 June 2002; US green card issued after 21 April 1998, or a US immigrant visa with an electronic arrival stamp, or an expired I-551 with a valid I-797 extension letter, or a sealed Form 155A/155B
-  - ticket; arrive and depart by air, with a confirmed onward flight leaving the same day from the same airport
-- Notes: Free DATV exemption for permanent residents of Australia, Canada, New Zealand or the USA. No transit to Ireland or the Common Travel Area. A wet-ink US arrival stamp is not accepted.
+- Applies only if every check is yes. Write each check and its answer in your reply; one no means this rule does not apply.
+  1. Does the traveller hold a passport? It must meet: a UK visa nationality that would otherwise need a visa or DATV to transit airside. Its expiry must be after the last day of the stay; write the expiry date.
+  2. Does the traveller hold a residence permit issued by Australia, Canada, New Zealand, United States? It must meet: valid permanent residence; Canadian PR issued after 28 June 2002; US green card issued after 21 April 1998, or a US immigrant visa with an electronic arrival stamp, or an expired I-551 with a valid I-797 extension letter, or a sealed Form 155A/155B. Its expiry must be after the last day of the stay; write the expiry date.
+  3. Does the traveller hold a ticket? It must meet: arrive and depart by air, with a confirmed onward flight leaving the same day from the same airport.
+- Notes (if the rule applies, copy every form to fill and every caveat into the reply): Free DATV exemption for permanent residents of Australia, Canada, New Zealand or the USA. No transit to Ireland or the Common Travel Area. A wet-ink US arrival stamp is not accepted.
 - Source: https://www.gov.uk/government/publications/uk-visa-requirements-list-for-carriers/uk-visa-requirements-for-international-carriers (UK Visas and Immigration, Home Office)
 - Checked: 07 Nov 2026, verified
 
@@ -43,11 +45,11 @@ Generated from the Skill's rule and option data: what documents already held unl
 
 - Stay: airside, same day
 - Purpose: airside transit without a Direct Airside Transit Visa (DATV)
-- Unlocked by, all of:
-  - passport; a UK visa nationality that would otherwise need a visa or DATV to transit airside
-  - visa issued by Australia, Canada, New Zealand, United States; valid entry visa for Australia, Canada, New Zealand or the USA (need not be travelling there); or an expired one if returning from that country within 6 months of last entry on it; a US B1/B2 visa is not accepted for some nationalities per the carrier list footnotes
-  - ticket; arrive and depart by air, with a confirmed onward flight leaving the same day from the same airport; hold the documents needed for the destination
-- Notes: Free exemption from the DATV. Airside transit cannot be used to reach Ireland or the rest of the Common Travel Area. Other countries' e-visas only count if the airline can verify them. The final decision is made by a UK border officer. GOV.UK carrier list updated 3 Aug 2026.
+- Applies only if every check is yes. Write each check and its answer in your reply; one no means this rule does not apply.
+  1. Does the traveller hold a passport? It must meet: a UK visa nationality that would otherwise need a visa or DATV to transit airside. Its expiry must be after the last day of the stay; write the expiry date.
+  2. Does the traveller hold a visa issued by Australia, Canada, New Zealand, United States? It must meet: valid entry visa for Australia, Canada, New Zealand or the USA (need not be travelling there); or an expired one if returning from that country within 6 months of last entry on it; a US B1/B2 visa is not accepted for some nationalities per the carrier list footnotes. Its expiry must be after the last day of the stay; write the expiry date.
+  3. Does the traveller hold a ticket? It must meet: arrive and depart by air, with a confirmed onward flight leaving the same day from the same airport; hold the documents needed for the destination.
+- Notes (if the rule applies, copy every form to fill and every caveat into the reply): Free exemption from the DATV. Airside transit cannot be used to reach Ireland or the rest of the Common Travel Area. Other countries' e-visas only count if the airline can verify them. The final decision is made by a UK border officer. GOV.UK carrier list updated 3 Aug 2026.
 - Source: https://www.gov.uk/government/publications/uk-visa-requirements-list-for-carriers/uk-visa-requirements-for-international-carriers (UK Visas and Immigration, Home Office)
 - Checked: 07 Nov 2026, verified
 
@@ -55,11 +57,11 @@ Generated from the Skill's rule and option data: what documents already held unl
 
 - Stay: until 23:59 the day after arrival
 - Purpose: landside transit (passing the UK border, e.g. to change airports)
-- Unlocked by, all of:
-  - passport; a UK visa nationality
-  - visa issued by Australia, Canada, New Zealand, United States; valid visa for that country and travelling via the UK on a reasonable route to or from it; or permanent residence from AU, CA (after 28 June 2002), NZ or US; an EEA or Swiss residence permit or D visa also qualifies
-  - ticket; arrive and depart by air, with a confirmed onward flight leaving before 23:59 the following day
-- Notes: Free landside transit without a visa. Unlike the airside exemption, a US/CA/AU/NZ visa only counts when the trip is actually to or from that country. Other countries' e-visas or e-permits are not accepted for landside transit. A UK border officer decides on arrival.
+- Applies only if every check is yes. Write each check and its answer in your reply; one no means this rule does not apply.
+  1. Does the traveller hold a passport? It must meet: a UK visa nationality. Its expiry must be after the last day of the stay; write the expiry date.
+  2. Does the traveller hold a visa issued by Australia, Canada, New Zealand, United States? It must meet: valid visa for that country and travelling via the UK on a reasonable route to or from it; or permanent residence from AU, CA (after 28 June 2002), NZ or US; an EEA or Swiss residence permit or D visa also qualifies. Its expiry must be after the last day of the stay; write the expiry date.
+  3. Does the traveller hold a ticket? It must meet: arrive and depart by air, with a confirmed onward flight leaving before 23:59 the following day.
+- Notes (if the rule applies, copy every form to fill and every caveat into the reply): Free landside transit without a visa. Unlike the airside exemption, a US/CA/AU/NZ visa only counts when the trip is actually to or from that country. Other countries' e-visas or e-permits are not accepted for landside transit. A UK border officer decides on arrival.
 - Source: https://www.gov.uk/government/publications/uk-visa-requirements-list-for-carriers/uk-visa-requirements-for-international-carriers (UK Visas and Immigration, Home Office)
 - Checked: 07 Nov 2026, verified
 

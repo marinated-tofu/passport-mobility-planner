@@ -2,15 +2,17 @@
 
 Generated from the Skill's rule and option data: what documents already held unlock here, transit and stopover rules at its airports, then visas and authorisations to apply for. Each entry is a dated snapshot of an official page.
 
+Go through the rules in order. Rules for named nationalities come first: when one names the traveller's nationality, it decides, and a general rule after it cannot override its no.
+
 ## Airline and airport stopover programs
 
 ### Stopover program - pt-tap-portugal-stopover
 
 - Stay: up to 10 days
 - Purpose: stop in Lisbon or Porto at no extra airfare
-- Unlocked by, all of:
-  - ticket; TAP ticket (one-way, return or multi-city) connecting via Lisbon or Porto; stopover option offered during booking when the route qualifies
-- Notes: No added airfare for a stop of up to 10 days in Lisbon or Porto, on the way out or back. Booking shows whether a route qualifies. Extras: 25% off one TAP domestic flight on listed routes and discounts of up to 50% at more than 150 partners. No minimum stay stated. Schengen entry rules apply.
+- Applies only if every check is yes. Write each check and its answer in your reply; one no means this rule does not apply.
+  1. Does the traveller hold a ticket? It must meet: TAP ticket (one-way, return or multi-city) connecting via Lisbon or Porto; stopover option offered during booking when the route qualifies.
+- Notes (if the rule applies, copy every form to fill and every caveat into the reply): No added airfare for a stop of up to 10 days in Lisbon or Porto, on the way out or back. Booking shows whether a route qualifies. Extras: 25% off one TAP domestic flight on listed routes and discounts of up to 50% at more than 150 partners. No minimum stay stated. Schengen entry rules apply.
 - Source: https://www.flytap.com/en-us/stopover (TAP Air Portugal)
 - Checked: 07 Nov 2026, verified
 

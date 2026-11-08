@@ -2,16 +2,19 @@
 
 Generated from the Skill's rule and option data: what documents already held unlock here, transit and stopover rules at its airports, then visas and authorisations to apply for. Each entry is a dated snapshot of an official page.
 
+Go through the rules in order. Rules for named nationalities come first: when one names the traveller's nationality, it decides, and a general rule after it cannot override its no.
+
 ## Visa-free transit
 
 ### Visa-free transit - jp-shore-pass-port-of-call
 
 - Stay: under 72 hours
 - Purpose: short landing at the port of call while in transit (no paid activity)
-- Unlocked by, all of:
-  - passport; valid passport for the onward destination; foreign passenger (not crew)
-  - ticket; ticket for the trip out of Japan (or a carrier's letter of guarantee), leaving from the same port
-- Notes: Landing permission at a port of call (often called a shore pass). Granted by an immigration inspector on written application; movement is generally limited to the city or town of the arrival port and paid work is banned. It is a discretionary permission, not an automatic right. Based on the Enforcement Regulation of the Immigration Control Act (official English translation); the day-to-day process at airports is not described there.
+- Applies only if every check is yes. Write each check and its answer in your reply; one no means this rule does not apply.
+  1. Does the traveller hold a passport? It must meet: valid passport for the onward destination; foreign passenger (not crew). Its expiry must be after the last day of the stay; write the expiry date.
+  2. Does the traveller hold a ticket? It must meet: ticket for the trip out of Japan (or a carrier's letter of guarantee), leaving from the same port.
+- Partial rule: if it applies, tell the traveller to confirm it on the source below.
+- Notes (if the rule applies, copy every form to fill and every caveat into the reply): Landing permission at a port of call (often called a shore pass). Granted by an immigration inspector on written application; movement is generally limited to the city or town of the arrival port and paid work is banned. It is a discretionary permission, not an automatic right. Based on the Enforcement Regulation of the Immigration Control Act (official English translation); the day-to-day process at airports is not described there.
 - Source: https://www.japaneselawtranslation.go.jp/en/laws/view/4180/en (Ministry of Justice, Japan (Japanese Law Translation database))
 - Checked: 07 Nov 2026, partial
 
@@ -19,10 +22,11 @@ Generated from the Skill's rule and option data: what documents already held unl
 
 - Stay: up to 3 days
 - Purpose: crossing Japan to board a departing flight or ship at another port (no paid activity)
-- Unlocked by, all of:
-  - passport; valid passport for the onward destination; foreign passenger (not crew)
-  - ticket; ticket for the trip out of Japan (or a carrier's letter of guarantee) from a different port than the arrival port
-- Notes: Landing permission in transit (often called a transit pass). Lets a passenger travel overland to another Japanese port to leave by plane or ship, up to 3 days, along a set route. A separate 15-day version exists for ship passengers rejoining their own vessel at another port. Discretionary; granted by an immigration inspector on written application.
+- Applies only if every check is yes. Write each check and its answer in your reply; one no means this rule does not apply.
+  1. Does the traveller hold a passport? It must meet: valid passport for the onward destination; foreign passenger (not crew). Its expiry must be after the last day of the stay; write the expiry date.
+  2. Does the traveller hold a ticket? It must meet: ticket for the trip out of Japan (or a carrier's letter of guarantee) from a different port than the arrival port.
+- Partial rule: if it applies, tell the traveller to confirm it on the source below.
+- Notes (if the rule applies, copy every form to fill and every caveat into the reply): Landing permission in transit (often called a transit pass). Lets a passenger travel overland to another Japanese port to leave by plane or ship, up to 3 days, along a set route. A separate 15-day version exists for ship passengers rejoining their own vessel at another port. Discretionary; granted by an immigration inspector on written application.
 - Source: https://www.japaneselawtranslation.go.jp/en/laws/view/4180/en (Ministry of Justice, Japan (Japanese Law Translation database))
 - Checked: 07 Nov 2026, partial
 

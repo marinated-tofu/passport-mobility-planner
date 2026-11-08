@@ -263,28 +263,60 @@ def codes(items) -> str:
     return ", ".join(country_name(c) for c in items)
 
 
+NUMBER_WORDS = {"one": 1, "two": 2, "three": 3, "four": 4, "five": 5, "six": 6, "twelve": 12}
+
+
+def min_validity(condition: str) -> str | None:
+    """'valid at least 1 year on the day of entry' -> 'entry date plus 1 year'."""
+    m = re.search(r"(?:at least|minimum of|no less than)\s+(\d+|" + "|".join(NUMBER_WORDS) + r")\s+(year|month|day)s?",
+                  condition, re.I)
+    if not m:
+        return None
+    n = int(NUMBER_WORDS.get(m.group(1).lower(), m.group(1)))
+    unit = m.group(2).lower() + ("s" if n != 1 else "")
+    base = "the last day of the stay" if re.search(r"beyond|after the (planned )?stay|from departure", condition, re.I) else "the entry date"
+    return f"{base} plus {n} {unit}"
+
+
+def rule_checks(r: dict) -> list[str]:
+    """The rule's conditions as yes/no questions, so a small model applies each one instead of skimming."""
+    out = []
+    if r.get("nationality_only"):
+        out.append(f"Is the traveller a national of one of: {codes(r['nationality_only'])}?")
+    if r.get("nationality_excluded"):
+        out.append(f"Is the traveller a national of none of: {codes(r['nationality_excluded'])}?")
+    for item in r["unlocked_by"]:
+        doc = item["holds"].replace("-", " ")
+        q = f"Does the traveller hold a {doc}"
+        if item.get("issued_by"):
+            q += f" issued by {codes(item['issued_by'])}"
+        q += "?"
+        cond = " ".join(str(item.get("condition") or "").split())
+        if cond:
+            q += f" It must meet: {cond}."
+        need = min_validity(cond)
+        if need:
+            q += f" Work it out: {need} = (date). The {doc}'s expiry must be on or after that date; write both dates."
+        elif doc in {"visa", "residence permit", "passport"}:
+            q += f" Its expiry must be after the last day of the stay; write the expiry date."
+        out.append(q)
+    if r.get("age"):
+        out.append(f"Does the traveller meet the age limit: {r['age']}?")
+    return out
+
+
 def render_rule(r: dict) -> str:
     lines = [f"### {r['benefit'].capitalize()} - {r['id']}", ""]
     if r.get("stay"):
         lines.append(f"- Stay: {r['stay']}")
     if r.get("purpose"):
         lines.append(f"- Purpose: {r['purpose']}")
-    lines.append("- Unlocked by, all of:")
-    for item in r["unlocked_by"]:
-        text = item["holds"].replace("-", " ")
-        if item.get("issued_by"):
-            text += f" issued by {codes(item['issued_by'])}"
-        if item.get("condition"):
-            text += f"; {item['condition']}"
-        lines.append(f"  - {text}")
-    if r.get("nationality_only"):
-        lines.append(f"- Only for nationals of: {codes(r['nationality_only'])}")
-    if r.get("nationality_excluded"):
-        lines.append(f"- Not for nationals of: {codes(r['nationality_excluded'])}")
-    if r.get("age"):
-        lines.append(f"- Age: {r['age']}")
+    lines.append("- Applies only if every check is yes. Write each check and its answer in your reply; one no means this rule does not apply.")
+    lines += [f"  {n}. {q}" for n, q in enumerate(rule_checks(r), 1)]
+    if r.get("confidence") == "partial":
+        lines.append("- Partial rule: if it applies, tell the traveller to confirm it on the source below.")
     if r.get("notes"):
-        lines.append(f"- Notes: {' '.join(str(r['notes']).split())}")
+        lines.append(f"- Notes (if the rule applies, copy every form to fill and every caveat into the reply): {' '.join(str(r['notes']).split())}")
     lines.append(f"- Source: {r['source']} ({r['source_owner']})")
     lines.append(f"- Checked: {r['checked']:%d %b %Y}, {r['confidence']}")
     return "\n".join(lines)
@@ -344,9 +376,11 @@ def render_country(code: str, rule_groups: list[dict], option_groups: list[dict]
     """Everything about entering one country, so a trip reads only the countries on its route."""
     parts = [f"# {country_name(code)}", "",
              "Generated from the Skill's rule and option data: what documents already held unlock here, transit and stopover "
-             "rules at its airports, then visas and authorisations to apply for. Each entry is a dated snapshot of an official page.", ""]
+             "rules at its airports, then visas and authorisations to apply for. Each entry is a dated snapshot of an official page.", "",
+             "Go through the rules in order. Rules for named nationalities come first: when one names the traveller's "
+             "nationality, it decides, and a general rule after it cannot override its no.", ""]
     for g in rule_groups:
-        rules = sorted((r for r in g["rules"] if r["country"] == code), key=lambda r: r["id"])
+        rules = sorted((r for r in g["rules"] if r["country"] == code), key=lambda r: (not r.get("nationality_only"), r["id"]))
         if rules:
             parts += [f"## {g['title']}", ""] + [x for r in rules for x in (render_rule(r), "")]
     for g in option_groups:

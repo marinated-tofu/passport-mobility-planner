@@ -48,7 +48,7 @@ Do not ask for passport numbers, account numbers or personal details. Read them 
 
 # Route the request
 
-Pick one route from what the user asked, then read only the files listed for it. Every route uses [report-format.md](references/report-format.md).
+Pick one route from what the user asked, then read only the files listed for it. Every route except Plan uses [report-format.md](references/report-format.md); Plan has its reply template in plan.md.
 
 | User asks | Route | Read |
 | --- | --- | --- |

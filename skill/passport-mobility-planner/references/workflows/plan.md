@@ -1,38 +1,59 @@
 # Plan route
 
-Plans how a person or a household reaches the countries they chose, with the least money and waiting time spent on documents, and checks they are ready to go.
+Plans how a person or a household reaches the countries they chose, with the least money and waiting time spent on documents, and checks they are ready to go. This file has the reply template for trips; report-format.md is not needed for this route.
 
 ## Inputs
 
-Destinations and dates, or "anywhere" with a date range; the travellers; budget if given. If the user says "anywhere", start from the destinations the travellers can already enter: unlocked benefits first, then passport matrix entries marked visa-free, visa on arrival or e-visa.
+Destinations and dates, or "anywhere" with a date range; the travellers; budget if given; connections from saved bookings. If the user says "anywhere", start from the destinations the travellers can already enter: unlocked benefits first, then passport matrix entries marked visa-free, visa on arrival or e-visa.
 
-## For each traveller and each country on the route
+## Work, for each traveller
 
-1. Entry path. Choose the cheapest available path in this order, stopping at the first that applies:
-   - a benefit rule in that country's file whose Unlocked by items are all met by the traveller's documents valid on the travel dates, and whose nationality limits allow the traveller;
+1. Documents: from SKILL.md steps 1 to 3, the passport and every visa or residence permit, with expiry dates and the machine readable zone result.
+2. Each country on the route, in this order, stopping at the first path that applies:
+   - a benefit rule in the country's file: write its numbered checks with yes or no and the dates; it applies only if every answer is yes;
    - a visa already held for that country, valid for the whole stay with enough entries;
-   - the passport matrix entry for visa-free or visa on arrival;
-   - an electronic travel authorisation or e-visa from that country's file (countries/<country code>.md, linked from SKILL.md);
-   - a visa from that country's file, or, when the country has no file or no option in it, "visa needed, not covered" with the official source.
-   For each, show the fee, waiting time, required documents (have, missing, too old) and source. A matrix-only result is marked "from the passport matrix, confirm on the official page".
-2. Passport validity. Compare the passport expiry with the arrival date plus six months and the departure date plus three months, as in the entry conditions reference. Report which it meets; state which one applies only when a rule or option says so.
-3. Name check. Flag name differences between the passport and any visa used.
+   - the passport matrix entry for visa-free or visa on arrival, marked "from the passport matrix, confirm on the official page";
+   - an electronic travel authorisation or e-visa in the country's file, then a visa in the country's file;
+   - no file, or nothing in it: "not covered by the bundled data", with the official source. Never call a country visa-free for a nationality unless a bundled rule, option or matrix entry says so.
+3. Each connection in a third country: a visa or residence permit held for that country covers it (name the document); else the transit rules in that country's file when SKILL.md lists one; else "transit rules not covered by the bundled data, check the official page". Never call a connection fine without one of these. When a stopover program in the file covers a hub on the route, offer it as a free extra city with its conditions.
+4. Dates: start-by date for each application = departure date minus its waiting time minus 7 days. Applications that keep the passport go one after another. If a passport must be renewed first, it comes before every application tied to the passport (an ETA or e-visa ends with the passport it was issued on).
 
-## Transit and stopovers
+## Reply
 
-For each leg that changes planes in a third country, check in this order: a valid visa or residence permit the traveller already holds for that country and that lets them enter it, which covers the connection too (say which document); then the transit rules in that country's file, when SKILL.md lists one (no file means no bundled transit rule; do not search for one); otherwise "transit rules not covered" with the official source. When a stopover program covers a hub on the route, offer it as a free extra city with its conditions.
+Fill in every line of this template, in plain language. Mask document numbers to the last three characters, write dates as 14 Mar 2027, money with its currency, and end each rule, fee and option line with its source address and checked date. Leave no line out: write "none" or "not covered" instead.
 
-## Order and timeline
+```text
+Trip: countries in order, dates, travellers
+Person: name - Ready / Needs action / Not possible for these dates
 
-1. Work back from the departure date. Each application must start at least its processing time before departure, plus one week of margin.
-2. Put applications that keep the passport in sequence, never at the same time.
-3. Start with the paths that unlock others, as in the next document route.
-4. Always end with a dated checklist, even when no application is needed: each start-by date, then the dated items before departure (forms to fill such as an arrival form, passport validity confirmed, documents to carry such as the visa that gives entry).
+Documents read
+  - Passport: nationality, number ending ..., expires (date), read from PDF or photo; machine readable zone: agrees with the printed page / disagrees (field, both values: check the original passport) / not checked
+  - Each visa or residence permit: country, type, entries, expires (date)
 
-## Money
+Passport validity (arrival on date A, last departure on date D)
+  - A plus 6 months = (date): met / not met
+  - D plus 3 months = (date): met / not met
+  - Valid for the whole stay: met / not met
+  Which pattern each country uses: only when its file says so
 
-Add up the document fees per traveller and for the household. When an application on the route has a proof-of-funds rule or reference amount and bank statements were found in SKILL.md step 4, compare them as the proof of funds route does: the latest closing balance per currency, never adding currencies together, and when the rule is in another currency give the break-even exchange rate instead of inventing a rate. Otherwise say affordability was not checked and why. The Skill cannot see flight or hotel prices; use only bookings saved on the NAS.
+Country: name, dates there
+  Path: the rule or option id and what it gives (stay), or "not covered"
+  Checks: each numbered check from the rule, with yes or no and the dates worked out
+  Also required: forms to fill and caveats copied from the rule's notes (for example an arrival form)
+  Fee and waiting time: from the file, or "not in the bundled data"
+  Documents: have / missing / too old
+  Source: address (checked date)
 
-## Verdict per traveller
+Connection: airport, country, date
+  Covered by: document held / transit rule id / not covered by the bundled data, check the official page
 
-Ready (every country has a path that needs nothing new), Needs action (with each application and its start-by date), or Not possible for these dates (with what fails and why).
+Names: each difference between the passport and a visa or booking, and what to do; or "names match"
+
+Money: fees per person and household total; proof of funds: latest closing balance per currency (never add currencies) against the rule, with the break-even exchange rate when currencies differ, or "not checked" and why
+
+Checklist, dated, starting today (date)
+  - date: action (each start-by date, passport renewal, each form with its deadline, documents to carry)
+  - departure date: travel with the passport and the documents that give entry
+
+Rules change. Confirm on the official page before you apply, pay, book or travel.
+```

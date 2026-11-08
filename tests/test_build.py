@@ -76,3 +76,15 @@ def test_country_files_and_indexes():
     assert "visa issued by United States" in row and "| Mexico |" in row
     row = next(l for l in build.render_option_index(groups, rules).splitlines() if l.startswith("| us-b1b2 "))
     assert "| 185 | 60 |" in row and "not Canada" in row and row.endswith("| Mexico |")
+
+
+def test_rule_checks_turn_conditions_into_dated_questions():
+    min_validity, rule_checks = build.min_validity, build.rule_checks
+    assert min_validity("valid for at least 1 year on the day of entry") == "the entry date plus 1 year"
+    assert min_validity("valid at least 5 days beyond the planned stay") == "the last day of the stay plus 5 days"
+    assert min_validity("valid on the day of entry") is None
+    r = {"nationality_only": ["PK"], "unlocked_by": [
+        {"holds": "residence-permit", "issued_by": ["AE"], "condition": "valid at least six months from entry"}]}
+    checks = rule_checks(r)
+    assert checks[0].startswith("Is the traveller a national of one of: Pakistan")
+    assert "the entry date plus 6 months" in checks[1]

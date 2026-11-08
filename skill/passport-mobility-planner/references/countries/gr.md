@@ -2,6 +2,8 @@
 
 Generated from the Skill's rule and option data: what documents already held unlock here, transit and stopover rules at its airports, then visas and authorisations to apply for. Each entry is a dated snapshot of an official page.
 
+Go through the rules in order. Rules for named nationalities come first: when one names the traveller's nationality, it decides, and a general rule after it cannot override its no.
+
 ## Long-term residence and citizenship routes
 
 ### Golden Visa (residence permit for real estate owners, art. 20B Law 4251/2014) - gr-golden-visa-real-estate
