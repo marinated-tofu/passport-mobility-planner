@@ -1,6 +1,8 @@
 # Plan route
 
-Plans how a person or a household reaches the countries they chose, with the least money and waiting time spent on documents, and checks they are ready to go. This file has the reply template for trips; report-format.md is not needed for this route.
+Plans how a person or a household reaches the countries they chose, with the least money and waiting time spent on documents, and checks they are ready to go. This file has the reply template for trips. For a trip, read only this file, topics/entry-conditions.md and one country file per country on the route, each once. Do not read report-format.md, benefits.md, benefits/index.md or options/index.md.
+
+Comparing dates: write both as YYYY-MM-DD and compare the year, then the month, then the day. 2026-03-15 is before 2026-09-01, so a document expiring 2026-03-15 is not valid on 2026-09-01.
 
 ## Inputs
 
@@ -30,16 +32,16 @@ Documents read
   - Passport: nationality, number ending ..., expires (date), read from PDF or photo; machine readable zone: agrees with the printed page / disagrees (field, both values: check the original passport) / not checked
   - Each visa or residence permit: country, type, entries, expires (date)
 
-Passport validity (arrival on date A, last departure on date D)
-  - A plus 6 months = (date): met / not met
-  - D plus 3 months = (date): met / not met
-  - Valid for the whole stay: met / not met
+Passport validity (passport expires E; arrival A; last departure D)
+  - A plus 6 months = (date). Met only if E is on or after it
+  - D plus 3 months = (date). Met only if E is on or after it
+  - Whole stay: met only if E is on or after D
   Which pattern each country uses: only when its file says so
 
 Country: name, dates there
   Path: the rule or option id and what it gives (stay), or "not covered"
-  Checks: each numbered check from the rule, with yes or no and the dates worked out
-  Also required: forms to fill and caveats copied from the rule's notes (for example an arrival form)
+  Checks: each numbered check from the rule, with yes or no and both dates compared; one no means take the next path
+  Also required: forms to fill and caveats copied from the rule's notes (for example an arrival form, or a list to confirm the nationality on); for a partial rule, "confirm on the source"
   Fee and waiting time: from the file, or "not in the bundled data"
   Documents: have / missing / too old
   Source: address (checked date)
