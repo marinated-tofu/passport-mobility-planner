@@ -76,7 +76,9 @@ Nine trips on the 4B model, by build (hard checks, rubric, runs that ran out of 
 | 2026-11-08-0023 | c53d3d6 | 55/58 | 7/45 | 3 | one file per country, benefit and option indexes |
 | 2026-11-08-0055 | 62473b4 | 55/76 | 10/45 | 1 | indexes linked only from the routes that use them, [SLOT] placeholders, stop rule for countries with no file |
 | 2026-11-08-0102 | 7693d7d | 64/74 | 6/45 | 1 | ready-to-run file-agent command at the top of SKILL.md: every trip now calls it |
+| 2026-11-08-0404 | 359d13e | 69/75 | 8/45 | 1 | rules as numbered yes/no checks with the date arithmetic; Plan reply is a fill-in template |
+| 2026-11-08-0504 | a968657 | 60/67 | 8/45 | 2 | trip read list, date comparison spelled out; Philippines finishes (3/5), Nigeria and Pakistan overflow |
 
-The same nine trips score 29/45 on GPT-6.1-Sol (`2026-11-07-2015`, build 0.3.1). The 4B's remaining failures are reasoning: it reads the right country file and still skips a condition (Georgia's one-year permit rule, Mexico's FMMd form), leaves transit unassessed and writes undated checklists.
+The same nine trips score 29/45 on GPT-6.1-Sol (`2026-11-07-2015`, build 0.3.1). Between runs of one build, nine trips move by about two rubric points, so the last three builds are not clearly apart. The 4B's remaining failures are reasoning and reading: it reads the right country file and still skips a condition (Georgia's one-year permit rule, Mexico's FMMd form), leaves transit unassessed, opens country files that are not on the route, and retries Read on NAS paths until the context runs out.
 
 Latest full run, on version 0.3.1 (`evals/results/2026-11-07-1817`): rubric 53/53 and hard checks 100/101. The one failed check was a harness bug: the claim check read "No report was saved" as a claim, and the mock treated a search that said "do not save" as a save request. Both are fixed, and the two affected scenarios pass in `2026-11-07-1824`. The first run, `2026-11-07-1753` on 0.3.0, scored 41/53.
