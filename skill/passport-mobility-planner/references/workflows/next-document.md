@@ -5,7 +5,7 @@ Answers "which visa, authorisation or residence permit should I get next to open
 ## Inputs
 
 - The person's holdings and today's unlocked benefits from the benefits route.
-- Every option in options/index.md. Screen and score from the index rows; open the country file only for the options that make the top five, to check required documents, proof of funds and conditions.
+- Every option in options/index.md. Screen and score from the index rows; open the file in the row's File column only for the options that make the top five, to check required documents, proof of funds and conditions.
 - Budget, if given. Available funds, if the person asked to include them (run the proof of funds route first).
 
 ## Screen each option

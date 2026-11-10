@@ -1,5 +1,6 @@
 group: residence-and-investment
 title: Long-term residence and citizenship routes
+section: living          # rendered into settle/<cc>.md, not the country file a trip reads
 options:
   # ---------------------------------------------------------------- Gulf
   - id: ae-golden-visa-investor-public-investment

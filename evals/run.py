@@ -4,6 +4,7 @@
     uv run evals/run.py dossier injection    # some
     uv run evals/run.py --model opus --jobs 3
     uv run evals/run.py --tier weak          # one passport tier: strong, medium or weak
+    uv run evals/run.py --skill-endpoint http://127.0.0.1:18080 --context-budget 28000   # small model, trimmed
 
 Each scenario runs `claude -p` in a scratch copy of skill/passport-mobility-planner, with two tools: Read,
 and Bash limited to the `delegate` command, which is the mock in mock_delegate.py. A host prompt stands in
@@ -29,6 +30,9 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "build"))
 from build import load_yaml  # noqa: E402
+
+sys.path.insert(0, str(ROOT / "evals"))
+import context_proxy  # noqa: E402
 
 EVALS = ROOT / "evals"
 SKILL = ROOT / "skill" / "passport-mobility-planner"
@@ -157,6 +161,7 @@ def grade(sc: dict, answer: str, calls: list[dict], model: str, cwd: Path, env: 
 # Base URL for the Skill's own claude -p calls (an Anthropic-compatible server such as llama-server), or None to use
 # whatever ~/.claude/settings.json and the environment say. The grader always uses the default endpoint.
 SKILL_ENDPOINT: str | None = None
+CONTEXT_BUDGET: int | None = None
 
 
 def run_scenario(sc: dict, out: Path, model: str, grader: str) -> dict:
@@ -171,7 +176,9 @@ def run_scenario(sc: dict, out: Path, model: str, grader: str) -> dict:
         (work / "world.json").write_text(json.dumps(world, default=str))
         env = {**os.environ, "PATH": f"{work / 'bin'}:{os.environ['PATH']}",
                "EVAL_WORLD": str(work / "world.json"), "EVAL_LOG": str(work / "calls.jsonl")}
-        local = ["--settings", json.dumps({"env": {"ANTHROPIC_BASE_URL": SKILL_ENDPOINT}})] if SKILL_ENDPOINT else []
+        proxy = context_proxy.serve(SKILL_ENDPOINT, CONTEXT_BUDGET) if SKILL_ENDPOINT and CONTEXT_BUDGET else None
+        endpoint = f"http://127.0.0.1:{proxy.server_address[1]}" if proxy else SKILL_ENDPOINT
+        local = ["--settings", json.dumps({"env": {"ANTHROPIC_BASE_URL": endpoint}})] if endpoint else []
         events = run_claude([sc["prompt"], "--model", model, "--system-prompt", HOST_PROMPT,
                              "--tools", "Bash,Read", "--allowedTools", "Bash(delegate:*)", "Read",
                              "--output-format", "stream-json", "--verbose", "--no-session-persistence",
@@ -196,10 +203,13 @@ def run_scenario(sc: dict, out: Path, model: str, grader: str) -> dict:
         res = {"id": sc["id"], "tier": world.get("tier", ""), "answer": answer, "calls": calls, "reads": reads, "checks": checks,
                "rubric": [{"item": r, **(items[i] if i < len(items) else {"pass": False, "why": "not graded"})}
                           for i, r in enumerate(sc["rubric"])],
-               "cost": final.get("total_cost_usd", 0), "turns": final.get("num_turns", 0)}
+               "cost": final.get("total_cost_usd", 0), "turns": final.get("num_turns", 0),
+               "trims": list(proxy.log) if proxy else []}
     except Exception as e:  # keep the other scenarios going
         res = {"id": sc["id"], "tier": "", "error": f"{type(e).__name__}: {e}", "checks": [], "rubric": [], "cost": 0}
     finally:
+        if "proxy" in locals() and proxy:
+            proxy.shutdown()
         shutil.rmtree(work, ignore_errors=True)
     write_scenario(res, sc, out)
     return res
@@ -216,6 +226,10 @@ def write_scenario(res: dict, sc: dict, out: Path):
                                       for r in res["rubric"]]
     lines += ["", "## Delegate calls", ""] + [f"{i}. `{c['target']}` -> {c['status']}: {c['instruction']}"
                                               for i, c in enumerate(res.get("calls", []), 1)]
+    if res.get("trims"):
+        lines += ["", "## Trimmed to fit the context window", ""] + [
+            f"- {t['what']} ({t['chars']:,} characters): prompt {t['tokens_before']} -> {t['tokens_after']} tokens"
+            for t in res["trims"]]
     lines += ["", "## References read", ""] + [f"- {p.split('/skill/', 1)[-1]}" for p in res.get("reads", [])]
     lines += ["", "## Answer", "", res.get("answer", ""), ""]
     text = "\n".join(lines)
@@ -232,10 +246,14 @@ def main():
     ap.add_argument("--jobs", type=int, default=4)
     ap.add_argument("--skill-endpoint", help="Anthropic-compatible base URL for the Skill runs only, e.g. a llama-server "
                     "on the LAN serving the small model the NAS uses; the grader keeps the default endpoint")
+    ap.add_argument("--context-budget", type=int, help="with --skill-endpoint: put evals/context_proxy.py in front of it, "
+                    "trimming old tool results so each prompt stays under this many tokens (28000 for a 32K slot)")
     ap.add_argument("--tier", choices=["strong", "medium", "weak"], help="only scenarios for this passport tier")
     a = ap.parse_args()
-    global SKILL_ENDPOINT
-    SKILL_ENDPOINT = a.skill_endpoint
+    global SKILL_ENDPOINT, CONTEXT_BUDGET
+    SKILL_ENDPOINT, CONTEXT_BUDGET = a.skill_endpoint, a.context_budget
+    if CONTEXT_BUDGET and not SKILL_ENDPOINT:
+        ap.error("--context-budget needs --skill-endpoint")
     scenarios = [s for s in load_yaml(EVALS / "scenarios.yaml")["scenarios"] if not a.ids or s["id"] in a.ids]
     if a.tier:
         scenarios = [s for s in scenarios if load_household(s.get("household")).get("tier") == a.tier]
@@ -257,6 +275,8 @@ def main():
     summary = [f"# Eval run {run_id}", "", f"Skill model requested: {a.model}. Grader requested: {a.grader}. Skill version: {version}.", "",
                (f"Skill endpoint: {SKILL_ENDPOINT} (the model name above is ignored there). Grader endpoint: {endpoint}"
                 if SKILL_ENDPOINT else f"Endpoint: {endpoint}"), "",
+               *([f"Context budget: {CONTEXT_BUDGET} prompt tokens; evals/context_proxy.py trimmed "
+                  f"{sum(len(r.get('trims', [])) for r in results)} old tool results across the run.", ""] if CONTEXT_BUDGET else []),
                f"Hard checks {tp}/{tc}, rubric {rp}/{rc}, cost USD {cost:.2f}.", "",
                "| Scenario | Passport | Result | Checks | Rubric | Delegate calls | Turns |",
                "| --- | --- | --- | --- | --- | --- | --- |",

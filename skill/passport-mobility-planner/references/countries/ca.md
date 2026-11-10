@@ -4,33 +4,6 @@ Generated from the Skill's rule and option data: what documents already held unl
 
 Go through the rules in order. Rules for named nationalities come first: when one names the traveller's nationality, it decides, and a general rule after it cannot override its no.
 
-## Long-term residence and citizenship routes
-
-### Start-up Visa Program (paused) - ca-start-up-visa
-
-- Document: residence-permit
-- Purpose: permanent residence for entrepreneurs backed by a designated organization
-- Fee: CAD 2,495 for the principal applicant (CAD 1,895 processing + CAD 600 right of permanent residence fee)
-- Validity: Permanent residence
-- How to apply: Paused since 30 June 2026; no new applications accepted. Applications received before that date are still processed.
-- Eligibility: Commitment certificate from a designated organization, CLB 5 in English or French, at least 10% of voting rights per applicant and over 50% held jointly with the organization
-- Proof of funds: CAD 15,263 settlement funds for one person (updated 29 July 2025); funds cannot be borrowed
-- For ranking: fee about USD 1,800, waiting days unknown
-- Required documents: passport, passport-photo, application-form, bank-statements, police-clearance, medical-certificate, business-registration, other
-- Also unlocks:
-  - Dominican Republic: visa-free entry (permanent residence). Rule do-entry-with-residence in countries/do.md
-  - Georgia: visa-free entry (valid on the day of entry into Georgia). Rule ge-entry-with-residence in countries/ge.md
-  - Mexico: visa-free entry (permanent residence card, valid at entry; any nationality). Rule mx-entry-with-residence in countries/mx.md
-  - Panama: visa-free entry (valid (vigente) residence). Rule pa-entry-with-residence in countries/pa.md
-  - Peru: visa-free entry (permanent residency). Only for nationals of CN, IN. Rule pe-entry-with-residence-cn-in in countries/pe.md
-  - Singapore: visa-free transit (long-term pass valid at least 1 month from entry into Singapore). Only for nationals of IN. Rule sg-vftf-with-residence-in in countries/sg.md
-  - South Korea: visa-free transit (permanent resident card; travelling via Korea to or from that country). Not for nationals of SY, SD, IR, MK, CU, XK, PS, AF, IQ, NG, GH, YE, GM, SN, BD, KG, PK, SO, UZ, NP, CM, LK, MM, EG. Rule kr-transit-with-us-ca-au-nz-residence in countries/kr.md
-  - Taiwan: electronic travel authorisation (valid resident or permanent resident certificate, or one that expired less than 10 years before arrival). Only for nationals of IN, ID, LA, MM, VN. Rule tw-tac-with-residence in countries/tw.md
-  - United Kingdom: visa-free transit (valid permanent residence; Canadian PR issued after 28 June 2002; US green card issued after 21 April 1998, or a US immigrant visa with an electronic arrival stamp, or an expired I-551 with a valid I-797 extension letter, or a sealed Form 155A/155B). Rule gb-airside-twov-permanent-residence in countries/gb.md
-- Notes: Paused by IRCC on 30 June 2026. Kept in the catalog for pending applicants and in case it reopens.
-- Source: https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/start-visa/eligibility.html (Immigration, Refugees and Citizenship Canada)
-- Checked: 07 Nov 2026, verified
-
 ## Visas and travel authorisations you can apply for
 
 ### Electronic Travel Authorization (eTA) - ca-eta

@@ -23,7 +23,8 @@ No document, bank or identity data leaves the NAS. The Skill only delegates to t
 | `build/build.py` | Validates the data, renders references, runs the UGREEN kit checker, zips the package. |
 | `skill/passport-mobility-planner/` | The generated package, committed so it can be reviewed. |
 | `companion/` | Optional container for the NAS: nightly official-news watcher, rules library of official page copies, local full-text search page. |
-| `tests/` | pytest for the build checks and the companion. |
+| `evals/` | Eval harness: scenarios, mock NAS agents, the context proxy for small models, results by run. |
+| `tests/` | pytest for the build, the eval mock and proxy, and the companion. |
 
 ## Build
 
@@ -67,6 +68,12 @@ uv run evals/run.py --jobs 2 --skill-endpoint http://127.0.0.1:18080 trip-medium
 ```
 
 A run that exceeds the model's context is recorded as a failed check, with the files read up to that point.
+
+Two things keep a trip inside 32K. In the package, country files hold only what a visit needs (benefit rules, transit, short-stay visas and authorisations); long-term residence and citizenship routes sit in the living files (`settle/<cc>.md`) with the settle-in steps, so Portugal's trip file went from 13.4 KB to 4 KB. In the harness, `--context-budget 28000` puts `evals/context_proxy.py` between Claude Code and llama-server: when a prompt is over budget it replaces the oldest tool results with a one-line stub, never SKILL.md, the workflow files or the two newest results, and each scenario report lists what was trimmed. Whether Uliya's runtime trims context like this is unknown, so runs are reported with and without it.
+
+```bash
+uv run evals/run.py --jobs 2 --skill-endpoint http://127.0.0.1:18080 --context-budget 28000 trip-medium-ph-japan
+```
 
 Nine trips on the 4B model, by build (hard checks, rubric, runs that ran out of context):
 

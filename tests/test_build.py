@@ -62,20 +62,26 @@ def _opt(id_, country, **kw):
 def test_country_files_and_indexes():
     rules = [{"group": "visa-held", "title": "Visa held", "rules": [
         {"id": "mx-us-visa", "country": "MX", "benefit": "visa-free entry", "unlocked_by": [{"holds": "visa", "issued_by": ["US"]}]}]}]
-    groups = [{"group": "visitor-and-nomad", "title": "Visitor visas", "funds": [], "options": [
+    groups = [{"group": "visitor-and-nomad", "title": "Visitor visas", "section": "country", "funds": [], "options": [
         _opt("us-b1b2", "US", fee_usd=185, processing_days=60, nationality_excluded=["CA"]), _opt("jp-visit", "JP")]},
-              {"group": "residence-and-investment", "title": "Residence", "funds": [], "options": [_opt("us-eb5", "US")]}]
+              {"group": "residence-and-investment", "title": "Residence", "section": "living", "funds": [],
+               "options": [_opt("us-eb5", "US")]}]
     for r in rules[0]["rules"]:
         r.update(source="https://www.gob.mx/x", source_owner="a", checked=dt.date(2026, 11, 7), confidence="verified")
     us = build.render_country("US", rules, groups)
-    assert "us-b1b2" in us and "us-eb5" in us and "jp-visit" not in us
-    assert us.index("## Visitor visas") < us.index("## Residence")
+    # a trip reads the country file: visits only; long-term routes go to the living file
+    assert "us-b1b2" in us and "us-eb5" not in us and "jp-visit" not in us
+    living = build.render_settle({"code": "US", "title": "x", "steps": [], "customs": []}, groups, rules)
+    assert living.startswith("# Living in United States") and "us-eb5" in living and "us-b1b2" not in living
+    assert "Steps in order" not in living
     mx = build.render_country("MX", rules, groups)
     assert "mx-us-visa" in mx and "us-b1b2" not in mx
     row = next(l for l in build.render_benefit_index(rules).splitlines() if l.startswith("| mx-us-visa "))
     assert "visa issued by United States" in row and "| Mexico |" in row
     row = next(l for l in build.render_option_index(groups, rules).splitlines() if l.startswith("| us-b1b2 "))
-    assert "| 185 | 60 |" in row and "not Canada" in row and row.endswith("| Mexico |")
+    assert "| 185 | 60 |" in row and "not Canada" in row and row.endswith("| Mexico | countries/us.md |")
+    row = next(l for l in build.render_option_index(groups, rules).splitlines() if l.startswith("| us-eb5 "))
+    assert row.endswith("| settle/us.md |")
 
 
 def test_rule_checks_turn_conditions_into_dated_questions():

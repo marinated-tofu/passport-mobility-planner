@@ -1,8 +1,10 @@
-# Dominica
+# Living in Dominica
 
-Generated from the Skill's rule and option data: what documents already held unlock here, transit and stopover rules at its airports, then visas and authorisations to apply for. Each entry is a dated snapshot of an official page.
+Generated from the Skill's data: long-term residence routes, then the steps to settle in after arrival. Each entry is a dated snapshot of an official page. Entry rules for visits are in the country file.
 
-Go through the rules in order. Rules for named nationalities come first: when one names the traveller's nationality, it decides, and a general rule after it cannot override its no.
+## Contents
+
+Long-term residence and citizenship routes
 
 ## Long-term residence and citizenship routes
 

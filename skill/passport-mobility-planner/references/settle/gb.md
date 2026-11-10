@@ -1,6 +1,6 @@
-# Settling in the United Kingdom
+# Living in United Kingdom
 
-Generated from the Skill's settle-in data. Each step is a dated snapshot of an official page.
+Generated from the Skill's data: long-term residence routes, then the steps to settle in after arrival. Each entry is a dated snapshot of an official page. Entry rules for visits are in the country file.
 
 ## Contents
 

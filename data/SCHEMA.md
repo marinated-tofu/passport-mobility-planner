@@ -40,13 +40,16 @@ runs a stopover program. News sites, blogs and visa agencies can point you to a 
 
 ## Options (`data/visas/*.yaml`)
 
-Visas, travel authorisations, residence permits and citizenship routes a person can apply for. Rendered to
-`references/options/<group>.md`. The build adds "Also unlocks" to each option: every benefit rule elsewhere
+Visas, travel authorisations, residence permits and citizenship routes a person can apply for. Each option is
+rendered into its country's file, `references/countries/<cc>.md`, unless the group sets `section: living`: those go
+into `references/settle/<cc>.md` with the settle-in steps, so a trip never loads long-term residence routes.
+`references/options/index.md` lists every option with the file that holds it. The build adds "Also unlocks" to each option: every benefit rule elsewhere
 whose `unlocked_by` names the option's `document` issued by the option's `country`.
 
 ```yaml
 group: visitor-and-nomad
 title: Visas and travel authorisations you can apply for
+section: country                      # country (default) | living
 options:
   - id: us-b1-b2-visa
     country: US                       # issuing country; SCHENGEN for Schengen visas
@@ -82,7 +85,8 @@ funds_reference:                      # optional; Schengen reference amounts
 
 ## Settle-in (`data/settle/<cc>.yaml`)
 
-One file per country, named by its lowercase ISO code. Rendered to `references/settle/<cc>.md`.
+One file per country, named by its lowercase ISO code. Rendered to `references/settle/<cc>.md`, after the country's
+long-term residence routes. A country with residence routes and no settle-in data still gets a file.
 
 ```yaml
 country: JP

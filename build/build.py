@@ -188,7 +188,10 @@ def load_options(today: dt.date, seen: set) -> tuple[list[dict], list[str]]:
             if not f.get("amount"):
                 raise BuildError(f"{where}: missing amount")
             check_source(where, f, today, warnings)
-        groups.append({"group": path.stem, "title": doc.get("title") or path.stem,
+        section = doc.get("section") or "country"
+        if section not in ("country", "living"):
+            raise BuildError(f"{path.name}: section must be country or living")
+        groups.append({"group": path.stem, "title": doc.get("title") or path.stem, "section": section,
                        "options": doc.get("options") or [], "funds": funds})
     return groups, warnings
 
@@ -384,10 +387,16 @@ def render_country(code: str, rule_groups: list[dict], option_groups: list[dict]
         if rules:
             parts += [f"## {g['title']}", ""] + [x for r in rules for x in (render_rule(r), "")]
     for g in option_groups:
+        if g["section"] != "country":
+            continue
         opts = sorted((o for o in g["options"] if o["country"] == code), key=lambda o: o["id"])
         if opts:
             parts += [f"## {g['title']}", ""] + [x for o in opts for x in (render_option(o, rule_groups), "")]
     return "\n".join(parts)
+
+
+def option_file(o: dict, group: dict) -> str:
+    return f"{'settle' if group['section'] == 'living' else 'countries'}/{o['country'].lower()}.md"
 
 
 def render_benefit_index(rule_groups: list[dict]) -> str:
@@ -418,10 +427,10 @@ def render_benefit_index(rule_groups: list[dict]) -> str:
 def render_option_index(option_groups: list[dict], rule_groups: list[dict]) -> str:
     """One line per option: enough to screen and rank without opening every country file."""
     parts = ["# Options index", "",
-             "One row per option. Open the country file for fees in local currency, required documents, proof of funds and "
-             "conditions before recommending one.", "",
-             "| Option id | Country | Document | Name | Fee USD | Days | Nationality limits | Also unlocks (countries) |",
-             "| --- | --- | --- | --- | --- | --- | --- | --- |"]
+             "One row per option. Open the file in the File column for fees in local currency, required documents, proof of "
+             "funds and conditions before recommending one.", "",
+             "| Option id | Country | Document | Name | Fee USD | Days | Nationality limits | Also unlocks (countries) | File |",
+             "| --- | --- | --- | --- | --- | --- | --- | --- | --- |"]
     for g in option_groups:
         for o in sorted(g["options"], key=lambda o: (country_name(o["country"]), o["id"])):
             fee = f"{o['fee_usd']:,.0f}" if o.get("fee_usd") is not None else "unknown"
@@ -430,7 +439,7 @@ def render_option_index(option_groups: list[dict], rule_groups: list[dict]) -> s
                                            f"not {codes(o['nationality_excluded'])}" if o.get("nationality_excluded") else "") if x) or "-"
             unlocked = sorted({u.split(":", 1)[0] for u in option_unlocks(o, rule_groups)})
             parts.append(f"| {o['id']} | {country_name(o['country'])} | {o['document']} | {o['name']} | {fee} | {days} | {limits} "
-                         f"| {', '.join(unlocked) or '-'} |")
+                         f"| {', '.join(unlocked) or '-'} | {option_file(o, g)} |")
     return "\n".join(parts + [""])
 
 
@@ -444,10 +453,20 @@ def render_funds(option_groups: list[dict]) -> str:
     return "\n".join(parts + [""])
 
 
-def render_settle(c: dict) -> str:
-    parts = [f"# {c['title']}", "",
-             "Generated from the Skill's settle-in data. Each step is a dated snapshot of an official page.", "",
-             "## Contents", "", "Steps in order" + (", Local customs" if c["customs"] else ""), "", "## Steps in order", ""]
+def render_settle(c: dict, option_groups: list[dict] = (), rule_groups: list[dict] = ()) -> str:
+    """Living in one country: long-term residence routes, then the steps after arrival and local customs."""
+    living = [(g, sorted((o for o in g["options"] if o["country"] == c["code"]), key=lambda o: o["id"]))
+              for g in option_groups if g["section"] == "living"]
+    living = [(g, opts) for g, opts in living if opts]
+    contents = [g["title"] for g, _ in living] + (["Steps in order"] if c["steps"] else []) + (["Local customs"] if c["customs"] else [])
+    parts = [f"# Living in {country_name(c['code'])}", "",
+             "Generated from the Skill's data: long-term residence routes, then the steps to settle in after arrival. "
+             "Each entry is a dated snapshot of an official page. Entry rules for visits are in the country file.", "",
+             "## Contents", "", ", ".join(contents), ""]
+    for g, opts in living:
+        parts += [f"## {g['title']}", ""] + [x for o in opts for x in (render_option(o, rule_groups), "")]
+    if c["steps"]:
+        parts += ["## Steps in order", ""]
     for i, st in enumerate(c["steps"], 1):
         parts += [f"### {i}. {st['step']} - {st['id']}", "", f"- Category: {st['category']}"]
         for key, label in (("who", "Who"), ("deadline", "Deadline"), ("fee", "Fee"), ("how", "How"), ("notes", "Notes")):
@@ -559,7 +578,8 @@ def build(check_links: bool, release: bool = False) -> None:
         opt_index.append("- [options/schengen-funds.md](references/options/schengen-funds.md): Schengen proof-of-funds reference amounts")
     country_links = []
     (OUT / "references/countries").mkdir(parents=True, exist_ok=True)
-    all_codes = {r["country"] for g in groups for r in g["rules"]} | {o["country"] for g in option_groups for o in g["options"]}
+    all_codes = ({r["country"] for g in groups for r in g["rules"]}
+                 | {o["country"] for g in option_groups if g["section"] == "country" for o in g["options"]})
     for code in sorted(all_codes, key=country_name):
         rel = f"references/countries/{code.lower()}.md"
         (OUT / rel).write_text(render_country(code, groups, option_groups))
@@ -568,12 +588,22 @@ def build(check_links: bool, release: bool = False) -> None:
     country_index = "- " + ", ".join(country_links)
 
     settle_index = []
-    for c in settle:
-        rel = f"references/settle/{c['code'].lower()}.md"
+    by_code = {c["code"]: c for c in settle}
+    for g in option_groups:
+        if g["section"] == "living":
+            for o in g["options"]:
+                code = str(o["country"]).upper()
+                by_code.setdefault(code, {"code": code, "title": f"Living in {country_name(code)}", "steps": [], "customs": []})
+    for code in sorted(by_code, key=country_name):
+        c = by_code[code]
+        rel = f"references/settle/{code.lower()}.md"
         (OUT / rel).parent.mkdir(parents=True, exist_ok=True)
-        (OUT / rel).write_text(render_settle(c))
-        settle_index.append(f"- [settle/{c['code'].lower()}.md]({rel}): {c['title']} "
-                            f"({len(c['steps'])} steps, {len(c['customs'])} customs notes)")
+        (OUT / rel).write_text(render_settle(c, option_groups, groups))
+        n_routes = sum(1 for g in option_groups if g["section"] == "living" for o in g["options"] if str(o["country"]).upper() == code)
+        what = ", ".join(f"{n} {word}{'' if n == 1 else 's'}" for n, word in
+                         ((n_routes, "residence route"), (len(c["steps"]), "settle-in step"), (len(c["customs"]), "customs note")) if n)
+        settle_index.append(f"[{country_name(code)}]({rel}) ({what})")
+    settle_index = ["- " + "; ".join(settle_index)] if settle_index else []
 
     matrix_index = []
     for i in range(0, len(matrix), MATRIX_CHUNK):

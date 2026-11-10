@@ -1,10 +1,31 @@
-# Settling in South Korea
+# Living in South Korea
 
-Generated from the Skill's settle-in data. Each step is a dated snapshot of an official page.
+Generated from the Skill's data: long-term residence routes, then the steps to settle in after arrival. Each entry is a dated snapshot of an official page. Entry rules for visits are in the country file.
 
 ## Contents
 
-Steps in order, Local customs
+Long-term residence and citizenship routes, Steps in order, Local customs
+
+## Long-term residence and citizenship routes
+
+### Immigrant Investor Scheme for Public Business (F-2) - kr-f2-public-business-investment
+
+- Document: residence-permit
+- Purpose: residence (F-2), then permanent residence (F-5), through investment
+- Minimum investment: KRW 1.5 billion or more (KRW 3 billion or more for high-value investment immigration)
+- Validity: F-2 residence; change to F-5 permanent residence after keeping the investment for 5 years
+- How to apply: Deposit in the Korea Development Bank public fund run for the Ministry of Justice, or invest in a designated regional development project, then apply at the local immigration office
+- Eligibility: Investor, spouse and unmarried children get F-2; retiree investors must also hold KRW 300 million in assets; criminal records, tax arrears or repeated Immigration Act violations exclude
+- Proof of funds: Proof of deposit or investment
+- For ranking: fee unknown, waiting days unknown, investment about USD 1,080,000
+- Required documents: passport, application-form, bank-statements, police-clearance, other
+- Also unlocks:
+  - Georgia: visa-free entry (valid on the day of entry into Georgia). Rule ge-entry-with-residence in countries/ge.md
+  - Panama: visa-free entry (valid (vigente) residence). Rule pa-entry-with-residence in countries/pa.md
+  - Taiwan: electronic travel authorisation (valid resident or permanent resident certificate, or one that expired less than 10 years before arrival). Only for nationals of IN, ID, LA, MM, VN. Rule tw-tac-with-residence in countries/tw.md
+- Notes: The Korean-language page gives KRW 1.5 billion; the English page still shows KRW 500 million, which looks outdated. High-value investors get F-5 directly, cancelled if the money is withdrawn within 5 years. Real-estate investment immigration not covered.
+- Source: https://www.immigration.go.kr/immigration/1523/subview.do (Korea Immigration Service (Ministry of Justice))
+- Checked: 07 Nov 2026, partial
 
 ## Steps in order
 

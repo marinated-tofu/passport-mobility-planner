@@ -1,10 +1,33 @@
-# Settling in Japan
+# Living in Japan
 
-Generated from the Skill's settle-in data. Each step is a dated snapshot of an official page.
+Generated from the Skill's data: long-term residence routes, then the steps to settle in after arrival. Each entry is a dated snapshot of an official page. Entry rules for visits are in the country file.
 
 ## Contents
 
-Steps in order, Local customs
+Long-term residence and citizenship routes, Steps in order, Local customs
+
+## Long-term residence and citizenship routes
+
+### Business Manager status of residence - jp-business-manager
+
+- Document: residence-permit
+- Purpose: residence to run or manage a business in Japan
+- Minimum investment: JPY 30 million or more in capital (paid-in capital for a corporation, or total invested funds for a sole proprietor)
+- Validity: 5 years, 3 years, 1 year, 6 months, 4 months or 3 months
+- How to apply: Apply for a Certificate of Eligibility at a regional Immigration Services Bureau, then obtain the visa at a Japanese mission abroad
+- Eligibility: At least one full-time employee who is Japanese or holds a qualifying status; B2-level Japanese (e.g. JLPT N2) held by the applicant or that employee; 3+ years of management experience or a relevant master's, doctoral or professional degree; a home office is generally not accepted
+- Proof of funds: Evidence of the JPY 30 million capital, such as a balance sheet or proof of invested funds
+- For ranking: fee unknown, waiting days unknown, investment about USD 200,000
+- Required documents: passport, passport-photo, application-form, business-registration, tenancy-contract, employment-contract, degree-certificate, other
+- Also unlocks:
+  - Georgia: visa-free entry (valid on the day of entry into Georgia). Rule ge-entry-with-residence in countries/ge.md
+  - Mexico: visa-free entry (permanent residence card, valid at entry; any nationality). Rule mx-entry-with-residence in countries/mx.md
+  - Panama: visa-free entry (valid (vigente) residence). Rule pa-entry-with-residence in countries/pa.md
+  - Singapore: visa-free transit (long-term pass valid at least 1 month from entry into Singapore). Only for nationals of IN. Rule sg-vftf-with-residence-in in countries/sg.md
+  - Taiwan: electronic travel authorisation (valid resident or permanent resident certificate, or one that expired less than 10 years before arrival). Only for nationals of IN, ID, LA, MM, VN. Rule tw-tac-with-residence in countries/tw.md
+- Notes: Stricter criteria apply from 16 October 2025, including a business plan checked by an outside SME consultant, CPA or tax accountant. Existing holders renewing before 16 October 2028 are not refused only for missing the new rules.
+- Source: https://www.moj.go.jp/isa/applications/resources/10_00237.html (Immigration Services Agency of Japan (Ministry of Justice))
+- Checked: 07 Nov 2026, verified
 
 ## Steps in order
 

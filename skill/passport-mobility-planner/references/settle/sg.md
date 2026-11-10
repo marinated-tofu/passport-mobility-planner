@@ -1,10 +1,32 @@
-# Settling in Singapore
+# Living in Singapore
 
-Generated from the Skill's settle-in data. Each step is a dated snapshot of an official page.
+Generated from the Skill's data: long-term residence routes, then the steps to settle in after arrival. Each entry is a dated snapshot of an official page. Entry rules for visits are in the country file.
 
 ## Contents
 
-Steps in order, Local customs
+Long-term residence and citizenship routes, Steps in order, Local customs
+
+## Long-term residence and citizenship routes
+
+### Global Investor Programme (GIP) - sg-global-investor-programme
+
+- Document: residence-permit
+- Purpose: permanent residence for business owners, founders and family office principals
+- Fee: SGD 20,000 non-refundable EDB application fee; SGD 100 ICA processing fee per applicant
+- Minimum investment: Option A: at least SGD 10 million in a new or expanded Singapore business. Option B: SGD 25 million in a GIP-select fund. Option C: Singapore single family office with at least SGD 200 million AUM, at least SGD 50 million deployed in Singapore-listed equities
+- Waiting time: About 12 months
+- Validity: Re-Entry Permit of 5 years; renewed for 5 or 3 years depending on criteria met
+- Stay: For a 5-year renewal the investor or all dependants must have lived in Singapore more than half the time; a 3-year renewal accepts either this or the business condition
+- How to apply: Submit the GIP e-application and Form 4 to EDB (Contact Singapore), followed by an interview; ICA then issues Approval-in-Principle
+- Eligibility: Established business owner (3+ years, turnover SGD 200m+), next-generation owner (family business turnover SGD 500m+), founder of a company valued at SGD 500m+ with VC/PE backing, or family office principal (SGD 200m+ net investible assets), in a listed industry
+- Proof of funds: Audited financials of the qualifying company; for Option C, bank statements showing at least SGD 200 million net investible assets
+- For ranking: fee about USD 15,500, 365 days, investment about USD 7,700,000
+- Required documents: passport, passport-photo, application-form, business-registration, bank-statements, cv, birth-certificate, marriage-certificate, other
+- Also unlocks:
+  - Panama: visa-free entry (valid (vigente) residence). Rule pa-entry-with-residence in countries/pa.md
+- Notes: Approval-in-Principle lasts 6 months and the investment must be made within it. Since 21 February 2025 Option C money must go into Singapore-listed equities. Factsheet dated 5 May 2025.
+- Source: https://www.edb.gov.sg/content/dam/edb-en/how-we-help/global-investor-programme/GIP%20Factsheet.pdf (Singapore Economic Development Board (Contact Singapore))
+- Checked: 07 Nov 2026, verified
 
 ## Steps in order
 
