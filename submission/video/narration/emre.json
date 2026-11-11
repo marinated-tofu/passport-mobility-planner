@@ -1,0 +1,10 @@
+[
+  "This is Emre. He's a logistics manager in Istanbul, he has a Turkish passport, and he wants to see Mexico City and Panama City in February.",
+  "His scans are on the family NAS: a passport, a U S visa and a letter from his employer. Should he connect in Frankfurt or in Houston? The answers are spread over many official pages, and he won't upload his passport to a cloud chatbot.",
+  "So he asks the assistant on his NAS.",
+  "The Skill hands the work to the NAS's own agents. One finds his documents and another reads them, first the passport and U S visa, then a letter from his employer. Document numbers come back masked, and nothing leaves the NAS.",
+  "Then it checks the bundled rules, one by one. His passport and U S visa last the whole trip. The visa covers a stop in Houston, but not Frankfurt. It also lets him into Mexico with the online F M M D form, and into Panama for up to ninety days.",
+  "It holds what Mexico and Panama ask for against his folder. The F M M D form is still to do, and there are no onward tickets, travel insurance or bank statements.",
+  "Last, a dated plan. Compare the routes now, confirm the Mexico rule with the consulate, and fill in the F M M D form before the tenth of February.",
+  "Passport mobility planner. Official rules, checked against your own documents, on your own NAS."
+]

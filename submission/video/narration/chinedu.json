@@ -1,0 +1,10 @@
+[
+  "This is Chinedu. He's an electrical engineer in Lagos, he has a Nigerian passport, and he's going to London for two weeks in March.",
+  "His scans are on the family NAS: a phone photo of his passport, a U K visitor visa, an employment letter. The cheap flights stop in Amsterdam or Paris. Is that a problem? The answers are spread over official pages, and he won't upload his passport to a cloud chatbot.",
+  "So he asks the assistant on his NAS.",
+  "The Skill hands the work to the NAS's own agents. One finds the documents, one reads the photo of his passport, one reads the visa and the letter. Document numbers come back masked, and nothing leaves the NAS.",
+  "Then it checks the bundled rules, one by one. His passport is fine, and his U K visitor visa runs to January 2028, so it covers the trip. A stop in Amsterdam or Paris needs a Schengen visa for ninety euros, and the transit rules aren't in the bundled data.",
+  "It holds the documents against his folder. There are no bank statements, insurance or bookings. It also caught a misread digit on his passport scan. But this run didn't check the birth date on his visa against his passport.",
+  "Last, a dated plan. Its advice is to book direct. Check the real passport now, and gather the missing papers. If he connects in Europe, he should apply for the Schengen visa by about the tenth of February.",
+  "Passport mobility planner. Official rules, checked against your own documents, on your own NAS."
+]

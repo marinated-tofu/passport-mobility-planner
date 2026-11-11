@@ -1,0 +1,10 @@
+[
+  "This is Ayesha. She's an accountant in Dubai, she has a Pakistani passport, and she wants to see Tbilisi and Yerevan in December.",
+  "Her scans are on the family NAS: a passport, a UAE residence permit, an Emirates I D. Does her permit get her into Georgia and Armenia? The answers sit on embassy and ministry pages, and she won't upload her passport to a cloud chatbot.",
+  "So she asks the assistant on her NAS.",
+  "The Skill hands the work to the NAS's own agents. One finds her documents, one reads the passport and permit, one reads the photo of her Emirates I D. Document numbers come back masked, and nothing leaves the NAS.",
+  "Then it checks the bundled rules. Her passport is fine. For Pakistani citizens, Georgia wants a year left on the UAE permit, and hers ends next June, so she needs a C one tourist e-visa. Armenia needs six months and should be visa-free, if Pakistan is on its list.",
+  "It holds Georgia's document list against her folder. There's no flight, hotel or travel insurance, and her UAE permit won't unlock a Turkish e-visa. This run didn't flag that the permit ends in June, so she should plan the renewal.",
+  "Last, a dated plan. Confirm Armenia's list now, apply for the Georgian e-visa before booking, decide on Istanbul, and fly to Tbilisi on the eighteenth of December.",
+  "Passport mobility planner. Official rules, checked against your own documents, on your own NAS."
+]

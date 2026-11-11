@@ -1,0 +1,10 @@
+[
+  "This is Kenji. He lives in Osaka, he has a Japanese passport, and in May he's flying to Seoul and then on to Vancouver.",
+  "His scans are on the family NAS: a photo of his passport, a Korean Air booking, a hotel in Vancouver. What does each country need? The rules sit on official sites in two countries, and he won't upload his passport to a cloud chatbot.",
+  "So he asks the assistant on his NAS.",
+  "The Skill hands the work to the NAS's own agents. One finds the documents, one reads the passport photo and checks the machine-readable zone, one reads the bookings. Document numbers come back masked, and nothing leaves the NAS.",
+  "Then it checks the bundled rules. His passport is fine. Korea needs a K E T A, about ten thousand won, though some nationalities are waived, so he should confirm. Canada needs an E T A, seven Canadian dollars, most approved in minutes, with the official sources and checked dates.",
+  "It holds the document lists against his folder. The passport, flights and hotel are there. Neither authorisation is there yet, and nothing shows where he'll stay in Seoul.",
+  "Last, a dated plan. Apply for the Canadian E T A now and the K E T A by the twenty-eighth of April, then fly to Seoul on the second of May.",
+  "Passport mobility planner. Official rules, checked against your own documents, on your own NAS."
+]

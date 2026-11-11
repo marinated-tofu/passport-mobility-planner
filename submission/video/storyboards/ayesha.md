@@ -1,0 +1,31 @@
+# Demo video storyboard: Ayesha plans Georgia and Armenia
+
+About 110 seconds, 1920×1080, narrated. Every screen in the video shows what the Skill really did in eval run `evals/results/2026-11-11-1213/trip-weak-pk-georgia-armenia.md` (GPT-5.6-Luna, mock NAS), shortened. The run scored 4/5 on the rubric. It missed one item: it gave the UAE residence permit's expiry, 30 June 2027, but did not flag that renewing it matters for the residence-based entry rules and for returning to Dubai. Scene 6 shows that miss as a red note. Ayesha and her documents are the synthetic household in `evals/households/weak-pk.yaml`. The video says so on screen.
+
+## Who she is
+
+Ayesha Khan, 32, an accountant at an accounting firm in Dubai. She has a Pakistani passport and a UAE residence permit that ends on 30 June 2027. Her scans sit in `Personal/Travel` on the family NAS: passport, UAE residence permit, a photo of her Emirates ID, an October bank statement.
+
+She wants Tbilisi from 18 to 24 December 2026, then overland to Yerevan until the 29th, then home to Dubai, maybe through Istanbul. Her UAE permit might get her into these countries without a visa, but she can't tell whether it does, and she won't upload passport scans to a cloud chatbot.
+
+## Scenes
+
+| # | Time | Picture | Narration |
+| --- | --- | --- | --- |
+| 1 | 0:00 | Night. Ayesha at her desk by a window, Dubai skyline outside. Her phone shows snowy hills: "Tbilisi and Yerevan?", 18 to 29 December 2026. Caption: Ayesha Khan, accountant in Dubai, Pakistani passport. | This is Ayesha. She's an accountant in Dubai, she has a Pakistani passport, and she wants to see Tbilisi and Yerevan in December. |
+| 2 | 0:10 | The `Personal/Travel` folder opens and its files fan out as cards: passport, UAE residence permit (tag: ends Jun 2027), Emirates ID (photo), bank statement. Browser tabs pile up behind them: Georgian embassy, Georgian e-visa, Armenian MFA, Türkiye visa information, Touristanbul. A cloud chatbot asks for a passport photo; "Not with her passport." | Her scans are on the family NAS: a passport, a UAE residence permit, an Emirates I D. Does her permit get her into Georgia and Armenia? The answers sit on embassy and ministry pages, and she won't upload her passport to a cloud chatbot. |
+| 3 | 0:29 | The NAS assistant's chat window. Her request types itself out, word for word from the eval prompt. | So she asks the assistant on her NAS. |
+| 4 | 0:34 | The Skill hands work to the NAS agents, one card at a time, each turning to "completed": file-agent finds the passport, UAE permit and Emirates ID; document-agent reads the passport and permit and checks the machine-readable zone (passport …918, agrees with the page); photo-agent reads the Emirates ID, which matches; file-agent finds only a bank statement, no bookings or insurance. Badge: runs on the NAS. | The Skill hands the work to the NAS's own agents. One finds her documents, one reads the passport and permit, one reads the photo of her Emirates I D. Document numbers come back masked, and nothing leaves the NAS. |
+| 5 | 0:51 | Rule checks tick down: passport expires 3 Sep 2031, arrival plus six months 18 Jun 2027, met; Georgia, no visa-free entry, Pakistani nationals need a UAE permit with a year left; Armenia, likely visa-free, permit runs past 24 Jun 2027, confirm Pakistan on the 111-country list. Card, under the stricter UAE-residence rule: Georgian C1 tourist e-visa; permit must run to 18 Dec 2027; hers ends 30 Jun 2027; fee and waiting time not in the bundled data; apply through the Georgian e-visa system. Source uae.mfa.gov.ge, checked 7 Nov 2026. | Then it checks the bundled rules. Her passport is fine. For Pakistani citizens, Georgia wants a year left on the UAE permit, and hers ends next June, so she needs a C one tourist e-visa. Armenia needs six months and should be visa-free, if Pakistan is on its list. |
+| 6 | 1:11 | Georgia's document list next to her folder: passport (have), UAE residence permit (have), flight booking (missing, highlighted), hotel and travel insurance (missing). Amber note, also found: her UAE permit won't unlock Türkiye's e-visa, which needs a Schengen, US, UK or Irish visa or permit. Red note, missed in this run: UAE permit ends 30 Jun 2027, not flagged; residence-based entry rules and her return to Dubai depend on it, plan the renewal. | It holds Georgia's document list against her folder. There's no flight, hotel or travel insurance, and her UAE permit won't unlock a Turkish e-visa. This run didn't flag that the permit ends in June, so she should plan the renewal. |
+| 7 | 1:28 | A timeline dated from 7 November 2026: now, before booking, confirm Pakistan is on Armenia's list of 111; before booking, apply for the Georgian C1 tourist e-visa; before a stopover, Istanbul airside or a Turkish visa first; carry passport, physical UAE permit, Georgian visa; 18 Dec 2026, fly to Tbilisi once the Georgian visa is secured. | Last, a dated plan. Confirm Armenia's list now, apply for the Georgian e-visa before booking, decide on Istanbul, and fly to Tbilisi on the eighteenth of December. |
+| 8 | 1:39 | Ayesha standing, light snow falling. Title: Passport mobility planner, a Skill for the UGREEN AI NAS. Three lines: official rules with checked dates; numbers masked; documents stay home. Footnote: real Skill run on mock NAS data. | Passport mobility planner. Official rules, checked against your own documents, on your own NAS. |
+
+## Notes
+
+- One narrator voice (Kokoro `af_heart`). Scene lengths follow the narration; times above use estimated line lengths and will shift with the real TTS.
+- The chat window is a plain mock-up labelled "NAS assistant", not UGREEN's real interface.
+- The run made four delegate calls, all shown. It read the October bank statement's name only; it did not open it, so the video doesn't show any figures from it.
+- The answer gives no Georgian visa fee or processing time, so the card says "Not in the bundled data" and the plan has no apply-by date. Only the steps the checklist itself dates (before booking, 18 December) carry dates.
+- Armenia's source (mfa.am, checked 7 Nov 2026, partial) and the Turkish sources are in the answer but not on screen; the card shows only Georgia's source.
+- Colours: night navy, cream, winter sky blue; green for met, amber for missing, red for what the run missed.

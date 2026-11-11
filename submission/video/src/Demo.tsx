@@ -12,7 +12,7 @@ import {
 } from 'remotion';
 import {loadFont} from '@remotion/google-fonts/Inter';
 import {loadFont as loadMono} from '@remotion/google-fonts/JetBrainsMono';
-import durations from './durations.json';
+import {CUE, type Story} from './story';
 
 const {fontFamily} = loadFont('normal', {weights: ['400', '500', '600', '700'], subsets: ['latin']});
 const {fontFamily: mono} = loadMono('normal', {weights: ['400', '500'], subsets: ['latin']});
@@ -44,11 +44,15 @@ const C = {
   blueBg: '#E3ECF5',
 };
 
-export const sceneFrames = (): number[] =>
+const StoryCtx = React.createContext<Story>(null as unknown as Story);
+const useStory = () => React.useContext(StoryCtx);
+const useCue = () => ({...CUE, ...useStory().cue});
+
+export const sceneFrames = (durations: number[]): number[] =>
   durations.map((d: number, i: number) =>
     Math.ceil((Math.max(LEAD + d + TAIL, MIN[i] ?? 0) + (EXTRA[i] ?? 0)) * FPS)
   );
-export const totalFrames = () => sceneFrames().reduce((a, b) => a + b, 0);
+export const totalFrames = (durations: number[]) => sceneFrames(durations).reduce((a, b) => a + b, 0);
 
 // ---------- helpers ----------
 
@@ -72,7 +76,9 @@ const Fade: React.FC<{dur: number; children: React.ReactNode}> = ({dur, children
   return <AbsoluteFill style={{opacity: o}}>{children}</AbsoluteFill>;
 };
 
-const Footnote: React.FC<{dark?: boolean}> = ({dark}) => (
+const Footnote: React.FC<{dark?: boolean}> = ({dark}) => {
+  const s = useStory();
+  return (
   <div
     style={{
       position: 'absolute',
@@ -83,9 +89,10 @@ const Footnote: React.FC<{dark?: boolean}> = ({dark}) => (
       fontFamily,
     }}
   >
-    Real Skill output from eval run 2026-11-11 on a mock NAS, shortened. Maria and her documents are invented.
+    Real Skill output from {s.run} on a mock NAS, shortened. {s.first} and {s.her} documents are invented.
   </div>
-);
+  );
+};
 
 const Chip: React.FC<{tone: 'green' | 'amber' | 'red' | 'blue' | 'grey'; children: React.ReactNode}> = ({
   tone,
@@ -194,6 +201,7 @@ const Petals: React.FC<{count?: number; color?: string}> = ({count = 26, color =
 
 const MariaAtDesk: React.FC = () => {
   const f = useCurrentFrame();
+  const {skin, shade, hair, top, bun} = useStory().look;
   const glow = 0.75 + Math.sin(f / 9) * 0.08;
   const lit = [
     [120, 300], [138, 330], [160, 260], [230, 360], [250, 300], [420, 340], [440, 380], [470, 300], [500, 360], [530, 410],
@@ -225,36 +233,38 @@ const MariaAtDesk: React.FC = () => {
       <rect x={760} y={430} width={40} height={300} rx={14} fill="#2E3B57" />
       <rect x={640} y={640} width={200} height={34} rx={12} fill="#2E3B57" />
       {/* body */}
-      <path d="M640 640 C630 560 650 470 700 450 C740 435 780 460 785 520 L790 640 Z" fill="#E1A13A" />
+      <path d="M640 640 C630 560 650 470 700 450 C740 435 780 460 785 520 L790 640 Z" fill={top} />
       <path d="M650 650 h170 l-10 50 h-150 z" fill="#3A3F58" />
       {/* arm to phone */}
-      <path d="M700 480 C660 520 640 560 600 540" stroke="#E1A13A" strokeWidth={34} fill="none" strokeLinecap="round" />
-      <circle cx={596} cy={528} r={17} fill="#B97A50" />
+      <path d="M700 480 C660 520 640 560 600 540" stroke={top} strokeWidth={34} fill="none" strokeLinecap="round" />
+      <circle cx={596} cy={528} r={17} fill={skin} />
       {/* phone */}
       <rect x={566} y={470} width={36} height={64} rx={7} fill="#1A1A22" transform="rotate(-18 584 502)" />
       <rect x={570} y={475} width={28} height={54} rx={5} fill="#FDE3EA" opacity={glow} transform="rotate(-18 584 502)" />
       {/* neck and head */}
-      <rect x={705} y={400} width={30} height={50} rx={10} fill="#A86D45" />
-      <circle cx={712} cy={372} r={52} fill="#B97A50" />
-      <path d="M665 360 C660 300 720 290 755 320 C770 335 772 360 768 385 C750 360 720 350 700 352 C690 354 678 362 665 360 Z" fill="#241712" />
-      <circle cx={770} cy={322} r={30} fill="#241712" />
+      <rect x={705} y={400} width={30} height={50} rx={10} fill={shade} />
+      <circle cx={712} cy={372} r={52} fill={skin} />
+      <path d="M665 360 C660 300 720 290 755 320 C770 335 772 360 768 385 C750 360 720 350 700 352 C690 354 678 362 665 360 Z" fill={hair} />
+      {bun && <circle cx={770} cy={322} r={30} fill={hair} />}
       <circle cx={676} cy={378} r={4} fill="#3A2418" />
       <path d="M662 400 q8 6 16 0" stroke="#7A4A30" strokeWidth={3} fill="none" strokeLinecap="round" />
     </svg>
   );
 };
 
-const MariaStanding: React.FC = () => (
+const MariaStanding: React.FC = () => {
+  const {skin, shade, hair, top, bun} = useStory().look;
+  return (
   <svg width={420} height={640} viewBox="0 0 420 640">
     <ellipse cx={210} cy={622} rx={120} ry={16} fill="#000" opacity={0.08} />
     <path d="M150 600 L165 360 h90 L270 600 h-40 l-20 -200 l-20 200 z" fill="#2F3A55" />
-    <path d="M140 380 C130 280 160 200 210 195 C260 200 290 280 280 380 Z" fill="#E1A13A" />
-    <path d="M150 230 C120 280 120 330 130 360" stroke="#E1A13A" strokeWidth={30} fill="none" strokeLinecap="round" />
-    <path d="M272 230 C300 270 312 300 300 330" stroke="#E1A13A" strokeWidth={30} fill="none" strokeLinecap="round" />
-    <rect x={196} y={150} width={28} height={50} rx={10} fill="#A86D45" />
-    <circle cx={210} cy={118} r={50} fill="#B97A50" />
-    <path d="M160 112 C150 50 230 40 262 82 C272 98 270 120 262 132 C246 104 210 96 190 100 C178 102 168 108 160 112 Z" fill="#241712" />
-    <circle cx={212} cy={62} r={26} fill="#241712" />
+    <path d="M140 380 C130 280 160 200 210 195 C260 200 290 280 280 380 Z" fill={top} />
+    <path d="M150 230 C120 280 120 330 130 360" stroke={top} strokeWidth={30} fill="none" strokeLinecap="round" />
+    <path d="M272 230 C300 270 312 300 300 330" stroke={top} strokeWidth={30} fill="none" strokeLinecap="round" />
+    <rect x={196} y={150} width={28} height={50} rx={10} fill={shade} />
+    <circle cx={210} cy={118} r={50} fill={skin} />
+    <path d="M160 112 C150 50 230 40 262 82 C272 98 270 120 262 132 C246 104 210 96 190 100 C178 102 168 108 160 112 Z" fill={hair} />
+    {bun && <circle cx={212} cy={62} r={26} fill={hair} />}
     <circle cx={192} cy={120} r={4} fill="#3A2418" />
     <circle cx={228} cy={120} r={4} fill="#3A2418" />
     <path d="M198 142 q12 9 24 0" stroke="#7A4A30" strokeWidth={3.5} fill="none" strokeLinecap="round" />
@@ -262,7 +272,8 @@ const MariaStanding: React.FC = () => (
     <rect x={284} y={318} width={44} height={58} rx={5} fill="#24346B" transform="rotate(12 306 347)" />
     <circle cx={306} cy={344} r={10} fill="none" stroke="#D9B85C" strokeWidth={2.5} transform="rotate(12 306 347)" />
   </svg>
-);
+  );
+};
 
 // ---------- documents ----------
 
@@ -281,18 +292,7 @@ const DocIcon: React.FC<{color: string; photo?: boolean}> = ({color, photo}) => 
   </svg>
 );
 
-const DOCS: {title: string; sub: string; color: string; photo?: boolean; tag?: [string, 'red' | 'amber' | 'grey']}[] = [
-  {title: 'Passport', sub: 'Philippines · passport-maria-reyes.pdf', color: '#2F4B8A'},
-  {title: 'US visa B1/B2', sub: 'us-visa-b1b2.pdf', color: '#5A7FB0'},
-  {title: 'Schengen visa', sub: 'France · 2025', color: '#5A7FB0', tag: ['expired', 'red']},
-  {title: 'Japan visa 2024', sub: 'japan-visa-2024.jpg', color: '#C9506F', photo: true, tag: ['still valid?', 'amber']},
-  {title: 'UAE residence permit', sub: 'residence-visa.pdf', color: '#3E8A72'},
-  {title: 'Payslips', sub: 'Aug to Oct 2026', color: '#8C7A5B'},
-  {title: 'Bank statements', sub: 'Emirates NBD, BDO', color: '#8C7A5B'},
-  {title: 'Flight booking', sub: 'Dubai to Lisbon, March 2027', color: '#7B6AA6'},
-];
-
-const DocCard: React.FC<{d: (typeof DOCS)[number]; delay: number}> = ({d, delay}) => {
+const DocCard: React.FC<{d: Story['docs'][number]; delay: number}> = ({d, delay}) => {
   const p = useIn(delay);
   return (
     <div
@@ -332,6 +332,7 @@ const FolderIcon: React.FC = () => (
 // ---------- scenes ----------
 
 const S1Maria: React.FC = () => {
+  const s = useStory();
   const phone = useIn(1.6, 18);
   const cap = useIn(0.6);
   return (
@@ -358,39 +359,41 @@ const S1Maria: React.FC = () => {
           <svg width={368} height={480} viewBox="0 0 368 480" style={{position: 'absolute', top: 0}}>
             <defs>
               <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0" stopColor="#BFD9EE" />
-                <stop offset="1" stopColor="#F6DCE4" />
+                <stop offset="0" stopColor={s.phone.sky[0]} />
+                <stop offset="1" stopColor={s.phone.sky[1]} />
               </linearGradient>
             </defs>
             <rect width={368} height={480} fill="url(#sky)" />
-            <path d="M0 400 L60 340 L110 370 L184 250 L258 370 L300 340 L368 400 V480 H0 Z" fill="#E6C7D2" />
+            <path d="M0 400 L60 340 L110 370 L184 250 L258 370 L300 340 L368 400 V480 H0 Z" fill={s.phone.hills} />
             <path d="M184 250 L210 290 L196 286 L184 300 L172 286 L158 290 Z" fill="#fff" />
-            <g transform="translate(-60 30) scale(0.62)">
-              <Branch />
-            </g>
+            {s.phone.blossom && (
+              <g transform="translate(-60 30) scale(0.62)">
+                <Branch />
+              </g>
+            )}
           </svg>
           <div style={{position: 'absolute', top: 500, left: 30, right: 30}}>
-            <div style={{fontSize: 22, color: C.pinkDeep, fontWeight: 600, letterSpacing: 0.2}}>Saved idea</div>
-            <div style={{fontSize: 44, fontWeight: 700, color: C.ink, marginTop: 10, lineHeight: 1.1}}>Tokyo in April?</div>
-            <div style={{fontSize: 24, color: C.muted, marginTop: 14}}>Cherry blossoms, 1 to 10 April 2027</div>
+            <div style={{fontSize: 22, color: C.pinkDeep, fontWeight: 600, letterSpacing: 0.2}}>{s.phone.label}</div>
+            <div style={{fontSize: 44, fontWeight: 700, color: C.ink, marginTop: 10, lineHeight: 1.1}}>{s.phone.title}</div>
+            <div style={{fontSize: 24, color: C.muted, marginTop: 14}}>{s.phone.sub}</div>
           </div>
         </div>
       </div>
       <div style={{position: 'absolute', left: 120, bottom: 64, ...rise(cap)}}>
-        <div style={{fontSize: 64, fontWeight: 700, color: '#fff'}}>Maria Reyes</div>
+        <div style={{fontSize: 64, fontWeight: 700, color: '#fff'}}>{s.name}</div>
         <div style={{fontSize: 30, color: 'rgba(255,255,255,0.75)', marginTop: 8}}>
-          Software engineer in Dubai · Philippine passport
+          {s.tagline}
         </div>
       </div>
     </AbsoluteFill>
   );
 };
 
-const TABS = ['Visa | Ministry of Foreign Affairs of Japan', 'Embassy of Japan in the UAE', 'JAPAN eVISA', 'Visa fees from 1 July 2026', 'Passport validity rules'];
-
 const S2Pile: React.FC = () => {
+  const s = useStory();
+  const cue = useCue();
   const head = useIn(0.2);
-  const cloud = useIn(11.5, 20);
+  const cloud = useIn(cue.cloud, 20);
   return (
     <AbsoluteFill style={{background: C.cream, fontFamily}}>
       <div style={{position: 'absolute', left: 80, top: 70, display: 'flex', alignItems: 'center', gap: 20, ...rise(head)}}>
@@ -401,13 +404,13 @@ const S2Pile: React.FC = () => {
         </div>
       </div>
       <div style={{position: 'absolute', left: 80, top: 210, width: 1060, display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 22}}>
-        {DOCS.map((d, i) => (
+        {s.docs.map((d, i) => (
           <DocCard key={d.title} d={d} delay={0.6 + i * 0.45} />
         ))}
       </div>
       <div style={{position: 'absolute', left: 1230, top: 200, width: 620}}>
-        {TABS.map((t, i) => {
-          const p = useIn(6.2 + i * 0.55, 22);
+        {s.tabs.map((t, i) => {
+          const p = useIn(cue.tabs + i * 0.55, 22);
           return (
             <div
               key={t}
@@ -450,15 +453,13 @@ const S2Pile: React.FC = () => {
           <div style={{fontSize: 30, fontWeight: 600, color: C.ink, marginTop: 8}}>Upload a photo of your passport</div>
           <div style={{display: 'flex', alignItems: 'center', gap: 14, marginTop: 18}}>
             <Mark kind="no" size={38} />
-            <div style={{fontSize: 26, color: C.red, fontWeight: 600}}>Not with her passport.</div>
+            <div style={{fontSize: 26, color: C.red, fontWeight: 600}}>Not with {s.her} passport.</div>
           </div>
         </div>
       </div>
     </AbsoluteFill>
   );
 };
-
-const REQUEST = 'I want to visit Japan from 1 to 10 April 2027. My documents are in Personal/Travel. Sort out everything I need to do.';
 
 const ChatHeader: React.FC = () => (
   <div style={{display: 'flex', alignItems: 'center', gap: 16, padding: '24px 34px', borderBottom: `1px solid ${C.line}`}}>
@@ -476,6 +477,7 @@ const ChatHeader: React.FC = () => (
 );
 
 const S3Ask: React.FC = () => {
+  const REQUEST = useStory().request;
   const f = useCurrentFrame();
   const win = useIn(0, 22);
   const n = Math.floor(interpolate(f, [12, 12 + 3.2 * FPS], [0, REQUEST.length], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'}));
@@ -534,15 +536,7 @@ const S3Ask: React.FC = () => {
   );
 };
 
-const CALLS: {agent: string; task: string; result: string}[] = [
-  {agent: 'file-agent', task: 'Find passports, visas, permits and IDs in Personal/Travel', result: '4 documents and 2 images found'},
-  {agent: 'document-agent', task: 'Read the passport, visas and residence permit; check each machine-readable zone', result: 'Passport …96B, zone agrees with the page'},
-  {agent: 'photo-agent', task: 'Read the text in japan-visa-2024.jpg and the Emirates ID', result: 'Japan visa …873, expired 28 Jan 2025'},
-  {agent: 'file-agent', task: 'Find supporting documents: letters, payslips, insurance, bookings', result: '7 found'},
-  {agent: 'document-agent', task: 'Read the 7 supporting documents; return only the last 3 characters of any number', result: 'Flight Dubai to Lisbon, insurance UAE only'},
-];
-
-const AgentCard: React.FC<{c: (typeof CALLS)[number]; start: number}> = ({c, start}) => {
+const AgentCard: React.FC<{c: Story['calls'][number]; start: number}> = ({c, start}) => {
   const f = useCurrentFrame();
   const p = useIn(start);
   const done = f > (start + 1.3) * FPS;
@@ -585,16 +579,17 @@ const AgentCard: React.FC<{c: (typeof CALLS)[number]; start: number}> = ({c, sta
 };
 
 const S4Agents: React.FC = () => {
+  const s = useStory();
   const head = useIn(0.1);
-  const badge = useIn(11.2, 20);
+  const badge = useIn(useCue().badge, 20);
   return (
     <AbsoluteFill style={{background: C.cream, fontFamily}}>
       <div style={{position: 'absolute', left: 80, top: 64, ...rise(head)}}>
         <div style={{fontSize: 24, color: C.muted}}>The Skill delegates to the NAS's own agents</div>
-        <div style={{fontSize: 46, fontWeight: 700, color: C.ink, marginTop: 6}}>Finding and reading Maria's documents</div>
+        <div style={{fontSize: 46, fontWeight: 700, color: C.ink, marginTop: 6}}>Finding and reading {s.first}'s documents</div>
       </div>
       <div style={{position: 'absolute', left: 80, right: 80, top: 190, display: 'flex', flexDirection: 'column', gap: 12}}>
-        {CALLS.map((c, i) => (
+        {s.calls.map((c, i) => (
           <AgentCard key={i} c={c} start={0.8 + i * 2.0} />
         ))}
       </div>
@@ -649,19 +644,21 @@ const Fact: React.FC<{label: string; value: string; at: number}> = ({label, valu
 };
 
 const S5Checks: React.FC = () => {
+  const s = useStory();
+  const cue = useCue();
   const head = useIn(0.1);
-  const card = useIn(9.2, 22);
-  const src = useIn(14.4);
+  const card = useIn(cue.card, 22);
+  const src = useIn(cue.source);
   return (
     <AbsoluteFill style={{background: C.cream, fontFamily}}>
       <div style={{position: 'absolute', left: 80, top: 64, ...rise(head)}}>
-        <div style={{fontSize: 24, color: C.muted}}>Bundled rules, checked one by one</div>
-        <div style={{fontSize: 46, fontWeight: 700, color: C.ink, marginTop: 6}}>Japan, 1 to 10 April 2027</div>
+        <div style={{fontSize: 24, color: C.muted}}>{s.checks.eyebrow}</div>
+        <div style={{fontSize: 46, fontWeight: 700, color: C.ink, marginTop: 6}}>{s.checks.title}</div>
       </div>
       <div style={{position: 'absolute', left: 80, top: 220, width: 900}}>
-        <CheckRow kind="ok" at={3.0} title="Passport is fine" detail="Expires 15 Mar 2031; arrival plus six months is 1 Oct 2027" />
-        <CheckRow kind="no" at={5.0} title="The 2024 Japan visa doesn't count" detail="Single entry, expired 28 Jan 2025" />
-        <CheckRow kind="arrow" at={8.6} title="Needs a new short-stay visa" detail="The Philippines is not on Japan's visa-exempt list in the bundled data" />
+        {s.checks.rows.map((c) => (
+          <CheckRow key={c.title} {...c} />
+        ))}
       </div>
       <div
         style={{
@@ -677,16 +674,15 @@ const S5Checks: React.FC = () => {
           padding: '48px 50px',
         }}
       >
-        <div style={{fontFamily: mono, fontSize: 25, color: C.blue}}>jp-short-term-visa</div>
-        <div style={{fontSize: 44, fontWeight: 700, color: C.ink, marginTop: 8}}>Japan short-term visa</div>
+        <div style={{fontFamily: mono, fontSize: 25, color: C.blue}}>{s.card.code}</div>
+        <div style={{fontSize: 44, fontWeight: 700, color: C.ink, marginTop: 8}}>{s.card.title}</div>
         <div style={{display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 40, marginTop: 40}}>
-          <Fact label="Fee, single entry" value="About JPY 15,000" at={10.4} />
-          <Fact label="Processing" value="5 working days" at={11.6} />
-          <Fact label="Where to apply" value="Consulate or JAPAN eVISA" at={12.4} />
-          <Fact label="Fees in force" value="From 1 July 2026" at={12.8} />
+          {s.card.facts.map((x) => (
+            <Fact key={x.label} {...x} />
+          ))}
         </div>
         <div style={{...rise(src, 10), marginTop: 44, paddingTop: 28, borderTop: `1px solid ${C.line}`, fontSize: 26, color: C.muted}}>
-          Source: <span style={{fontFamily: mono, color: C.ink}}>mofa.go.jp</span>, checked 7 Nov 2026
+          Source: <span style={{fontFamily: mono, color: C.ink}}>{s.card.source}</span>, checked {s.card.checked}
         </div>
       </div>
       <Footnote />
@@ -694,26 +690,21 @@ const S5Checks: React.FC = () => {
   );
 };
 
-const NEEDS: {item: string; status: 'have' | 'missing'; note: string; at: number; hot?: boolean}[] = [
-  {item: 'Passport', status: 'have', note: 'passport-maria-reyes.pdf', at: 1.0},
-  {item: 'Passport photo', status: 'have', note: 'passport-photo.jpg', at: 1.6},
-  {item: 'Application form', status: 'missing', note: 'Filled in at the consulate or on JAPAN eVISA', at: 2.2},
-  {item: 'Flight booking', status: 'missing', note: 'Only Dubai to Lisbon, 10 Mar 2027, is saved', at: 2.8, hot: true},
-];
-
 const S6Gaps: React.FC = () => {
+  const s = useStory();
+  const cue = useCue();
   const f = useCurrentFrame();
   const head = useIn(0.1);
-  const ins = useIn(7.2, 20);
-  const hot = interpolate(f, [3.6 * FPS, 4.2 * FPS], [0, 1], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'});
+  const ins = useIn(cue.note, 20);
+  const hot = interpolate(f, [cue.hot * FPS, (cue.hot + 0.6) * FPS], [0, 1], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'});
   return (
     <AbsoluteFill style={{background: C.cream, fontFamily}}>
       <div style={{position: 'absolute', left: 80, top: 64, ...rise(head)}}>
-        <div style={{fontSize: 24, color: C.muted}}>The visa's document list against her folder</div>
-        <div style={{fontSize: 46, fontWeight: 700, color: C.ink, marginTop: 6}}>What she has, what's missing</div>
+        <div style={{fontSize: 24, color: C.muted}}>{s.gaps.eyebrow}</div>
+        <div style={{fontSize: 46, fontWeight: 700, color: C.ink, marginTop: 6}}>What {s.her === 'his' ? 'he' : 'she'} has, what's missing</div>
       </div>
       <div style={{position: 'absolute', left: 80, top: 220, width: 1100, background: C.paper, borderRadius: 24, border: `1px solid ${C.line}`, overflow: 'hidden'}}>
-        {NEEDS.map((n, i) => {
+        {s.gaps.needs.map((n, i) => {
           const p = useIn(n.at);
           const glow = n.hot ? hot : 0;
           return (
@@ -736,47 +727,37 @@ const S6Gaps: React.FC = () => {
           );
         })}
       </div>
-      <div
-        style={{
-          position: 'absolute',
-          left: 1240,
-          top: 220,
-          width: 600,
-          ...rise(ins, 30),
-          background: C.amberBg,
-          borderRadius: 24,
-          padding: '44px 44px',
-          border: `1px solid #EBCB91`,
-        }}
-      >
-        <div style={{fontSize: 22, color: C.amber, fontWeight: 600}}>Also found</div>
-        <div style={{fontSize: 40, fontWeight: 700, color: C.ink, marginTop: 12, lineHeight: 1.25}}>Health insurance covers the UAE only</div>
-        <div style={{fontSize: 28, color: C.muted, marginTop: 18, lineHeight: 1.4}}>Daman policy, ends 31 Jan 2027. Buy travel insurance for Japan.</div>
+      <div style={{position: 'absolute', left: 1240, top: 220, width: 600, display: 'flex', flexDirection: 'column', gap: 24, ...rise(ins, 30)}}>
+        {s.gaps.notes.map((n) => {
+          const two = s.gaps.notes.length > 1;
+          const [bg, fg, edge] = n.tone === 'red' ? [C.redBg, C.red, '#EDB9BF'] : [C.amberBg, C.amber, '#EBCB91'];
+          return (
+            <div key={n.title} style={{background: bg, borderRadius: 24, padding: two ? '34px 40px' : '44px 44px', border: `1px solid ${edge}`}}>
+              <div style={{fontSize: 22, color: fg, fontWeight: 600}}>{n.label}</div>
+              <div style={{fontSize: two ? 34 : 40, fontWeight: 700, color: C.ink, marginTop: 12, lineHeight: 1.25}}>{n.title}</div>
+              <div style={{fontSize: two ? 25 : 28, color: C.muted, marginTop: 14, lineHeight: 1.4}}>{n.body}</div>
+            </div>
+          );
+        })}
       </div>
       <Footnote />
     </AbsoluteFill>
   );
 };
 
-const STEPS: {when: string; what: string; at: number; tone: 'blue' | 'amber' | 'green'}[] = [
-  {when: 'Now', what: 'Check the consulate in Dubai and JAPAN eVISA', at: 1.6, tone: 'blue'},
-  {when: 'Next', what: 'Book flights for 1 to 10 April', at: 3.9, tone: 'blue'},
-  {when: 'Next', what: 'Buy travel insurance for Japan', at: 5.1, tone: 'blue'},
-  {when: '20 Mar 2027', what: 'Last day to apply: 5 working days plus a week of margin', at: 6.5, tone: 'amber'},
-  {when: '1 Apr 2027', what: 'Fly to Tokyo with the new visa', at: 8.6, tone: 'green'},
-];
-
 const S7Plan: React.FC = () => {
+  const s = useStory();
+  const STEPS = s.plan.steps;
   const f = useCurrentFrame();
   const head = useIn(0.1);
-  const line = interpolate(f, [0.8 * FPS, 9 * FPS], [0, 1], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp', easing: Easing.inOut(Easing.cubic)});
+  const line = interpolate(f, [0.8 * FPS, useCue().line * FPS], [0, 1], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp', easing: Easing.inOut(Easing.cubic)});
   const left = 140;
   const width = 1640;
   return (
     <AbsoluteFill style={{background: C.cream, fontFamily}}>
       <div style={{position: 'absolute', left: 80, top: 64, ...rise(head)}}>
-        <div style={{fontSize: 24, color: C.muted}}>The plan, dated from today, 7 Nov 2026</div>
-        <div style={{fontSize: 46, fontWeight: 700, color: C.ink, marginTop: 6}}>What Maria does, in order</div>
+        <div style={{fontSize: 24, color: C.muted}}>The plan, dated from today, {s.plan.today}</div>
+        <div style={{fontSize: 46, fontWeight: 700, color: C.ink, marginTop: 6}}>What {s.first} does, in order</div>
       </div>
       <div style={{position: 'absolute', left, top: 470, width, height: 6, borderRadius: 3, background: C.line}} />
       <div style={{position: 'absolute', left, top: 470, width: width * line, height: 6, borderRadius: 3, background: C.ink}} />
@@ -830,6 +811,7 @@ const S7Plan: React.FC = () => {
 };
 
 const S8Close: React.FC = () => {
+  const s = useStory();
   const t = useIn(0.4);
   const sub = useIn(1.2);
   const pts = [useIn(2.4), useIn(3.0), useIn(3.6)];
@@ -840,14 +822,18 @@ const S8Close: React.FC = () => {
         <path d="M0 900 L300 800 L560 860 L1240 640 L1500 800 L1640 770 L1920 880 V1080 H0 Z" fill="#E8CBD6" />
         <path d="M1240 640 L1292 716 L1266 708 L1240 734 L1214 708 L1188 716 Z" fill="#fff" />
         <rect x={0} y={900} width={1920} height={180} fill="#EFE3E6" />
-        <g transform="translate(1180 -20) scale(1.2)">
-          <Branch flip />
-        </g>
-        <g transform="translate(1290 40) scale(1.25)">
-          <Branch />
-        </g>
+        {s.close.blossom && (
+          <>
+            <g transform="translate(1180 -20) scale(1.2)">
+              <Branch flip />
+            </g>
+            <g transform="translate(1290 40) scale(1.25)">
+              <Branch />
+            </g>
+          </>
+        )}
       </svg>
-      <Petals />
+      <Petals color={s.close.petals} />
       <div style={{position: 'absolute', left: 1360, top: 400, ...rise(her, 40)}}>
         <MariaStanding />
       </div>
@@ -870,10 +856,11 @@ const S8Close: React.FC = () => {
 
 const SCENES = [S1Maria, S2Pile, S3Ask, S4Agents, S5Checks, S6Gaps, S7Plan, S8Close];
 
-export const Demo: React.FC = () => {
-  const frames = sceneFrames();
+export const Demo: React.FC<{story: Story}> = ({story}) => {
+  const frames = sceneFrames(story.durations);
   let at = 0;
   return (
+    <StoryCtx.Provider value={story}>
     <AbsoluteFill style={{background: C.night, fontFamily}}>
       {SCENES.map((Scene, i) => {
         const from = at;
@@ -884,11 +871,12 @@ export const Demo: React.FC = () => {
               <Scene />
             </Fade>
             <Sequence from={Math.round(LEAD * FPS)}>
-              <Audio src={staticFile(`audio/${String(i).padStart(2, '0')}.wav`)} />
+              <Audio src={staticFile(`audio/${story.id}/${String(i).padStart(2, '0')}.wav`)} />
             </Sequence>
           </Sequence>
         );
       })}
     </AbsoluteFill>
+    </StoryCtx.Provider>
   );
 };
