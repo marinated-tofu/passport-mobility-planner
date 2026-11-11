@@ -78,9 +78,9 @@ const Footnote: React.FC<{dark?: boolean}> = ({dark}) => (
       position: 'absolute',
       left: 80,
       bottom: 44,
-      fontSize: 20,
+      fontSize: 22,
       color: dark ? 'rgba(255,255,255,0.55)' : C.faint,
-      fontFamily: mono,
+      fontFamily,
     }}
   >
     Real Skill output from eval run 2026-11-11 on a mock NAS, shortened. Maria and her documents are invented.
@@ -554,18 +554,18 @@ const AgentCard: React.FC<{c: (typeof CALLS)[number]; start: number}> = ({c, sta
         background: C.paper,
         border: `1px solid ${done ? '#BFE0CF' : C.line}`,
         borderRadius: 18,
-        padding: '18px 26px',
+        padding: '28px 30px',
         display: 'grid',
-        gridTemplateColumns: '250px 1fr 210px',
+        gridTemplateColumns: '270px 1fr 210px',
         alignItems: 'center',
         gap: 24,
         boxShadow: '0 8px 24px rgba(28,35,51,0.06)',
       }}
     >
-      <div style={{fontFamily: mono, fontSize: 26, fontWeight: 500, color: C.blue}}>{c.agent}</div>
+      <div style={{fontFamily: mono, fontSize: 29, fontWeight: 500, color: C.blue}}>{c.agent}</div>
       <div>
-        <div style={{fontSize: 23, color: C.ink, lineHeight: 1.3}}>{c.task}</div>
-        <div style={{fontSize: 22, color: done ? C.green : C.faint, marginTop: 6, fontWeight: 600, opacity: done ? 1 : 0.0}}>{c.result}</div>
+        <div style={{fontSize: 26, color: C.ink, lineHeight: 1.3}}>{c.task}</div>
+        <div style={{fontSize: 25, color: done ? C.green : C.faint, marginTop: 8, fontWeight: 600, opacity: done ? 1 : 0.0}}>{c.result}</div>
       </div>
       <div style={{justifySelf: 'end'}}>
         {done ? (
@@ -593,7 +593,7 @@ const S4Agents: React.FC = () => {
         <div style={{fontSize: 24, color: C.muted}}>The Skill delegates to the NAS's own agents</div>
         <div style={{fontSize: 46, fontWeight: 700, color: C.ink, marginTop: 6}}>Finding and reading Maria's documents</div>
       </div>
-      <div style={{position: 'absolute', left: 80, right: 80, top: 210, display: 'flex', flexDirection: 'column', gap: 16}}>
+      <div style={{position: 'absolute', left: 80, right: 80, top: 190, display: 'flex', flexDirection: 'column', gap: 12}}>
         {CALLS.map((c, i) => (
           <AgentCard key={i} c={c} start={0.8 + i * 2.0} />
         ))}
@@ -602,7 +602,7 @@ const S4Agents: React.FC = () => {
         style={{
           position: 'absolute',
           left: 80,
-          bottom: 100,
+          bottom: 96,
           ...rise(badge, 20),
           display: 'flex',
           alignItems: 'center',
@@ -628,11 +628,11 @@ const S4Agents: React.FC = () => {
 const CheckRow: React.FC<{kind: 'ok' | 'no' | 'arrow'; title: string; detail: string; at: number}> = ({kind, title, detail, at}) => {
   const p = useIn(at);
   return (
-    <div style={{...rise(p, 20), display: 'flex', gap: 22, alignItems: 'flex-start', padding: '20px 0', borderBottom: `1px solid ${C.line}`}}>
-      <Mark kind={kind} size={46} />
+    <div style={{...rise(p, 20), display: 'flex', gap: 26, alignItems: 'flex-start', padding: '34px 0', borderBottom: `1px solid ${C.line}`}}>
+      <Mark kind={kind} size={54} />
       <div>
-        <div style={{fontSize: 31, fontWeight: 600, color: C.ink}}>{title}</div>
-        <div style={{fontSize: 24, color: C.muted, marginTop: 6}}>{detail}</div>
+        <div style={{fontSize: 38, fontWeight: 600, color: C.ink}}>{title}</div>
+        <div style={{fontSize: 28, color: C.muted, marginTop: 8}}>{detail}</div>
       </div>
     </div>
   );
@@ -642,8 +642,8 @@ const Fact: React.FC<{label: string; value: string; at: number}> = ({label, valu
   const p = useIn(at);
   return (
     <div style={{...rise(p, 16)}}>
-      <div style={{fontSize: 21, color: C.muted}}>{label}</div>
-      <div style={{fontSize: 34, fontWeight: 700, color: C.ink, marginTop: 4}}>{value}</div>
+      <div style={{fontSize: 24, color: C.muted}}>{label}</div>
+      <div style={{fontSize: 40, fontWeight: 700, color: C.ink, marginTop: 4}}>{value}</div>
     </div>
   );
 };
@@ -674,18 +674,18 @@ const S5Checks: React.FC = () => {
           borderRadius: 24,
           border: `1px solid ${C.line}`,
           boxShadow: '0 20px 50px rgba(28,35,51,0.10)',
-          padding: '34px 40px',
+          padding: '48px 50px',
         }}
       >
-        <div style={{fontFamily: mono, fontSize: 22, color: C.blue}}>jp-short-term-visa</div>
-        <div style={{fontSize: 36, fontWeight: 700, color: C.ink, marginTop: 8}}>Japan short-term visa</div>
-        <div style={{display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 28, marginTop: 30}}>
+        <div style={{fontFamily: mono, fontSize: 25, color: C.blue}}>jp-short-term-visa</div>
+        <div style={{fontSize: 44, fontWeight: 700, color: C.ink, marginTop: 8}}>Japan short-term visa</div>
+        <div style={{display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 40, marginTop: 40}}>
           <Fact label="Fee, single entry" value="About JPY 15,000" at={10.4} />
           <Fact label="Processing" value="5 working days" at={11.6} />
           <Fact label="Where to apply" value="Consulate or JAPAN eVISA" at={12.4} />
           <Fact label="Fees in force" value="From 1 July 2026" at={12.8} />
         </div>
-        <div style={{...rise(src, 10), marginTop: 34, paddingTop: 22, borderTop: `1px solid ${C.line}`, fontSize: 22, color: C.muted}}>
+        <div style={{...rise(src, 10), marginTop: 44, paddingTop: 28, borderTop: `1px solid ${C.line}`, fontSize: 26, color: C.muted}}>
           Source: <span style={{fontFamily: mono, color: C.ink}}>mofa.go.jp</span>, checked 7 Nov 2026
         </div>
       </div>
@@ -722,16 +722,16 @@ const S6Gaps: React.FC = () => {
               style={{
                 ...rise(p, 14),
                 display: 'grid',
-                gridTemplateColumns: '60px 330px 1fr',
+                gridTemplateColumns: '70px 380px 1fr',
                 alignItems: 'center',
-                padding: '26px 34px',
+                padding: '40px 40px',
                 borderTop: i ? `1px solid ${C.line}` : 'none',
                 background: `rgba(251,239,217,${glow})`,
               }}
             >
-              <Mark kind={n.status === 'have' ? 'ok' : 'missing'} size={42} />
-              <div style={{fontSize: 31, fontWeight: 600, color: C.ink}}>{n.item}</div>
-              <div style={{fontSize: 23, color: C.muted, fontFamily: n.status === 'have' ? mono : fontFamily}}>{n.note}</div>
+              <Mark kind={n.status === 'have' ? 'ok' : 'missing'} size={50} />
+              <div style={{fontSize: 36, fontWeight: 600, color: C.ink}}>{n.item}</div>
+              <div style={{fontSize: 26, color: C.muted, fontFamily: n.status === 'have' ? mono : fontFamily}}>{n.note}</div>
             </div>
           );
         })}
@@ -745,13 +745,13 @@ const S6Gaps: React.FC = () => {
           ...rise(ins, 30),
           background: C.amberBg,
           borderRadius: 24,
-          padding: '34px 36px',
+          padding: '44px 44px',
           border: `1px solid #EBCB91`,
         }}
       >
         <div style={{fontSize: 22, color: C.amber, fontWeight: 600}}>Also found</div>
-        <div style={{fontSize: 33, fontWeight: 700, color: C.ink, marginTop: 10, lineHeight: 1.25}}>Health insurance covers the UAE only</div>
-        <div style={{fontSize: 24, color: C.muted, marginTop: 14, lineHeight: 1.4}}>Daman policy, ends 31 Jan 2027. Buy travel insurance for Japan.</div>
+        <div style={{fontSize: 40, fontWeight: 700, color: C.ink, marginTop: 12, lineHeight: 1.25}}>Health insurance covers the UAE only</div>
+        <div style={{fontSize: 28, color: C.muted, marginTop: 18, lineHeight: 1.4}}>Daman policy, ends 31 Jan 2027. Buy travel insurance for Japan.</div>
       </div>
       <Footnote />
     </AbsoluteFill>
@@ -815,8 +815,8 @@ const S7Plan: React.FC = () => {
                 boxShadow: '0 10px 30px rgba(28,35,51,0.08)',
               }}
             >
-              <div style={{fontSize: 24, fontWeight: 700, color}}>{s.when}</div>
-              <div style={{fontSize: 25, color: C.ink, marginTop: 8, lineHeight: 1.3}}>{s.what}</div>
+              <div style={{fontSize: 27, fontWeight: 700, color}}>{s.when}</div>
+              <div style={{fontSize: 28, color: C.ink, marginTop: 8, lineHeight: 1.3}}>{s.what}</div>
             </div>
           </React.Fragment>
         );
@@ -837,8 +837,8 @@ const S8Close: React.FC = () => {
   return (
     <AbsoluteFill style={{background: 'linear-gradient(180deg, #CFE2F1 0%, #F7DDE5 70%, #F5EFE8 100%)', fontFamily, overflow: 'hidden'}}>
       <svg width={1920} height={1080} style={{position: 'absolute', inset: 0}}>
-        <path d="M0 860 L260 700 L420 780 L760 520 L1100 780 L1300 690 L1920 880 V1080 H0 Z" fill="#E8CBD6" />
-        <path d="M760 520 L812 600 L786 592 L760 618 L734 592 L708 600 Z" fill="#fff" />
+        <path d="M0 900 L300 800 L560 860 L1240 640 L1500 800 L1640 770 L1920 880 V1080 H0 Z" fill="#E8CBD6" />
+        <path d="M1240 640 L1292 716 L1266 708 L1240 734 L1214 708 L1188 716 Z" fill="#fff" />
         <rect x={0} y={900} width={1920} height={180} fill="#EFE3E6" />
         <g transform="translate(1180 -20) scale(1.2)">
           <Branch flip />
