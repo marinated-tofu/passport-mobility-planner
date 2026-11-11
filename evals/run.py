@@ -149,7 +149,8 @@ def grade(sc: dict, answer: str, calls: list[dict], model: str, cwd: Path, env: 
     prompt = (f"{GRADER_PROMPT}\n\nUser request:\n{sc['prompt']}\n\nDelegate calls:\n{log}\n\n"
               f"Final answer:\n{answer}\n\nRubric:\n{rubric}")
     events = run_claude([prompt, "--model", model, "--tools", "", "--output-format", "stream-json", "--verbose",
-                         "--no-session-persistence", "--strict-mcp-config"], cwd, env, 600)
+                         "--no-session-persistence", "--strict-mcp-config", *endpoint_settings(GRADER_ENDPOINT)],
+                        cwd, env, 600)
     text = next((e.get("result", "") for e in events if e.get("type") == "result"), "")
     m = re.search(r"\{.*\}", text, re.S)
     try:
@@ -158,10 +159,21 @@ def grade(sc: dict, answer: str, calls: list[dict], model: str, cwd: Path, env: 
         return []
 
 
-# Base URL for the Skill's own claude -p calls (an Anthropic-compatible server such as llama-server), or None to use
-# whatever ~/.claude/settings.json and the environment say. The grader always uses the default endpoint.
+# Base URLs for the Skill's and the grader's claude -p calls (an Anthropic-compatible server such as llama-server or a
+# router), or None to use whatever ~/.claude/settings.json and the environment say, which is the user's own login when
+# neither sets a base URL. $EVAL_AUTH_TOKEN, when set, is sent to these endpoints as the bearer token.
 SKILL_ENDPOINT: str | None = None
+GRADER_ENDPOINT: str | None = None
 CONTEXT_BUDGET: int | None = None
+
+
+def endpoint_settings(url: str | None) -> list[str]:
+    if not url:
+        return []
+    env = {"ANTHROPIC_BASE_URL": url}
+    if os.environ.get("EVAL_AUTH_TOKEN"):
+        env["ANTHROPIC_AUTH_TOKEN"] = os.environ["EVAL_AUTH_TOKEN"]
+    return ["--settings", json.dumps({"env": env})]
 
 
 def run_scenario(sc: dict, out: Path, model: str, grader: str) -> dict:
@@ -170,20 +182,23 @@ def run_scenario(sc: dict, out: Path, model: str, grader: str) -> dict:
         shutil.copytree(SKILL, work / "skill")
         (work / "bin").mkdir()
         shim = work / "bin" / "delegate"
-        shim.write_text(f'#!/bin/sh\nexec python3 "{EVALS / "mock_delegate.py"}" "$@"\n')
+        # the same Python that runs this file; forward slashes so Git Bash on Windows can run it too
+        shim.write_text(f'#!/bin/sh\nexec "{Path(sys.executable).as_posix()}" "{(EVALS / "mock_delegate.py").as_posix()}" "$@"\n')
         shim.chmod(0o755)
         world = build_world(load_household(sc.get("household")), sc.get("world"))
         (work / "world.json").write_text(json.dumps(world, default=str))
-        env = {**os.environ, "PATH": f"{work / 'bin'}:{os.environ['PATH']}",
+        env = {**os.environ, "PATH": f"{work / 'bin'}{os.pathsep}{os.environ['PATH']}", "PYTHONUTF8": "1",
                "EVAL_WORLD": str(work / "world.json"), "EVAL_LOG": str(work / "calls.jsonl")}
         proxy = context_proxy.serve(SKILL_ENDPOINT, CONTEXT_BUDGET) if SKILL_ENDPOINT and CONTEXT_BUDGET else None
         endpoint = f"http://127.0.0.1:{proxy.server_address[1]}" if proxy else SKILL_ENDPOINT
-        local = ["--settings", json.dumps({"env": {"ANTHROPIC_BASE_URL": endpoint}})] if endpoint else []
+        local = endpoint_settings(endpoint)
         events = run_claude([sc["prompt"], "--model", model, "--system-prompt", HOST_PROMPT,
                              "--tools", "Bash,Read", "--allowedTools", "Bash(delegate:*)", "Read",
                              "--output-format", "stream-json", "--verbose", "--no-session-persistence",
                              "--strict-mcp-config", "--max-turns", "60", *local], work / "skill", env, 2400)
         final = next((e for e in events if e.get("type") == "result"), {})
+        init = next((e for e in events if e.get("type") == "system" and e.get("subtype") == "init"), {})
+        served = sorted({e["message"].get("model", "") for e in events if e.get("type") == "assistant"} - {""})
         answer = final.get("result", "")
         overflow = re.search(r"exceeds the available context size|context.{0,20}(length|window).{0,20}exceed", answer)
         if re.match(r"API Error|Request rejected", answer) and not overflow:  # rate limits are not Skill failures
@@ -204,7 +219,8 @@ def run_scenario(sc: dict, out: Path, model: str, grader: str) -> dict:
                "rubric": [{"item": r, **(items[i] if i < len(items) else {"pass": False, "why": "not graded"})}
                           for i, r in enumerate(sc["rubric"])],
                "cost": final.get("total_cost_usd", 0), "turns": final.get("num_turns", 0),
-               "trims": list(proxy.log) if proxy else []}
+               "trims": list(proxy.log) if proxy else [],
+               "auth": init.get("apiKeySource", ""), "served": served}
     except Exception as e:  # keep the other scenarios going
         res = {"id": sc["id"], "tier": "", "error": f"{type(e).__name__}: {e}", "checks": [], "rubric": [], "cost": 0}
     finally:
@@ -230,7 +246,10 @@ def write_scenario(res: dict, sc: dict, out: Path):
         lines += ["", "## Trimmed to fit the context window", ""] + [
             f"- {t['what']} ({t['chars']:,} characters): prompt {t['tokens_before']} -> {t['tokens_after']} tokens"
             for t in res["trims"]]
-    lines += ["", "## References read", ""] + [f"- {p.split('/skill/', 1)[-1]}" for p in res.get("reads", [])]
+    if res.get("served") or res.get("auth"):
+        lines += ["", f"**Model in replies:** {', '.join(res.get('served', [])) or 'n/a'}. "
+                      f"**Credential source:** {res.get('auth') or 'n/a'}."]
+    lines += ["", "## References read", ""] + [f"- {p.replace(chr(92), '/').split('/skill/', 1)[-1]}" for p in res.get("reads", [])]
     lines += ["", "## Answer", "", res.get("answer", ""), ""]
     text = "\n".join(lines)
     for prefix in {os.environ.get("EVAL_TMP", ""), tempfile.gettempdir()} - {""}:
@@ -246,12 +265,13 @@ def main():
     ap.add_argument("--jobs", type=int, default=4)
     ap.add_argument("--skill-endpoint", help="Anthropic-compatible base URL for the Skill runs only, e.g. a llama-server "
                     "on the LAN serving the small model the NAS uses; the grader keeps the default endpoint")
+    ap.add_argument("--grader-endpoint", help="Anthropic-compatible base URL for the grader only")
     ap.add_argument("--context-budget", type=int, help="with --skill-endpoint: put evals/context_proxy.py in front of it, "
                     "trimming old tool results so each prompt stays under this many tokens (28000 for a 32K slot)")
     ap.add_argument("--tier", choices=["strong", "medium", "weak"], help="only scenarios for this passport tier")
     a = ap.parse_args()
-    global SKILL_ENDPOINT, CONTEXT_BUDGET
-    SKILL_ENDPOINT, CONTEXT_BUDGET = a.skill_endpoint, a.context_budget
+    global SKILL_ENDPOINT, GRADER_ENDPOINT, CONTEXT_BUDGET
+    SKILL_ENDPOINT, GRADER_ENDPOINT, CONTEXT_BUDGET = a.skill_endpoint, a.grader_endpoint, a.context_budget
     if CONTEXT_BUDGET and not SKILL_ENDPOINT:
         ap.error("--context-budget needs --skill-endpoint")
     scenarios = [s for s in load_yaml(EVALS / "scenarios.yaml")["scenarios"] if not a.ids or s["id"] in a.ids]
@@ -273,8 +293,9 @@ def main():
     version = re.search(r'version = "(.+?)"', (ROOT / "pyproject.toml").read_text()).group(1)
     endpoint = claude_endpoint()
     summary = [f"# Eval run {run_id}", "", f"Skill model requested: {a.model}. Grader requested: {a.grader}. Skill version: {version}.", "",
-               (f"Skill endpoint: {SKILL_ENDPOINT} (the model name above is ignored there). Grader endpoint: {endpoint}"
-                if SKILL_ENDPOINT else f"Endpoint: {endpoint}"), "",
+               f"Skill endpoint: {SKILL_ENDPOINT or endpoint}. Grader endpoint: {GRADER_ENDPOINT or endpoint}.", "",
+               f"Model in Skill replies: {', '.join(sorted({m for r in results for m in r.get('served', [])})) or 'n/a'}. "
+               f"Credential source: {', '.join(sorted({r.get('auth') or 'n/a' for r in results if not r.get('error')})) or 'n/a'}.", "",
                *([f"Context budget: {CONTEXT_BUDGET} prompt tokens; evals/context_proxy.py trimmed "
                   f"{sum(len(r.get('trims', [])) for r in results)} old tool results across the run.", ""] if CONTEXT_BUDGET else []),
                f"Hard checks {tp}/{tc}, rubric {rp}/{rc}, cost USD {cost:.2f}.", "",
