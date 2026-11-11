@@ -87,6 +87,13 @@ Nine trips on the 4B model, by build (hard checks, rubric, runs that ran out of 
 | 2026-11-08-0504 | a968657 | 60/67 | 8/45 | 2 | trip read list, date comparison spelled out; Philippines finishes (3/5), Nigeria and Pakistan overflow |
 | 2026-11-08-1129 | 1100ab9 | 66/74 | 10/45 | 1 | SKILL.md cut from 5,268 to 3,925 tokens; route-only commands moved into workflow files |
 
-The same nine trips score 29/45 on GPT-6.1-Sol (`2026-11-07-2015`, build 0.3.1). Between runs of one build, nine trips move by about two rubric points, so the last three builds are not clearly apart. The 4B's remaining failures are reasoning and reading: it reads the right country file and still skips a condition (Georgia's one-year permit rule, Mexico's FMMd form), leaves transit unassessed, opens country files that are not on the route, and retries Read on NAS paths until the context runs out.
+The same nine trips score 29/45 on GPT-6.1-Sol (`2026-11-07-2015`, build 0.3.1). On build 73cd8b3, run from the Windows PC with each model on its own subscription through Magpie and GPT-6.1-Sol grading:
+
+| Run | Skill model | Subscription | Hard | Rubric | Passes |
+| --- | --- | --- | --- | --- | --- |
+| 2026-11-11-1213 | GPT-5.6-Luna (lightest Codex model) | ChatGPT Plus | 81/82 | 34/45 | 1/9 |
+| 2026-11-11-1214 | Composer 2.5 (Cursor's own model) | Cursor Pro | 81/83 | 34/45 | 3/9 |
+
+Both miss ETIAS on the Mexico trip and the passport-expiry point on the Singapore trip. `--skill-endpoint` and `--grader-endpoint` point either side at any Anthropic-compatible server; `$EVAL_AUTH_TOKEN` is sent as its bearer token. Each report records the model named in the replies and Claude Code's credential source. Between runs of one build, nine trips move by about two rubric points, so the last three builds are not clearly apart. The 4B's remaining failures are reasoning and reading: it reads the right country file and still skips a condition (Georgia's one-year permit rule, Mexico's FMMd form), leaves transit unassessed, opens country files that are not on the route, and retries Read on NAS paths until the context runs out.
 
 Latest full run, on version 0.3.1 (`evals/results/2026-11-07-1817`): rubric 53/53 and hard checks 100/101. The one failed check was a harness bug: the claim check read "No report was saved" as a claim, and the mock treated a search that said "do not save" as a save request. Both are fixed, and the two affected scenarios pass in `2026-11-07-1824`. The first run, `2026-11-07-1753` on 0.3.0, scored 41/53.

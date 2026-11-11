@@ -253,7 +253,8 @@ def write_scenario(res: dict, sc: dict, out: Path):
     lines += ["", "## Answer", "", res.get("answer", ""), ""]
     text = "\n".join(lines)
     for prefix in {os.environ.get("EVAL_TMP", ""), tempfile.gettempdir()} - {""}:
-        text = text.replace(str(Path(prefix).resolve()), "$EVAL_TMP").replace(prefix, "$EVAL_TMP")
+        for form in {str(Path(prefix).resolve()), prefix}:
+            text = text.replace(form, "$EVAL_TMP").replace(form.replace("\\", "/"), "$EVAL_TMP")
     (out / f"{sc['id']}.md").write_text(text)
 
 
