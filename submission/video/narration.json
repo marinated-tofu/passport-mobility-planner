@@ -1,0 +1,10 @@
+[
+  "This is Maria. She's a software engineer in Dubai, she has a Philippine passport, and she wants to see the cherry blossoms in Tokyo in April.",
+  "Her scans are on the family NAS: a passport, three old visas, a UAE residence permit, payslips. Which of them still count for Japan? The answers are spread over a dozen official pages, and she won't upload her passport to a cloud chatbot.",
+  "So she asks the assistant on her NAS.",
+  "The Skill hands the work to the NAS's own agents. One finds the documents, one reads them, one reads the photo of her old Japanese visa. Document numbers come back masked, and nothing leaves the NAS.",
+  "Then it checks the bundled rules, one by one. Her passport is fine. The 2024 visa expired in January 2025, so it doesn't count. She needs a new short-stay visa: about fifteen thousand yen and five working days, with the official source and the date it was checked.",
+  "It holds the visa's document list against her folder. There's no flight to Japan, the only booking is Dubai to Lisbon, and her health insurance covers the UAE only.",
+  "Last, a dated plan. Check the consulate and eVISA now, book the flights, add travel insurance, and apply by the twentieth of March at the latest.",
+  "Passport mobility planner. Official rules, checked against your own documents, on your own NAS."
+]
