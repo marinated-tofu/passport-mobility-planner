@@ -1,0 +1,14 @@
+# Trip agent: live research, price comparison, and the queue of bookings, applications and emails.
+# The browser runs on a virtual screen; the person sees and drives it through noVNC on port 6080.
+FROM mcr.microsoft.com/playwright/python:v1.49.0-noble
+RUN apt-get update && apt-get install -y --no-install-recommends xvfb x11vnc novnc websockify fluxbox \
+ && rm -rf /var/lib/apt/lists/* \
+ && pip install --no-cache-dir playwright==1.49.0 httpx==0.28.1 pyyaml==6.0.2 beautifulsoup4==4.12.3
+WORKDIR /app
+COPY companion/agent.py companion/library.py companion/agent-start.sh /app/
+COPY data /app/data
+RUN chmod +x /app/agent-start.sh && mkdir -p /state && chown pwuser /state
+USER pwuser
+ENV PYTHONUNBUFFERED=1 DISPLAY=:99
+EXPOSE 8089 6080
+CMD ["/app/agent-start.sh"]
