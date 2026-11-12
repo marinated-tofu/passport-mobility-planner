@@ -37,7 +37,13 @@ If it is waiting for approval, tell the user the research request is waiting for
 
 ## R3. Read the answer
 
-Run the R1 command again after the next step of the route that needs only the documents, and again after the step after that, up to three reads in all after R2. Each read is one delegate call on its own: never put it in a loop, a sleep or a wait command. The companion checks for requests every few seconds and needs about a minute per country.
+The companion checks for requests every few seconds and needs about a minute per country, so the first read after R2 usually finds nothing. Read again, one delegate call at a time, never in a loop, a sleep or a wait command:
+
+1. Run the R1 command. If the answer is there, go to Using the answer.
+2. If not, run the R1 command a second time.
+3. If not, run it a third time.
+
+Stop after the third read; do not give up after the first or second.
 
 If there is still no answer:
 

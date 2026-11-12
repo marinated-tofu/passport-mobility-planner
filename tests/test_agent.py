@@ -42,7 +42,8 @@ def make_world(tmp: Path) -> tuple[Path, Path]:
         "- Surname: OKAFOR\n- Given names: CHINEDU EMEKA\n- Date of birth: 1990-03-14\n- Nationality: Nigerian\n"
         "- Passport number: ends 417, copy the full number from the passport\n- Home address: 12 Allen Avenue, Ikeja\n"
         "- Address of stay: Hotel Sora, 3-1 Ginza\n- Employer: Delta Logistics\n- Employer address: (to fill)\n"
-        "- Occupation: Engineer\n\n## Notes\n\n- Surname check: done\n")
+        "- Occupation: Engineer\n- Phone: (the number you use abroad)\n\n## Notes\n\n- Surname check: done\n")
+    (trip / "passport-photo.jpg").write_bytes(b"fake")
     (trip / "passport-scan.pdf").write_bytes(b"%PDF-1.4 fake")
     (trip / "bank-statement.pdf").write_bytes(b"%PDF-1.4 fake")
     (trip / "draft-cover-letter.md").write_text("Dear officer,\nI plan to visit from 3 to 17 April.\n")
@@ -77,6 +78,15 @@ def test_queue_parse_and_status_change_keep_other_lines(tmp_path):
     assert (a1.status, a1.note) == ("x", "done 2026-11-12")
 
 
+def test_an_empty_link_field_keeps_the_fields_after_it(tmp_path):
+    q = tmp_path / "trip-queue.md"
+    q.write_text("Trip queue\n- [~] k1 · contact · 2026-11-25 · Ask HR · · to: hr@delta.example, draft: employer\n")
+    k1 = agent.parse_queue(q.read_text())[0]
+    assert (k1.url, k1.detail) == ("", "to: hr@delta.example, draft: employer")
+    agent.set_status(q, "k1", "x", "sent")
+    assert agent.parse_queue(q.read_text())[0].detail == "to: hr@delta.example, draft: employer"
+
+
 def test_form_answers_match_the_longest_label_and_skip_placeholders(tmp_path):
     a = make_agent(tmp_path)
     answers = agent.parse_answers((a.docs / "Trips/zz-2027-04/trip-plan.md").read_text())
@@ -86,6 +96,7 @@ def test_form_answers_match_the_longest_label_and_skip_placeholders(tmp_path):
     assert agent.match_answer("Home address", answers) == "12 Allen Avenue, Ikeja"
     assert agent.match_answer("Employer address", answers) == ""  # (to fill) is never typed into a form
     assert agent.match_answer("Passport number", answers) == ""  # only the last three are on the NAS
+    assert agent.match_answer("Phone number", answers) == ""  # any note in brackets is a placeholder
     assert agent.iso_date("14 Mar 1990") == "1990-03-14"
 
 

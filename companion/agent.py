@@ -58,12 +58,13 @@ from library import FOLLOW_WORDS, SKIP_PATHS, Target, load_yaml, page_to_markdow
 
 log = logging.getLogger("agent")
 SEP = " · "
+SPLIT = re.compile(r"\s+·(?=\s|$)")  # an empty field, as in "title · · detail", stays a field
 LINE = re.compile(r"^- (?:\[([ ~x-])\] )?(.+)$")  # a line the Skill wrote has no box yet: to do
 KINDS = {"research", "compare", "apply", "book", "contact"}
 MAX_PAGES_PER_COUNTRY = 8
 EXCERPTS_PER_PAGE = 6
 INDEX_URL = "https://raw.githubusercontent.com/ilyankou/passport-index-dataset/master/passport-index-matrix-iso2.csv"
-SKIP_VALUE = re.compile(r"not found|copy the full|\(to fill\)|^none$|^unknown$", re.I)
+SKIP_VALUE = re.compile(r"not found|copy the full|^\(.*\)$|^none$|^unknown$", re.I)  # "(to fill)", "(the hotel you book)"
 
 # Field labels on application and booking forms, by the answer they take. Longest match wins.
 SYNONYMS = {
@@ -112,7 +113,7 @@ def parse_queue(text: str) -> list[Item]:
         m = LINE.match(line.strip())
         if not m:
             continue
-        parts = [p.strip() for p in m.group(2).split(SEP)]
+        parts = [p.strip() for p in SPLIT.split(m.group(2))]
         if len(parts) < 5 or parts[1] not in KINDS:
             continue
         note = next((p[5:].strip() for p in parts[6:] if p.startswith("note:")), "")
@@ -126,8 +127,8 @@ def set_status(path: Path, item_id: str, status: str, note: str = "") -> None:
     out = []
     for line in path.read_text().splitlines():
         m = LINE.match(line.strip())
-        if m and m.group(2).split(SEP)[0].strip() == item_id:
-            parts = [p for p in m.group(2).split(SEP) if not p.strip().startswith("note:")]
+        if m and SPLIT.split(m.group(2))[0].strip() == item_id:
+            parts = [p for p in SPLIT.split(m.group(2)) if not p.strip().startswith("note:")]
             if note:
                 parts.append(f"note: {note}")
             line = f"- [{status}] " + SEP.join(p.strip() for p in parts)
@@ -532,7 +533,9 @@ class Browser:
     def __init__(self, headless: bool = False, profile: str = "/state/browser"):
         from playwright.sync_api import sync_playwright
         self.pw = sync_playwright().start()
-        self.ctx = self.pw.chromium.launch_persistent_context(profile, headless=headless, accept_downloads=False)
+        # BROWSER_CHANNEL=chrome uses an installed Chrome instead of the bundled Chromium
+        self.ctx = self.pw.chromium.launch_persistent_context(profile, headless=headless, accept_downloads=False,
+                                                              channel=os.environ.get("BROWSER_CHANNEL") or None)
 
     def open(self, url: str):
         page = self.ctx.new_page()
@@ -558,7 +561,10 @@ class Browser:
             label = " ".join(f["label"].split())[:80]
             if f["type"] == "file":
                 want = [w for w in FILE_WORDS if w in label.lower()]
-                pick = [p for p in files if any(w in p.name.lower() for w in want)][:1]
+                words = set(re.findall(r"[a-z]{3,}", label.lower()))
+                # the file sharing the most words with the label: "passport scan" takes passport-scan.pdf, not the photo
+                pick = sorted((p for p in files if any(w in p.name.lower() for w in want)),
+                              key=lambda p: -len(words & set(re.findall(r"[a-z]{3,}", p.name.lower()))))[:1]
                 if pick:
                     h.set_input_files(str(pick[0]))
                     filled.append(f"{label}: {pick[0].name}")

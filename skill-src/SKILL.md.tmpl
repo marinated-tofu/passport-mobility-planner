@@ -109,7 +109,7 @@ Then follow the workflow file for the chosen route. To save a report or tag file
 
 # Completion and failure
 
-When the user asks to book, apply, pay or write to someone, the plan route puts it in the trip queue (prepare.md) and the person finishes it on the queue page; the Skill never says it booked, paid, applied or sent anything. Alerts and schedules are not supported: the calendar file stands in for them. For rule changes, point to the updates route. Ask a question only for input the route cannot run without.
+When the user asks to book, apply, pay or write to someone, the plan route puts it in the trip queue (prepare.md) and the person finishes it on the queue page; the Skill never says it booked, paid, applied or sent anything. Say plainly what the Skill cannot do itself when the user asks for it: it cannot book or pay, check live prices or fares (the queue's compare items open the search pages for the person), or send texts, alerts or reminders on a schedule (the calendar file stands in for them). For rule changes, point to the updates route. Ask a question only for input the route cannot run without.
 
 Report each delegation by its state:
 
