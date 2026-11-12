@@ -63,13 +63,13 @@ For each check the research left open ("confirm on the source"), add a research 
 One item per thing the person has to finish, so the companion can prepare it. Each item is one line of six parts separated by " · ": id, kind, due date (YYYY-MM-DD), title, address, detail. Ids are short and unique in the trip: a1, b1, c1, m1, r1.
 
 - apply: each application with an online form or an appointment to book. Address: the official page the research answer gives for applying. Due: its start-by date. Detail: the application name and the traveller.
-- compare: each booking the trip still needs that no saved booking covers (flights, accommodation, travel insurance when a rule asks for it). Due: three days before its book item. Address and detail: search addresses, from these patterns with the real codes and dates:
+- compare: each booking the trip still needs that no saved booking covers (flights, accommodation, travel insurance when a rule asks for it). Due: 3 days before its book item. Address and detail: search addresses, from these patterns with the real codes and dates:
   - flights: https://www.google.com/travel/flights?q=flights+from+[FROM]+to+[TO]+on+[YYYY-MM-DD]+returning+[YYYY-MM-DD] and https://www.kayak.com/flights/[FROM]-[TO]/[YYYY-MM-DD]/[YYYY-MM-DD]
   - accommodation: https://www.booking.com/searchresults.html?ss=[CITY]&checkin=[YYYY-MM-DD]&checkout=[YYYY-MM-DD]&group_adults=[NUMBER OF TRAVELLERS]
   - insurance: https://www.google.com/search?q=travel+insurance+[COUNTRY]+visa+[COVER THE RULE ASKS FOR]
 - book: one for each compare item, with the same first address, due a week before the earliest start-by date that needs the booking.
 
-Keep the dates in order: each compare item before its book item, and each book item before the apply item that needs the booking. Write the items in date order.
+Work the dates back from the apply item: book is 7 days before the apply due date, compare is 3 days before that. With no apply item, book is 21 days before the trip starts. Example: apply due 2027-03-18 gives book 2027-03-11 and compare 2027-03-08. Write the items in date order.
 - contact: each draft from P3 that goes to another person (employer letter request, host invitation). Address: none. Detail: to: the address found in the documents, or to: (to fill), then draft: and the kind of draft, for example to: hr@company.example, draft: employer. Never put a document number in it.
 - research: each check from P5. Address: the page. Detail: the condition to confirm.
 
