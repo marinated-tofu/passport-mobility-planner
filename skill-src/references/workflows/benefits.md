@@ -14,7 +14,7 @@ Only documents valid today count. Note any that expire within 12 months.
 
 ## Research the rules
 
-Follow research.md with topic entry. Countries: the ones the user asked about; when they asked "where can I go" without naming any, use topic index with countries ALL, and add a second request with topic entry for the countries whose visa or residence permit the travellers hold, since many countries let holders of those in.
+Follow research.md with topic entry. Countries: the ones the user asked about; when they asked "where can I go" without naming any, use topic index with countries ALL, and add a second request with topic entry and countries ALL whose question asks which countries let in holders of the visas and residence permits listed under held and residence, since many countries do. Never limit that second request to the countries that issued those documents: the benefits are in other countries.
 
 ## Match each rule
 

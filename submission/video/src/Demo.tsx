@@ -14,8 +14,8 @@ import {loadFont} from '@remotion/google-fonts/Inter';
 import {loadFont as loadMono} from '@remotion/google-fonts/JetBrainsMono';
 import {CUE, type Story} from './story';
 
-const {fontFamily} = loadFont('normal', {weights: ['400', '500', '600', '700'], subsets: ['latin']});
-const {fontFamily: mono} = loadMono('normal', {weights: ['400', '500'], subsets: ['latin']});
+export const {fontFamily} = loadFont('normal', {weights: ['400', '500', '600', '700'], subsets: ['latin']});
+export const {fontFamily: mono} = loadMono('normal', {weights: ['400', '500'], subsets: ['latin']});
 
 const FPS = 30;
 const LEAD = 0.5; // seconds of picture before each narration line
@@ -23,7 +23,7 @@ const TAIL = 0.9;
 const MIN: Record<number, number> = {2: 5.6}; // the typing scene needs time on screen
 const EXTRA: Record<number, number> = {7: 2.6}; // hold the last frame
 
-const C = {
+export const C = {
   night: '#121C33',
   night2: '#1B2948',
   cream: '#F5F0E8',
@@ -44,7 +44,7 @@ const C = {
   blueBg: '#E3ECF5',
 };
 
-const StoryCtx = React.createContext<Story>(null as unknown as Story);
+export const StoryCtx = React.createContext<Story>(null as unknown as Story);
 const useStory = () => React.useContext(StoryCtx);
 const useCue = () => ({...CUE, ...useStory().cue});
 
@@ -56,18 +56,18 @@ export const totalFrames = (durations: number[]) => sceneFrames(durations).reduc
 
 // ---------- helpers ----------
 
-const useIn = (delaySec: number, damping = 200) => {
+export const useIn = (delaySec: number, damping = 200) => {
   const f = useCurrentFrame();
   const {fps} = useVideoConfig();
   return spring({frame: f - delaySec * fps, fps, config: {damping, mass: 0.8}});
 };
 
-const rise = (p: number, px = 24): React.CSSProperties => ({
+export const rise = (p: number, px = 24): React.CSSProperties => ({
   opacity: p,
   transform: `translateY(${(1 - p) * px}px)`,
 });
 
-const Fade: React.FC<{dur: number; children: React.ReactNode}> = ({dur, children}) => {
+export const Fade: React.FC<{dur: number; children: React.ReactNode}> = ({dur, children}) => {
   const f = useCurrentFrame();
   const o = interpolate(f, [0, 10, dur - 10, dur], [0, 1, 1, 0], {
     extrapolateLeft: 'clamp',
@@ -94,7 +94,7 @@ const Footnote: React.FC<{dark?: boolean}> = ({dark}) => {
   );
 };
 
-const Chip: React.FC<{tone: 'green' | 'amber' | 'red' | 'blue' | 'grey'; children: React.ReactNode}> = ({
+export const Chip: React.FC<{tone: 'green' | 'amber' | 'red' | 'blue' | 'grey'; children: React.ReactNode}> = ({
   tone,
   children,
 }) => {
@@ -122,7 +122,7 @@ const Chip: React.FC<{tone: 'green' | 'amber' | 'red' | 'blue' | 'grey'; childre
   );
 };
 
-const Mark: React.FC<{kind: 'ok' | 'no' | 'missing' | 'arrow'; size?: number}> = ({kind, size = 40}) => {
+export const Mark: React.FC<{kind: 'ok' | 'no' | 'missing' | 'arrow'; size?: number}> = ({kind, size = 40}) => {
   const color = {ok: C.green, no: C.red, missing: C.amber, arrow: C.blue}[kind];
   const bg = {ok: C.greenBg, no: C.redBg, missing: C.amberBg, arrow: C.blueBg}[kind];
   return (
@@ -141,7 +141,7 @@ const Mark: React.FC<{kind: 'ok' | 'no' | 'missing' | 'arrow'; size?: number}> =
   );
 };
 
-const Flower: React.FC<{x: number; y: number; r: number; color?: string; rot?: number}> = ({
+export const Flower: React.FC<{x: number; y: number; r: number; color?: string; rot?: number}> = ({
   x,
   y,
   r,
@@ -156,7 +156,7 @@ const Flower: React.FC<{x: number; y: number; r: number; color?: string; rot?: n
   </g>
 );
 
-const Branch: React.FC<{flip?: boolean; scale?: number}> = ({flip, scale = 1}) => (
+export const Branch: React.FC<{flip?: boolean; scale?: number}> = ({flip, scale = 1}) => (
   <g transform={`scale(${flip ? -scale : scale} ${scale})`}>
     <path d="M0 40 C120 60 220 30 330 90 S520 140 640 120" stroke="#5B3A2B" strokeWidth={14} fill="none" strokeLinecap="round" />
     <path d="M250 62 C290 10 340 0 380 -20" stroke="#5B3A2B" strokeWidth={8} fill="none" strokeLinecap="round" />
@@ -170,7 +170,7 @@ const Branch: React.FC<{flip?: boolean; scale?: number}> = ({flip, scale = 1}) =
   </g>
 );
 
-const Petals: React.FC<{count?: number; color?: string}> = ({count = 26, color = C.pink}) => {
+export const Petals: React.FC<{count?: number; color?: string}> = ({count = 26, color = C.pink}) => {
   const f = useCurrentFrame();
   return (
     <svg width={1920} height={1080} style={{position: 'absolute', inset: 0}}>
@@ -199,7 +199,7 @@ const Petals: React.FC<{count?: number; color?: string}> = ({count = 26, color =
 
 // ---------- Maria ----------
 
-const MariaAtDesk: React.FC = () => {
+export const MariaAtDesk: React.FC = () => {
   const f = useCurrentFrame();
   const {skin, shade, hair, top, bun} = useStory().look;
   const glow = 0.75 + Math.sin(f / 9) * 0.08;
@@ -252,7 +252,7 @@ const MariaAtDesk: React.FC = () => {
   );
 };
 
-const MariaStanding: React.FC = () => {
+export const MariaStanding: React.FC = () => {
   const {skin, shade, hair, top, bun} = useStory().look;
   return (
   <svg width={420} height={640} viewBox="0 0 420 640">
@@ -277,7 +277,7 @@ const MariaStanding: React.FC = () => {
 
 // ---------- documents ----------
 
-const DocIcon: React.FC<{color: string; photo?: boolean}> = ({color, photo}) => (
+export const DocIcon: React.FC<{color: string; photo?: boolean}> = ({color, photo}) => (
   <svg width={54} height={66} viewBox="0 0 54 66" style={{flexShrink: 0}}>
     <path d="M4 2 h32 l14 14 v46 a2 2 0 0 1 -2 2 h-44 a2 2 0 0 1 -2 -2 v-58 a2 2 0 0 1 2 -2 z" fill={color} />
     <path d="M36 2 v14 h14" fill="rgba(255,255,255,0.35)" />
@@ -322,7 +322,7 @@ const DocCard: React.FC<{d: Story['docs'][number]; delay: number}> = ({d, delay}
   );
 };
 
-const FolderIcon: React.FC = () => (
+export const FolderIcon: React.FC = () => (
   <svg width={64} height={52} viewBox="0 0 64 52">
     <path d="M2 8 a4 4 0 0 1 4 -4 h18 l6 6 h28 a4 4 0 0 1 4 4 v32 a4 4 0 0 1 -4 4 h-52 a4 4 0 0 1 -4 -4 z" fill="#D9A441" />
     <path d="M2 18 h60 v28 a4 4 0 0 1 -4 4 h-52 a4 4 0 0 1 -4 -4 z" fill="#E8B955" />
