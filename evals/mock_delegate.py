@@ -91,7 +91,29 @@ def masked(rec, low):
 TRAVEL = {"passport", "visa", "residence permit", "national id"}
 
 
+def pending_or(world, done, what):
+    """Trip preparation changes the NAS: the gateway asks for approval unless the scenario says otherwise."""
+    st = world["overrides"].get("pack", "completed")
+    return answer("completed", done) if st == "completed" else answer(st, message=f"{what} changes NAS data and needs the user's approval.")
+
+
+def trip_folder(text):
+    m = re.search(r"[A-Za-z0-9_\-.]+(?:/[A-Za-z0-9_\-.]+)*/Trips/[a-z0-9\-]+", text)
+    return m.group(0) if m else ""
+
+
 def file_agent(world, text, low):
+    if "icalendar" in low or ".ics" in low:
+        folder = trip_folder(text)
+        if not folder:
+            return answer("waiting_user", message="Which folder should the calendar file go in?")
+        return pending_or(world, {"saved": f"{folder}/trip-deadlines.ics"}, "Creating a calendar file")
+    if re.search(r"\bcopy\b", low) and "create the folder" in low:
+        folder, paths = trip_folder(text), mentioned_paths(world, text)
+        if not folder or not paths:
+            return answer("waiting_user", message="Which folder, and which files should be copied into it?")
+        copies = [f"{folder}/{PurePosixPath(f['path']).name}" for f in paths]
+        return pending_or(world, {"folder": folder, "copied": copies}, f"Creating {folder} and copying {len(paths)} files")
     if re.search(r"\b(add|apply)\b.*\btags?\b|\btag (each|the|these)\b", low):
         paths = mentioned_paths(world, text)
         if not paths:
@@ -151,6 +173,12 @@ def photo_agent(world, text, low):
 
 
 def document_agent(world, text, low):
+    if re.search(r"\bdraft\b", low) and "save" in low:
+        folder = trip_folder(text)
+        if not folder:
+            return answer("waiting_user", message="Which folder should the drafts be saved in?")
+        kinds = [k for k in ("cover letter", "itinerary", "employer", "invitation") if k in low] or ["letter"]
+        return pending_or(world, {"saved": [f"{folder}/draft-{k.replace(' ', '-')}.md" for k in kinds]}, "Saving drafts")
     if "update files" in low or "passport-updates" in low:
         files = [u for u in world["updates_files"] if u["path"] in text]
         if not files:

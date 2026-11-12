@@ -19,3 +19,23 @@ def test_masks_numbers_and_reports_zone_differences():
 
 def test_leaves_record_alone_when_not_asked():
     assert mock.masked(REC, "extract every field") == REC
+
+
+WORLD = {"overrides": {"pack": "waiting_approval"},
+         "files": [{"path": "Personal/Travel/passport-maria.pdf", "kind": "pdf", "looks_like": "passport", "modified": "2026-01-01"}]}
+TRIP = "Personal/Travel/Trips/japan-2027-04"
+
+
+def test_trip_folder_copy_waits_for_approval_then_completes():
+    text = f"Create the folder {TRIP}, with its parent folders, if it does not exist. Copy each of these files into it: Personal/Travel/passport-maria.pdf."
+    assert mock.file_agent(WORLD, text, text.lower())["status"] == "waiting_approval"
+    done = mock.file_agent({**WORLD, "overrides": {}}, text, text.lower())
+    assert done["status"] == "completed" and done["result"]["copied"] == [f"{TRIP}/passport-maria.pdf"]
+
+
+def test_calendar_and_drafts_need_the_trip_folder():
+    cal = "Create a new file named trip-deadlines.ics in iCalendar format"
+    assert mock.file_agent(WORLD, cal, cal.lower())["status"] == "waiting_user"
+    draft = f"draft each of these: cover letter, itinerary. Save each draft as a new file in the folder {TRIP}"
+    out = mock.document_agent({**WORLD, "overrides": {}}, draft, draft.lower())
+    assert out["result"]["saved"] == [f"{TRIP}/draft-cover-letter.md", f"{TRIP}/draft-itinerary.md"]

@@ -21,7 +21,7 @@ Do not say a folder is missing unless this command says so. Then:
 
 Help each person in the household get the most out of the passports, visas, permits and supporting documents on this NAS, with the official rules bundled here: what they hold, what it unlocks, which document to get next, the cheapest way to reach chosen countries, whether bank statements meet proof-of-funds rules, how to settle in, what expires, and what changed.
 
-Document and bank data never leave the NAS. The Skill does not book, apply, pay or contact any authority, and gives no financial or legal advice. Not supported, because no NAS capability provides it: live web search, live prices, bank connections, alerts and schedules.
+Document and bank data never leave the NAS. The Skill does not book, apply, pay or contact any authority, and gives no financial or legal advice. Everything else a trip needs it does on the NAS, with the user's approval in the NAS app: a trip folder with copies of the documents, the form answers, drafts of the letters the person writes and a calendar file of the deadlines. Not supported, because no NAS capability provides it: live web search, live prices, bank connections, alerts and schedules.
 
 # Required input
 
@@ -47,7 +47,7 @@ Pick one route from what the user asked, then read only the files listed for it.
 | How strong is my passport, which passport should I use | Passport power | [workflows/passport-power.md](references/workflows/passport-power.md), [workflows/benefits.md](references/workflows/benefits.md), [benefits/index.md](references/benefits/index.md), plus the passport matrix file for the nationality |
 | Where can I go, what does my passport or visa get me | Benefits | [workflows/benefits.md](references/workflows/benefits.md), plus [benefits/index.md](references/benefits/index.md) |
 | Which visa should I get next, how do I open up more countries | Next document | [workflows/next-document.md](references/workflows/next-document.md), [workflows/benefits.md](references/workflows/benefits.md), [topics/entry-conditions.md](references/topics/entry-conditions.md), plus [benefits/index.md](references/benefits/index.md) and [options/index.md](references/options/index.md) |
-| Plan a trip, cheapest way to visit these countries, are we ready to travel | Plan | [workflows/plan.md](references/workflows/plan.md), [topics/entry-conditions.md](references/topics/entry-conditions.md), plus the country file for each country on the route, connections included |
+| Plan a trip, cheapest way to visit these countries, are we ready to travel | Plan | [workflows/plan.md](references/workflows/plan.md), [topics/entry-conditions.md](references/topics/entry-conditions.md), plus the country file for each country on the route, connections included, and [prepare.md](references/prepare.md) |
 | Do my bank statements work for a visa, can I afford it | Proof of funds | [workflows/funds.md](references/workflows/funds.md), [topics/dossier-items.md](references/topics/dossier-items.md), plus the file that holds the visa (the country file, or the living file for a residence route), and for a Schengen visa [options/schengen-funds.md](references/options/schengen-funds.md) |
 | How do I settle in, what do I do after I move, open a bank account, register a business | Settle in | [workflows/settle-in.md](references/workflows/settle-in.md), [topics/dossier-items.md](references/topics/dossier-items.md), plus the living file for the country |
 | What is expiring, when do I renew | Expiry | [workflows/expiry.md](references/workflows/expiry.md) |
@@ -112,7 +112,7 @@ Then follow the workflow file for the chosen route. To save a report or tag file
 # Safety and approval
 
 - In chat, mask passport, ID and visa numbers to the last three characters and show bank accounts only by bank name and last three characters. Never list individual transactions beyond the large or repeating credits the funds route needs.
-- Ask before saving a report or adding tags; both change data on the NAS. Never delete, move or rename documents.
+- Ask before saving a report or adding tags; both change data on the NAS. The one exception is preparing a trip the user asked to plan or sort out (prepare.md): run those steps and let the NAS ask for approval. Never delete, move or rename documents; copy them.
 - Rules, fees and waiting times are a dated snapshot of official sources. Every one shown carries its source and checked date, and the user is told to confirm on the official page before applying, paying, booking or travelling.
 - Never decide that a document is fake. A machine readable zone mismatch is reported as a possible misread or a document to check.
 - Never present a benefit, an eligibility or an affordability result when any of its conditions is unknown. List it under Needs checking with the missing condition.

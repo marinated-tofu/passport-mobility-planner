@@ -1,6 +1,6 @@
 # Plan route
 
-Plans how a person or a household reaches the countries they chose, with the least money and waiting time spent on documents, and checks they are ready to go. This file has the reply template for trips. For a trip, read only this file, topics/entry-conditions.md and one country file per country on the route, each once. Do not read report-format.md, benefits.md, benefits/index.md or options/index.md.
+Plans how a person or a household reaches the countries they chose, with the least money and waiting time spent on documents, and checks they are ready to go. This file has the reply template for trips. For a trip, read only this file, topics/entry-conditions.md, one country file per country on the route, each once, and prepare.md. Do not read report-format.md, benefits.md, benefits/index.md or options/index.md.
 
 Comparing dates: write both as YYYY-MM-DD and compare the year, then the month, then the day. 2026-03-15 is before 2026-09-01, so a document expiring 2026-03-15 is not valid on 2026-09-01.
 
@@ -21,6 +21,7 @@ Destinations and dates, or "anywhere" with a date range; the travellers; budget 
    - no file, or nothing in it: "not covered by the bundled data", with the official source. Never call a country visa-free for a nationality unless a bundled rule, option or matrix entry says so.
 3. Each connection in a third country: a visa or residence permit held for that country covers it (name the document); else the transit rules in that country's file when SKILL.md lists one; else "transit rules not covered by the bundled data, check the official page". Never call a connection fine without one of these. When a stopover program in the file covers a hub on the route, offer it as a free extra city with its conditions.
 4. Dates: start-by date for each application = departure date minus its waiting time minus 7 days. Applications that keep the passport go one after another. If a passport must be renewed first, it comes before every application tied to the passport (an ETA or e-visa ends with the passport it was issued on).
+5. Prepare: then follow references/prepare.md for the whole household, before writing the reply, so the reply can say what was done.
 
 ## Reply
 
@@ -55,8 +56,15 @@ Names: each difference between the passport and a visa or booking, and what to d
 
 Money: fees per person and household total; proof of funds: latest closing balance per currency (never add currencies) against the rule, with the break-even exchange rate when currencies differ, or "not checked" and why
 
-Checklist, dated, starting today (date)
-  - date: action (each start-by date, passport renewal, each form with its deadline, documents to carry)
+Done on the NAS (prepare.md)
+  - Trip folder: path, documents copied / waiting for your approval in the NAS app / failed (why)
+  - Plan and form answers: path / waiting for approval / failed
+  - Drafts: each kind and path / waiting for approval / failed
+  - Calendar file with the deadlines: path / waiting for approval / failed (import it into your calendar for reminders)
+  Or "not prepared" and why
+
+Left for you, dated, starting today (date): only what no NAS agent can do
+  - date: action (each start-by date: apply online or book the appointment and pay; passport renewal; each form with its deadline; book, buy or ask for each missing document; sign the drafts)
   - departure date: travel with the passport and the documents that give entry
 
 Rules change. Confirm on the official page before you apply, pay, book or travel.
