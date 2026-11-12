@@ -95,7 +95,7 @@ Each check digit is computed the same way: give every character a value (digits 
 
 Worked example from the ICAO specimen document number L898902C3: values 21, 8, 9, 8, 9, 0, 2, 12, 3 times weights 7, 3, 1, 7, 3, 1, 7, 3, 1 give 147 + 24 + 9 + 56 + 27 + 0 + 14 + 36 + 3 = 316, so the check digit is 6.
 
-Treat this as a consistency hint, never a verdict. When a computed digit disagrees, report "the machine readable zone and this field disagree; the scan may be misread or the field mistyped" and show both values. Text recognition often confuses 0 and O, 1 and I, 5 and S, 8 and B.
+Treat this as a consistency hint, never a verdict. When a computed digit disagrees, report "the machine readable zone and this field disagree; the scan may be misread or the field mistyped" and show both values. For a document number, never write either value in full: give its last three characters and the positions that differ with the two characters at each, for example "character 2: zone O, printed 0". Text recognition often confuses 0 and O, 1 and I, 5 and S, 8 and B.
 
 ## Reading dates, names and codes
 

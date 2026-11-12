@@ -33,7 +33,7 @@ Trip: countries in order, dates, travellers
 Person: name - Ready / Needs action / Not possible for these dates
 
 Documents read
-  - Passport: nationality, number ending ..., expires (date), read from PDF or photo; machine readable zone: agrees with the printed page / disagrees (field, both values: check the original passport) / not checked
+  - Passport: nationality, number ending ..., expires (date), read from PDF or photo; machine readable zone: agrees with the printed page / disagrees (field; for a name or date both values, for the number only the differing positions, as "character 2: zone O, printed 0", never the full number: check the original passport) / not checked
   - Each visa or residence permit: country, type, entries, expires (date)
 
 Passport validity (passport expires E; arrival A; last departure D)
