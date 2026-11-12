@@ -8,7 +8,7 @@ Checks the bank statements stored on the NAS against a visa or residence route's
 
 ## Pick the rule
 
-The user names a visa or route, or one comes from the plan or next document route. Read its proof of funds and eligibility lines in the issuing country's file. For Schengen short-stay visas, also read the reference amount for the destination state in options/schengen-funds.md. If no rule is stated, say so and show the statement summary only.
+The user names a visa or route, or one comes from the plan or next document route. When that route already researched it, use its answer; otherwise follow research.md with topic funds, the issuing country, and the question "proof of funds or minimum income for this visa: amount, currency, per day or month or in total, which statements and how many months". If the pages state no rule, say so and show the statement summary only.
 
 Before the detailed read, set the threshold for large credits: half of the average monthly closing balance, or the amount the user gives.
 

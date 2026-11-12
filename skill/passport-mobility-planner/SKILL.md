@@ -1,6 +1,6 @@
 ---
 name: passport-mobility-planner
-description: Reads the passports, visas, residence permits and supporting documents stored on a UGREEN NAS and shows what they unlock, which visa to get next, how to reach chosen countries cheaply, whether bank statements meet proof-of-funds rules, how to settle in a country, what expires soon and which official rules changed. Use when someone asks what is on their passport, where they can travel, which visa to get next, whether they are ready for or can afford a trip or move, how to settle in a country, what is expiring, or what changed in visa or entry rules.
+description: Reads the passports, visas, residence permits and supporting documents stored on a UGREEN NAS, researches the current official rules live, and shows what they unlock, which visa to get next, how to reach chosen countries cheaply, whether bank statements meet proof-of-funds rules, how to settle in a country, what expires soon and which official rules changed. Prepares the trip: form answers, letter drafts, deadlines, and a queue of bookings, applications and emails that a companion fills in for the person to check, pay, submit and send. Use when someone asks what is on their passport, where they can travel, which visa to get next, whether they are ready for or can afford a trip or move, how to settle in a country, what is expiring, or what changed in visa or entry rules.
 ---
 
 # First move
@@ -13,15 +13,15 @@ delegate --target file-agent --instruction 'In the folder [DOCUMENTS FOLDER], fi
 
 Do not say a folder is missing unless this command says so. Then:
 
-- Read the workflow file for the route (workflows/plan.md for a trip) and follow its checks in order. The country files hold the rules; the workflow file says how to apply them, including every condition a rule states.
-- Read the Skill's own files yourself with the Read tool, never through an agent, each once, and only by the names linked below. A Schengen state with no file of its own (France or the Netherlands, for example) uses countries/schengen.md.
-- A country missing from the country list, or a Read that says a file does not exist, means that country is not covered: say so, point to official-sources.md, and move on. Never search for a Skill file.
+- Read the workflow file for the route (workflows/plan.md for a trip) and follow its checks in order.
+- This Skill holds no country rules, fees or waiting times. Each route gets them live, for the countries it needs, by the research step in [research.md](references/research.md); the workflow file says how to apply them.
+- Read the Skill's own files yourself with the Read tool, never through an agent, each once, and only by the names linked below. Never search for a Skill file.
 
 # Goal
 
-Help each person in the household get the most out of the passports, visas, permits and supporting documents on this NAS, with the official rules bundled here: what they hold, what it unlocks, which document to get next, the cheapest way to reach chosen countries, whether bank statements meet proof-of-funds rules, how to settle in, what expires, and what changed.
+Help each person in the household get the most out of the passports, visas, permits and supporting documents on this NAS, with the official rules as they stand today: what they hold, what it unlocks, which document to get next, the cheapest way to reach chosen countries, whether bank statements meet proof-of-funds rules, how to settle in, what expires, and what changed.
 
-Document and bank data never leave the NAS. The Skill does not book, apply, pay or contact any authority, and gives no financial or legal advice. Everything else a trip needs it does on the NAS, with the user's approval in the NAS app: a trip folder with copies of the documents, the form answers, drafts of the letters the person writes and a calendar file of the deadlines. Not supported, because no NAS capability provides it: live web search, live prices, bank connections, alerts and schedules.
+Document and bank data never leave the NAS; research requests carry only countries, nationalities, dates and purpose. The Skill gives no financial or legal advice. It does every step a trip needs that software can do, and leaves the person only what needs them: on the NAS, a trip folder with copies of the documents, the form answers, drafts of the letters, a calendar file of the deadlines; through the trip companion, live research of the official pages, price comparisons, and a queue of bookings, applications and emails, where the companion opens each page, fills in the form from the documents and attaches the copies, and the person checks, pays, submits and sends. It never pays, submits, books or sends anything by itself.
 
 # Required input
 
@@ -44,30 +44,17 @@ Pick one route from what the user asked, then read only the files listed for it.
 | User asks | Route | Read |
 | --- | --- | --- |
 | What is on my passport, read my documents, what do I have for applications | Dossier | [workflows/dossier.md](references/workflows/dossier.md), [topics/document-fields.md](references/topics/document-fields.md), [topics/dossier-items.md](references/topics/dossier-items.md) |
-| How strong is my passport, which passport should I use | Passport power | [workflows/passport-power.md](references/workflows/passport-power.md), [workflows/benefits.md](references/workflows/benefits.md), [benefits/index.md](references/benefits/index.md), plus the passport matrix file for the nationality |
-| Where can I go, what does my passport or visa get me | Benefits | [workflows/benefits.md](references/workflows/benefits.md), plus [benefits/index.md](references/benefits/index.md) |
-| Which visa should I get next, how do I open up more countries | Next document | [workflows/next-document.md](references/workflows/next-document.md), [workflows/benefits.md](references/workflows/benefits.md), [topics/entry-conditions.md](references/topics/entry-conditions.md), plus [benefits/index.md](references/benefits/index.md) and [options/index.md](references/options/index.md) |
-| Plan a trip, cheapest way to visit these countries, are we ready to travel | Plan | [workflows/plan.md](references/workflows/plan.md), [topics/entry-conditions.md](references/topics/entry-conditions.md), plus the country file for each country on the route, connections included, and [prepare.md](references/prepare.md) |
-| Do my bank statements work for a visa, can I afford it | Proof of funds | [workflows/funds.md](references/workflows/funds.md), [topics/dossier-items.md](references/topics/dossier-items.md), plus the file that holds the visa (the country file, or the living file for a residence route), and for a Schengen visa [options/schengen-funds.md](references/options/schengen-funds.md) |
-| How do I settle in, what do I do after I move, open a bank account, register a business | Settle in | [workflows/settle-in.md](references/workflows/settle-in.md), [topics/dossier-items.md](references/topics/dossier-items.md), plus the living file for the country |
+| How strong is my passport, which passport should I use | Passport power | [workflows/passport-power.md](references/workflows/passport-power.md), [workflows/benefits.md](references/workflows/benefits.md), [research.md](references/research.md) |
+| Where can I go, what does my passport or visa get me | Benefits | [workflows/benefits.md](references/workflows/benefits.md), [research.md](references/research.md) |
+| Which visa should I get next, how do I open up more countries | Next document | [workflows/next-document.md](references/workflows/next-document.md), [workflows/benefits.md](references/workflows/benefits.md), [topics/entry-conditions.md](references/topics/entry-conditions.md), [research.md](references/research.md) |
+| Plan a trip, cheapest way to visit these countries, are we ready to travel | Plan | [workflows/plan.md](references/workflows/plan.md), [topics/entry-conditions.md](references/topics/entry-conditions.md), [research.md](references/research.md), [prepare.md](references/prepare.md) |
+| Do my bank statements work for a visa, can I afford it | Proof of funds | [workflows/funds.md](references/workflows/funds.md), [topics/dossier-items.md](references/topics/dossier-items.md), [research.md](references/research.md) |
+| How do I settle in, what do I do after I move, open a bank account, register a business | Settle in | [workflows/settle-in.md](references/workflows/settle-in.md), [topics/dossier-items.md](references/topics/dossier-items.md), [research.md](references/research.md) |
 | What is expiring, when do I renew | Expiry | [workflows/expiry.md](references/workflows/expiry.md) |
 | What changed, any news for my passport or destination | Updates | [workflows/updates.md](references/workflows/updates.md), [official-sources.md](references/official-sources.md) |
-| Exact official requirement, full document list, a country the bundled files do not cover | Library search | [workflows/library.md](references/workflows/library.md) |
+| Search the saved copies of official pages | Library search | [workflows/library.md](references/workflows/library.md) |
 
-Country files. One per country, for visits: what documents already held unlock there, transit and stopover rules at its airports, and the visas and authorisations to apply for, with official fees, waiting times, required documents and proof-of-funds rules. Read only the files for the countries in question; a country with no file is not covered, except a Schengen state, which uses the Schengen file. Entry conditions shared by every Schengen state are in topics/entry-conditions.md:
-
-- [Albania](references/countries/al.md), [Argentina](references/countries/ar.md), [Armenia](references/countries/am.md), [Australia](references/countries/au.md), [Bosnia and Herzegovina](references/countries/ba.md), [Canada](references/countries/ca.md), [China](references/countries/cn.md), [Dominican Republic](references/countries/do.md), [Estonia](references/countries/ee.md), [Ethiopia](references/countries/et.md), [Georgia](references/countries/ge.md), [Hong Kong](references/countries/hk.md), [Iceland](references/countries/is.md), [Indonesia](references/countries/id.md), [Ireland](references/countries/ie.md), [Japan](references/countries/jp.md), [Kazakhstan](references/countries/kz.md), [Malaysia](references/countries/my.md), [Mexico](references/countries/mx.md), [New Zealand](references/countries/nz.md), [North Macedonia](references/countries/mk.md), [Oman](references/countries/om.md), [Panama](references/countries/pa.md), [Peru](references/countries/pe.md), [Portugal](references/countries/pt.md), [Qatar](references/countries/qa.md), [Saudi Arabia](references/countries/sa.md), [Serbia](references/countries/rs.md), [Singapore](references/countries/sg.md), [South Korea](references/countries/kr.md), [Spain](references/countries/es.md), [Taiwan](references/countries/tw.md), [Thailand](references/countries/th.md), [Türkiye](references/countries/tr.md), [United Arab Emirates](references/countries/ae.md), [United Kingdom](references/countries/gb.md), [United States](references/countries/us.md), [Schengen states without their own file](references/countries/schengen.md)
-
-
-Living files. One per country, for moving there: long-term residence and citizenship routes, then the settle-in steps in order, housing rules and local customs. A trip never needs these:
-
-- [Antigua and Barbuda](references/settle/ag.md) (4 residence routes); [Australia](references/settle/au.md) (2 residence routes); [Canada](references/settle/ca.md) (1 residence route, 9 settle-in steps, 5 customs notes); [Dominica](references/settle/dm.md) (2 residence routes); [Estonia](references/settle/ee.md) (10 settle-in steps, 5 customs notes); [Germany](references/settle/de.md) (8 settle-in steps, 4 customs notes); [Greece](references/settle/gr.md) (1 residence route); [Ireland](references/settle/ie.md) (1 residence route); [Japan](references/settle/jp.md) (1 residence route, 8 settle-in steps, 8 customs notes); [Malaysia](references/settle/my.md) (4 residence routes, 8 settle-in steps, 7 customs notes); [Malta](references/settle/mt.md) (2 residence routes); [Mexico](references/settle/mx.md) (8 settle-in steps, 4 customs notes); [Netherlands](references/settle/nl.md) (10 settle-in steps, 6 customs notes); [New Zealand](references/settle/nz.md) (2 residence routes); [Oman](references/settle/om.md) (1 residence route); [Panama](references/settle/pa.md) (2 residence routes); [Portugal](references/settle/pt.md) (5 residence routes, 8 settle-in steps, 6 customs notes); [Qatar](references/settle/qa.md) (3 residence routes, 5 settle-in steps, 8 customs notes); [Saint Kitts and Nevis](references/settle/kn.md) (4 residence routes); [Saint Lucia](references/settle/lc.md) (4 residence routes); [Saudi Arabia](references/settle/sa.md) (7 residence routes, 8 settle-in steps, 8 customs notes); [Singapore](references/settle/sg.md) (1 residence route, 11 settle-in steps, 8 customs notes); [South Korea](references/settle/kr.md) (1 residence route, 8 settle-in steps, 5 customs notes); [Spain](references/settle/es.md) (9 settle-in steps, 8 customs notes); [Thailand](references/settle/th.md) (5 residence routes, 1 settle-in step, 8 customs notes); [Türkiye](references/settle/tr.md) (3 residence routes); [United Arab Emirates](references/settle/ae.md) (4 residence routes, 10 settle-in steps, 8 customs notes); [United Kingdom](references/settle/gb.md) (9 settle-in steps, 7 customs notes); [United States](references/settle/us.md) (1 residence route); [Vanuatu](references/settle/vu.md) (2 residence routes)
-
-Passport matrix files. Where each passport gets in without applying in advance, from a community dataset, used only for screening and scores:
-
-- No passport matrix bundled; the passport power route uses benefit rules only.
-
-Use [official-sources.md](references/official-sources.md) whenever an answer tells the user to confirm a rule or a country is not covered.
+Use [official-sources.md](references/official-sources.md), a list of official page addresses by country with no rules in it, whenever an answer tells the user to confirm a rule or the research found nothing.
 
 # Workflow
 
@@ -113,7 +100,8 @@ Then follow the workflow file for the chosen route. To save a report or tag file
 
 - In chat, mask passport, ID and visa numbers to the last three characters and show bank accounts only by bank name and last three characters. Never list individual transactions beyond the large or repeating credits the funds route needs.
 - Ask before saving a report or adding tags; both change data on the NAS. The one exception is preparing a trip the user asked to plan or sort out (prepare.md): run those steps and let the NAS ask for approval. Never delete, move or rename documents; copy them.
-- Rules, fees and waiting times are a dated snapshot of official sources. Every one shown carries its source and checked date, and the user is told to confirm on the official page before applying, paying, booking or travelling.
+- Rules, fees and waiting times come only from the research answer, never from memory. Every one shown carries its page address and fetched date, and the user is told to confirm on the official page before applying, paying, booking or travelling.
+- Bookings, applications and emails go into the trip queue for the person. The companion fills forms but never presses submit or pay, and sends an email only when the person presses Send on the queue page.
 - Never decide that a document is fake. A machine readable zone mismatch is reported as a possible misread or a document to check.
 - Never present a benefit, an eligibility or an affordability result when any of its conditions is unknown. List it under Needs checking with the missing condition.
 - Proof-of-funds results are a comparison with the published rule, not financial advice and not a promise that an application will succeed.
@@ -121,7 +109,7 @@ Then follow the workflow file for the chosen route. To save a report or tag file
 
 # Completion and failure
 
-When part of a request is not supported (booking, live prices, alerts, schedules), say so in one sentence, then do the supported part with what the user gave: for a destination, run the benefits or plan route for it from the documents folder; for rule changes, point to the updates route and the optional library companion. Ask a question only for input the route cannot run without.
+When the user asks to book, apply, pay or write to someone, the plan route puts it in the trip queue (prepare.md) and the person finishes it on the queue page; the Skill never says it booked, paid, applied or sent anything. Alerts and schedules are not supported: the calendar file stands in for them. For rule changes, point to the updates route. Ask a question only for input the route cannot run without.
 
 Report each delegation by its state:
 
@@ -131,4 +119,4 @@ Report each delegation by its state:
 - waiting_user: ask the user the question the agent raised and wait.
 - waiting_approval: tell the user what will change on the NAS and wait for approval before reporting the step as done.
 
-The answer is complete when the user has the report for the chosen route, with every benefit, fee and step linked to its official source and checked date, every unreadable file listed, and every unknown condition marked.
+The answer is complete when the user has the report for the chosen route, with every benefit, fee and step linked to the official page it was researched on and the fetched date, every unreadable file listed, and every unknown condition marked.

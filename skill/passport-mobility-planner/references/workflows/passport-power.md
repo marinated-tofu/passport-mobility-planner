@@ -2,15 +2,15 @@
 
 Scores each passport in the household by where it gets its holder without applying in advance, then adds what the visas and residence permits they hold unlock on top. For people with two or more nationalities, it says which passport to use for each destination.
 
-## Base score from the passport matrix
+## Base score from the passport index
 
-Read the passport matrix file that covers the person's nationality. Its line for that nationality lists destinations in four groups: visa-free (with days when known), visa on arrival, e-visa or electronic travel authorisation, and visa required. The matrix is a community dataset with the date shown in its file; it is a screening layer, not an official source.
+Follow research.md with topic index, countries ALL and every nationality in the household. The answer lists, per passport, destinations in groups: visa-free (with days when known), visa on arrival, e-visa or electronic travel authorisation, and visa required. The passport index is a community dataset fetched today; it is a screening layer, not an official source.
 
 Base score: visa-free plus visa on arrival destinations. Show the counts for each group.
 
 ## Boost from documents held
 
-Run the benefits route. Every Unlocked benefit for a destination that the matrix lists as e-visa or visa required moves that destination up: count it in a separate Boost line, with the document that does it. This is the part the person earned with their visas and residence permits.
+Run the benefits route for the visas and residence permits held. Every Unlocked benefit for a destination that the index lists as e-visa or visa required moves that destination up: count it in a separate Boost line, with the document that does it. This is the part the person earned with their visas and residence permits.
 
 Personal score: base score plus boost. Show both, so the person sees what their documents add.
 
@@ -24,4 +24,4 @@ End with the top three options from the next document route, as the fastest ways
 
 ## Conflicts
 
-When an official benefit rule and the matrix disagree, the official rule wins and the disagreement is shown. When the matrix file is older than 12 months, say so at the top.
+When an official page and the index disagree, the official page wins and the disagreement is shown.

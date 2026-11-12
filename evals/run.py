@@ -29,6 +29,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "build"))
+import build  # noqa: E402
 from build import load_yaml  # noqa: E402
 
 sys.path.insert(0, str(ROOT / "evals"))
@@ -84,6 +85,28 @@ def build_world(base: dict, patch: dict | None) -> dict:
 # A host app (such as the Claude desktop app) passes its own session credentials in these variables; the
 # child CLI must use the user's own login instead.
 HOST_VARS = re.compile(r"^(ANTHROPIC_|CLAUDE_CODE_|CLAUDECODE$|CLAUDE_AGENT_SDK|CLAUDE_PID$|CLAUDE_EFFORT$|CLAUDE_PREVIEW)")
+
+
+_PAGES: dict | None = None
+
+
+def research_pages() -> dict:
+    """What the companion would fetch, per country and topic: the repo's data/ stands in for the live official pages."""
+    global _PAGES
+    if _PAGES is None:
+        today = dt.date.today()
+        groups, _ = build.load_rules(today)
+        seen = {r["id"] for g in groups for r in g["rules"]}
+        options, _ = build.load_options(today, seen)
+        settle, _ = build.load_settle(today, seen)
+        codes = {r["country"] for g in groups for r in g["rules"]} | {o["country"] for g in options for o in g["options"]}
+        _PAGES = {f"entry:{c.upper()}": build.render_country(c, groups, options) for c in codes}
+        _PAGES |= {f"settle:{c['code']}": build.render_settle(c, options, groups) for c in settle}
+        _PAGES["visas:ALL"] = build.render_option_index(options, groups)
+        _PAGES["entry:ALL"] = build.render_benefit_index(groups)
+        if any(g["funds"] for g in options):
+            _PAGES["funds:SCHENGEN"] = build.render_funds(options)
+    return _PAGES
 
 
 def run_claude(args: list[str], cwd: Path, env: dict, timeout: int) -> list[dict]:
@@ -188,6 +211,7 @@ def run_scenario(sc: dict, out: Path, model: str, grader: str) -> dict:
         shim.write_text(f'#!/bin/sh\nexec "{Path(sys.executable).as_posix()}" "{(EVALS / "mock_delegate.py").as_posix()}" "$@"\n')
         shim.chmod(0o755)
         world = build_world(load_household(sc.get("household")), sc.get("world"))
+        world["research"] = research_pages()
         (work / "world.json").write_text(json.dumps(world, default=str))
         env = {**os.environ, "PATH": f"{work / 'bin'}{os.pathsep}{os.environ['PATH']}", "PYTHONUTF8": "1",
                "EVAL_WORLD": str(work / "world.json"), "EVAL_LOG": str(work / "calls.jsonl")}

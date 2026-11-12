@@ -10,13 +10,11 @@ Countries usually set one of these minimums:
 - valid three months beyond the planned departure from the country;
 - valid six months beyond the arrival date.
 
-The Schengen area is a documented example of the three-month pattern: the Schengen Borders Code (Regulation (EU) 2016/399, Article 6) requires a travel document valid at least three months after the intended departure and issued within the previous ten years. Source: https://eur-lex.europa.eu/eli/reg/2016/399/oj
+Compute all three dates for the traveller and say which ones the passport meets. Which one a country applies, and any rule on when the passport was issued, comes from the research answer for that country; without one, say the rule was not found.
 
-For any other country, compute all three dates for the traveller and say which ones the passport meets, then point to the country's official source for the rule it applies.
+## Shared visa areas
 
-## Schengen area
-
-A Schengen visa or residence permit counts for all 29 Schengen countries: Austria, Belgium, Bulgaria, Croatia, Czechia, Denmark, Estonia, Finland, France, Germany, Greece, Hungary, Iceland, Italy, Latvia, Liechtenstein, Lithuania, Luxembourg, Malta, Netherlands, Norway, Poland, Portugal, Romania, Slovakia, Slovenia, Spain, Sweden and Switzerland. Ireland and Cyprus are in the EU but not in the Schengen area. A visa with limited territorial validity covers only the countries printed on it. Source: https://home-affairs.ec.europa.eu/policies/schengen/schengen-area_en (European Commission, checked 07 Nov 2026).
+Some visas count for a group of countries (the Schengen area is one). Which countries are members, and what a shared visa covers, comes from the research answer; ask for it with the countries on the route. A visa with limited territorial validity covers only the countries printed on it.
 
 ## Other conditions travellers are often asked for
 

@@ -1,6 +1,6 @@
 # Prepare the trip on the NAS
 
-After the plan route has worked out each application, do the paperwork the NAS can do, so the person is left only with what needs them: booking, paying, applying online, appointments, signatures and fingerprints. No NAS agent can book, pay, apply or contact an authority, so never offer to.
+After the plan route has worked out each application, do every step software can do, so the person is left only with what needs them: checking, paying, submitting, sending, signing, appointments and fingerprints. The NAS agents do P1 to P4. The trip companion does the rest from the trip queue (P6): it compares prices, opens each booking and application page in a browser the person can see, fills in the form from the form answers and attaches the copies, and shows each email draft with a Send button. It never presses submit, pay, book or send itself.
 
 When to run: whenever the user asked to plan, prepare or sort out a trip and at least one application, form or missing document is on the plan. Do not ask first: each step below changes the NAS, so the NAS asks the user to approve it. If the user only asked whether they can go or which way is cheapest, end the reply with one line offering to prepare the trip folder, and stop.
 
@@ -54,13 +54,34 @@ One event per dated line of the checklist that falls after today: start-by dates
 delegate --target file-agent --instruction 'Create a new file named trip-deadlines.ics in the folder [TRIP FOLDER], creating the folder if it does not exist, in iCalendar format, with one all-day event for each line here, each with a reminder 7 days before and 1 day before: [YYYY-MM-DD TITLE; YYYY-MM-DD TITLE]. Do not overwrite an existing file. Return the saved file path.'
 ```
 
-## P5. Rules marked partial
+## P5. Rules left open
 
-If the user named a library folder, search it as in workflows/library.md for each rule on the plan marked partial, and use what it returns before writing the reply. Otherwise leave the rule marked "confirm on the source".
+For each check the research left open ("confirm on the source"), add a research item to the queue in P6 with the page address. If the user named a library folder, also search it as in workflows/library.md before writing the reply.
+
+## P6. The trip queue
+
+One item per thing the person has to finish, so the companion can prepare it. Each item is one line of six parts separated by " · ": id, kind, due date (YYYY-MM-DD), title, address, detail. Ids are short and unique in the trip: a1, b1, c1, m1, r1.
+
+- apply: each application with an online form or an appointment to book. Address: the official page the research answer gives for applying. Due: its start-by date. Detail: the application name and the traveller.
+- compare: each booking the trip still needs that no saved booking covers (flights, accommodation, travel insurance when a rule asks for it). Address and detail: search addresses, from these patterns with the real codes and dates:
+  - flights: https://www.google.com/travel/flights?q=flights+from+[FROM]+to+[TO]+on+[YYYY-MM-DD]+returning+[YYYY-MM-DD] and https://www.kayak.com/flights/[FROM]-[TO]/[YYYY-MM-DD]/[YYYY-MM-DD]
+  - accommodation: https://www.booking.com/searchresults.html?ss=[CITY]&checkin=[YYYY-MM-DD]&checkout=[YYYY-MM-DD]&group_adults=[NUMBER OF TRAVELLERS]
+  - insurance: https://www.google.com/search?q=travel+insurance+[COUNTRY]+visa+[COVER THE RULE ASKS FOR]
+- book: one for each compare item, with the same first address, due a week before the earliest start-by date that needs the booking.
+- contact: each draft from P3 that goes to another person (employer letter request, host invitation). Address: none. Detail: to: the address found in the documents, or to: (to fill), then draft: and the kind of draft, for example to: hr@company.example, draft: employer. Never put a document number in it.
+- research: each check from P5. Address: the page. Detail: the condition to confirm.
+
+Keep the words send, email, delete, move and rename out of every item: the NAS reads them as actions. Write letter, request or address instead.
+
+```text
+delegate --target file-agent --instruction 'Create a new text file named trip-queue.md in the folder [TRIP FOLDER], creating the folder if it does not exist, with the first line Trip queue, then one line for each item below, each starting with a hyphen and a space followed by the item exactly as written; the items are separated by the word NEXT: [ITEMS]. Do not overwrite an existing file and do not change any other file. Return the saved file path.'
+```
+
+Then tell the user where to finish each item: the queue page of the companion (port 8089 on the NAS), and the browser view it links to, where they log in, solve any check, press Fill this page, review every field, and submit and pay themselves.
 
 ## Reporting
 
-Report each step by its state in the reply's "Done on the NAS" section:
+Report each step by its state in the reply's "Done on the NAS" section, and list the queue items under "In the trip queue":
 
 - completed: the path returned.
 - waiting_approval: "waiting for your approval in the NAS app", and what it will create. Never say it is done.

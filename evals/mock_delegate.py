@@ -10,6 +10,7 @@ Standard library only, so it runs with any python3.
 """
 
 import argparse
+import datetime
 import json
 import os
 import re
@@ -102,7 +103,57 @@ def trip_folder(text):
     return m.group(0) if m else ""
 
 
+SCHENGEN = set("AT BE BG CH CZ DE DK EE ES FI FR GR HR HU IS IT LI LT LU LV MT NL NO PL PT RO SE SI SK".split())
+
+
+def earlier_calls():
+    try:
+        return [json.loads(l) for l in open(os.environ["EVAL_LOG"]) if l.strip()]
+    except FileNotFoundError:
+        return []
+
+
+def research_answer(world, request_line, today):
+    """What the companion writes for a request: the stand-in pages for each country and topic asked."""
+    fields = dict((k.strip().lower(), v.strip()) for k, v in
+                  (p.split(":", 1) for p in re.split(r"\s·\s", request_line) if ":" in p))
+    topic = fields.get("topic", "entry").lower()
+    codes = [c.upper() for c in re.findall(r"\b[A-Za-z]{2,8}\b", fields.get("countries", "")) if c.lower() != "none"]
+    pages = world.get("research", {})
+    out = [f"# Research: {fields.get('question', '')}", "",
+           f"Fetched {today} from official pages, live. Excerpts are quoted from the page; confirm on it before "
+           "applying, paying or travelling.", ""]
+    if topic == "index" or "ALL" in codes:
+        out += ["## Passport index", "", "Not covered: the passport index could not be fetched.", ""]
+        codes = [c for c in codes if c != "ALL"] + (["ALL"] if topic in {"visas", "entry"} and "ALL" in codes else [])
+    if topic == "index":
+        return "\n".join(out)
+    key = {"transit": "entry", "funds": "entry"}.get(topic, topic)
+    for c in codes:
+        body = pages.get(f"{key}:{c}") or (pages.get(f"{key}:SCHENGEN") if c in SCHENGEN else None)
+        if topic == "funds" and c in SCHENGEN | {"SCHENGEN"}:
+            body = (body or "") + "\n\n" + pages.get("funds:SCHENGEN", "")
+        out += [f"## {c}", ""] + ([body.replace("checked", "fetched " + today + "; page checked"), ""] if body else
+                                  ["Not covered: no official page for this country was reachable or listed.", ""])
+    return "\n".join(out)
+
+
 def file_agent(world, text, low):
+    m = re.search(r"named ([a-z0-9\-]+)\.request\.md", low)
+    if m:
+        line = re.search(r"exactly this one line:\s*(.+?)\.?\s*do not overwrite", text, re.I | re.S)
+        if not line or "question:" not in line.group(1).lower():
+            return answer("waiting_user", message="What should the request file say?")
+        st = world["overrides"].get("request", "completed")
+        if st != "completed":
+            return answer(st, message="Creating a file on the NAS needs the user's approval.")
+        return answer("completed", {"saved": f"{world['documents_folder']}/Requests/{m.group(1)}.request.md"})
+    if "trip-queue" in low:
+        folder = trip_folder(text)
+        if not folder or "next" not in low and "·" not in text:
+            return answer("waiting_user", message="Which folder, and which items should the queue hold?")
+        n = len(re.findall(r"\bNEXT\b", text)) + 1
+        return pending_or(world, {"saved": f"{folder}/trip-queue.md", "items": n}, f"Creating a trip queue with {n} items")
     if "icalendar" in low or ".ics" in low:
         folder = trip_folder(text)
         if not folder:
@@ -173,6 +224,18 @@ def photo_agent(world, text, low):
 
 
 def document_agent(world, text, low):
+    m = re.search(r"requests/([a-z0-9\-]+)\.answer\.md", low)
+    if m:
+        name, calls = m.group(1), earlier_calls()
+        asked = [i for i, c in enumerate(calls) if c["target"] == "file-agent" and c["status"] == "completed"
+                 and f"{name}.request.md" in c["instruction"].lower()]
+        reads = [i for i, c in enumerate(calls) if c["target"] == "document-agent" and f"{name}.answer.md" in c["instruction"].lower()]
+        # the companion needs one check to fetch the pages: the first read after the request finds nothing yet
+        if not asked or not [i for i in reads if i > asked[0]]:
+            return answer("completed", None, "The file does not exist.")
+        req = calls[asked[0]]["instruction"]
+        line = re.search(r"exactly this one line:\s*(.+?)\.?\s*do not overwrite", req, re.I | re.S).group(1)
+        return answer("completed", {"text": research_answer(world, line, datetime.date.today().isoformat())})
     if re.search(r"\bdraft\b", low) and "save" in low:
         folder = trip_folder(text)
         if not folder:

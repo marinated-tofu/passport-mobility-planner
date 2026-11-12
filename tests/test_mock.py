@@ -39,3 +39,35 @@ def test_calendar_and_drafts_need_the_trip_folder():
     draft = f"draft each of these: cover letter, itinerary. Save each draft as a new file in the folder {TRIP}"
     out = mock.document_agent({**WORLD, "overrides": {"pack": "completed"}}, draft, draft.lower())
     assert out["result"]["saved"] == [f"{TRIP}/draft-cover-letter.md", f"{TRIP}/draft-itinerary.md"]
+
+
+def test_research_request_is_answered_on_the_second_read(tmp_path, monkeypatch):
+    import json
+    log = tmp_path / "calls.jsonl"
+    monkeypatch.setenv("EVAL_LOG", str(log))
+    world = {**WORLD, "documents_folder": "Personal/Travel",
+             "research": {"entry:JP": "Visa exemption: 90 days (checked 2026-11-07)", "entry:SCHENGEN": "Schengen rules"}}
+
+    def call(target, text):
+        fn = mock.file_agent if target == "file-agent" else mock.document_agent
+        out = fn(world, text, text.lower())
+        with log.open("a") as f:
+            f.write(json.dumps({"target": target, "instruction": text, "status": out["status"]}) + "\n")
+        return out
+
+    read = "Return the full text of the file Personal/Travel/Requests/entry-jp-fr-ng-2026-11-12.answer.md exactly as written."
+    assert "does not exist" in call("document-agent", read)["message"]
+    write = ("Create the folder Personal/Travel/Requests, with its parent folders, if it does not exist, and create in it a "
+             "new text file named entry-jp-fr-ng-2026-11-12.request.md containing exactly this one line: question: visit visa "
+             "· topic: entry · countries: JP, FR, QQ · nationality: NG. Do not overwrite an existing file.")
+    assert call("file-agent", write)["status"] == "completed"
+    assert "does not exist" in call("document-agent", read)["message"]  # the companion is still fetching
+    text = call("document-agent", read)["result"]["text"]
+    assert "## JP" in text and "90 days" in text and "Schengen rules" in text
+    assert "## QQ" in text and "Not covered" in text
+
+
+def test_trip_queue_waits_for_approval():
+    text = f"Create a new text file named trip-queue.md in the folder {TRIP}: a1 · apply · 2027-01-10 · Visa · https://x.example · one NEXT m1 · contact · 2026-11-20 · Letter · none · to: (to fill), draft: employer"
+    out = mock.file_agent(WORLD, text, text.lower())
+    assert out["status"] == "waiting_approval" and "2 items" in out["message"]

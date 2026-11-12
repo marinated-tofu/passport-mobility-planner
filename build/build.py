@@ -522,15 +522,39 @@ def render_sources(sources: list[dict]) -> str:
     for s in sources:
         by_country[country_name(s["country"])].append(s)
     parts = ["# Official sources", "",
-             "Official pages to confirm a rule, and the pages the optional rules watcher checks every night.", "",
+             "Addresses only, by country: where the companion researches rules and where the person confirms them. "
+             "This file holds no rules, fees or waiting times; those are fetched live (research.md).", "",
              "## Contents", "", ", ".join(sorted(by_country)), ""]
     for name in sorted(by_country):
         parts += [f"## {name}", ""]
         for s in sorted(by_country[name], key=lambda s: s["topic"] if s.get("topic") else ""):
             topic = f" ({s['topic']})" if s.get("topic") else ""
-            parts.append(f"- {s['owner']}{topic}: {s['url']}")
+            line = f"- {s['owner']}{topic}: {s['url']}"
+            if line not in parts:
+                parts.append(line)
         parts.append("")
     return "\n".join(parts)
+
+
+def directory_sources(groups, option_groups, settle) -> list[dict]:
+    """The official pages the data cites, as addresses only: owner, topic and URL per country."""
+    out, seen = [], set()
+
+    def add(url, country, topic, owner):
+        if url and url not in seen:
+            seen.add(url)
+            out.append({"url": url, "country": country, "topic": topic, "owner": owner or "official page"})
+
+    for g in groups:
+        for r in g["rules"]:
+            add(r["source"], r["country"], "entry", r.get("source_owner"))
+    for g in option_groups:
+        for o in g["options"]:
+            add(o["source"], o["country"], "visas" if g["section"] == "country" else "residence", o.get("source_owner"))
+    for c in settle:
+        for st in c["steps"]:
+            add(st["source"], c["code"], "settle-in", st.get("source_owner"))
+    return out
 
 
 def expand_includes(root: Path) -> None:
@@ -559,70 +583,16 @@ def build(check_links: bool, release: bool = False) -> None:
         shutil.rmtree(OUT)
     shutil.copytree(SRC / "references", OUT / "references")
     expand_includes(OUT / "references")
-    (OUT / "references/benefits").mkdir(parents=True, exist_ok=True)
-
-    (OUT / "references/benefits/index.md").write_text(render_benefit_index(groups))
-    n_rules_all = sum(len(g["rules"]) for g in groups)
-    newest = max((r["checked"] for g in groups for r in g["rules"]), default=None)
-    index = [f"- [benefits/index.md](references/benefits/index.md): all {n_rules_all} rules, one line each "
-             f"({', '.join(g['title'].lower() for g in groups)}{f'; checked up to {newest:%d %b %Y}' if newest else ''})"]
-    (OUT / "references/official-sources.md").write_text(render_sources(sources))
-
-    (OUT / "references/options").mkdir(parents=True, exist_ok=True)
-    (OUT / "references/options/index.md").write_text(render_option_index(option_groups, groups))
-    n_all = sum(len(g["options"]) for g in option_groups)
-    opt_index = [f"- [options/index.md](references/options/index.md): all {n_all} options, one line each "
-                 "(fee, waiting days, nationality limits, countries each one also unlocks)"]
-    if any(g["funds"] for g in option_groups):
-        (OUT / "references/options/schengen-funds.md").write_text(render_funds(option_groups))
-        opt_index.append("- [options/schengen-funds.md](references/options/schengen-funds.md): Schengen proof-of-funds reference amounts")
-    country_links = []
-    (OUT / "references/countries").mkdir(parents=True, exist_ok=True)
-    all_codes = ({r["country"] for g in groups for r in g["rules"]}
-                 | {o["country"] for g in option_groups if g["section"] == "country" for o in g["options"]})
-    for code in sorted(all_codes, key=country_name):
-        rel = f"references/countries/{code.lower()}.md"
-        (OUT / rel).write_text(render_country(code, groups, option_groups))
-        label = "Schengen states without their own file" if code.upper() == "SCHENGEN" else country_name(code)
-        country_links.append(f"[{label}]({rel})")
-    country_index = "- " + ", ".join(country_links)
-
-    settle_index = []
-    by_code = {c["code"]: c for c in settle}
-    for g in option_groups:
-        if g["section"] == "living":
-            for o in g["options"]:
-                code = str(o["country"]).upper()
-                by_code.setdefault(code, {"code": code, "title": f"Living in {country_name(code)}", "steps": [], "customs": []})
-    for code in sorted(by_code, key=country_name):
-        c = by_code[code]
-        rel = f"references/settle/{code.lower()}.md"
-        (OUT / rel).parent.mkdir(parents=True, exist_ok=True)
-        (OUT / rel).write_text(render_settle(c, option_groups, groups))
-        n_routes = sum(1 for g in option_groups if g["section"] == "living" for o in g["options"] if str(o["country"]).upper() == code)
-        what = ", ".join(f"{n} {word}{'' if n == 1 else 's'}" for n, word in
-                         ((n_routes, "residence route"), (len(c["steps"]), "settle-in step"), (len(c["customs"]), "customs note")) if n)
-        settle_index.append(f"[{country_name(code)}]({rel}) ({what})")
-    settle_index = ["- " + "; ".join(settle_index)] if settle_index else []
-
-    matrix_index = []
-    for i in range(0, len(matrix), MATRIX_CHUNK):
-        chunk = matrix[i:i + MATRIX_CHUNK]
-        name = f"passports-{chunk[0][0].lower()}-{chunk[-1][0].lower()}"
-        rel = f"references/matrix/{name}.md"
-        (OUT / rel).parent.mkdir(parents=True, exist_ok=True)
-        (OUT / rel).write_text(render_matrix_chunk(chunk, matrix_date))
-        matrix_index.append(f"- [matrix/{name}.md]({rel}): passports {chunk[0][0]} to {chunk[-1][0]}")
-
-    template = (SRC / "SKILL.md.tmpl").read_text()
-    skill = (template.replace("{{BENEFIT_INDEX}}", "\n".join(index) or "- No benefit files yet.")
-             .replace("{{COUNTRY_INDEX}}", country_index)
-             .replace("{{OPTION_INDEX}}", "\n".join(opt_index) or "- No option files yet.")
-             .replace("{{SETTLE_INDEX}}", "\n".join(settle_index) or "- No settle-in files yet.")
-             .replace("{{MATRIX_INDEX}}", "\n".join(matrix_index) or "- No passport matrix bundled; the passport power route uses benefit rules only."))
+    # The package carries no country facts: rules, fees and waiting times are researched live by the companion
+    # (references/research.md). data/ stays the directory of official pages and the eval mock's stand-in for the web.
+    (OUT / "references/official-sources.md").write_text(render_sources(sources + directory_sources(groups, option_groups, settle)))
+    skill = (SRC / "SKILL.md.tmpl").read_text()
     if "{{" in skill:
         raise BuildError("SKILL.md.tmpl has an unfilled {{...}} marker")
     (OUT / "SKILL.md").write_text(skill)
+    leaked = [p.name for p in OUT.rglob("*.md") if re.search(r"\b(USD|EUR|GBP|JPY)\s?\d", p.read_text())]
+    if leaked:
+        raise BuildError(f"country facts (fees) in the package: {leaked}")
 
     files = [p for p in OUT.rglob("*") if p.is_file()]
     total = sum(p.stat().st_size for p in files)
@@ -650,8 +620,9 @@ def build(check_links: bool, release: bool = False) -> None:
 
     n_rules = sum(len(g["rules"]) for g in groups)
     n_opts = sum(len(g["options"]) for g in option_groups)
-    print(f"built {OUT.relative_to(ROOT)}: {len(files)} files, {total / 1024:.0f} KB, {n_rules} rules, {n_opts} options, "
-          f"{len(settle)} settle-in countries, {len(matrix)} matrix passports, {len(sources)} sources")
+    print(f"built {OUT.relative_to(ROOT)}: {len(files)} files, {total / 1024:.0f} KB, source directory from data/ "
+          f"({n_rules} rules, {n_opts} options, {len(settle)} settle-in countries, {len(matrix)} matrix passports; "
+          f"none of their facts are in the package)")
     print(f"zip: {zpath.relative_to(ROOT)} ({zpath.stat().st_size / 1024:.0f} KB)")
     print(f"kit checker: {result['status']} ({result['summary']})")
     for d in result["diagnostics"]:

@@ -57,7 +57,7 @@ Not covered
 Person: name. Budget: amount or none given
 1. Option name (country)
    Opens: N new destinations: list
-   Fee: amount (about USD N). Waiting: time. Value: N per USD 100
+   Fee: amount and currency. Waiting: time. Value: new destinations per 100 of the fee currency
    Documents: have list; missing list; too old list
    Source: address (checked date)
 Suggested order: option, then option, with the reason
@@ -87,7 +87,7 @@ Moving to: country, purpose, arrival date
 Before you leave
   - Document to attest, apostille or translate
 Steps
-  1. Step - deadline - fee - documents: have, missing, too old, or not listed in the bundled data - how - source
+  1. Step - deadline - fee - documents: have, missing, too old, or not listed on the official page - how - page address and fetched date
 Housing
   - Rule or tool - source
   - Listings: the Skill cannot search live listings; it checks only listings saved on the NAS
