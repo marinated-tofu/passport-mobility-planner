@@ -37,7 +37,7 @@ services:
     profiles: [agent]
     environment:
       TZ: ${TZ:-Asia/Qatar}
-      VNC_PASSWORD: ${VNC_PASSWORD:?set VNC_PASSWORD for the browser view}
+      VNC_PASSWORD: ${VNC_PASSWORD:-}  # required: the start script refuses to run without it
       NOVNC_URL: ${NOVNC_URL:-http://localhost:6080/vnc.html}
       DOCS_DIR: /docs
       # SEARCH_URL: http://searxng:8080/search
@@ -53,7 +53,7 @@ services:
       - "6080:6080"
     volumes:
       - agent-state:/state
-      - ${DOCS_DIR:?set DOCS_DIR to the documents folder the Skill reads}:/docs
+      - ${DOCS_DIR:-./set-DOCS_DIR-to-the-documents-folder}:/docs
     shm_size: 1gb
     mem_limit: 2g
     cpus: 2.0
