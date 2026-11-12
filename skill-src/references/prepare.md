@@ -4,6 +4,8 @@ After the plan route has worked out each application, do the paperwork the NAS c
 
 When to run: whenever the user asked to plan, prepare or sort out a trip and at least one application, form or missing document is on the plan. Do not ask first: each step below changes the NAS, so the NAS asks the user to approve it. If the user only asked whether they can go or which way is cheapest, end the reply with one line offering to prepare the trip folder, and stop.
 
+Run every step that applies, one after another, even when an earlier one is waiting for approval: each creates the trip folder itself if it is missing, and the user approves each in the NAS app.
+
 Replace every slot in square brackets and capitals with real values from earlier steps before running a command; never send one with a slot left in. Keep each instruction on one line, with no angle brackets, pipes, backticks or apostrophes, and never put a document or account number in it.
 
 TRIP FOLDER is [DOCUMENTS FOLDER]/Trips/ followed by the first destination and the departure year and month, lowercase with hyphens, for example Personal/Travel/Trips/japan-2027-04.
@@ -26,7 +28,7 @@ Write one text from what you already have, then save it. It holds:
 Write it as one line of plain text: start each section with its heading and a colon, and leave out every document and account number beyond the last three characters.
 
 ```text
-delegate --target knowledge-agent --instruction 'Save the text given as a new Markdown file named trip-plan in the folder [TRIP FOLDER], putting each section that starts with a heading and a colon under its own heading. Do not overwrite an existing file. Return the saved file path. Text: [PLAN AND FORM ANSWERS]'
+delegate --target knowledge-agent --instruction 'Save the text given as a new Markdown file named trip-plan in the folder [TRIP FOLDER], creating the folder if it does not exist, and putting each section that starts with a heading and a colon under its own heading. Do not overwrite an existing file. Return the saved file path. Text: [PLAN AND FORM ANSWERS]'
 ```
 
 ## P3. Drafts of the letters the person writes
@@ -41,7 +43,7 @@ Only for documents an application asks for that are missing and that the person 
 One command for all drafts the trip needs:
 
 ```text
-delegate --target document-agent --instruction 'Using only the facts in these files: [PATHS OF THE PASSPORT, EMPLOYMENT AND BOOKING DOCUMENTS] and these trip facts: [DESTINATIONS, DATES, PURPOSE, TRAVELLERS], draft each of these: [DRAFTS NEEDED, WITH THE APPLICATION EACH IS FOR]. Write (to fill) where a fact is missing; never invent one. Leave out every document and account number. Save each draft as a new file in the folder [TRIP FOLDER] named draft followed by its kind, without overwriting a file. Return each saved file path.'
+delegate --target document-agent --instruction 'Using only the facts in these files: [PATHS OF THE PASSPORT, EMPLOYMENT AND BOOKING DOCUMENTS] and these trip facts: [DESTINATIONS, DATES, PURPOSE, TRAVELLERS], draft each of these: [DRAFTS NEEDED, WITH THE APPLICATION EACH IS FOR]. Write (to fill) where a fact is missing; never invent one. Leave out every document and account number. Save each draft as a new file in the folder [TRIP FOLDER], creating the folder if it does not exist, named draft followed by its kind, without overwriting a file. Return each saved file path.'
 ```
 
 ## P4. Deadlines as a calendar file
@@ -49,7 +51,7 @@ delegate --target document-agent --instruction 'Using only the facts in these fi
 One event per dated line of the checklist that falls after today: start-by dates, passport renewal, form deadlines, departure. The person imports the file into their calendar to get the reminders; the NAS has no alerts of its own.
 
 ```text
-delegate --target file-agent --instruction 'Create a new file named trip-deadlines.ics in the folder [TRIP FOLDER], in iCalendar format, with one all-day event for each line here, each with a reminder 7 days before and 1 day before: [YYYY-MM-DD TITLE; YYYY-MM-DD TITLE]. Do not overwrite an existing file. Return the saved file path.'
+delegate --target file-agent --instruction 'Create a new file named trip-deadlines.ics in the folder [TRIP FOLDER], creating the folder if it does not exist, in iCalendar format, with one all-day event for each line here, each with a reminder 7 days before and 1 day before: [YYYY-MM-DD TITLE; YYYY-MM-DD TITLE]. Do not overwrite an existing file. Return the saved file path.'
 ```
 
 ## P5. Rules marked partial

@@ -93,7 +93,7 @@ TRAVEL = {"passport", "visa", "residence permit", "national id"}
 
 def pending_or(world, done, what):
     """Trip preparation changes the NAS: the gateway asks for approval unless the scenario says otherwise."""
-    st = world["overrides"].get("pack", "completed")
+    st = world["overrides"].get("pack", "waiting_approval")
     return answer("completed", done) if st == "completed" else answer(st, message=f"{what} changes NAS data and needs the user's approval.")
 
 

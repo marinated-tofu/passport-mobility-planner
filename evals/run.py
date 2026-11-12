@@ -58,8 +58,7 @@ an item passes only when the answer clearly does what it says. Reply with JSON o
 # Keys every household gets unless its file sets them (households/*.yaml list only what differs).
 HOUSEHOLD_DEFAULTS = {"documents_folder": "Personal/Travel", "photo_library": False, "secrets": [],
                       "disagreements": [], "updates_folder": "", "updates_files": [], "library_folder": "",
-                      "library": [], "overrides": {"save": "waiting_approval", "tag": "waiting_approval",
-                                                          "pack": "waiting_approval"}}
+                      "library": [], "overrides": {"save": "waiting_approval", "tag": "waiting_approval"}}
 
 
 def load_household(name: str | None) -> dict:
