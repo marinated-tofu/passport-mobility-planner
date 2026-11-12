@@ -1,6 +1,6 @@
 # Travel processes and what the evals check
 
-The Skill never books, applies, pays or submits. For each process below it does the paperwork thinking: which path applies, which documents are on the NAS, what is missing, and the dates to start each step. The person does the applying.
+The Skill and the trip companion never book, apply, pay, submit or send by themselves: the companion fills in the forms and drafts, and the person presses the buttons. For each process below it does the paperwork thinking: which path applies, which documents are on the NAS, what is missing, and the dates to start each step. The person checks every field, pays, submits and sends.
 
 Tests live in `scenarios.yaml`; the households they run against are in `household.yaml` (Maria, Philippine passport) and `households/*.yaml`.
 
@@ -10,13 +10,17 @@ Tests live in `scenarios.yaml`; the households they run against are in `househol
 | --- | --- | --- | --- |
 | 1. Read the passport | Find the passport on the NAS, read every field, check the machine readable zone against the printed page | Steps 1 to 3 of SKILL.md; check digits from `topics/document-fields.md` | every trip; misread scan in `trip-weak-ng-london`; photo of the passport in `trip-strong-jp-korea-canada` |
 | 2. Passport validity | Compare expiry with the trip: whole stay, 3 months after leaving, 6 months after arriving | `topics/entry-conditions.md` | expires before the trip in `trip-weak-in-schengen`; expires soon after in `trip-strong-sg-uk-us` |
-| 3. Entry path per country | Cheapest path that applies: a benefit from a visa or residence permit held, a visa already held, visa-free, an ETA or e-visa, then a visa | Plan route, step 1 | all trips |
-| 4. Transit | Each connection in a third country: is a transit visa needed? | `benefits/transit.md`; "not covered" when the country isn't there | Frankfurt and Houston in `trip-medium-tr-mexico-panama`; Amsterdam and Paris in `trip-weak-ng-london`; Shanghai in `trip-strong-de-japan-china` |
-| 5. Documents per application | The documents each application asks for, marked have, missing or too old | `topics/dossier-items.md` and the option file | `trip-weak-in-schengen`, `trip-medium-ph-japan` |
+| 3. Entry path per country | Cheapest path that applies: a benefit from a visa or residence permit held, a visa already held, visa-free, an ETA or e-visa, then a visa | Plan route steps 2 and 3: one live research request (`research.md`), then the paths in order | all trips |
+| 4. Transit | Each connection in a third country: is a transit visa needed? | research answer for the connection countries; "not found" when the pages say nothing | Frankfurt and Houston in `trip-medium-tr-mexico-panama`; Amsterdam and Paris in `trip-weak-ng-london`; Shanghai in `trip-strong-de-japan-china` |
+| 5. Documents per application | The documents each application asks for, marked have, missing or too old | `topics/dossier-items.md` and the research answer | `trip-weak-in-schengen`, `trip-medium-ph-japan` |
 | 6. Proof of funds | Bank statements against the reference amount, with a break-even exchange rate | Proof of funds route | `trip-weak-in-schengen`, `funds-schengen` |
 | 7. Names | Name on the ticket and visa against the passport | `topics/entry-conditions.md` | `trip-medium-mx-spain-portugal-uk` |
 | 8. Order and dates | Work back from departure: processing time plus a week for each application, one passport at a time | Plan route, "Order and timeline" | all trips |
 | 9. Verdict | Ready, needs action (with start-by dates), or not possible for these dates | Plan route, "Verdict" | all trips |
+| 10. Trip folder | Copies of every document the applications ask for | `prepare.md` P1, waits for approval in the NAS app | trip scenarios |
+| 11. Form answers and drafts | Every form field the documents answer; cover letter, itinerary, employer and host letters with (to fill) gaps | P2, P3 | trip scenarios |
+| 12. Deadlines | Calendar file with reminders 7 days and 1 day before | P4 | trip scenarios |
+| 13. Trip queue | One item per application, booking, comparison, letter request and open check, for the companion | P6; the companion's queue page, form fill and Send gate | `tests/test_agent.py` (fake form, fake mail) |
 
 ## 2. Consular visa (Schengen C, UK visitor, US B1/B2, Japan short-term, Canada TRV)
 

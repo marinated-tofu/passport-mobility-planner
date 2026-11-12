@@ -12,17 +12,27 @@ stored on the NAS and answers, privately:
 - how to settle in a country: residence, ID, tax number, bank, insurance, housing, customs (settle in);
 - what expires soon, what official sources announced, and the exact official wording (expiry, updates, library).
 
-No document, bank or identity data leaves the NAS. The Skill only delegates to the NAS's own agents.
+For a trip it then does the paperwork: a trip folder with copies of the documents, the form answers, drafts of the
+letters, a calendar file of the deadlines, and a trip queue of bookings, applications and emails. The trip companion
+works through the queue: it compares prices, opens each application or booking page in a browser you can see, fills
+in the form and attaches the copies, and shows each email with a Send button. You log in, check, pay, submit and
+press Send. It never does those itself.
+
+The Skill holds no country rules. Visa rules, fees and waiting times change often, so every route asks the companion
+to read the official pages live, and answers from the dated excerpts it writes back.
+
+No document, bank or identity data leaves the NAS; research requests carry only countries, nationalities, dates and
+purpose. The Skill only delegates to the NAS's own agents.
 
 ## Layout
 
 | Path | What |
 | --- | --- |
-| `data/` | Source of truth: benefit rules, options (visas, permits, investment routes), settle-in steps, news sources. Official sources only, each with a checked date. See `data/SCHEMA.md`. |
+| `data/` | Where the official pages are: the companion's list of pages to research per country, and the eval mock's stand-in for the live web (benefit rules, options, settle-in steps, news sources, each with a checked date; see `data/SCHEMA.md`). None of its rules go into the package. |
 | `skill-src/` | Hand-written router `SKILL.md.tmpl` and workflow references. |
-| `build/build.py` | Validates the data, renders references, runs the UGREEN kit checker, zips the package. |
+| `build/build.py` | Validates the data, writes the package (workflows and a list of official page addresses, no rules), runs the UGREEN kit checker, zips it. |
 | `skill/passport-mobility-planner/` | The generated package, committed so it can be reviewed. |
-| `companion/` | Optional container for the NAS: nightly official-news watcher, rules library of official page copies, local full-text search page. |
+| `companion/` | Containers for the NAS: the trip agent (live research, price comparison, the trip queue with form filling and the Send gate), the nightly official-news watcher, and the rules library of page copies. |
 | `evals/` | Eval harness: scenarios, mock NAS agents, the context proxy for small models, results by run. |
 | `tests/` | pytest for the build, the eval mock and proxy, and the companion. |
 
@@ -43,6 +53,22 @@ UPDATES_DIR=/path/to/updates LIBRARY_DIR=/path/to/library docker compose -f comp
 
 It only fetches the public official pages the data cites (respecting robots.txt, 2 seconds between requests).
 Optional summaries use a local model through any OpenAI-compatible endpoint such as Ollama on the NAS.
+
+The trip agent is a second service:
+
+```bash
+DOCS_DIR=/path/to/documents VNC_PASSWORD=choose-one docker compose -f companion/compose.yml --profile agent up -d --build agent
+```
+
+- Research: the Skill writes `Requests/<name>.request.md` in the documents folder; the agent fetches the official
+  pages for those countries and writes `<name>.answer.md` with quoted excerpts, each with its address and the date
+  it was fetched. Countries missing from `data/` are searched through an optional SearXNG instance (`SEARCH_URL`).
+  "Where can I go" uses the community passport index, fetched the same way and labelled as screening data.
+- Trip queue: `http://<nas>:8089` lists each trip's `trip-queue.md`. Compare items list options and prices from the
+  search pages. Apply and book items open the page in the browser at `http://<nas>:6080/vnc.html`; after you log in
+  and reach the form, "Fill this page" types every field it can match from `trip-plan.md` and attaches the trip
+  folder's copies. It skips passwords, ticks, declarations and anything you already typed, and never clicks. Contact
+  items show the draft and an address box; the email goes out through your SMTP account only when you press Send.
 
 ## Evals
 
