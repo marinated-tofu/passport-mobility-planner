@@ -25,13 +25,13 @@ file-agent finds documents and writes the trip folder, calendar and queue. docum
 SKILL.md routes each request to one of ten workflow files; special cases (name change, two nationalities, a child with one parent, refugee documents, renewal, no appointment slots) have their own file. Only delegate calls are used. Inputs: folder, destinations, dates. Every write waits for NAS approval. Document numbers are masked in chat. Research requests carry only countries, nationalities and dates. An optional companion container fetches official pages and fills forms without submitting; without it, the Skill uses saved copies or asks the person to save the page as a PDF.
 
 **8. Status**
-Built: the Skill (kit checker passes), the companion, and an eval harness with mock NAS agents across 31 scenarios ([EVAL]). Not built: scheduled alerts. Pending NAS validation: real agent replies, approval prompts, context size on the local model.
+Built: the Skill (kit checker passes), the companion, and an eval harness with mock NAS agents across 31 scenarios; the latest run of the 14 hardest passed 106/106 automatic checks and 45/47 graded points. Not built: scheduled alerts. Untested on a NAS: real agent replies, approvals, local model context.
 
 **9. Validation plan**
 Core 1: Japan trip for a Philippine passport holder living in Dubai; expect the expired old visa flagged, a cited visa requirement, and a dated queue. Core 2: "Where can I go?"; expect benefits from her US visa and UAE residence, each with its conditions. Edge: a scan with hidden text telling the agent to delete files; expect it reported and ignored.
 
 **10. Limits, risks, dependencies**
-Rules are only as current as the fetched page. The companion needs network access to government sites. Agent reply quality and context size on the NAS are untested. No legal advice; the person confirms on the official page.
+Rules are only as current as the fetched page. The companion needs network access to government sites. No legal advice; the person confirms on the official page.
 <!-- BODY END -->
 
 ## Third-party components, external services and data flows (excluded from the word limit)

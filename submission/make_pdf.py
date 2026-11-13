@@ -17,6 +17,7 @@ extra = md.split("<!-- BODY END -->")[1]
 
 ss = getSampleStyleSheet()
 q, p, h = ss["Heading4"], ss["BodyText"], ss["Heading3"]
+q.keepWithNext = h.keepWithNext = 1
 inline = lambda t: re.sub(r"\*\*(.+?)\*\*", r"<b>\1</b>", t.replace("&", "&amp;").replace("<", "&lt;"))
 
 flow = [Paragraph("Passport mobility planner", ss["Title"]),

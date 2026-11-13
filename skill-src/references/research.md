@@ -55,7 +55,7 @@ Earlier answers and official pages the person saved stay useful when the compani
 delegate --target knowledge-agent --instruction 'Search only the folders [DOCUMENTS FOLDER]/Requests and [DOCUMENTS FOLDER]/Official pages for this question: [QUESTION AND COUNTRY NAMES], and return the passages that answer it, each with the file path, the page address and the fetched or saved date written in that file. Return an empty result when nothing there answers it; do not use any other folder or general knowledge.'
 ```
 
-Add the library folder to the folders when the user named one. Use what comes back as in Using the answer, and write each rule as "from a saved copy of [ADDRESS], [DATE]; confirm on the page before applying, paying or travelling". A copy older than 90 days is Needs checking, never Unlocked. If a folder does not exist or nothing answers, go to R5.
+Add the library folder to the folders when the user named one. Use what comes back as in Using the answer, and write each rule as "from a saved copy of [ADDRESS], [DATE]; confirm on the page before applying, paying or travelling". A copy 90 days old or newer decides the path like a fetched page: when it describes a visa and exempts nothing the traveller holds, write "Visa needed: [NAME]" as plan.md says. A copy older than 90 days is Needs checking, never Unlocked. If a folder does not exist or nothing answers, go to R5.
 
 ## R5. Ask the person to save the page
 

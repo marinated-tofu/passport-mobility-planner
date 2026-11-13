@@ -45,7 +45,7 @@ When the documents hold passports of two or more countries:
 - The passport used to book a flight is the one used at check-in and at the border. Say which one, and use its name and number ending in the form answers.
 - Visas and permits are linked to the passport they were issued in; say which passport each one is in.
 
-Say in the reply: each passport with its nationality, number ending and expiry; which passport to use for each destination and why, from the excerpts; book the flight and travel on that same passport; which visas and permits sit in which passport.
+Say in the reply: each passport with its nationality, number ending and expiry; which passport to use for each destination and why, from the excerpts; book the flight and travel on that same passport; one sentence per visa and residence permit naming the passport it is linked to, for example "the US visa and the residence permit are linked to the [NATIONALITY] passport" (from the passport number or nationality printed on them).
 
 ## A child travels
 
@@ -56,7 +56,7 @@ A traveller is a child when the date of birth on their passport is under 18 year
 - When the answer asks for a consent letter, draft it in prepare.md P3 from the documents (both parents' names as on their passports, the child's name and date of birth, the travel dates and destination), and add a "you" step: the parent who is not travelling signs it, with notarisation when the answer asks for it.
 - The birth certificate shows the parents' names; when it is not on the NAS, use the photo step above.
 
-Say in the reply: the child's age and passport expiry; who travels with them; that the parent who is not travelling must sign a consent letter if the answer asks for one (drafted for them), or that this is being researched; the birth certificate, or a photo of it if missing.
+Say in the reply: the child's age and passport expiry; who travels with them; one sentence naming the parent who is not travelling and saying they sign a consent letter if the rules ask for one (the Skill drafts it), whether or not the research has answered yet; the birth certificate, or a photo of it if missing.
 
 ## Refugee or stateless travel document
 
@@ -75,7 +75,7 @@ When a check fails on passport validity or free pages, or the passport expires w
 - List what is linked to the old passport number: visas in it, the residence permit or ID card, bookings. Each needs updating or carrying with the old passport, as the excerpts say; when they say nothing, it is Needs checking.
 - Queue item: kind apply, the renewal page from the answer, due the renewal's start-by date.
 
-Say in the reply: the expiry date and why it fails; renew first, before the visa; where and how from the excerpts or Needs checking; each document linked to the old passport (visas, residence permit or ID card, bookings) and what happens to it.
+Say in the reply: the expiry date and why it fails; renew first, before the visa; where and how from the excerpts, or, when the research finds nothing, the nationality's passport authority page from official-sources.md (or "find the passport office of [NATIONALITY] in [RESIDENCE COUNTRY]") with Needs checking, never a fee or time from memory; one line per document linked to the old passport (each visa, the residence permit or ID card, each booking) saying it needs updating to the new passport or carrying with the old one, or that this needs checking.
 
 ## No appointment slots
 
@@ -86,4 +86,4 @@ When the person says the visa centre or embassy has no slots before the start-by
 - Give each alternative from the excerpts with its address, and move the latest start-by date to the queue. When none fits, say the dates may need to move and give the first date that works with the waiting time.
 - Add a queue item: kind apply, title "Check for appointment slots", the booking page, due every few days until the start-by date (one item per check date, at most three).
 
-Say in the reply: that the Skill cannot see slots; each alternative from the excerpts or Needs checking; the latest date to apply, worked back from the departure date and the waiting time; that the dates may need to move; the queued slot checks.
+Say in the reply, all five every time: that the Skill cannot see slots; each alternative from the excerpts, or that they need checking; the waiting time from the excerpt and the latest date to apply, worked out as the departure date minus the waiting time minus 7 days (write the date); that the travel dates may need to move if no slot or alternative fits by then; an offer to queue up to three checks of the booking page before that date.
