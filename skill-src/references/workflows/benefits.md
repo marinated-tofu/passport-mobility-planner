@@ -23,7 +23,10 @@ From the excerpts, write each rule as what it gives (stay, purpose) and what mus
 1. Skip it when the excerpts exclude the traveller's nationality, or list "only for" nationalities that do not include it.
 2. Mark it **Unlocked** when every condition is met by a document valid today.
 3. Mark it **Needs checking** when every condition is met except one the documents cannot show, for example "visa must have been used once", "multiple-entry only" when entries are unreadable, an age limit when the date of birth is missing, or a profession list when no occupation is printed. Name the condition.
-4. Otherwise leave it out.
+4. Mark it **Needs checking**, even when every condition is met, when the excerpt calls the rule partial or says to confirm it on the page.
+5. Otherwise leave it out.
+
+Copy into each benefit every form, fee or step its excerpt names (for example a form to fill online before arrival); a benefit without them is incomplete.
 
 For each unlocked rule, find the date the benefit is lost: the earliest expiry among the documents that unlock it. If that is within 12 months, say so.
 

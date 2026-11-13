@@ -231,7 +231,7 @@ def document_agent(world, text, low):
                  and f"{name}.request.md" in c["instruction"].lower()]
         reads = [i for i, c in enumerate(calls) if c["target"] == "document-agent" and f"{name}.answer.md" in c["instruction"].lower()]
         # the companion needs one check to fetch the pages: the first read after the request finds nothing yet
-        if not asked or not [i for i in reads if i > asked[0]]:
+        if world.get("companion") is False or not asked or not [i for i in reads if i > asked[0]]:
             return answer("completed", None, "The file does not exist.")
         req = calls[asked[0]]["instruction"]
         line = re.search(r"exactly this one line:\s*(.+?)\.?\s*do not overwrite", req, re.I | re.S).group(1)
@@ -271,12 +271,15 @@ def knowledge_agent(world, text, low):
         if st != "completed":
             return answer(st, message="Creating a file on the NAS needs the user's approval.")
         return answer("completed", {"saved": f"{world['documents_folder']}/mobility-report-2026-11-07.md"})
-    if not world.get("library_folder"):
+    saved = "official pages" in low or "/requests" in low
+    lib = bool(world.get("library_folder")) and folder_in(text, world["library_folder"])
+    if not saved and not world.get("library_folder"):
         return answer("failed", message="The library folder does not exist on this NAS.")
-    if not folder_in(text, world["library_folder"]):
+    if not saved and not lib:
         return answer("waiting_user", message="Which library folder? None was named in the instruction.")
     words = set(re.findall(r"[a-z0-9]{4,}", low))
-    hits = [p for p in world["library"] if len(words & set(re.findall(r"[a-z0-9]{4,}", p["text"].lower()))) >= 3]
+    pool = (world.get("library", []) if lib else []) + (world.get("saved_pages", []) if saved else [])
+    hits = [p for p in pool if len(words & set(re.findall(r"[a-z0-9]{4,}", p["text"].lower()))) >= 3]
     return answer("completed", hits or [], "" if hits else "Nothing in the library folder answers this.")
 
 

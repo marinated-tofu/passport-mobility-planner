@@ -15,7 +15,8 @@ Do not say a folder is missing unless this command says so. Then:
 
 - Read the workflow file for the route (workflows/plan.md for a trip) and follow its checks in order.
 - This Skill holds no country rules, fees or waiting times. Each route gets them live, for the countries it needs, by the research step in [research.md](references/research.md); the workflow file says how to apply them.
-- Read the Skill's own files yourself with the Read tool, never through an agent, each once, and only by the names linked below. Never search for a Skill file.
+- When the documents or the request show a missing document, names that differ between documents, two or more nationalities, a traveller under 18, a refugee or stateless travel document, a passport that needs renewing, or no appointment slots, also read [topics/special-cases.md](references/topics/special-cases.md) and follow the matching section.
+- Read the Skill's own files yourself with the Read tool, never through an agent, each once, and only by the names linked below. Never search for a Skill file or list the Skill's folder with a shell command: Bash is only for delegate.
 
 # Goal
 

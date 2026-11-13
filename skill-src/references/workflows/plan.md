@@ -53,7 +53,7 @@ Country: name, dates there
 Connection: airport, country, date
   Covered by: document held / transit rule from the excerpt / not found, check the official page
 
-Names: each difference between the passport and a visa or booking, and what to do; or "names match"
+Names and dates of birth: compare the surname, given names and date of birth on each visa, permit and booking with the passport; each difference and what to do, or "names and dates of birth match" once both are compared
 
 Money: fees per person and household total; proof of funds: latest closing balance per currency (never add currencies) against the rule, with the break-even exchange rate when currencies differ, or "not checked" and why
 

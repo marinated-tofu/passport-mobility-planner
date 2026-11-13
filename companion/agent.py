@@ -60,7 +60,7 @@ log = logging.getLogger("agent")
 SEP = " · "
 SPLIT = re.compile(r"\s+·(?=\s|$)")  # an empty field, as in "title · · detail", stays a field
 LINE = re.compile(r"^- (?:\[([ ~x-])\] )?(.+)$")  # a line the Skill wrote has no box yet: to do
-KINDS = {"research", "compare", "apply", "book", "contact"}
+KINDS = {"research", "compare", "apply", "book", "contact", "photo"}
 MAX_PAGES_PER_COUNTRY = 8
 EXCERPTS_PER_PAGE = 6
 INDEX_URL = "https://raw.githubusercontent.com/ilyankou/passport-index-dataset/master/passport-index-matrix-iso2.csv"
@@ -119,6 +119,26 @@ def parse_queue(text: str) -> list[Item]:
         note = next((p[5:].strip() for p in parts[6:] if p.startswith("note:")), "")
         items.append(Item(m.group(1) or " ", parts[0], parts[1], parts[2], parts[3], parts[4],
                           parts[5] if len(parts) > 5 else "", note))
+    return order_dates(items)
+
+
+def order_dates(items: list[Item]) -> list[Item]:
+    """Pull a book date to 7 days before the first application, and a compare date to 3 days before its book."""
+    def day(s: str) -> dt.date | None:
+        try:
+            return dt.date.fromisoformat(s)
+        except ValueError:
+            return None
+    applies = [d for i in items if i.kind == "apply" and (d := day(i.due))]
+    for i in items:
+        if i.kind == "book" and applies and (d := day(i.due)) and d > min(applies) - dt.timedelta(days=7):
+            i.due = (min(applies) - dt.timedelta(days=7)).isoformat()
+    first = lambda i: i.url.split()[0] if i.url.split() else ""
+    books = {first(i): day(i.due) for i in items if i.kind == "book" and day(i.due)}
+    for i in items:
+        b = books.get(first(i)) if i.kind == "compare" else None
+        if b and (d := day(i.due)) and d > b - dt.timedelta(days=3):
+            i.due = (b - dt.timedelta(days=3)).isoformat()
     return items
 
 

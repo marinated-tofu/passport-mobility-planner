@@ -342,3 +342,176 @@ scenarios:
       - For Istanbul, the answer says her UAE residence does not unlock Turkey's conditional e-visa (that needs a Schengen, US, UK or Irish visa or permit) and that a Turkish visa is outside the bundled data or needs the official source.
       - The answer flags that the UAE residence permit expires on 2027-06-30 and that renewing it matters for these benefits and for returning to Dubai.
       - The answer includes a dated checklist starting now, given the trip is about six weeks away.
+
+  # Round 1 judges install the ZIP alone, without the trip companion: no research answer ever comes back.
+  - id: no-companion
+    prompt: "Can I visit Japan from 1 to 10 April 2027? My documents are in Personal/Travel."
+    world:
+      companion: false
+    must:
+      - "Japan"
+      - "Official pages|save (it|them|each page)? as (a )?PDF"
+    must_not:
+      - "15,000|JPY|five working days"
+    targets: [document-agent, knowledge-agent]
+    rubric:
+      - The answer still reports what the documents show, such as her passport expiry in 2031 and that her 2024 Japanese visa expired on 2025-01-28.
+      - The answer does not state a Japanese entry rule, fee or waiting time, and says the rules could not be checked yet.
+      - The answer gives official Japanese pages and asks her to save them as PDFs into a folder on the NAS so it can read them, or offers the companion.
+
+  - id: no-companion-saved-page
+
+    prompt: "Can I visit Japan from 1 to 10 April 2027? My documents are in Personal/Travel."
+    world:
+      companion: false
+      saved_pages: [JP]
+    must:
+      - "2026-10-20|20 Oct(ober)? 2026"
+    targets: [knowledge-agent]
+    rubric:
+      - The answer uses the saved copy of the official page and gives its date (2026-10-20), telling her to confirm it on the page.
+      - The answer says she needs a Japanese short-term visa because her 2024 visa expired on 2025-01-28.
+
+  # Messy real cases (topics/special-cases.md). The household is Maria's unless a patch says otherwise.
+  - id: missing-passport-photo
+    prompt: "Get my Japan visa application ready, I travel 1 to 10 April 2027. My documents are in Personal/Travel."
+    world:
+      remove_files: [Personal/Travel/Passport/passport-maria-reyes.pdf]
+      photo_library: false
+    must:
+      - "(?i)photo"
+      - "(?i)UGREEN app|upload"
+    must_not:
+      - "P7742196B"
+    targets: [file-agent]
+    rubric:
+      - The answer says the passport was not found and asks for a photo of the passport photo page, with how to take it (flat, all corners, no glare, the code lines readable).
+      - The answer offers uploading through the UGREEN app into the documents folder first, and the phone camera with photo backup as the other way, noting that a camera roll may also back up to a cloud service.
+      - The answer does not ask her to type the passport number or other details into the chat, and does not invent passport details.
+
+  - id: name-change
+    prompt: "I married last year and my US visa is still in my old name. Can I use it for a trip to New York in May 2027? My documents are in Personal/Travel."
+    world:
+      patch_record:
+        Personal/Travel/Visas/us-visa-b1b2.pdf:
+          holder surname: SANTOS
+    must:
+      - "SANTOS"
+      - "(?i)marriage certificate"
+    must_not:
+      - "92837465"
+    rubric:
+      - The answer flags that the US visa is in the surname SANTOS while the passport is REYES, without printing the document numbers.
+      - The answer asks for the marriage certificate (or says it is missing and asks for a photo of it) as the document linking the two names.
+      - The answer says the flight booking must use the name exactly as on the passport she travels with, and does not state a US rule on name changes unless it comes from research excerpts.
+
+  - id: dual-nationality
+    prompt: "I now have a Spanish passport too. Which passport should I use for a London trip from 5 to 12 June 2027? My documents are in Personal/Travel."
+    world:
+      add_files:
+        - path: Personal/Travel/Passport/pasaporte-maria-espana.pdf
+          kind: pdf
+          tags: []
+          modified: 2026-09-01
+          looks_like: passport
+          record:
+            document type: passport
+            issuing country: Spain
+            holder surname: REYES
+            given names: MARIA CLARA
+            nationality: ESP
+            date of birth: 1991-04-12
+            sex: F
+            place of birth: QUEZON CITY
+            document number: PAA482915
+            date of issue: 2026-08-20
+            date of expiry: 2036-08-19
+            issuing authority: DGP MADRID
+            machine readable zone: ["P<ESPREYES<<MARIA<CLARA<<<<<<<<<<<<<<<<<<<<<", "PAA4829157ESP9104129F3608194<<<<<<<<<<<<<<02"]
+    must:
+      - "(?i)spanish|spain"
+      - "(?i)philippine"
+    must_not:
+      - "PAA482915|P7742196B"
+    rubric:
+      - The answer lists both passports with their expiry dates and masked numbers.
+      - The research asks about both nationalities, and the answer says which passport gives the easier path to the UK according to the excerpts, or marks it as needing checking.
+      - The answer says to book the flight and travel with the same passport, and that her visas and UAE residence are linked to the Philippine passport.
+
+  - id: child-one-parent
+    prompt: "I am taking my son Miguel to Japan from 1 to 10 April 2027. His father is not coming. Our documents are in Personal/Travel."
+    world:
+      add_files:
+        - path: Personal/Travel/Passport/passport-miguel-reyes.pdf
+          kind: pdf
+          tags: []
+          modified: 2025-02-01
+          looks_like: passport
+          record:
+            document type: passport
+            issuing country: Philippines
+            holder surname: REYES
+            given names: MIGUEL ANTONIO
+            nationality: PHL
+            date of birth: 2018-07-09
+            sex: M
+            place of birth: DUBAI
+            document number: P5521873C
+            date of issue: 2023-01-20
+            date of expiry: 2028-01-19
+            issuing authority: PCG DUBAI
+            machine readable zone: ["P<PHLREYES<<MIGUEL<ANTONIO<<<<<<<<<<<<<<<<<<", "P5521873C2PHL1807094M2801197<<<<<<<<<<<<<<06"]
+    must:
+      - "Miguel|MIGUEL"
+      - "(?i)consent"
+    must_not:
+      - "P5521873C"
+    rubric:
+      - The answer treats Miguel as a child (born 2018) and checks his own passport validity (expires 2028-01-19).
+      - The answer asks about, or researches, the documents a child needs when travelling with one parent, and says the father must sign a consent letter if the rules ask for one, without stating a rule that is not in the excerpts.
+      - The answer asks for Miguel's birth certificate if it is not on the NAS, or lists it as needed to show the parents.
+
+  - id: refugee-travel-document
+    prompt: "Can I visit Japan from 1 to 10 April 2027? My documents are in Personal/Travel."
+    world:
+      patch_record:
+        Personal/Travel/Passport/passport-maria-reyes.pdf:
+          document type: travel document (1951 Convention)
+          issuing country: Germany
+          nationality: XXB
+          issuing authority: STADT KOELN
+    must:
+      - "(?i)refugee|1951|convention"
+    must_not:
+      - "P7742196B"
+      - "(?i)visa-free as a German"
+    rubric:
+      - The answer recognises the document as a refugee travel document issued by Germany, not a German passport, and does not apply rules for German or Philippine citizens to it.
+      - The research request describes the document as a refugee travel document rather than a nationality, or the answer says the rules for it need checking on the official Japanese page.
+      - The result is Needs checking (or a visa is needed) unless the excerpts mention this kind of document.
+
+  - id: passport-renewal
+    prompt: "I want to visit Japan from 1 to 10 April 2027. My documents are in Personal/Travel."
+    world:
+      patch_record:
+        Personal/Travel/Passport/passport-maria-reyes.pdf:
+          date of expiry: 2027-05-20
+    must:
+      - "(?i)renew"
+    must_not:
+      - "P7742196B"
+    rubric:
+      - The answer notices the passport expires on 2027-05-20, soon after the trip, and puts renewing it first, before the visa application.
+      - The answer researches or points to renewing a Philippine passport while living in the UAE, without stating a fee or waiting time that is not in the excerpts.
+      - The answer lists what is linked to the old passport (her visas, the UAE residence permit or Emirates ID, bookings) and says they need updating or carrying, or that this needs checking.
+
+  - id: no-appointment-slots
+    prompt: "The visa centre in Dubai has no appointments for the Japan visa until late March, and I fly on 1 April 2027 for ten days. What can I do? My documents are in Personal/Travel."
+    must:
+      - "(?i)appointment|slot"
+    must_not:
+      - "(?i)slots? (are|is) available|will open"
+    rubric:
+      - The answer does not claim to know slot availability.
+      - The answer looks for other ways to apply (another consulate, an accredited centre, an online visa) from the research, or says they need checking, and gives the latest workable date with the waiting time.
+      - The answer says the dates may need to move if no alternative fits, and offers to queue repeated checks of the booking page.

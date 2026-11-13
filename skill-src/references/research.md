@@ -45,11 +45,31 @@ The companion checks for requests every few seconds and needs about a minute per
 
 Stop after the third read; do not give up after the first or second.
 
-If there is still no answer:
+If there is still no answer, do every part of the route that needs only the documents (what they hold, validity dates, names, the machine readable zone check, money already on the statements), then go to R4.
 
-- do every part of the route that needs only the documents (what they hold, validity dates, names, the machine readable zone check, money already on the statements);
-- for the rules, say the research is running and that asking again in a few minutes picks up the answer;
-- if the user says the companion is not installed, or no answer has ever come back, say once that without it the rules cannot be checked here, and point to the official pages for each country in [official-sources.md](official-sources.md).
+## R4. Look for saved copies on the NAS
+
+Earlier answers and official pages the person saved stay useful when the companion is busy or not installed. Search them once:
+
+```text
+delegate --target knowledge-agent --instruction 'Search only the folders [DOCUMENTS FOLDER]/Requests and [DOCUMENTS FOLDER]/Official pages for this question: [QUESTION AND COUNTRY NAMES], and return the passages that answer it, each with the file path, the page address and the fetched or saved date written in that file. Return an empty result when nothing there answers it; do not use any other folder or general knowledge.'
+```
+
+Add the library folder to the folders when the user named one. Use what comes back as in Using the answer, and write each rule as "from a saved copy of [ADDRESS], [DATE]; confirm on the page before applying, paying or travelling". A copy older than 90 days is Needs checking, never Unlocked. If a folder does not exist or nothing answers, go to R5.
+
+## R5. Ask the person to save the page
+
+Without an answer or a saved copy, the rules cannot be checked here yet. Say so once, then make it one small job for the person:
+
+1. List the official pages for each country from [official-sources.md](official-sources.md), at most three per country, the ones whose topic matches the route.
+2. Ask them to open each page and save it as a PDF (Print, then Save as PDF) into [DOCUMENTS FOLDER]/Official pages on the NAS, from a computer or the UGREEN app.
+3. When they say the pages are saved, read them:
+
+```text
+delegate --target document-agent --instruction 'From each of these files: [PATHS OF THE SAVED PAGES], return the page address and date printed in the page header or footer, and quote every passage about [QUESTION] word for word. Return an empty result for a file with none. Do not change any file.'
+```
+
+Use the quotes as in Using the answer, with the page address and the date it was saved. If the user says the companion is not installed, say it once and still offer this route; say the companion would do the fetching for them.
 
 Never present a rule, a fee or an eligibility result without an answer behind it.
 

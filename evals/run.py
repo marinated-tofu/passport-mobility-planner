@@ -77,6 +77,12 @@ def build_world(base: dict, patch: dict | None) -> dict:
                 next(f for f in world["files"] if f["path"] == path)["record"].update(fields)
         elif key == "overrides":
             world["overrides"].update(value)
+        elif key == "add_files":
+            world["files"] += value
+            world["secrets"] = world.get("secrets", []) + [f["record"]["document number"] for f in value
+                                                         if f.get("record", {}).get("document number")]
+        elif key == "remove_files":
+            world["files"] = [f for f in world["files"] if f["path"] not in value]
         else:
             world[key] = value
     return world
@@ -212,6 +218,10 @@ def run_scenario(sc: dict, out: Path, model: str, grader: str) -> dict:
         shim.chmod(0o755)
         world = build_world(load_household(sc.get("household")), sc.get("world"))
         world["research"] = research_pages()
+        # saved_pages: [JP] stands for an official page the person saved earlier, a stand-in copy dated 2026-10-20
+        world["saved_pages"] = [{"path": f"{world['documents_folder']}/Official pages/{c.lower()}-entry.pdf",
+                                 "source": "saved by the person", "saved": "2026-10-20",
+                                 "text": world["research"].get(f"entry:{c}", "")} for c in world.get("saved_pages", [])]
         (work / "world.json").write_text(json.dumps(world, default=str))
         env = {**os.environ, "PATH": f"{work / 'bin'}{os.pathsep}{os.environ['PATH']}", "PYTHONUTF8": "1",
                "EVAL_WORLD": str(work / "world.json"), "EVAL_LOG": str(work / "calls.jsonl")}

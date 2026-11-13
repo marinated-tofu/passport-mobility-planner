@@ -239,3 +239,16 @@ def test_skill_written_queue_without_boxes_and_address_typed_on_the_page(tmp_pat
         assert sent[0]["To"] == "hr@delta.example" and "leave letter" in sent[0].get_content()
     finally:
         server.shutdown()
+
+
+def test_queue_dates_keep_compare_book_apply_order():
+    text = "\n".join([
+        "- [ ] c1 · compare · 2026-11-29 · Flights · https://flights.example/q · round trip",
+        "- [ ] b1 · book · 2027-03-20 · Flights · https://flights.example/q · after comparing",
+        "- [ ] a1 · apply · 2027-03-18 · Japan visa · https://visa.example · Maria",
+        "- [ ] p1 · photo · 2026-11-14 · Photo of the passport page · none · Personal/Travel",
+    ])
+    due = {i.id: i.due for i in agent.parse_queue(text)}
+    assert due == {"b1": "2027-03-11", "c1": "2026-11-29", "a1": "2027-03-18", "p1": "2026-11-14"}
+    late = agent.parse_queue(text.replace("2026-11-29", "2027-03-10"))
+    assert next(i for i in late if i.id == "c1").due == "2027-03-08"
