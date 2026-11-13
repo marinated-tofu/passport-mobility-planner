@@ -23,6 +23,8 @@ When a check needs a document the search did not find (a passport page, the back
 
 Never ask for the document number or other details to be typed into the chat instead.
 
+Say in the reply: which document and page; the two ways (UGREEN app upload first, phone camera with photo backup second) with the cloud backup note; that the Skill will look again when the person says it is there.
+
 ## Names differ between documents
 
 The dossier comparison finds them (a married name, a missing middle name, a different spelling or order).
@@ -31,6 +33,8 @@ The dossier comparison finds them (a married name, a missing middle name, a diff
 - List the document that links the names when one is on the NAS (marriage certificate, divorce decree, deed poll, a passport observations page). If none is, it goes under missing, with the photo step above.
 - Every booking and application uses the name exactly as on the passport the person travels with. Say so in the trip plan and in the form answers.
 - Add to the research question: "a visa or booking in a different name from the passport (after marriage or a name change)".
+
+Say in the reply: the two names and which documents carry them; the linking document (or that a photo of it is needed); that every booking uses the name exactly as on the passport the person travels with.
 
 ## More than one nationality
 
@@ -41,6 +45,8 @@ When the documents hold passports of two or more countries:
 - The passport used to book a flight is the one used at check-in and at the border. Say which one, and use its name and number ending in the form answers.
 - Visas and permits are linked to the passport they were issued in; say which passport each one is in.
 
+Say in the reply: each passport with its nationality, number ending and expiry; which passport to use for each destination and why, from the excerpts; book the flight and travel on that same passport; which visas and permits sit in which passport.
+
 ## A child travels
 
 A traveller is a child when the date of birth on their passport is under 18 years before the first travel date.
@@ -49,6 +55,8 @@ A traveller is a child when the date of birth on their passport is under 18 year
 - Ask who travels with the child. When one parent travels alone, or neither does, add to the research question: "documents a child needs to enter and leave when travelling with one parent or without parents (consent letter, notarisation, birth certificate)", for the destination and for the country the child leaves from.
 - When the answer asks for a consent letter, draft it in prepare.md P3 from the documents (both parents' names as on their passports, the child's name and date of birth, the travel dates and destination), and add a "you" step: the parent who is not travelling signs it, with notarisation when the answer asks for it.
 - The birth certificate shows the parents' names; when it is not on the NAS, use the photo step above.
+
+Say in the reply: the child's age and passport expiry; who travels with them; that the parent who is not travelling must sign a consent letter if the answer asks for one (drafted for them), or that this is being researched; the birth certificate, or a photo of it if missing.
 
 ## Refugee or stateless travel document
 
@@ -67,6 +75,8 @@ When a check fails on passport validity or free pages, or the passport expires w
 - List what is linked to the old passport number: visas in it, the residence permit or ID card, bookings. Each needs updating or carrying with the old passport, as the excerpts say; when they say nothing, it is Needs checking.
 - Queue item: kind apply, the renewal page from the answer, due the renewal's start-by date.
 
+Say in the reply: the expiry date and why it fails; renew first, before the visa; where and how from the excerpts or Needs checking; each document linked to the old passport (visas, residence permit or ID card, bookings) and what happens to it.
+
 ## No appointment slots
 
 When the person says the visa centre or embassy has no slots before the start-by date:
@@ -75,3 +85,5 @@ When the person says the visa centre or embassy has no slots before the start-by
 - Research the alternatives: "other places to apply for [VISA] for residents of [RESIDENCE COUNTRY] (other consulates, accredited visa centres, an online visa), and whether an earlier appointment can be requested for travel".
 - Give each alternative from the excerpts with its address, and move the latest start-by date to the queue. When none fits, say the dates may need to move and give the first date that works with the waiting time.
 - Add a queue item: kind apply, title "Check for appointment slots", the booking page, due every few days until the start-by date (one item per check date, at most three).
+
+Say in the reply: that the Skill cannot see slots; each alternative from the excerpts or Needs checking; the latest date to apply, worked back from the departure date and the waiting time; that the dates may need to move; the queued slot checks.

@@ -121,3 +121,7 @@ Report each delegation by its state:
 - waiting_approval: tell the user what will change on the NAS and wait for approval before reporting the step as done.
 
 The answer is complete when the user has the report for the chosen route, with every benefit, fee and step linked to the official page it was researched on and the fetched date, every unreadable file listed, and every unknown condition marked.
+
+# Third-party parts and AI tools
+
+This package is Markdown written for this project and calls only the UGOS expert agents. The optional trip companion container (not in this package) uses Playwright (Apache-2.0), httpx (BSD-3-Clause), PyYAML (MIT), Beautiful Soup (MIT), noVNC (MPL-2.0), websockify (LGPL-3.0) and x11vnc (GPL-2.0); it fetches public official government pages and the community passport index (ilyankou/passport-index-dataset, MIT), sending only country codes, nationalities, dates and purpose. The Skill was written with help from AI coding assistants (Claude Code).

@@ -32,7 +32,7 @@ Destinations and dates, or "anywhere" with a date range; the travellers; budget 
    - an excerpt that lets the traveller in with what they hold (visa-free, visa on arrival, or a visa or residence permit of another country): write each of its conditions as a numbered check with yes or no and the dates; it applies only if every answer is yes;
    - a visa already held for that country, valid for the whole stay with enough entries;
    - the passport index entry for visa-free or visa on arrival, marked "from the passport index, confirm on the official page";
-   - an electronic travel authorisation or e-visa in the excerpts, then a visa in the excerpts;
+   - an electronic travel authorisation or e-visa in the excerpts, then a visa in the excerpts. When the excerpts describe a visa for the trip's purpose and none of them exempts the traveller's nationality, visas or residence, the path is that visa: write "Visa needed: [NAME]" plainly, not Needs checking, and add the page that lists exempt nationalities to confirm. An eligibility line such as "nationals who are not visa-exempt" with no visa-free rule naming the traveller's nationality means the traveller needs the visa; never turn it into "exemption not established";
    - nothing in the answer: "not found on the official pages", with the country's address in official-sources.md. Never call a country visa-free for a nationality unless an excerpt or the passport index says so.
 4. Each connection in a third country: a visa or residence permit held for that country covers it (name the document); else the transit rules in the excerpts; else "transit rules not found, check the official page". Never call a connection fine without one of these. When an excerpt describes a stopover programme at a hub on the route, offer it as a free extra city with its conditions.
 5. Dates: start-by date for each application = departure date minus its waiting time minus 7 days. Applications that keep the passport go one after another. If a passport must be renewed first, it comes before every application tied to the passport (an ETA or e-visa ends with the passport it was issued on).
@@ -60,7 +60,7 @@ Country: name, dates there
   Path: what the excerpt gives (stay) and under which name, or "not found on the official pages"
   Checks: each numbered condition from the excerpt, with yes or no and both dates compared; one no means take the next path
   Also required: forms to fill and caveats from the excerpts (for example an arrival form); for anything the excerpts leave open, "confirm on the source"
-  Fee and waiting time: from the excerpt, or "not stated on the official page"
+  Fee, waiting time and where to apply: copy the excerpt's fee, waiting time and "How to apply" line word for word (for example "at an embassy or consulate, or online where available"), or "not stated on the official page"
   Documents: have / missing / too old
   Source: page address (fetched date)
 

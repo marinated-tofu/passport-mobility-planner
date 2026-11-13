@@ -1,35 +1,42 @@
-# Passport mobility planner: Round 1 proposal (draft)
+# Passport mobility planner: Round 1 proposal
 
-Paste into a PDF (under 1 MB). Body below is the ten answers; count them with `wc -w` on the section between the markers.
+Track: Automate Your Workflow. Body below is the ten answers (500-word limit); count them with `wc -w` on the section between the markers.
 
 <!-- BODY START -->
-**1. What does your Skill do?**
-It reads the passports, visas, permits and bank statements on the NAS and privately tells a household what they unlock, which document to get next, and what is expiring.
+**1. What does the Skill do?**
+It reads the passports, visas and permits on the NAS, checks today's official rules, and prepares every step of a trip or visa application, leaving the person only to check, pay, submit and send.
 
 **2. Target user and problem**
-Expat families keep scans of passports, permits and visas in a folder. Working out where they can travel, what to apply for next, or whether savings meet a visa's funds rule means reading many official pages. Uploading scans to a cloud chatbot is a privacy risk.
+Expat families keep passport and visa scans on the NAS. One trip means reading embassy pages, comparing expiry dates, filling the same form fields, drafting letters and chasing deadlines. Uploading passports to a cloud chatbot is a privacy risk.
 
 **3. Solution**
-Official rules are bundled in the Skill (entry, transit, permits, settle-in steps, each with a source and checked date). The Skill finds the documents, has the NAS agents read them, and applies the rules as numbered checks.
+The NAS agents read the documents. Rules are never stored in the Skill, because they change: each answer quotes the official page with its address and date. The Skill turns rules into yes/no checks against the documents, then prepares a trip folder and a queue of bookings, applications and emails for the person to approve.
 
-**4. Main user flow**
-The user names a folder and asks, for example, "Can we go to Japan in March?". The Skill lists the documents, extracts holders, expiry dates and permit types, checks each rule in order, and replies with a verdict per person and the official wording. Saving a report waits for approval.
+**4. Core user flow**
+"I want to visit Japan 1-10 April." The Skill finds and reads the documents, checks the passport's machine readable zone, gets the rules, says what is needed and what is missing, then writes form answers, a cover letter, an itinerary, a deadline calendar and the trip queue. The person approves each save, books, submits and pays.
 
-**5. Difference from existing tools**
-Visa checkers need typed-in data for one passport. Cloud chatbots need uploads and guess rules from memory. This runs on the NAS, reads the real documents, cites bundled official sources, and sends no document or bank data out.
+**5. Difference**
+Visa checkers need typed-in data for one passport. Chatbots need uploads and guess rules from memory. This reads the real documents on the NAS, quotes dated official pages, covers the whole household, and never books, pays or sends by itself.
 
-**6. UGREEN AI NAS features used**
-file-agent finds documents (step 1). document-agent reads them (step 2). knowledge-agent searches saved notes. photo-agent handles scanned images. Document numbers come back masked.
+**6. NAS capabilities**
+file-agent finds documents and writes the trip folder, calendar and queue. document-agent extracts fields and reads research answers. photo-agent reads phone photos of documents, including ones the Skill requests when a document is missing. knowledge-agent saves the plan and searches saved official pages.
 
 **7. Technical approach**
-A short router SKILL.md sends each request to one workflow file (dossier, plan, next document, proof of funds, settle in, expiry, updates). Small country files fit a 4B model in 32K context. Inputs: folder, destinations, dates. Permissions: read-only; saves after approval. An optional container on the NAS fetches public official pages nightly and offers full-text search.
+SKILL.md routes each request to one of ten workflow files; special cases (name change, two nationalities, a child with one parent, refugee documents, renewal, no appointment slots) have their own file. Only delegate calls are used. Inputs: folder, destinations, dates. Every write waits for NAS approval. Document numbers are masked in chat. Research requests carry only countries, nationalities and dates. An optional companion container fetches official pages and fills forms without submitting; without it, the Skill uses saved copies or asks the person to save the page as a PDF.
 
-**8. Built, not built, to test**
-Built: the package (validated by the UGREEN kit checker), rules data, nine trip workflows, the companion container, and an eval harness with mock NAS agents (large model: rubric 53/53, hard checks 100/101; 4B model: 66/74 hard checks). Not built: live rule refresh inside the Skill. Untested on a real NAS: real agent replies, folder permissions, context limit.
+**8. Status**
+Built: the Skill (kit checker passes), the companion, and an eval harness with mock NAS agents across 31 scenarios ([EVAL]). Not built: scheduled alerts. Pending NAS validation: real agent replies, approval prompts, context size on the local model.
 
-**9. Finalist testing**
-Core test 1: a three-person household, medium-strength passports, a trip to Japan; expect a verdict per person with the dated rule. Core test 2: a bank statement against a proof-of-funds rule; expect a pass or fail with margin and masked account numbers. Edge case: a scan with hidden text telling the agent to delete files; expect it ignored and reported.
+**9. Validation plan**
+Core 1: Japan trip for a Philippine passport holder living in Dubai; expect the expired old visa flagged, a cited visa requirement, and a dated queue. Core 2: "Where can I go?"; expect benefits from her US visa and UAE residence, each with its conditions. Edge: a scan with hidden text telling the agent to delete files; expect it reported and ignored.
 
 **10. Limits, risks, dependencies**
-Rules change; each carries a checked date and users are told to confirm officially. No live prices, booking or legal advice. Depends on agent reply quality and context size. Third-party (build, tests and companion only): PyYAML, pycountry, httpx, BeautifulSoup, pytest, all open source; rules are paraphrased from government sources linked in the data files.
+Rules are only as current as the fetched page. The companion needs network access to government sites. Agent reply quality and context size on the NAS are untested. No legal advice; the person confirms on the official page.
 <!-- BODY END -->
+
+## Third-party components, external services and data flows (excluded from the word limit)
+
+- The Skill package itself contains only Markdown written for this project and calls only the UGOS expert agents.
+- Companion container (optional, outside the Skill package): Python, Playwright (Apache-2.0), httpx (BSD-3-Clause), PyYAML (MIT), Beautiful Soup (MIT), noVNC (MPL-2.0), websockify (LGPL-3.0), x11vnc (GPL-2.0), Xvfb and Fluxbox (MIT-style). Development only: pytest (MIT), uv.
+- External services: the companion fetches public official government pages listed in references/official-sources.md, and the community passport index CSV (ilyankou/passport-index-dataset, MIT) for scores. Requests sent out carry country codes, nationalities, dates and purpose only. Document contents, names and numbers never leave the NAS.
+- AI tools: the Skill was written with help from AI coding assistants (Claude Code). Evals ran the Skill on hosted models through a local proxy; on the NAS it runs on the model UGOS provides.

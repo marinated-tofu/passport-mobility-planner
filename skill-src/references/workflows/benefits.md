@@ -18,6 +18,8 @@ Follow research.md with topic entry. Countries: the ones the user asked about; w
 
 ## Match each rule
 
+Read the whole answer yourself; never ask an agent to pick rows out of it. Go through it row by row and keep every row whose "unlocked by" names a document a traveller holds: a visa issued by a country they hold a visa from, a residence permit issued by their residence country, or their nationality. Write the kept rows as a list, one per country, before deciding any of them; a long answer usually unlocks ten or more countries, so do not stop after the first few.
+
 From the excerpts, write each rule as what it gives (stay, purpose) and what must hold for it ("unlocked by"). For each rule:
 
 1. Skip it when the excerpts exclude the traveller's nationality, or list "only for" nationalities that do not include it.
