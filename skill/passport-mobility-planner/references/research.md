@@ -61,7 +61,7 @@ Add the library folder to the folders when the user named one. Use what comes ba
 
 Without an answer or a saved copy, the rules cannot be checked here yet. Say so once, then make it one small job for the person:
 
-1. List the official pages for each country from [official-sources.md](official-sources.md), at most three per country, the ones whose topic matches the route.
+1. List the official pages for each country from the country's file listed in [official-sources.md](official-sources.md) (sources/a-c.md and so on; open only the files for the countries asked about), at most three per country, the ones whose topic matches the route.
 2. Ask them to open each page and save it as a PDF (Print, then Save as PDF) into [DOCUMENTS FOLDER]/Official pages on the NAS, from a computer or the UGREEN app.
 3. When they say the pages are saved, read them:
 

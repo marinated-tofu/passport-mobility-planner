@@ -1,6 +1,6 @@
 [project]
 name = "passport-benefits-tracker"
-version = "0.4.0"
+version = "0.4.1"
 description = "UGREEN AI NAS Skill: passport profile, travel benefits and official rule updates, built from verified data"
 requires-python = ">=3.11"
 dependencies = [

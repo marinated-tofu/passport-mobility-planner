@@ -55,7 +55,7 @@ Pick one route from what the user asked, then read only the files listed for it.
 | What changed, any news for my passport or destination | Updates | [workflows/updates.md](references/workflows/updates.md), [official-sources.md](references/official-sources.md) |
 | Search the saved copies of official pages | Library search | [workflows/library.md](references/workflows/library.md) |
 
-Use [official-sources.md](references/official-sources.md), a list of official page addresses by country with no rules in it, whenever an answer tells the user to confirm a rule or the research found nothing.
+Use [official-sources.md](references/official-sources.md), an index of official page addresses by country with no rules in it, whenever an answer tells the user to confirm a rule or the research found nothing. It points to one file per first letter; open only the one for the country: [A-C](references/sources/a-c.md), [D-I](references/sources/d-i.md), [J-N](references/sources/j-n.md), [O-S](references/sources/o-s.md), [T-Z](references/sources/t-z.md).
 
 # Workflow
 

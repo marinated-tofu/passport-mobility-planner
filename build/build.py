@@ -517,23 +517,42 @@ def render_matrix_chunk(chunk: list[tuple[str, dict]], when: str) -> str:
     return "\n".join(parts)
 
 
-def render_sources(sources: list[dict]) -> str:
+SOURCE_SPLITS = [("a-c", "ABC"), ("d-i", "DEFGHI"), ("j-n", "JKLMN"), ("o-s", "OPQRS"), ("t-z", "TUVWXYZ")]
+
+
+def source_file(name: str) -> str:
+    """Which alphabetical file a country goes in; "any EU state" and the like go with t-z's neighbours by their first letter."""
+    first = name[:1].upper()
+    return next((f for f, letters in SOURCE_SPLITS if first in letters), SOURCE_SPLITS[-1][0])
+
+
+def render_sources(sources: list[dict]) -> dict[str, str]:
+    """official-sources.md (an index) plus one address file per letter range, so a lookup reads one small file."""
     by_country = defaultdict(list)
     for s in sources:
         by_country[country_name(s["country"])].append(s)
-    parts = ["# Official sources", "",
-             "Addresses only, by country: where the companion researches rules and where the person confirms them. "
-             "This file holds no rules, fees or waiting times; those are fetched live (research.md).", "",
-             "## Contents", "", ", ".join(sorted(by_country)), ""]
+    files = {f: [] for f, _ in SOURCE_SPLITS}
     for name in sorted(by_country):
-        parts += [f"## {name}", ""]
+        part = files[source_file(name)]
+        part += [f"## {name}", ""]
         for s in sorted(by_country[name], key=lambda s: s["topic"] if s.get("topic") else ""):
             topic = f" ({s['topic']})" if s.get("topic") else ""
             line = f"- {s['owner']}{topic}: {s['url']}"
-            if line not in parts:
-                parts.append(line)
-        parts.append("")
-    return "\n".join(parts)
+            if line not in part:
+                part.append(line)
+        part.append("")
+    out = {}
+    index = ["# Official sources", "",
+             "Addresses only, by country: where the companion researches rules and where the person confirms them. "
+             "No rules, fees or waiting times are kept here; those are fetched live (research.md). "
+             "Open only the file for the country's first letter.", ""]
+    for f, letters in SOURCE_SPLITS:
+        names = [n for n in sorted(by_country) if source_file(n) == f]
+        index += [f"- [sources/{f}.md](sources/{f}.md): {', '.join(names)}"]
+        out[f"sources/{f}.md"] = "\n".join([f"# Official sources {f.upper()}", "",
+                                            "Addresses only; no rules. Index: official-sources.md.", ""] + files[f])
+    out["official-sources.md"] = "\n".join(index + [""])
+    return out
 
 
 def directory_sources(groups, option_groups, settle) -> list[dict]:
@@ -585,7 +604,9 @@ def build(check_links: bool, release: bool = False) -> None:
     expand_includes(OUT / "references")
     # The package carries no country facts: rules, fees and waiting times are researched live by the companion
     # (references/research.md). data/ stays the directory of official pages and the eval mock's stand-in for the web.
-    (OUT / "references/official-sources.md").write_text(render_sources(sources + directory_sources(groups, option_groups, settle)))
+    for rel, text in render_sources(sources + directory_sources(groups, option_groups, settle)).items():
+        (OUT / "references" / rel).parent.mkdir(parents=True, exist_ok=True)
+        (OUT / "references" / rel).write_text(text)
     skill = (SRC / "SKILL.md.tmpl").read_text()
     if "{{" in skill:
         raise BuildError("SKILL.md.tmpl has an unfilled {{...}} marker")
