@@ -130,6 +130,8 @@ The same nine trips score 29/45 on GPT-6.1-Sol (`2026-11-07-2015`, build 0.3.1).
 
 Both miss ETIAS on the Mexico trip and the passport-expiry point on the Singapore trip. `--skill-endpoint` and `--grader-endpoint` point either side at any Anthropic-compatible server; `$EVAL_AUTH_TOKEN` is sent as its bearer token. Each report records the model named in the replies and Claude Code's credential source. Between runs of one build, nine trips move by about two rubric points, so the last three builds are not clearly apart. The 4B's remaining failures are reasoning and reading: it reads the right country file and still skips a condition (Georgia's one-year permit rule, Mexico's FMMd form), leaves transit unassessed, opens country files that are not on the route, and retries Read on NAS paths until the context runs out.
 
+Version 0.4.3 (15 Nov) saves the apply route's folder under `Trips/` instead of `Applications/`. The companion and the choose route read queues only under `Trips/`, so an application's queue was never worked.
+
 Version 0.4.2 (15 Nov) adds the choose route and the pick step in the companion. A compare item now saves its options as `- o1 · name · when · price · link` lines in `compare-<id>.md`; the booking item that goes with it waits until a pick. The pick comes from the Pick button on the queue page or from a `pick-<id>.md` file the Skill saves through file-agent, and the companion then points the booking at the picked option and opens it. Links that leave the search site are replaced by the search address. The itinerary is drafted for every visa application and redrafted after a pick.
 
 0.4.2 also adds:
