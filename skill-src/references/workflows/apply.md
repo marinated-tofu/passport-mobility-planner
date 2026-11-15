@@ -14,7 +14,7 @@ From the request: the country, the visa or permit as the person names it ("work 
 
 ## A2. Research
 
-One request (research.md) with topic visas (topic settle for permanent residence or citizenship), the country, the nationality, residence and visas held, the start date and the purpose, and the question "eligibility, documents required and how recent each must be, police certificates from which countries, medical exam, translation and apostille or legalisation, proof of funds or income and how it is worked out for this household, insurance, where and when to apply (earliest and latest dates, from inside or outside the country), fee, processing time, biometrics or interview, what to do after arrival and by when, absence limits and renewal". Wait for the answer as research.md says.
+One request (research.md) with topic visas (topic settle for permanent residence or citizenship), the country, the nationality, residence and visas held, the start date and the purpose, and the question "eligibility, documents required and how recent each must be, police certificates from which countries, medical exam, translation and apostille or legalisation, proof of funds or income and how it is worked out for this household, insurance, where and when to apply (earliest and latest dates, from inside or outside the country), fee, processing time, biometrics or interview, what to do after arrival and by when, absence limits and renewal, what the form asks (work, travel and family history), invitation or sponsor letter fields, photo and fingerprints, registration after arrival". Wait for the answer as research.md says.
 
 ## A3. Eligibility
 
@@ -29,20 +29,20 @@ Each condition in the excerpts becomes a numbered check: yes, no or needs checki
 
 ## A4. Documents
 
-One line per item in the excerpts, for the applicant and for each family member: have (file, issue date, age in days) / missing / too old / not usable and why. Run the checks for long-stay applications in topics/dossier-items.md (police certificates per country lived in, medical certificate, apostille or legalisation, translation, insurance, family dates) and compare every name with the passport. Bank statements: the Flag and Compare rules in workflows/funds.md. Family members need their own passport and the certificate that links them to the applicant.
+One line per item in the excerpts, for the applicant and for each family member: have (file, issue date, age in days) / missing / too old / not usable and why. Run the checks for long-stay applications in topics/dossier-items.md (police certificates per country lived in, medical certificate, apostille or legalisation, translation, insurance, family dates) and the checks in topics/application-forms.md that the excerpt names and compare every name with the passport. Bank statements: the Flag and Compare rules in workflows/funds.md. Family members need their own passport and the certificate that links them to the applicant.
 
 ## A5. Timeline
 
 Work back from the start date, or for a renewal from the window the excerpt gives before the permit expires:
 
-- apply by: start date minus the processing time minus 14 days, never earlier than the earliest date the excerpt allows; check it by counting back;
+- apply by: start date minus the processing time minus 14 days, never earlier than the earliest date the excerpt allows; check it by counting back. When no excerpt gives a processing time, write "apply by: processing time not stated, apply as soon as the documents are ready" and still date the documents below;
 - documents that take time come first, in order: get it, then apostille or legalise it, then translate it. Use waiting times only from excerpts, else "time not stated";
 - a document with a maximum age must be issued between (apply by minus its maximum age) and the apply by date: give both dates, so it is not ordered too early;
 - after arrival: each registration or residence permit deadline from the excerpt, counted from the arrival date.
 
 ## A6. Prepare on the NAS
 
-Follow prepare.md, with these changes. TRIP FOLDER is [DOCUMENTS FOLDER]/Applications/ followed by the country, the visa or permit and the start year and month, lowercase with hyphens, for example Personal/Travel/Applications/portugal-remote-work-2027-03. P2 form answers are for this application. P3 drafts: a cover letter (purpose, plans, ties, who pays), a request to the employer or school for the letter the excerpt asks for, a sponsor or invitation letter when there is a sponsor, and a day-by-day itinerary only when the form asks for one. P4 calendar: every A5 date. P6 queue: an apply item for the application page, a book item for an appointment or biometrics, contact items for each letter request, and compare items only for insurance when the rule asks for a policy.
+Follow prepare.md, with these changes. TRIP FOLDER is [DOCUMENTS FOLDER]/Applications/ followed by the country, the visa or permit and the start year and month, lowercase with hyphens, for example Personal/Travel/Applications/portugal-remote-work-2027-03. P2 form answers are for this application. P3 drafts: a cover letter (purpose, plans, ties, who pays), a request to the employer or school for the letter the excerpt asks for, a sponsor or invitation letter when there is a sponsor, and a day-by-day itinerary only when the form asks for one. P4 calendar: every A5 date. Report each save as saved or waiting for your approval in the NAS app; for one that waits, never write "I drafted" or "I created", write "drafted, waiting for your approval". P6 queue: an apply item for the application page, a book item for an appointment or biometrics, contact items for each letter request, and compare items only for insurance when the rule asks for a policy.
 
 ## Reply
 

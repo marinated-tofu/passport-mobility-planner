@@ -573,6 +573,39 @@ scenarios:
       - The answer flags at least one option that does not fit the 1 to 10 April stay, such as the Etihad flight leaving on 2 April or the Asakusa hotel checking out on 9 April.
       - The answer says she still signs up or logs in, pays and books on the site herself, and that the pick file is waiting for her approval in the NAS app rather than saved.
 
+  - id: trip-strict-china
+    prompt: "I want to visit Shanghai and Beijing from 5 to 15 May 2027. My documents are in Personal/Travel. Sort out everything I need to do."
+    world:
+      research:  # eval stand-in for the official pages, worded after the China embassy and NIA pages of Nov 2026
+        entry:CN: |
+          ### Tourist visa (L) - cn-l-visa
+
+          - Document: visa
+          - Who needs it: nationals not listed for visa-free entry; the Philippines is not listed
+          - Where to apply: "Apply in the country where you live, at the Chinese embassy, consulate or visa centre whose district covers your address. Applicants who are not nationals of that country must show proof of legal residence there."
+          - Passport: "valid for more than six months, with at least two blank visa pages"
+          - Documents: "online application form with photo; passport bio-page; the latest Chinese visa, if any; proof of legal residence; a round-trip air ticket booking and hotel reservation, or an invitation letter from a person or entity in China"
+          - Application form: "work history for the past five years, travel to other countries in the past 12 months, all family members including those not travelling, and questions on earlier refusals, overstays and criminal records"
+          - Fingerprints: "applicants aged 14 to 70 give ten fingerprints in person when submitting"
+          - When to apply: "no earlier than three months before the planned entry"
+          - Processing time: "5 working days"
+          - After arrival: "Foreigners staying outside hotels must register with the local police within 24 hours of arrival; hotels register their guests."
+          - Source: https://consular.mfa.gov.cn/VISA/
+          - Checked: 10 Nov 2026, verified
+    must:
+      - "(?i)China|Chinese"
+      - "(?i)fingerprint|biometric|register|registration"
+      - "(?i)work history|employment history|Falcon"
+    must_not:
+      - "(I have|I've) (booked|applied|submitted)"
+    targets: [file-agent, document-agent]
+    rubric:
+      - The answer says she needs a Chinese tourist (L) visa for her Philippine passport, applied for in the UAE where she legally lives, with her UAE residence (valid until 14 January 2028) as proof.
+      - The answer gives dates from the excerpt for 5 May 2027 - no earlier than about 5 February 2027, and a start-by date that leaves 5 working days plus margin (about 21 April 2027 or earlier) - without inventing other waiting times.
+      - The answer says the return flight and the hotel bookings for China (or an invitation letter) are not on the NAS; the flight saved is Dubai to Lisbon.
+      - The answer drafts or lists the form's histories from the documents (work at Falcon Cloud Systems since 1 February 2022; earlier visas such as the 2025 Schengen and 2024 Japan visas, marked as possibly incomplete) and leaves the refusal, overstay and criminal record questions for her to answer.
+      - The answer mentions the in-person fingerprints when submitting, or registering with the police within 24 hours when not staying in a hotel.
+
   - id: residence-expires-mid-trip
     prompt: "I want to visit Japan from 1 to 10 April 2027. My documents are in Personal/Travel. Sort out everything I need to do."
     world:
@@ -602,7 +635,8 @@ scenarios:
           - Document: residence visa
           - Required documents: passport valid at least 3 months after the planned stay; work contract or employer declaration of remote work; proof of tax residence; proof of means of subsistence; health insurance valid in Portugal covering the stay; criminal record certificate
           - Proof of funds: "average monthly income over the last three months of at least four times the national minimum wage (EUR 920 in 2026)"
-          - Criminal record: "Criminal record certificate from the country of nationality and from any country where the applicant has lived for more than one year, not required under 16"
+          - Criminal record: "Criminal record certificate from the country of nationality and from any country where the applicant has lived for more than one year, issued less than 3 months before the application, not required under 16"
+          - Processing time: "a decision within 60 days of a complete application"
           - How to apply: at the Portuguese consulate for the applicant's country of legal residence, with proof that the residence status there lasts beyond the visa's expiry
           - Source: https://vistos.mne.gov.pt/en/national-visas/necessary-documentation/residency
           - Checked: 07 Nov 2026, verified
@@ -673,5 +707,5 @@ scenarios:
       - The answer says a criminal record certificate from the Philippines is missing and that the UAE police clearance from 3 June 2026 may be too old, or asks how recent it must be.
       - The answer flags that the Daman insurance covers only the United Arab Emirates and ends on 31 January 2027, so a policy valid in Portugal is needed.
       - The answer checks that her UAE residence lasts beyond the visa, as the excerpt asks for, using its expiry of 14 January 2028, or says how long the visa runs is not stated.
-      - The answer gives a dated timeline back from 10 March 2027 with an apply-by date and when to get the police certificates, without inventing processing times the excerpt does not give.
+      - The answer gives a dated timeline back from 10 March 2027 with the 60-day processing time from the excerpt, an apply-by date of about 26 December 2026 (10 March minus 60 days minus a margin), and police certificates issued no earlier than three months before the application (about 26 September 2026), without inventing other waiting times.
       - The answer prepares the application on the NAS (folder, form answers, drafts, calendar or queue) with each save reported as waiting for approval, and never says it applied or paid.
