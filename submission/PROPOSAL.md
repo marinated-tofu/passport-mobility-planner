@@ -10,19 +10,19 @@ It reads the passports, visas and permits on the NAS, checks today's official ru
 Expat families keep passport and visa scans on the NAS. One trip means reading embassy pages, comparing expiry dates, filling the same form fields, drafting letters and chasing deadlines. Uploading passports to a cloud chatbot is a privacy risk.
 
 **3. Solution**
-The NAS agents read the documents. Rules are never stored in the Skill, because they change: each answer quotes the official page with its address and date. The Skill turns rules into yes/no checks against the documents, then prepares a trip folder and a queue of bookings, applications and emails for the person to approve.
+Rules are never stored in the Skill, because they change: each answer quotes the official page with its address and date. The Skill turns rules into yes/no checks against the documents, then prepares a trip folder and a queue of bookings, applications and emails to approve.
 
 **4. Core user flow**
-"I want to visit Japan 1-10 April." The Skill finds and reads the documents, checks the passport's machine readable zone, gets the rules, says what is needed and what is missing, then writes form answers, a cover letter, an itinerary, a deadline calendar and the trip queue. The person approves each save, books, submits and pays.
+"I want to visit Japan 1-10 April." The Skill reads the documents, checks the passport's machine readable zone, gets the rules, says what is needed and what is missing, then writes form answers, a cover letter, an itinerary, a deadline calendar and the trip queue. The person approves each save, books, submits and pays.
 
 **5. Difference**
 Visa checkers need typed-in data for one passport. Chatbots need uploads and guess rules from memory. This reads the real documents on the NAS, quotes dated official pages, covers the whole household, and never books, pays or sends by itself.
 
 **6. NAS capabilities**
-file-agent finds documents and writes the trip folder, calendar and queue. document-agent extracts fields and reads research answers. photo-agent reads phone photos of documents, including ones the Skill requests when a document is missing. knowledge-agent saves the plan and searches saved official pages.
+Step 1: file-agent finds the documents. Step 2: document-agent and photo-agent extract fields from scans and phone photos, including photos the Skill asks for. Step 3: document-agent reads the research answer; knowledge-agent searches saved official pages. Step 4: file-agent writes the trip folder, calendar and queue; knowledge-agent saves the plan.
 
 **7. Technical approach**
-SKILL.md routes each request to one of ten workflow files; special cases (name change, two nationalities, a child with one parent, refugee documents, renewal, no appointment slots) have their own file. Only delegate calls are used. Inputs: folder, destinations, dates. Every write waits for NAS approval. Document numbers are masked in chat. Research requests carry only countries, nationalities and dates. An optional companion container fetches official pages and fills forms without submitting; without it, the Skill uses saved copies or asks the person to save the page as a PDF.
+SKILL.md routes each request to one of ten workflow files; special cases (name change, two nationalities, a child with one parent, refugee documents, renewal, no slots) have their own file. Only delegate calls are used. Inputs: folder, destinations, dates. Model: the NAS local model; hosted models in tests. Every write waits for NAS approval. Document numbers are masked in chat. Research requests carry only countries, nationalities and dates. An optional companion container fetches official pages and fills forms without submitting; without it, the Skill uses saved copies or asks the person to save the page as a PDF.
 
 **8. Status**
 Built: the Skill (kit checker passes), the companion, and an eval harness with mock NAS agents across 31 scenarios; the latest run of the 14 hardest passed 106/106 automatic checks and 45/47 graded points. Not built: scheduled alerts. Untested on a NAS: real agent replies, approvals, local model context.
