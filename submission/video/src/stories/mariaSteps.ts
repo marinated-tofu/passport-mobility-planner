@@ -172,9 +172,9 @@ export const mariaSteps: StepsStory = {
     {
       kind: 'shot', short: 'Queue page', who: 'companion', title: 'The queue page on the NAS', src: 'shots/queue-page.png', width: 1600, height: 1024,
       boxes: [
-        {x: 26, y: 112, w: 610, h: 42, label: 'Nothing goes out without her, and the page says so'},
-        {x: 1267, y: 315, w: 145, h: 34, label: 'Fill this page types her answers into the form she has open'},
-        {x: 1267, y: 507, w: 75, h: 34, label: 'Send is the only way an email leaves'},
+        {x: 262, y: 74, w: 474, h: 39, label: 'Nothing goes out without her, and the page says so'},
+        {x: 1019, y: 265, w: 157, h: 58, label: 'Fill this page types her answers into the form she has open'},
+        {x: 1204, y: 896, w: 94, h: 58, label: 'Send is the only way an email leaves'},
       ],
     },
     {
