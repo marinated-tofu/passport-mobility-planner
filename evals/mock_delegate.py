@@ -138,7 +138,21 @@ def research_answer(world, request_line, today):
     return "\n".join(out)
 
 
+def trip_file(world, text):
+    """Files the companion wrote in a trip folder (compare-, pick-, trip-plan), named in the instruction."""
+    return [f for f in world.get("trip_files", []) if f["path"] in text or PurePosixPath(f["path"]).name in text]
+
+
 def file_agent(world, text, low):
+    m = re.search(r"named (pick-[a-z0-9]+)\.md", low)
+    if m:
+        folder, opt = trip_folder(text), re.search(r"\bo\d+\b", low)
+        if not folder or not opt:
+            return answer("waiting_user", message="Which trip folder, and which option should the file hold?")
+        return pending_or(world, {"saved": f"{folder}/{m.group(1)}.md"}, f"Creating {m.group(1)}.md with {opt.group(0)}")
+    if "compare-" in low and world.get("trip_files") is not None and "create" not in low:
+        return answer("completed", [{"path": f["path"], "modified": f["modified"]} for f in world["trip_files"]]
+                      or [], "" if world["trip_files"] else "No matching files found.")
     m = re.search(r"named ([a-z0-9\-]+)\.request\.md", low)
     if m:
         line = re.search(r"exactly this one line:\s*(.+?)\.?\s*do not overwrite", text, re.I | re.S)
@@ -224,6 +238,8 @@ def photo_agent(world, text, low):
 
 
 def document_agent(world, text, low):
+    if trip_file(world, text) and "full text" in low:
+        return answer("completed", [{"path": f["path"], "text": f["text"]} for f in trip_file(world, text)])
     m = re.search(r"requests/([a-z0-9\-]+)\.answer\.md", low)
     if m:
         name, calls = m.group(1), earlier_calls()

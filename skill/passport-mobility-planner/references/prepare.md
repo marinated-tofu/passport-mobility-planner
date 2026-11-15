@@ -36,7 +36,7 @@ delegate --target knowledge-agent --instruction 'Save the text given as a new Ma
 Only for documents an application asks for that are missing and that the person or their employer writes, never official documents such as bank statements, certificates or insurance:
 
 - cover letter: purpose, dates, places, who pays, ties to home;
-- day-by-day itinerary: from the dates, places and bookings found;
+- day-by-day itinerary, drafted for every visa application even when the research does not name it, as most forms ask for the dates, places and address of stay it holds: one line per day from arrival to departure with the date, city, where the traveller sleeps and how they travel, the flight numbers on the arrival and departure days, and (to fill) for each booking not made yet. Its arrival date, departure date, first city of entry and address of stay must match the form answers in P2. Once the person picks a flight or hotel, the choose route (workflows/choose.md) redrafts it with the pick;
 - request to the employer for an employment or leave letter;
 - invitation letter for the host to sign, when a host is named.
 
@@ -67,7 +67,7 @@ One item per thing the person has to finish, so the companion can prepare it. Ea
   - flights: https://www.google.com/travel/flights?q=flights+from+[FROM]+to+[TO]+on+[YYYY-MM-DD]+returning+[YYYY-MM-DD] and https://www.kayak.com/flights/[FROM]-[TO]/[YYYY-MM-DD]/[YYYY-MM-DD]
   - accommodation: https://www.booking.com/searchresults.html?ss=[CITY]&checkin=[YYYY-MM-DD]&checkout=[YYYY-MM-DD]&group_adults=[NUMBER OF TRAVELLERS]
   - insurance: https://www.google.com/search?q=travel+insurance+[COUNTRY]+visa+[COVER THE RULE ASKS FOR]
-- book: one for each compare item, with the same first address, due a week before the earliest start-by date that needs the booking.
+- book: one for each compare item, with the same first address, due a week before the earliest start-by date that needs the booking. The companion holds it until the person picks one of the options it found, on the queue page or in the chat (workflows/choose.md), then opens the picked option.
 
 Work the dates back from the apply item: book is 7 days before the apply due date, compare is 3 days before that. With no apply item, book is 21 days before the trip starts. Example: apply due 2027-03-18 gives book 2027-03-11 and compare 2027-03-08. Write the items in date order.
 - contact: each draft from P3 that goes to another person (employer letter request, host invitation). Address: none. Detail: to: the address found in the documents, or to: (to fill), then draft: and the kind of draft, for example to: hr@company.example, draft: employer. Never put a document number in it.
@@ -80,7 +80,7 @@ Keep the words send, email, delete, move and rename out of every item: the NAS r
 delegate --target file-agent --instruction 'Create a new text file named trip-queue.md in the folder [TRIP FOLDER], creating the folder if it does not exist, with the first line Trip queue, then one line for each item below, each starting with a hyphen and a space followed by the item exactly as written; the items are separated by the word NEXT: [ITEMS]. Do not overwrite an existing file and do not change any other file. Return the saved file path.'
 ```
 
-Then tell the user where to finish each item: the queue page of the companion (port 8089 on the NAS), and the browser view it links to, where they log in, solve any check, press Fill this page, review every field, and submit and pay themselves.
+Then tell the user where to finish each item: the queue page of the companion (port 8089 on the NAS), and the browser view it links to, where they log in, solve any check, press Fill this page, review every field, and submit and pay themselves. For compare items, say they can ask here to see the options once the companion has searched ("show me the flight options"), pick by id, and the booking opens with the pick.
 
 ## Reporting
 

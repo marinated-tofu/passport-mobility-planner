@@ -66,7 +66,7 @@ Done on the NAS (prepare.md)
   Or "not prepared" and why
 
 In the trip queue (open the queue page, port 8089 on the NAS)
-  - due date: kind, title: what the companion prepares (compares prices / opens the page and fills the form / shows the email to send) and what is left for you (log in, check every field, pay and submit / pick and book / press Send)
+  - due date: kind, title: what the companion prepares (compares prices / opens the page and fills the form / shows the email to send) and what is left for you (log in, check every field, pay and submit / pick an option, here or on the queue page, then sign up, pay and book / press Send)
 
 Left for you, dated, starting today (date): only what neither the NAS nor the companion can do
   - date: action (appointments in person, fingerprints, photos, signing the drafts, documents only an office or a bank can issue, passport renewal)

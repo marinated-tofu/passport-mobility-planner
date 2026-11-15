@@ -8,15 +8,18 @@ stored on the NAS and answers, privately:
 - what those documents unlock right now (benefits);
 - which visa or permit to get next for the most new countries per dollar and per week of waiting (next document);
 - the cheapest, fastest document path to reach chosen countries, with a timeline (plan);
+- the flight and hotel options the companion found, to pick one in the chat (choose);
 - whether stored bank statements meet a visa's proof-of-funds rule (proof of funds);
 - how to settle in a country: residence, ID, tax number, bank, insurance, housing, customs (settle in);
 - what expires soon, what official sources announced, and the exact official wording (expiry, updates, library).
 
 For a trip it then does the paperwork: a trip folder with copies of the documents, the form answers, drafts of the
 letters, a calendar file of the deadlines, and a trip queue of bookings, applications and emails. The trip companion
-works through the queue: it compares prices, opens each application or booking page in a browser you can see, fills
-in the form and attaches the copies, and shows each email with a Send button. You log in, check, pay, submit and
-press Send. It never does those itself.
+works through the queue: it searches the booking sites and lists the flight and hotel options, holds each booking
+until you pick one, opens each application or booking page in a browser you can see, fills in the form and attaches
+the copies, and shows each email with a Send button. You pick in the Uliya chat ("flights o1, hotel o2", the choose
+route) or with the Pick button on the queue page; the Skill then redrafts the day-by-day itinerary with the picked
+flights and hotel. You log in or sign up, check, pay, submit and press Send. It never does those itself.
 
 The Skill holds no country rules. Visa rules, fees and waiting times change often, so every route asks the companion
 to read the official pages live, and answers from the dated excerpts it writes back.
@@ -121,6 +124,8 @@ The same nine trips score 29/45 on GPT-6.1-Sol (`2026-11-07-2015`, build 0.3.1).
 | 2026-11-11-1214 | Composer 2.5 (Cursor's own model) | Cursor Pro | 81/83 | 34/45 | 3/9 |
 
 Both miss ETIAS on the Mexico trip and the passport-expiry point on the Singapore trip. `--skill-endpoint` and `--grader-endpoint` point either side at any Anthropic-compatible server; `$EVAL_AUTH_TOKEN` is sent as its bearer token. Each report records the model named in the replies and Claude Code's credential source. Between runs of one build, nine trips move by about two rubric points, so the last three builds are not clearly apart. The 4B's remaining failures are reasoning and reading: it reads the right country file and still skips a condition (Georgia's one-year permit rule, Mexico's FMMd form), leaves transit unassessed, opens country files that are not on the route, and retries Read on NAS paths until the context runs out.
+
+Version 0.4.2 (15 Nov) adds the choose route and the pick step in the companion. A compare item now saves its options as `- o1 · name · when · price · link` lines in `compare-<id>.md`; the booking item that goes with it waits until a pick. The pick comes from the Pick button on the queue page or from a `pick-<id>.md` file the Skill saves through file-agent, and the companion then points the booking at the picked option and opens it. Links that leave the search site are replaced by the search address. The itinerary is drafted for every visa application and redrafted after a pick. Eval `2026-11-15-1143`: choose-options passed every hard check; two rubric misses (no "you sign up and pay" line, and a grader reading a pending save as missing) are fixed in the Skill text and rubric.
 
 Version 0.4.1 (15 Nov) splits the official page addresses into an index and five files by first letter (each 15 KB or less), so a lookup on the NAS reads one small file instead of 44 KB. The Skill text is otherwise the same as 0.4.0.
 
