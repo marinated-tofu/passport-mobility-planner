@@ -572,3 +572,106 @@ scenarios:
       - The answer shows the hotel options with prices and asks her which one to pick.
       - The answer flags at least one option that does not fit the 1 to 10 April stay, such as the Etihad flight leaving on 2 April or the Asakusa hotel checking out on 9 April.
       - The answer says she still signs up or logs in, pays and books on the site herself, and that the pick file is waiting for her approval in the NAS app rather than saved.
+
+  - id: residence-expires-mid-trip
+    prompt: "I want to visit Japan from 1 to 10 April 2027. My documents are in Personal/Travel. Sort out everything I need to do."
+    world:
+      patch_record:
+        Personal/Travel/UAE/residence-visa.pdf:
+          date of expiry: 2027-04-05
+      remove_files: [Personal/Travel/UAE/emirates-id-front-back.jpg]
+    must:
+      - "(?i)residen"
+      - "5 Apr(il)? 2027|2027-04-05|05 Apr"
+    must_not:
+      - "(I have|I've) (booked|applied|submitted)"
+    targets: [file-agent, document-agent]
+    rubric:
+      - The answer flags that her UAE residence visa expires on 5 April 2027, before she comes back on 10 April.
+      - The answer puts renewing the UAE residence visa first, before the Japan visa application or the trip, or says the application from the UAE relies on a valid residence.
+      - The answer states no UAE rule (grace period, absence limit, renewal fee) unless a research excerpt gives it.
+      - The answer still says she needs a Japanese short-term visa, as her 2024 Japanese visa expired.
+
+  - id: dossier-long-stay-pt
+    prompt: "I'm applying for Portugal's digital nomad visa from Dubai and I fly on 10 March 2027. Check my documents in Personal/Travel against what the visa asks for and tell me what's missing."
+    world:
+      research: &pt-remote-work
+        visas:PT: |
+          ### Residence visa for remote work (digital nomad) - pt-d8-remote-work (eval stand-in, not the official text)
+
+          - Document: residence visa
+          - Required documents: passport valid at least 3 months after the planned stay; work contract or employer declaration of remote work; proof of tax residence; proof of means of subsistence; health insurance valid in Portugal covering the stay; criminal record certificate
+          - Proof of funds: "average monthly income over the last three months of at least four times the national minimum wage (EUR 920 in 2026)"
+          - Criminal record: "Criminal record certificate from the country of nationality and from any country where the applicant has lived for more than one year, not required under 16"
+          - How to apply: at the Portuguese consulate for the applicant's country of legal residence, with proof that the residence status there lasts beyond the visa's expiry
+          - Source: https://vistos.mne.gov.pt/en/national-visas/necessary-documentation/residency
+          - Checked: 07 Nov 2026, verified
+        settle:PT: |
+          ### Residence visa for remote work (digital nomad) - pt-d8-remote-work (eval stand-in, not the official text)
+
+          - Criminal record: "Criminal record certificate from the country of nationality and from any country where the applicant has lived for more than one year, not required under 16"
+          - Insurance: health insurance valid in Portugal covering the stay
+          - Source: https://vistos.mne.gov.pt/en/national-visas/necessary-documentation/residency
+          - Checked: 07 Nov 2026, verified
+    must:
+      - "(?i)police|criminal record"
+      - "(?i)Philippines|Philippine|NBI"
+      - "(?i)insurance"
+    targets: [file-agent, document-agent]
+    rubric:
+      - The answer says a criminal record certificate from the Philippines (her country of nationality) is missing.
+      - The answer says the UAE police clearance (issued 3 June 2026) is there but may be too old by the time she applies, or asks how recent it must be.
+      - The answer flags the Daman health insurance as not fit for the visa, because it covers only the United Arab Emirates and ends on 31 January 2027, before she flies.
+      - The answer uses the four-times-minimum-wage income rule (EUR 3,680 a month on average) from the excerpt when it compares her payslips, or says the income could not be compared, and never invents another amount.
+      - The answer cites the official page address with its checked or fetched date.
+
+  - id: queue-in-chat
+    prompt: "I booked the Emirates flight for Japan. What's left on the trip queue? My documents are in Personal/Travel."
+    world:
+      trip_files:
+        - path: Personal/Travel/Trips/japan-2027-04/trip-queue.md
+          modified: 2026-11-15
+          text: |
+            Trip queue
+            - [x] c1 · compare · 2027-03-01 · Compare flights Dubai to Tokyo, 1 to 10 April · https://flights.example/search?q=DXB-TYO · Maria · note: picked o1: Emirates EK 318, 1 Apr 02:40 to 17:35, nonstop, AED 3,950, on 2026-11-15
+            - [~] b1 · book · 2027-03-04 · Book the flight you pick · https://flights.example/book/ek318 · Maria; picked Emirates EK 318, AED 3,950 · note: the browser view has Emirates EK 318 open; log in or sign up, reach the form, then press Fill this page
+            - [~] c2 · compare · 2027-03-01 · Compare hotels in Tokyo, 1 to 10 April · https://stays.example/search?ss=Tokyo · Maria · note: 3 options found; pick one here or in the Uliya chat, and the booking page opens with it
+            - [ ] b2 · book · 2027-03-04 · Book the hotel you pick · https://stays.example/search?ss=Tokyo · Maria · note: starts after you pick an option in Compare hotels in Tokyo, 1 to 10 April
+            - [~] a1 · apply · 2027-03-11 · Japan visa application · https://www.mofa.go.jp/j_info/visit/visa/ · Maria · note: open the browser view, log in, reach the form, then press Fill this page
+            - [-] m1 · contact · 2027-03-01 · Ask your employer for a leave letter · none · to: (to fill), draft: employer · note: skip 2026-11-15
+        - path: Personal/Travel/Trips/japan-2027-04/compare-c2.md
+          modified: 2026-11-15
+          text: |
+            # Compare hotels in Tokyo, 1 to 10 April
+            Searched 2026-11-15 on https://stays.example/search?ss=Tokyo
+            - o1 · Hotel Sakura Ginza · 1 to 10 Apr, 9 nights · AED 4,120 · https://stays.example/hotel/sakura-ginza
+            - o2 · Shinjuku Granbell · 1 to 10 Apr, 9 nights · AED 3,580 · https://stays.example/hotel/granbell
+    must:
+      - "(?i)hotel"
+      - "(?i)visa"
+    must_not:
+      - "(?i)\\bI (have )?(booked|paid|reserved|applied)\\b"
+    targets: [file-agent]
+    rubric:
+      - A file-agent call asks to create done-b1.md in Personal/Travel/Trips/japan-2027-04 (waiting for approval counts), and no done file is asked for any other item.
+      - The answer lists what is still open (pick and book the hotel, the Japan visa application) with due dates, and gives the visa page or hotel options as links in the chat.
+      - The answer does not list the skipped leave letter or the done flight comparison as open.
+      - The answer says the flight is recorded as done only once the save is approved, or that it is waiting for approval, and does not claim the hotel or the visa is done.
+
+  - id: apply-pt-remote-work
+    prompt: "Get my application for Portugal's digital nomad visa ready. I apply from Dubai and fly on 10 March 2027. My documents are in Personal/Travel."
+    world:
+      research: *pt-remote-work
+    must:
+      - "(?i)police|criminal record"
+      - "(?i)Philippines|Philippine|NBI"
+      - "(?i)apply by|start by|by \\d"
+    must_not:
+      - "(I have|I've) (booked|applied|submitted)"
+    targets: [file-agent, document-agent]
+    rubric:
+      - The answer says a criminal record certificate from the Philippines is missing and that the UAE police clearance from 3 June 2026 may be too old, or asks how recent it must be.
+      - The answer flags that the Daman insurance covers only the United Arab Emirates and ends on 31 January 2027, so a policy valid in Portugal is needed.
+      - The answer checks that her UAE residence lasts beyond the visa, as the excerpt asks for, using its expiry of 14 January 2028, or says how long the visa runs is not stated.
+      - The answer gives a dated timeline back from 10 March 2027 with an apply-by date and when to get the police certificates, without inventing processing times the excerpt does not give.
+      - The answer prepares the application on the NAS (folder, form answers, drafts, calendar or queue) with each save reported as waiting for approval, and never says it applied or paid.

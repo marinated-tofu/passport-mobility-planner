@@ -22,7 +22,9 @@ Flag:
 - statements older than the limit in the dossier items reference, or a period shorter than the rule asks for;
 - gaps between statement periods;
 - a large credit in the last 30 days of the period, which officers often question; suggest keeping proof of where it came from;
-- a balance that falls below the required amount at any point when the rule asks for a sustained balance.
+- a balance that falls below the required amount at any point when the rule asks for a sustained balance; count the period back from the closing date of the newest statement, and check that statement's age against the planned application date;
+- an overdraft or credit limit, and money that cannot be withdrawn at once (shares, pensions, locked deposits): list them, never count them as funds unless the rule says so;
+- an account in someone else's name (a parent, partner or sponsor), or a joint account: it counts only when the rule allows that person, usually with proof of the relationship and a consent or sponsor letter; mark Needs checking and list what is missing.
 
 ## Compare
 
@@ -30,6 +32,9 @@ Flag:
 - For a daily amount: daily amount times the days of the stay.
 - For a monthly income rule (common for remote work visas): compare the average of the repeating monthly credits.
 - For a one-off minimum: compare the latest closing balance and the lowest balance.
+- When the amount depends on the household (each adult, child or dependant), the city or region, or the person's age or history, compute it for this household and the plan, and show the page's formula.
+- When the page gives two figures (with and without an allowance, an older and a current table, two validity periods), use the one for the planned application date and say which.
+- When the page names the exchange-rate source and date (for example the rate on the application date), say so next to the break-even rate. When it says the funds must still be there at decision, say so.
 
 Result per rule: Meets, Does not meet (with the shortfall), or Needs checking (with what is missing).
 

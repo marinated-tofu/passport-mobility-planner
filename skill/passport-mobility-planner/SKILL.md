@@ -1,6 +1,6 @@
 ---
 name: passport-mobility-planner
-description: Reads the passports, visas, residence permits and supporting documents stored on a UGREEN NAS, researches the current official rules live, and shows what they unlock, which visa to get next, how to reach chosen countries cheaply, whether bank statements meet proof-of-funds rules, how to settle in a country, what expires soon and which official rules changed. Prepares the trip: form answers, letter drafts, an itinerary, deadlines, and a queue of bookings, applications and emails that a companion fills in for the person to check, pay, submit and send. Shows the flight and hotel options the companion found so the person picks one in the chat. Use when someone asks what is on their passport, where they can travel, which visa to get next, whether they are ready for or can afford a trip or move, how to settle in a country, what is expiring, what changed in visa or entry rules, or wants to see and pick flight or hotel options.
+description: Reads the passports, visas, permits and supporting documents on a UGREEN NAS, researches the official rules live, and shows what they unlock, which visa to get next, how to reach chosen countries cheaply, whether bank statements meet proof-of-funds rules, how to settle in a country, what expires soon and which official rules changed. Prepares trips and work, study, family and residence applications: form answers, letter drafts, an itinerary, deadlines, and a queue of bookings, applications and emails that a companion fills in for the person to check, pay, submit and send. Shows the flight and hotel options found, to pick one in the chat. Use when someone asks what is on their passport, where they can travel, which visa to get next, whether they are ready for or can afford a trip or move, how to apply for a work, study, family or residence visa or permit, how to settle in a country, what is expiring, what changed in visa or entry rules, or to pick flight or hotel options.
 ---
 
 # First move
@@ -32,7 +32,7 @@ Ask only for what the chosen route needs:
 - Photo search: yes or no. When yes, the photo library is also searched for photos of documents. When the user does not say, use no and mention that photos can be included.
 - Destinations and dates: countries and travel dates, or "anywhere" with a date range. Plan route only.
 - Budget: the most the person wants to spend on fees, with currency. Optional for the plan and next document routes.
-- Goal country and purpose: where they are moving and why (work, remote work, study, family, business). Settle-in route only.
+- Goal country and purpose: where they are moving or applying and why (work, remote work, study, family, business), and the start date. Apply and settle-in routes only.
 - Updates folder: the NAS folder where the optional library companion writes its daily update files. Updates route only.
 - Library folder: the NAS folder where the optional library companion keeps copies of official pages. Library search only, and any route that falls back to it.
 
@@ -40,15 +40,16 @@ Do not ask for passport numbers, account numbers or personal details. Read them 
 
 # Route the request
 
-Pick one route from what the user asked, then read only the files listed for it. Every route except Plan and Choose uses [report-format.md](references/report-format.md); those two have their reply templates in their own files.
+Pick one route from what the user asked, then read only the files listed for it. Every route except Plan, Apply and Choose uses [report-format.md](references/report-format.md); those three have their reply templates in their own files.
 
 | User asks | Route | Read |
 | --- | --- | --- |
-| What is on my passport, read my documents, what do I have for applications | Dossier | [workflows/dossier.md](references/workflows/dossier.md), [topics/document-fields.md](references/topics/document-fields.md), [topics/dossier-items.md](references/topics/dossier-items.md) |
+| What is on my passport, read my documents, what do I have for applications, what is missing for a visa | Dossier | [workflows/dossier.md](references/workflows/dossier.md), [topics/document-fields.md](references/topics/document-fields.md), [topics/dossier-items.md](references/topics/dossier-items.md), and [research.md](references/research.md) when a visa or country is named |
 | How strong is my passport, which passport should I use | Passport power | [workflows/passport-power.md](references/workflows/passport-power.md), [workflows/benefits.md](references/workflows/benefits.md), [research.md](references/research.md) |
 | Where can I go, what does my passport or visa get me | Benefits | [workflows/benefits.md](references/workflows/benefits.md), [research.md](references/research.md) |
 | Which visa should I get next, how do I open up more countries | Next document | [workflows/next-document.md](references/workflows/next-document.md), [workflows/benefits.md](references/workflows/benefits.md), [topics/entry-conditions.md](references/topics/entry-conditions.md), [research.md](references/research.md) |
-| Show the flight, hotel or insurance options, pick one, book what we planned | Choose | [workflows/choose.md](references/workflows/choose.md) |
+| Show the flight, hotel or insurance options, pick one, book what we planned, what is left in the trip queue, I booked or sent it | Choose | [workflows/choose.md](references/workflows/choose.md) |
+| Apply for a work, study, family, spouse, remote work, retirement or investment visa, a residence permit or its renewal, permanent residence or citizenship | Apply | [workflows/apply.md](references/workflows/apply.md), [topics/dossier-items.md](references/topics/dossier-items.md), [workflows/funds.md](references/workflows/funds.md), [research.md](references/research.md), [prepare.md](references/prepare.md) |
 | Plan a trip, cheapest way to visit these countries, are we ready to travel | Plan | [workflows/plan.md](references/workflows/plan.md), [topics/entry-conditions.md](references/topics/entry-conditions.md), [research.md](references/research.md), [prepare.md](references/prepare.md) |
 | Do my bank statements work for a visa, can I afford it | Proof of funds | [workflows/funds.md](references/workflows/funds.md), [topics/dossier-items.md](references/topics/dossier-items.md), [research.md](references/research.md) |
 | How do I settle in, what do I do after I move, open a bank account, register a business | Settle in | [workflows/settle-in.md](references/workflows/settle-in.md), [topics/dossier-items.md](references/topics/dossier-items.md), [research.md](references/research.md) |
@@ -60,7 +61,7 @@ Use [official-sources.md](references/official-sources.md), an index of official 
 
 # Workflow
 
-Every route except Choose starts with steps 1 to 3; Choose runs only step 1, then its own file. The dossier, plan, proof of funds and settle-in workflow files give steps 4 and 5; the updates, library and proof of funds files give their own commands. Each step passes only the real result returned by the previous step; never pass a guessed path or value.
+Every route except Choose starts with steps 1 to 3; Choose runs only step 1, then its own file. The dossier, plan, apply, proof of funds and settle-in workflow files give steps 4 and 5; the updates, library and proof of funds files give their own commands. Each step passes only the real result returned by the previous step; never pass a guessed path or value.
 
 The expert agents see only the instruction, not this conversation. Each command below has slots in square brackets and capitals, such as [DOCUMENTS FOLDER]. Replace every slot with the real folder or the real file paths returned earlier, comma-separated, before running the command; never send a command with a slot left in. Pass file paths, never document numbers, machine readable zone lines or account numbers, and keep every instruction on one line without angle brackets.
 
@@ -111,7 +112,7 @@ Then follow the workflow file for the chosen route. To save a report or tag file
 
 # Completion and failure
 
-When the user asks to book, apply, pay or write to someone, the plan route puts it in the trip queue (prepare.md) and the person finishes it on the queue page; the Skill never says it booked, paid, applied or sent anything. Say plainly what the Skill cannot do itself when the user asks for it: it cannot book or pay, or check live prices or fares itself (the companion searches them for the queue's compare items, and the choose route shows the options to pick from), or send texts, alerts or reminders on a schedule (the calendar file stands in for them). For rule changes, point to the updates route. Ask a question only for input the route cannot run without.
+When the user asks to book, apply, pay or write to someone, the plan or apply route puts it in the trip queue (prepare.md), and the person finishes it from the link in the chat or on the queue page; the Skill never says it booked, paid, applied or sent anything. Say plainly what the Skill cannot do itself when the user asks for it: it cannot book or pay, or check live prices or fares itself (the companion searches them for the queue's compare items, and the choose route shows the options to pick from), or send texts, alerts or reminders on a schedule (the calendar file stands in for them). For rule changes, point to the updates route. Ask a question only for input the route cannot run without.
 
 Report each delegation by its state:
 

@@ -441,7 +441,7 @@ class Agent:
         return sorted((self.docs / "Trips").glob("*/trip-queue.md"))
 
     def work(self) -> int:
-        """Apply picks made in the chat, then start every item marked to do. Returns how many changed."""
+        """Apply picks and done items saved from the chat, then start every item marked to do. Returns how many changed."""
         n = 0
         for q in self.queues():
             for f in sorted(q.parent.glob("pick-*.md")):
@@ -452,6 +452,11 @@ class Agent:
                         self.pick(q.parent, cid, oid.group(0))
                     except RuntimeError as e:
                         set_status(q, cid, "~", f"the pick in {f.name} did not work: {e}")
+                    n += 1
+            for f in sorted(q.parent.glob("done-*.md")):  # "I booked it" said in the chat, saved by the Skill
+                i = next((i for i in parse_queue(q.read_text()) if i.id == f.stem[5:]), None)
+                if i and i.status in " ~":
+                    set_status(q, i.id, "x", f"done {self.today().isoformat()}, said in the chat")
                     n += 1
             items = parse_queue(q.read_text())
             for item in items:

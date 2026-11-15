@@ -217,7 +217,8 @@ def run_scenario(sc: dict, out: Path, model: str, grader: str) -> dict:
         shim.write_text(f'#!/bin/sh\nexec "{Path(sys.executable).as_posix()}" "{(EVALS / "mock_delegate.py").as_posix()}" "$@"\n')
         shim.chmod(0o755)
         world = build_world(load_household(sc.get("household")), sc.get("world"))
-        world["research"] = research_pages()
+        pages = research_pages()  # a scenario's research pages are added after the stand-in page for that key
+        world["research"] = pages | {k: f"{pages.get(k, '')}\n\n{v}".strip() for k, v in world.get("research", {}).items()}
         # saved_pages: [JP] stands for an official page the person saved earlier, a stand-in copy dated 2026-10-20
         world["saved_pages"] = [{"path": f"{world['documents_folder']}/Official pages/{c.lower()}-entry.pdf",
                                  "source": "saved by the person", "saved": "2026-10-20",

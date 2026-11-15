@@ -99,7 +99,7 @@ def pending_or(world, done, what):
 
 
 def trip_folder(text):
-    m = re.search(r"[A-Za-z0-9_\-.]+(?:/[A-Za-z0-9_\-.]+)*/Trips/[a-z0-9\-]+", text)
+    m = re.search(r"[A-Za-z0-9_\-.]+(?:/[A-Za-z0-9_\-.]+)*/(?:Trips|Applications)/[a-z0-9\-]+", text)
     return m.group(0) if m else ""
 
 
@@ -144,6 +144,12 @@ def trip_file(world, text):
 
 
 def file_agent(world, text, low):
+    m = re.search(r"named (done-[a-z0-9]+)\.md", low)
+    if m:
+        folder = trip_folder(text)
+        if not folder or not re.search(r"exactly this one line:\s*done\b", low):
+            return answer("waiting_user", message="Which trip folder, and what should the file hold?")
+        return pending_or(world, {"saved": f"{folder}/{m.group(1)}.md"}, f"Creating {m.group(1)}.md")
     m = re.search(r"named (pick-[a-z0-9]+)\.md", low)
     if m:
         folder, opt = trip_folder(text), re.search(r"\bo\d+\b", low)

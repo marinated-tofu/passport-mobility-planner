@@ -350,3 +350,15 @@ def test_a_pick_made_in_the_chat_is_applied_once(tmp_path):
     items = {i.id: i for i in agent.parse_queue(q.read_text())}
     assert items["c1"].status == "x" and items["b1"].status == "~" and "Emirates EK 316" in items["b1"].detail
     assert a.work() == 0
+
+
+def test_done_said_in_the_chat_closes_the_item_once(tmp_path):
+    a, q = pick_world(tmp_path)
+    a.work()
+    (q.parent / "pick-c1.md").write_text("o1\n")
+    (q.parent / "done-b1.md").write_text("booked\n")
+    (q.parent / "done-zz.md").write_text("booked\n")
+    a.work()
+    b1 = next(i for i in agent.parse_queue(q.read_text()) if i.id == "b1")
+    assert b1.status == "x" and "said in the chat" in b1.note
+    assert a.work() == 0

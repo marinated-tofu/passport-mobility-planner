@@ -1,6 +1,6 @@
 # Prepare the trip on the NAS
 
-After the plan route has worked out each application, do every step software can do, so the person is left only with what needs them: checking, paying, submitting, sending, signing, appointments and fingerprints. The NAS agents do P1 to P4. The trip companion does the rest from the trip queue (P6): it compares prices, opens each booking and application page in a browser the person can see, fills in the form from the form answers and attaches the copies, and shows each email draft with a Send button. It never presses submit, pay, book or send itself.
+After the plan route (or the apply route, with the changes in its A6) has worked out each application, do every step software can do, so the person is left only with what needs them: checking, paying, submitting, sending, signing, appointments and fingerprints. The NAS agents do P1 to P4. The trip companion does the rest from the trip queue (P6): it compares prices, opens each booking and application page in a browser the person can see, fills in the form from the form answers and attaches the copies, and shows each email draft with a Send button. It never presses submit, pay, book or send itself.
 
 When to run: whenever the user asked to plan, prepare or sort out a trip and at least one application, form or missing document is on the plan. Do not ask first: each step below changes the NAS, so the NAS asks the user to approve it. If the user only asked whether they can go or which way is cheapest, end the reply with one line offering to prepare the trip folder, and stop.
 

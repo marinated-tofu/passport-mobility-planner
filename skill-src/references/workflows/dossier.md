@@ -29,6 +29,6 @@ For each person, fill one line per item type in the dossier items reference: the
 
 ## Gaps
 
-List the item types the person has no document for. When the user named a destination or goal, list only the gaps that matter for it, using the required documents of the matching option or settle-in steps.
+List the item types the person has no document for. When the user named a visa, a destination or a move, get its document list live: one research request (research.md) with topic visas, the country, the purpose and the question "documents required for this visa or permit, how recent each must be, police certificates from which countries, insurance cover, translation and apostille rules, proof of income or funds". Then list only the gaps that matter for it, and run the checks for long-stay applications in the dossier items reference against the excerpts. Without an answer, list every gap and say the document list was not found.
 
 Present it with the Dossier layout in the report format reference. Offer to save the dossier and to tag each file with its item type and holder; do either only after a yes.
