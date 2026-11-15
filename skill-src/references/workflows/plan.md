@@ -49,6 +49,7 @@ Country: name, dates there
   Also required: forms to fill and caveats from the excerpts (for example an arrival form); for anything the excerpts leave open, "confirm on the source"
   Fee, waiting time and where to apply: copy the excerpt's fee, waiting time and "How to apply" line word for word (for example "at an embassy or consulate, or online where available"), or "not stated on the official page"
   Documents: have / missing / too old
+  Form histories (only when the excerpt says the visa form asks for them): work - each employer and dates from the documents, months to fill in; travel - visas and trips from the documents, "may be incomplete"; questions left for you - refusals, overstays, criminal record
   Source: page address (fetched date)
 
 Connection: airport, country, date

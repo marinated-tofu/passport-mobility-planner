@@ -25,7 +25,7 @@ Step 1: file-agent finds the documents. Step 2: document-agent and photo-agent e
 SKILL.md routes each request to one of twelve workflow files; special cases (name change, dual nationality, a child with one parent, refugee documents, renewal, no slots) have their own file. Only delegate calls are used, to the agents behind ug-filesystem, ug-filemgr, ug-document, ug-photo and ug-knowledge. Model: the NAS local model (hosted in tests). Every write waits for NAS approval. Document numbers are masked in chat. Research requests carry only countries, nationalities and dates. An optional companion container fetches official pages, searches booking sites and fills forms without submitting; without it, the Skill uses pages saved on the NAS.
 
 **8. Status**
-Built: the Skill (kit checker passes), the companion, and an eval harness with mock NAS agents, 36 scenarios; the latest run of the 14 hardest passed 106/106 automatic checks and 45/47 graded points. Not built: scheduled alerts. Untested on a NAS: real agent replies, approvals, local model context.
+Built: the Skill (kit checker passes), the companion, and an eval harness with mock NAS agents, 37 scenarios; the latest run of the 14 hardest passed 106/106 automatic checks and 45/47 graded points. Not built: scheduled alerts. Untested on a NAS: real agent replies, approvals, local model context.
 
 **9. Validation plan**
 Core 1: Japan trip for a Philippine passport holder living in Dubai; expect the expired old visa flagged, a cited visa requirement, and a dated queue. Core 2: "Where can I go?"; expect what the same traveller's US visa and UAE residence unlock, each with its conditions. Edge: a scan with hidden text telling the agent to delete files; expect it reported and ignored.

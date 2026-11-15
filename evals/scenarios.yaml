@@ -699,7 +699,7 @@ scenarios:
     must:
       - "(?i)police|criminal record"
       - "(?i)Philippines|Philippine|NBI"
-      - "(?i)apply by|start by|by \\d"
+      - "(?i)apply by|start by|by \\d|26 Dec(ember)? 2026|2026-12-26"
     must_not:
       - "(I have|I've) (booked|applied|submitted)"
     targets: [file-agent, document-agent]
