@@ -95,4 +95,4 @@ Left for you
   - When the booking confirmation arrives, save it in the trip folder so the itinerary and the application can use it.
 ```
 
-Always include Left for you, also when the pick is waiting for approval or failed: the person still signs up or logs in, pays and books on the site. Never say an option was booked, reserved or paid for.
+Always include Left for you, also when the pick is waiting for approval or failed, and copy its first line word for word: the person still signs up or logs in, checks, pays and books on the site, and the words "sign up or log in" must be in the answer. Never say an option was booked, reserved or paid for.

@@ -595,9 +595,9 @@ scenarios:
   - id: dossier-long-stay-pt
     prompt: "I'm applying for Portugal's digital nomad visa from Dubai and I fly on 10 March 2027. Check my documents in Personal/Travel against what the visa asks for and tell me what's missing."
     world:
-      research: &pt-remote-work
+      research: &pt-remote-work  # eval stand-ins for the official page, not its real text
         visas:PT: |
-          ### Residence visa for remote work (digital nomad) - pt-d8-remote-work (eval stand-in, not the official text)
+          ### Residence visa for remote work (digital nomad) - pt-d8-remote-work
 
           - Document: residence visa
           - Required documents: passport valid at least 3 months after the planned stay; work contract or employer declaration of remote work; proof of tax residence; proof of means of subsistence; health insurance valid in Portugal covering the stay; criminal record certificate
@@ -607,7 +607,7 @@ scenarios:
           - Source: https://vistos.mne.gov.pt/en/national-visas/necessary-documentation/residency
           - Checked: 07 Nov 2026, verified
         settle:PT: |
-          ### Residence visa for remote work (digital nomad) - pt-d8-remote-work (eval stand-in, not the official text)
+          ### Residence visa for remote work (digital nomad) - pt-d8-remote-work
 
           - Criminal record: "Criminal record certificate from the country of nationality and from any country where the applicant has lived for more than one year, not required under 16"
           - Insurance: health insurance valid in Portugal covering the stay

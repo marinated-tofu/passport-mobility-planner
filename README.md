@@ -8,7 +8,10 @@ stored on the NAS and answers, privately:
 - what those documents unlock right now (benefits);
 - which visa or permit to get next for the most new countries per dollar and per week of waiting (next document);
 - the cheapest, fastest document path to reach chosen countries, with a timeline (plan);
-- the flight and hotel options the companion found, to pick one in the chat (choose);
+- what a work, study, family or residence application, a renewal or permanent residence needs: eligibility, every
+  document with its age, police certificates per country lived in, apostille and translation, and a timeline worked
+  back from the start date (apply);
+- the flight and hotel options the companion found, to pick one in the chat, and what is left in the trip queue (choose);
 - whether stored bank statements meet a visa's proof-of-funds rule (proof of funds);
 - how to settle in a country: residence, ID, tax number, bank, insurance, housing, customs (settle in);
 - what expires soon, what official sources announced, and the exact official wording (expiry, updates, library).
@@ -19,7 +22,9 @@ works through the queue: it searches the booking sites and lists the flight and 
 until you pick one, opens each application or booking page in a browser you can see, fills in the form and attaches
 the copies, and shows each email with a Send button. You pick in the Uliya chat ("flights o1, hotel o2", the choose
 route) or with the Pick button on the queue page; the Skill then redrafts the day-by-day itinerary with the picked
-flights and hotel. You log in or sign up, check, pay, submit and press Send. It never does those itself.
+flights and hotel. The same chat lists what is left in the queue with direct links; say "I booked the flight" and the
+Skill saves a `done-<id>.md` file that the companion uses to mark the item done. You log in or sign up, check, pay,
+submit and press Send. It never does those itself.
 
 The Skill holds no country rules. Visa rules, fees and waiting times change often, so every route asks the companion
 to read the official pages live, and answers from the dated excerpts it writes back.
