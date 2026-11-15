@@ -13,3 +13,6 @@ Code, Skill and eval results: https://github.com/marinated-tofu/passport-mobilit
 Made for the UGREEN Hackathon 2026 on AI NAS.
 
 Settings: Unlisted, not made for kids.
+
+Uploaded 15 Nov 2026 as unlisted: https://youtu.be/-IW6IqXAnIA
+Devpost entry submitted the same day: https://devpost.com/software/passport-mobility-planner
