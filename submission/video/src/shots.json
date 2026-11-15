@@ -1,0 +1,163 @@
+{
+ "ask": {
+  "src": "shots/ask.png",
+  "width": 1640,
+  "height": 1227,
+  "boxes": [
+   {
+    "x": 261,
+    "y": 131,
+    "w": 1339,
+    "h": 142,
+    "label": "One sentence in the Uliya chat on her NAS"
+   },
+   {
+    "x": 82,
+    "y": 459,
+    "w": 350,
+    "h": 40,
+    "label": "A status first, then the reasons"
+   }
+  ]
+ },
+ "checks": {
+  "src": "shots/checks.png",
+  "width": 1640,
+  "height": 838,
+  "boxes": [
+   {
+    "x": 435,
+    "y": 293,
+    "w": 180,
+    "h": 40,
+    "label": "Document numbers: last three characters only"
+   },
+   {
+    "x": 126,
+    "y": 403,
+    "w": 1416,
+    "h": 91,
+    "label": "The old Japan visa no longer counts"
+   },
+   {
+    "x": 126,
+    "y": 623,
+    "w": 1384,
+    "h": 91,
+    "label": "A name mismatch, caught before she books"
+   }
+  ]
+ },
+ "china": {
+  "src": "shots/china.png",
+  "width": 1640,
+  "height": 1339,
+  "boxes": [
+   {
+    "x": 82,
+    "y": 459,
+    "w": 1472,
+    "h": 193,
+    "label": "Apply where she lives: her UAE residence is checked"
+   },
+   {
+    "x": 82,
+    "y": 764,
+    "w": 1459,
+    "h": 142,
+    "label": "Five years of work history, drafted from her documents"
+   },
+   {
+    "x": 126,
+    "y": 1065,
+    "w": 1351,
+    "h": 91,
+    "label": "The yes or no questions stay hers"
+   }
+  ]
+ },
+ "options": {
+  "src": "shots/options.png",
+  "width": 1640,
+  "height": 1280,
+  "boxes": [
+   {
+    "x": 261,
+    "y": 131,
+    "w": 1339,
+    "h": 193,
+    "label": "She asks in the chat and says how to choose"
+   },
+   {
+    "x": 82,
+    "y": 506,
+    "w": 1476,
+    "h": 535,
+    "label": "The options the companion found, as a table"
+   },
+   {
+    "x": 82,
+    "y": 1057,
+    "w": 1476,
+    "h": 153,
+    "label": "Her rule applied, and the flight that lands a day late flagged"
+   }
+  ]
+ },
+ "prepared": {
+  "src": "shots/prepared.png",
+  "width": 1640,
+  "height": 835,
+  "boxes": [
+   {
+    "x": 82,
+    "y": 297,
+    "w": 1374,
+    "h": 91,
+    "label": "Every save waits for her approval"
+   },
+   {
+    "x": 82,
+    "y": 411,
+    "w": 1476,
+    "h": 287,
+    "label": "The trip folder, written once"
+   },
+   {
+    "x": 82,
+    "y": 718,
+    "w": 1396,
+    "h": 40,
+    "label": "A queue page on the NAS, with a due date for each task"
+   }
+  ]
+ },
+ "rules": {
+  "src": "shots/rules.png",
+  "width": 1640,
+  "height": 787,
+  "boxes": [
+   {
+    "x": 126,
+    "y": 293,
+    "w": 729,
+    "h": 40,
+    "label": "She needs a visa: a yes or no check, not a guess"
+   },
+   {
+    "x": 126,
+    "y": 352,
+    "w": 1302,
+    "h": 91,
+    "label": "Each rule quoted word for word"
+   },
+   {
+    "x": 126,
+    "y": 454,
+    "w": 773,
+    "h": 40,
+    "label": "With the page and the date it was fetched"
+   }
+  ]
+ }
+}

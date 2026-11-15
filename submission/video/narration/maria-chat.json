@@ -1,0 +1,15 @@
+[
+ "This is Maria. She lives in Dubai on a Philippine passport and wants to see Tokyo in April. Her documents are on the family NAS, and that is where they stay.",
+ "She asks Uliya, the assistant on her NAS, in one sentence. The passport mobility planner Skill takes it from there.",
+ "It hands the work to the NAS's own agents. They find her documents, read them, check the passport's machine readable zone, and read a photo of an old visa. Numbers come back masked.",
+ "The Skill stores no visa rules. A companion on the NAS fetches the official pages, and each rule is quoted with its page and date. She needs a short-stay visa: about fifteen thousand yen, and five working days.",
+ "Then it checks her documents. The passport is fine. The old Japan visa expired in 2025. And her old visas leave out her middle name, so it says to use the passport's full name.",
+ "It prepares a trip folder: form answers, a cover letter, an itinerary, a calendar of deadlines, and a queue of tasks. Every save waits for her approval in the NAS app.",
+ "The companion shows the queue as a page on the NAS, with a link for each task. Nothing goes out without her.",
+ "It also searches flights and hotels. Back in the chat, Maria sees the options as a table and says how to choose. Cheapest nonstop: it picks Emirates, and flags the flight that lands a day late.",
+ "She can pick on the queue page too. The airline's page opens, and she signs up or logs in, checks the booking, and pays herself.",
+ "When she says, I booked the flight, the Skill marks it done and lists what's left, with links.",
+ "For the visa form, she logs in and presses Fill this page. The companion types what it knows, and leaves the passport number and the declaration to her. She submits and pays.",
+ "Strict consulates work too. For China, it drafts five years of work history from her documents, and leaves the yes or no questions to her. Work, study and residence applications get their own checks.",
+ "Official rules, checked against your own documents, on your own NAS. You only pick, pay and submit."
+]

@@ -26,7 +26,7 @@ export type Scene = {short?: string; who?: Who; agent?: string; title?: string} 
   | {kind: 'close'; title: string; sub: string}
 );
 
-export type StepsStory = {id: string; durations: number[]; run: string; first: string; scenes: Scene[]};
+export type StepsStory = {id: string; durations: number[]; run: string; first: string; foot?: string; scenes: Scene[]};
 
 export const stepsFrames = (d: number[]) => d.map((x) => Math.ceil((LEAD + x + TAIL) * FPS));
 export const stepsTotal = (d: number[]) => stepsFrames(d).reduce((a, b) => a + b, 0);
@@ -102,9 +102,9 @@ const Typed: React.FC<{text: string; start: number; cps?: number}> = ({text, sta
   return <span>{text.slice(0, n)}</span>;
 };
 
-const Footnote: React.FC<{run: string; first: string; dark?: boolean}> = ({run, first, dark}) => (
+const Footnote: React.FC<{run: string; first: string; foot?: string; dark?: boolean}> = ({run, first, foot, dark}) => (
   <div style={{position: 'absolute', left: 80, bottom: 40, fontSize: 21, color: dark ? 'rgba(255,255,255,0.55)' : C.faint}}>
-    Real output from {run}, shortened. {first} and her documents are invented; forms and email are test stand-ins.
+    {foot ?? `Real output from ${run}, shortened. ${first} and her documents are invented; forms and email are test stand-ins.`}
   </div>
 );
 
@@ -320,7 +320,7 @@ const SceneView: React.FC<{story: StepsStory; i: number}> = ({story, i}) => {
             <StoryCtx.Provider value={maria}><MariaAtDesk /></StoryCtx.Provider>
           </div>
         )}
-        <Footnote run={story.run} first={story.first} dark />
+        <Footnote run={story.run} first={story.first} foot={story.foot} dark />
       </AbsoluteFill>
     );
   }
@@ -335,7 +335,7 @@ const SceneView: React.FC<{story: StepsStory; i: number}> = ({story, i}) => {
           <div style={{fontSize: 48, fontWeight: 700, color: C.ink, marginTop: 12}}>{s.title}</div>
         </div>
         <ListBody s={s} />
-        <Footnote run={story.run} first={story.first} />
+        <Footnote run={story.run} first={story.first} foot={story.foot} />
       </AbsoluteFill>
     );
   }
@@ -350,7 +350,7 @@ const SceneView: React.FC<{story: StepsStory; i: number}> = ({story, i}) => {
       {s.kind === 'mail' && <MailBody s={s} />}
       {s.kind === 'left' && <LeftBody s={s} />}
       <Rail scenes={story.scenes} at={i} />
-      <Footnote run={story.run} first={story.first} />
+      <Footnote run={story.run} first={story.first} foot={story.foot} />
     </AbsoluteFill>
   );
 };
