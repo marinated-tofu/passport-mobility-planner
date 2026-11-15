@@ -252,3 +252,24 @@ def test_queue_dates_keep_compare_book_apply_order():
     assert due == {"b1": "2027-03-11", "c1": "2026-11-29", "a1": "2027-03-18", "p1": "2026-11-14"}
     late = agent.parse_queue(text.replace("2026-11-29", "2027-03-10"))
     assert next(i for i in late if i.id == "c1").due == "2027-03-08"
+
+
+def test_queue_page_dates_titles_and_classic_view(tmp_path):
+    today = dt.date(2026, 11, 15)
+    assert agent.trip_title("japan-2027-04") == "Japan, April 2027"
+    assert agent.trip_title("my-trip") == "my-trip" and agent.trip_title("x-2027-13") == "x-2027-13"
+    assert agent.due_parts("2026-12-01", today) == ("1 Dec", "2026", "in 16 days", "")
+    assert agent.due_parts("2026-11-20", today)[2:] == ("in 5 days", "soon")
+    assert agent.due_parts("2026-11-12", today)[2:] == ("3 days late", "late")
+    assert agent.due_parts("next week", today) == ("next week", "", "", "")
+    a = make_agent(tmp_path)
+    a.work()
+    server = agent.serve(a, 0, "http://nas:6080/vnc.html")
+    threading.Thread(target=server.serve_forever, daemon=True).start()
+    base = f"http://127.0.0.1:{server.server_address[1]}"
+    try:
+        new = urllib.request.urlopen(base).read().decode()
+        old = urllib.request.urlopen(base + "/classic").read().decode()
+        assert "Your turn" in new and "<table>" in old and ">Send<" in new and ">Send<" in old
+    finally:
+        server.shutdown()

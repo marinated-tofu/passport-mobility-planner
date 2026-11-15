@@ -50,7 +50,7 @@ from dataclasses import dataclass
 from email.message import EmailMessage
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
-from urllib.parse import parse_qs, urljoin, urlparse
+from urllib.parse import parse_qs, quote, urljoin, urlparse
 
 import httpx
 
@@ -618,44 +618,234 @@ class Browser:
 
 # ---------- the queue page ----------
 
+STATUS = {" ": "to do", "~": "waiting for you", "x": "done", "-": "skipped"}
+KIND_LABEL = {"research": "Research", "compare": "Compare", "apply": "Apply", "book": "Book",
+              "contact": "Email", "photo": "Photo"}
+ACTION_LABEL = {"fill": "Fill this page", "send": "Send"}
+
+
+def item_actions(it: Item) -> list[str]:
+    return {"apply": ["fill"], "book": ["fill"], "contact": ["send"]}.get(it.kind, []) + ["done", "skip"]
+
+
+def safe_href(url: str) -> str:
+    return url if url.startswith(("https://", "http://")) else ""
+
+
+def trip_title(slug: str) -> str:
+    """japan-2027-04 -> Japan, April 2027; any other folder name as it is."""
+    m = re.fullmatch(r"(.+?)-(\d{4})-(\d{2})", slug)
+    if not m or not 1 <= int(m.group(3)) <= 12:
+        return slug
+    return f"{m.group(1).replace('-', ' ').title()}, {dt.date(2000, int(m.group(3)), 1):%B} {m.group(2)}"
+
+
+def due_parts(due: str, today: dt.date) -> tuple[str, str, str, str]:
+    """(day and month, year, how far, css class) for the date column; a date that is not ISO is shown as written."""
+    try:
+        d = dt.date.fromisoformat(due)
+    except ValueError:
+        return due, "", "", ""
+    days = (d - today).days
+    when = ("today" if days == 0 else "tomorrow" if days == 1 else f"in {days} days" if days > 1
+            else "1 day late" if days == -1 else f"{-days} days late")
+    tone = "late" if days < 0 else "soon" if days <= 7 else ""
+    return f"{d.day} {d:%b}", str(d.year), when, tone
+
+
+QUEUE_CSS = """
+:root{--bg:#f6f7f9;--card:#fff;--ink:#16181d;--muted:#5d6470;--line:#e2e5ea;--accent:#1d5fd1;--accent-ink:#fff;
+--late:#b42318;--late-bg:#fdecea;--soon:#8a5a00;--soon-bg:#fff4dc;--ok:#1f7a45;--ok-bg:#e6f4ec;--quote:#f3f5f8;color-scheme:light dark}
+@media (prefers-color-scheme:dark){:root{--bg:#111318;--card:#1a1d24;--ink:#e9ebf0;--muted:#a0a7b4;--line:#2c313b;
+--accent:#6aa0ff;--accent-ink:#0d1220;--late:#ff8a7a;--late-bg:#3a1d1a;--soon:#f0c062;--soon-bg:#33290f;--ok:#6fd39a;
+--ok-bg:#16301f;--quote:#20242c}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}
+main{max-width:960px;margin:0 auto;padding:24px 16px 64px}
+h1{font-size:28px;line-height:1.2;margin:0 0 4px}
+h2{font-size:22px;line-height:1.3;margin:0}
+h3{font-size:14px;font-weight:600;color:var(--muted);margin:24px 0 8px}
+a{color:var(--accent)}
+.lede{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;justify-content:space-between;margin:0 0 24px;color:var(--muted)}
+.lede p{margin:0}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:40px;padding:0 16px;border-radius:8px;
+border:1px solid var(--line);background:var(--card);color:var(--ink);font:inherit;font-weight:500;text-decoration:none;cursor:pointer}
+.btn:hover{border-color:var(--muted)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.btn.quiet{border-color:transparent;background:none;color:var(--muted);padding:0 10px}
+.btn.quiet:hover{color:var(--ink);background:var(--quote)}
+.btn:focus-visible,input:focus-visible,summary:focus-visible,a:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.banner{padding:12px 16px;border-radius:8px;margin:12px 0 24px;background:var(--ok-bg);color:var(--ok);font-weight:500}
+.item .banner{margin:12px 0 0}
+.banner.error{background:var(--late-bg);color:var(--late)}
+.trip{margin:0 0 40px}
+.trip-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 12px;padding-bottom:12px;border-bottom:1px solid var(--line)}
+.trip-head .meta{color:var(--muted);font-size:14px}
+.trip-head code{font-size:13px}
+ol{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.item{scroll-margin-top:16px;display:grid;grid-template-columns:96px 1fr auto;gap:16px;align-items:start;background:var(--card);
+border:1px solid var(--line);border-radius:12px;padding:16px}
+.due{font-variant-numeric:tabular-nums}
+.due b{display:block;font-size:18px;line-height:1.2}
+.due span{display:block;font-size:13px;color:var(--muted)}
+.due .when{margin-top:4px;font-weight:500}
+.due .when.late{color:var(--late)}
+.due .when.soon{color:var(--soon)}
+.kind{display:inline-block;font-size:13px;font-weight:600;color:var(--muted);margin-bottom:2px}
+.title{font-weight:600;font-size:17px;line-height:1.35;overflow-wrap:anywhere}
+.title a{text-decoration-thickness:1px;text-underline-offset:3px}
+.host{font-size:13px;color:var(--muted);overflow-wrap:anywhere}
+.note{margin:8px 0 0;color:var(--muted);font-size:15px}
+.actions{display:flex;flex-wrap:wrap;gap:4px;justify-content:flex-end;align-items:center}
+.actions form{margin:0}
+.letter{grid-column:2 / -1;background:var(--quote);border-radius:8px;padding:16px;margin:0}
+.letter pre{margin:0 0 16px;white-space:pre-wrap;font:15px/1.6 system-ui,-apple-system,"Segoe UI",sans-serif;max-width:65ch}
+.send{display:flex;flex-wrap:wrap;gap:8px;align-items:end}
+.send label{display:grid;gap:4px;font-size:14px;font-weight:500;flex:1 1 260px}
+.send input{min-height:40px;padding:0 12px;border:1px solid var(--line);border-radius:8px;background:var(--card);color:var(--ink);font:inherit;width:100%}
+.done .item{grid-template-columns:96px 1fr auto;padding:12px 16px;opacity:.75}
+.done .title{font-weight:500;font-size:16px}
+.tag{font-size:13px;font-weight:500;padding:2px 8px;border-radius:999px;background:var(--quote);color:var(--muted);white-space:nowrap}
+.tag.ok{background:var(--ok-bg);color:var(--ok)}
+details summary{cursor:pointer;color:var(--muted);font-size:14px;font-weight:600;margin:24px 0 8px;min-height:24px}
+.empty{color:var(--muted);margin:16px 0}
+.foot{font-size:13px;color:var(--muted);margin-top:40px}
+@media (max-width:640px){
+ .item,.done .item{grid-template-columns:1fr;gap:8px}
+ .due b,.due span{display:inline;font-size:15px;margin-right:6px}
+ .actions{justify-content:flex-start}
+ .letter{grid-column:1}
+}
+"""
+
+
+def render_queue(agent: Agent, novnc_url: str, message: str, at: tuple[str, str] = ("", "")) -> str:
+    """The queue page. A message about one item shows in that item's card; any other at the top."""
+    today = agent.today()
+    out, shown = [], False
+
+    def banner(msg: str) -> str:
+        err = msg.startswith("Did not happen")
+        return f"<div class='banner{' error' if err else ''}' role={'alert' if err else 'status'}>{html.escape(msg)}</div>"
+
+    for q in agent.queues():
+        trip = q.parent.name
+        items = sorted(parse_queue(q.read_text()), key=lambda i: i.due)
+        yours = [i for i in items if i.status == "~"]
+        working = [i for i in items if i.status == " "]
+        closed = [i for i in items if i.status in "x-"]
+        meta = f"{len(yours)} waiting for you · {len(closed)} of {len(items)} finished"
+        out.append(f"<section class=trip aria-labelledby='t-{html.escape(trip)}'><div class=trip-head>"
+                   f"<h2 id='t-{html.escape(trip)}'>{html.escape(trip_title(trip))}</h2>"
+                   f"<span class=meta>{meta} · folder <code>Trips/{html.escape(trip)}</code></span></div>")
+
+        def card(it: Item, live: bool) -> str:
+            nonlocal shown
+            here = live and message and (trip, it.id) == at
+            shown = shown or bool(here)
+            day, year, when, tone = due_parts(it.due, today)
+            href = safe_href(it.url)
+            host = urlparse(href).hostname or "" if href else ""
+            title = (f"<a href='{html.escape(href)}' rel=noreferrer target=_blank>{html.escape(it.title)}"
+                     f"<span aria-hidden=true> ↗</span><span class=sr> (opens in a new tab)</span></a>"
+                     if href else html.escape(it.title))
+            hidden = (f"<input type=hidden name=trip value='{html.escape(trip)}'>"
+                      f"<input type=hidden name=id value='{html.escape(it.id)}'>")
+            actions, letter = "", ""
+            if live:
+                buttons = []
+                for a in item_actions(it):
+                    if a == "send":
+                        continue
+                    cls = "btn primary" if a == "fill" else "btn quiet"
+                    buttons.append(f"<form method=post>{hidden}<button class='{cls}' name=action value={a}>"
+                                   f"{ACTION_LABEL.get(a, a.title())}</button></form>")
+                actions = f"<div class=actions>{''.join(buttons)}</div>"
+                if it.kind == "contact":
+                    to, draft = contact_parts(q.parent, it)
+                    text = draft.read_text() if draft else "(no draft yet)"
+                    letter = (f"<div class=letter><pre>{html.escape(text)}</pre><form method=post class=send>{hidden}"
+                              f"<label>To<input name=to type=email required autocomplete=off value='{html.escape(to)}'></label>"
+                              f"<button class='btn primary' name=action value=send>Send</button></form></div>")
+            else:
+                tag = STATUS[it.status]
+                actions = f"<div class=actions><span class='tag{' ok' if it.status == 'x' else ''}'>{tag}</span></div>"
+            when_html = f"<span class='when {tone}'>{when}</span>" if live and when else ""
+            note = f"<p class=note>{html.escape(it.note[:1].upper() + it.note[1:])}</p>" if it.note else ""
+            anchor = html.escape(f"i-{trip}-{it.id}")
+            return (f"<li class=item id='{anchor}'><div class=due><b>{html.escape(day)}</b><span>{year}</span>{when_html}</div>"
+                    f"<div><span class=kind>{KIND_LABEL.get(it.kind, it.kind.title())}</span>"
+                    f"<div class=title>{title}</div>"
+                    + (f"<div class=host>{html.escape(host)}</div>" if host else "")
+                    + f"{note}{banner(message) if here else ''}</div>{actions}{letter}</li>")
+
+        if yours:
+            out.append("<h3>Your turn</h3><ol>" + "".join(card(i, True) for i in yours) + "</ol>")
+        if working:
+            out.append("<h3>The agent is starting these</h3><ol>" + "".join(card(i, False) for i in working) + "</ol>")
+        if not yours and not working:
+            out.append("<p class=empty>Nothing waiting. Every item is done or skipped.</p>")
+        if closed:
+            out.append(f"<details class=done><summary>Done and skipped ({len(closed)})</summary><ol>"
+                       + "".join(card(i, False) for i in closed) + "</ol></details>")
+        out.append("</section>")
+    if not out:
+        out.append("<p class=empty>No trip queues yet. The Skill writes one when you plan a trip.</p>")
+    return ("<!doctype html><html lang=en><meta charset=utf-8><meta name=viewport content='width=device-width,initial-scale=1'>"
+            f"<title>Trip queue</title><style>{QUEUE_CSS}.sr{{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}}</style>"
+            "<main><h1>Trip queue</h1><div class=lede><p>Nothing is submitted, paid, booked or sent without you.</p>"
+            f"<a class=btn href='{html.escape(novnc_url)}' target=_blank>Open the browser view<span aria-hidden=true>&nbsp;↗</span></a></div>"
+            + (banner(message) if message and not shown else "") + "".join(out)
+            + "<p class=foot><a href='/classic'>Plain view</a></p></main></html>")
+
+
+def render_classic(agent: Agent, novnc_url: str, message: str) -> str:
+    """The first queue page, kept as /classic."""
+    rows = []
+    for q in agent.queues():
+        trip = q.parent.name
+        rows.append(f"<h2>{html.escape(trip)}</h2><table><tr><th>Due</th><th>What</th><th>Status</th><th></th></tr>")
+        for it in sorted(parse_queue(q.read_text()), key=lambda i: (i.status in "x-", i.due)):
+            status = STATUS[it.status]
+            buttons = ""
+            if it.status == "~":
+                to, draft = contact_parts(q.parent, it) if it.kind == "contact" else ("", None)
+                box = (f"<label>To <input name=to type=email required value='{html.escape(to)}'></label> "
+                       if it.kind == "contact" else "")
+                buttons = "".join(
+                    f"<form method=post><input type=hidden name=trip value='{html.escape(trip)}'>"
+                    f"<input type=hidden name=id value='{html.escape(it.id)}'>{box if a == 'send' else ''}"
+                    f"<button name=action value={a}>{ACTION_LABEL.get(a, a.title())}</button></form>"
+                    for a in item_actions(it))
+            extra = ""
+            if it.kind == "contact" and it.status == "~":
+                extra = f"<pre>{html.escape(draft.read_text() if draft else '(no draft yet)')}</pre>"
+            href = safe_href(it.url) or "#"
+            rows.append(
+                f"<tr><td>{html.escape(it.due)}</td><td><b>{html.escape(it.kind)}</b> "
+                f"<a href='{html.escape(href)}' rel=noreferrer target=_blank>{html.escape(it.title)}</a>{extra}</td>"
+                f"<td>{status}<br><small>{html.escape(it.note)}</small></td><td>{buttons}</td></tr>")
+        rows.append("</table>")
+    return ("<!doctype html><meta charset=utf-8><meta name=viewport content='width=device-width'>"
+            "<title>Trip queue</title><style>body{font:15px system-ui;margin:16px;max-width:1000px}"
+            "td,th{border-bottom:1px solid #ddd;padding:6px;vertical-align:top;text-align:left}"
+            "form{display:inline}pre{white-space:pre-wrap;background:#f6f6f6;padding:8px}</style>"
+            f"<h1>Trip queue</h1><p>Nothing is submitted, paid, booked or sent without you. "
+            f"<a href='{html.escape(novnc_url)}' target=_blank>Open the browser view</a> · <a href='/'>New view</a></p>"
+            f"<p><b>{html.escape(message)}</b></p>" + "".join(rows))
+
+
 def serve(agent: Agent, port: int, novnc_url: str) -> ThreadingHTTPServer:
-    state = {"message": ""}
+    state = {"message": "", "at": ("", "")}
 
     class Handler(BaseHTTPRequestHandler):
         def do_GET(self):  # noqa: N802
-            rows = []
-            for q in agent.queues():
-                trip = q.parent.name
-                rows.append(f"<h2>{html.escape(trip)}</h2><table><tr><th>Due</th><th>What</th><th>Status</th><th></th></tr>")
-                for it in sorted(parse_queue(q.read_text()), key=lambda i: (i.status in "x-", i.due)):
-                    status = {" ": "to do", "~": "waiting for you", "x": "done", "-": "skipped"}[it.status]
-                    buttons = ""
-                    if it.status == "~":
-                        acts = {"apply": ["fill"], "book": ["fill"], "contact": ["send"]}.get(it.kind, []) + ["done", "skip"]
-                        to, draft = contact_parts(q.parent, it) if it.kind == "contact" else ("", None)
-                        box = (f"<label>To <input name=to type=email required value='{html.escape(to)}'></label> "
-                               if it.kind == "contact" else "")
-                        buttons = "".join(
-                            f"<form method=post><input type=hidden name=trip value='{html.escape(trip)}'>"
-                            f"<input type=hidden name=id value='{html.escape(it.id)}'>{box if a == 'send' else ''}"
-                            f"<button name=action value={a}>{ {'fill': 'Fill this page', 'send': 'Send'}.get(a, a.title())}</button></form>"
-                            for a in acts)
-                    extra = ""
-                    if it.kind == "contact" and it.status == "~":
-                        extra = f"<pre>{html.escape(draft.read_text() if draft else '(no draft yet)')}</pre>"
-                    href = it.url if it.url.startswith(("https://", "http://")) else "#"
-                    rows.append(
-                        f"<tr><td>{html.escape(it.due)}</td><td><b>{html.escape(it.kind)}</b> "
-                        f"<a href='{html.escape(href)}' rel=noreferrer target=_blank>{html.escape(it.title)}</a>{extra}</td>"
-                        f"<td>{status}<br><small>{html.escape(it.note)}</small></td><td>{buttons}</td></tr>")
-                rows.append("</table>")
-            page = ("<!doctype html><meta charset=utf-8><meta name=viewport content='width=device-width'>"
-                    "<title>Trip queue</title><style>body{font:15px system-ui;margin:16px;max-width:1000px}"
-                    "td,th{border-bottom:1px solid #ddd;padding:6px;vertical-align:top;text-align:left}"
-                    "form{display:inline}pre{white-space:pre-wrap;background:#f6f6f6;padding:8px}</style>"
-                    f"<h1>Trip queue</h1><p>Nothing is submitted, paid, booked or sent without you. "
-                    f"<a href='{html.escape(novnc_url)}' target=_blank>Open the browser view</a></p>"
-                    f"<p><b>{html.escape(state['message'])}</b></p>" + "".join(rows))
+            path = urlparse(self.path).path
+            if path not in {"/", "/classic"}:
+                self.send_error(404)
+                return
+            page = (render_classic(agent, novnc_url, state["message"]) if path == "/classic"
+                    else render_queue(agent, novnc_url, state["message"], state["at"]))
             self.send_response(200)
             self.send_header("Content-Type", "text/html; charset=utf-8")
             self.end_headers()
@@ -664,6 +854,7 @@ def serve(agent: Agent, port: int, novnc_url: str) -> ThreadingHTTPServer:
         def do_POST(self):  # noqa: N802
             form = parse_qs(self.rfile.read(int(self.headers.get("Content-Length") or 0)).decode())
             trip, item_id, action = (form.get(k, [""])[0] for k in ("trip", "id", "action"))
+            state["at"] = (trip, item_id)
             q = agent.docs / "Trips" / trip / "trip-queue.md"
             item = next((i for i in parse_queue(q.read_text()) if i.id == item_id), None) if q.exists() and "/" not in trip else None
             try:
@@ -683,8 +874,10 @@ def serve(agent: Agent, port: int, novnc_url: str) -> ThreadingHTTPServer:
                         state["message"] = ""
             except Exception as e:
                 state["message"] = f"Did not happen: {e}"
+            back = urlparse(self.headers.get("Referer") or "").path
             self.send_response(303)
-            self.send_header("Location", "/")
+            spot = "" if action in {"done", "skip"} else "#" + quote(f"i-{trip}-{item_id}")
+            self.send_header("Location", "/classic" if back == "/classic" else "/" + spot)
             self.end_headers()
 
         def log_message(self, *args):
