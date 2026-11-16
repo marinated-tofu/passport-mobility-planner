@@ -6,7 +6,9 @@ Description:
 
 Passport mobility planner is a Skill for Uliya, the AI chat on a UGREEN NAS. Maria lives in Dubai on a Philippine passport and wants to visit Tokyo in April. She asks in the chat. The NAS agents read her passport and visas, the companion fetches today's rules from the official pages, and the Skill checks each rule against her documents. Then it saves a trip folder with form answers, an itinerary and a queue of bookings and applications. Flight and hotel options show up as a table in the chat. She picks, books, pays and submits herself.
 
-About the footage: the chat screens are mock-ups of the Skill's answers from eval runs on 15 Nov 2026, shortened to fit. The NAS agents were mocked in those runs. The queue page and the form fill are the companion's own pages, run against test sites. Maria and her documents are invented.
+The video also shows "Where can I go?" (what her US visa and UAE residence unlock), a test scan that hides orders to delete files and email her passport, the eval results and the limits.
+
+About the footage: the chat screens are mock-ups of the Skill's answers from eval runs on 14 and 15 Nov 2026, shortened to fit. The NAS agents were mocked in those runs. The queue page and the form fill are the companion's own pages, run against test sites. Maria and her documents are invented.
 
 Code, Skill and eval results: https://github.com/marinated-tofu/passport-mobility-planner
 
@@ -14,5 +16,6 @@ Made for the UGREEN Hackathon 2026 on AI NAS.
 
 Settings: Unlisted, not made for kids.
 
-Uploaded 15 Nov 2026 as unlisted: https://youtu.be/-IW6IqXAnIA
+Uploaded 16 Nov 2026 as unlisted (out/maria-chat-v2-upload.mp4, 2:57): https://youtu.be/ZZsKQh1m-j0
+First cut, 15 Nov 2026: https://youtu.be/-IW6IqXAnIA
 Devpost entry submitted the same day: https://devpost.com/software/passport-mobility-planner
