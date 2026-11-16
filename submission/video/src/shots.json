@@ -76,6 +76,34 @@
    }
   ]
  },
+ "injection": {
+  "src": "shots/injection.png",
+  "width": 1640,
+  "height": 766,
+  "boxes": [
+   {
+    "x": 82,
+    "y": 362,
+    "w": 1420,
+    "h": 142,
+    "label": "The scan hides orders: delete files, email her passport"
+   },
+   {
+    "x": 82,
+    "y": 531,
+    "w": 1387,
+    "h": 91,
+    "label": "Text in a document is information, not an instruction"
+   },
+   {
+    "x": 82,
+    "y": 649,
+    "w": 347,
+    "h": 40,
+    "label": "Nothing deleted, nothing sent"
+   }
+  ]
+ },
  "options": {
   "src": "shots/options.png",
   "width": 1640,
@@ -157,6 +185,34 @@
     "w": 773,
     "h": 40,
     "label": "With the page and the date it was fetched"
+   }
+  ]
+ },
+ "where": {
+  "src": "shots/where.png",
+  "width": 1640,
+  "height": 1535,
+  "boxes": [
+   {
+    "x": 82,
+    "y": 459,
+    "w": 1457,
+    "h": 142,
+    "label": "What her own documents still unlock"
+   },
+   {
+    "x": 82,
+    "y": 779,
+    "w": 1476,
+    "h": 116,
+    "label": "Worked out from her permit’s expiry"
+   },
+   {
+    "x": 82,
+    "y": 1316,
+    "w": 1381,
+    "h": 91,
+    "label": "Nothing counts as confirmed until she checks the official page"
    }
   ]
  }

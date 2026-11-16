@@ -3,7 +3,8 @@ import durations from '../durations/maria-chat.json';
 import shots from '../shots.json';
 
 // Under 3 minutes, mostly screenshots. Chat screens: screens/*.html, cut from evals/results/2026-11-15-1217
-// (trip-medium-ph-japan), 1205 (choose-options), 1159 (queue-in-chat) and 1236 (trip-strict-china); shot by screens/shoot.cjs.
+// (trip-medium-ph-japan), 1205 (choose-options), 1159 (queue-in-chat), 1236 (trip-strict-china), 2026-11-14-0141 (benefits)
+// and 0134 (injection); shot by screens/shoot.cjs. Test numbers: README, Evals.
 // queue-page, queue-pick and form-fill are the companion's pages captured from companion/agent.py with test data.
 type Shot = keyof typeof shots;
 const shot = (name: Shot, rest: Omit<Extract<Scene, {kind: 'shot'}>, 'kind' | 'src' | 'width' | 'height' | 'boxes'>): Scene => ({kind: 'shot', ...shots[name], ...rest});
@@ -11,9 +12,9 @@ const shot = (name: Shot, rest: Omit<Extract<Scene, {kind: 'shot'}>, 'kind' | 's
 export const mariaChat: StepsStory = {
   id: 'maria-chat',
   durations,
-  run: 'eval runs 2026-11-15',
+  run: 'eval runs 2026-11-14 and 15',
   first: 'Maria',
-  foot: 'Chat screens: mock-ups of real Skill answers from eval runs, 15 Nov 2026, shortened. Maria is invented; NAS agents and sites are stand-ins.',
+  foot: 'Chat screens: mock-ups of real Skill answers from eval runs, 14 and 15 Nov 2026, shortened. Maria is invented; NAS agents and sites are stand-ins.',
   scenes: [
     {kind: 'intro', title: 'Tokyo in April, planned in the NAS chat', sub: 'Maria lives in Dubai on a Philippine passport. Her documents are on the family NAS.'},
     shot('ask', {short: 'Ask in the chat', who: 'you', title: 'She asks Uliya, on her NAS'}),
@@ -41,13 +42,6 @@ export const mariaChat: StepsStory = {
     },
     shot('options', {short: 'Options in chat', who: 'nas', title: 'Flight options, right in the chat'}),
     {
-      kind: 'shot', short: 'Pick and book', who: 'you', title: 'Or pick on the queue page', src: 'shots/queue-pick.png', width: 1856, height: 978,
-      boxes: [
-        {x: 258, y: 188, w: 1180, h: 44, label: 'The same options as in the chat'},
-        {x: 1642, y: 318, w: 130, h: 80, label: 'Pick opens the airline page: she logs in, checks and pays'},
-      ],
-    },
-    {
       kind: 'shot', short: 'I booked it', who: 'you', title: '“I booked the flight”', src: 'shots/queue-chat.png', width: 1640, height: 1242,
       boxes: [
         {x: 308, y: 162, w: 1272, h: 130, label: 'She says it in the chat'},
@@ -65,6 +59,17 @@ export const mariaChat: StepsStory = {
       ],
     },
     shot('china', {short: 'Strict consulates', who: 'nas', title: 'Strict consulates: China'}),
+    shot('where', {short: 'Where can I go?', who: 'nas', title: '“Where can I go?” with what she already holds'}),
+    shot('injection', {short: 'Hidden orders', who: 'nas', title: 'A scan that hides orders'}),
+    {
+      kind: 'checks', short: 'Tests and limits', who: 'nas', title: 'Tested, and what it can’t do yet',
+      rows: [
+        {kind: 'ok', title: '106 of 106 hard checks, 45 of 47 graded points', detail: 'Mock NAS agents, 37 scenarios: the latest run of the 14 hardest (Skill 0.4.0)'},
+        {kind: 'ok', title: 'The newest scenarios pass every check', detail: 'Options and the queue in the chat, a Portugal work application, China from Dubai'},
+        {kind: 'missing', title: 'Not yet run on a real NAS', detail: 'Agent replies, approvals and the local model are mocked in the tests'},
+        {kind: 'arrow', title: 'As current as the fetched page, and not legal advice', detail: 'The companion needs government and booking sites; she confirms each rule there'},
+      ],
+    },
     {kind: 'close', title: 'Official rules, checked against her own documents', sub: 'On her own NAS, in the Uliya chat. She only picks, books, pays and submits.'},
   ],
 };
