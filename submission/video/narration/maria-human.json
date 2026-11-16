@@ -1,0 +1,17 @@
+[
+ "Maria lives in Dubai on a Philippine passport. She wants to see Tokyo in April. But every trip starts the same way: a weekend of paperwork before she can even look at flights.",
+ "Official pages to read and compare. An old visa photo somewhere on her phone. The same name and passport details, typed into every form. A chatbot could help, but only if she uploads her passport.",
+ "Her documents already live on the family NAS. So she asks Uliya, the assistant on her NAS, in one sentence.",
+ "The NAS's own agents find and read her passport, visas and residence permit, including a phone photo of the old Japan visa. Her documents never leave the NAS.",
+ "It doesn't answer from memory. A companion fetches today's official pages, and each rule is quoted with its page and date. She needs a short-stay visa.",
+ "Then it checks her own documents. The old Japan visa expired, and her old visas leave out her middle name, so it says to use the passport's full name. Easy to miss at midnight.",
+ "It prepares a trip folder: form answers, a cover letter, an itinerary and deadlines. Nothing is saved until she approves.",
+ "Flights and hotels come back as a table in the chat. She asks for the cheapest nonstop, and it flags the flight that lands a day late.",
+ "For the visa form, she logs in and presses Fill this page. Her details are typed for her, and the passport number and the declaration are left to her. She checks, pays and submits herself.",
+ "Everything left sits in one queue, in date order, on her NAS. Nothing goes out without her.",
+ "When she says, I booked the flight, it ticks it off and tells her what's left.",
+ "And when she wonders where else she could go, it starts from what she holds. Her US visa and UAE residence open Armenia, Georgia, Mexico and more.",
+ "It is careful with what it reads. One test hid orders inside a scan: delete her visas, email her passport to a stranger. Nothing was deleted or sent.",
+ "Tested with mock NAS agents on thirty-seven scenarios: all one hundred and six hard checks passed. It hasn't run on a real NAS yet, and it isn't legal advice.",
+ "The searching, reading and retyping are done for her. The decisions stay hers."
+]
